@@ -1,0 +1,83 @@
+{
+    "common": {
+        "back": "Back",
+        "next": "Next",
+        "done": "Done",
+        "save": "Apply",
+        "signOut": "Sign out"
+    },
+    "signIn": {
+        "messageTitle": "Sign-In",
+        "messageContent": "If you have forgotten your password or are experiencing difficulties in signing in, feel free to get in touch with your supervisor for assistance.",
+        "signIn": "Sign In",
+        "username": "Username",
+        "password": "Password"
+    },
+    "splash": {
+        "notConsortiumErrorMessage": "This user is currently not assigned to any consortium."
+    },
+    "consortium": {
+        "name": "Consortium Name",
+        "maximumSaleAmount": "Maximum Sale Amount",
+        "quinielaMaxAmount": "Maximum Quiniela Amount",
+        "paleMaxAmount": "Maximum Pale Amount",
+        "tripletaMaxAmount": "Maximum Triplet Amount",
+        "success": "Consortium updated",
+        "empty": "No associated consortium found"
+    },
+    "group": {
+        "name": "Name",
+        "maximumSaleAmount": "Maximum Sale Amount",
+        "quinielaMaxAmount": "Maximum Quiniela Amount",
+        "paleMaxAmount": "Maximum Pale Amount",
+        "tripletaMaxAmount": "Maximum Triplet Amount",
+        "empty": "No groups created",
+        "createdSuccess": "Group created",
+        "updateSuccess": "Group updated",
+        "deleteSuccess": "Group deleted",
+        "active": "Active",
+        "deleteTitle": "Are you sure you want to delete this group",
+        "deleteContent": "Only groups without related banks can be deleted"
+    },
+    "lottery": {
+        "name": "Name",
+        "success": "Lottery updated",
+        "active": "Active",
+        "quinielaFirstPrize": "Quiniela 1st Prize",
+        "quinielaSecondPrize": "Quiniela 2nd Prize",
+        "quinielaThirdPrize": "Quiniela 3rd Prize",
+        "paleFirstSecondPrize": "Pale 1 & 2 Prize",
+        "paleFirstThirdPrize": "Pale 1 & 3 Prize",
+        "paleSecondThirdPrize": "Pale 2 & 3 Prize",
+        "tripletaPrice": "Tripleta Prize",
+        "timeOpen": "Opening Time",
+        "timeClose": "Closing Time"
+    },
+    "stand": {
+        "name": "Name",
+        "group": "Group",
+        "contraint": "Constraint",
+        "username": "Username",
+        "maximumSaleAmount": "Maximum sale amount",
+        "maximumCancellationAmount": "Maximum cancellation amount",
+        "quinielaMaxAmount": "Maximum quiniela amount",
+        "paleMaxAmount": "Maximum pale amount",
+        "tripletaMaxAmount": "Maximum triplet amount",
+        "active": "Active"
+    },
+    "monitoring": {
+        "dateForm": "Date",
+        "dateToday": "Today",
+        "dateYesterday": "Yesterday",
+        "dateWeek": "Week",
+        "dateMonth": "Month",
+        "dateYear": "Year",
+        "orderForm": "Order",
+        "orderQuantity": "Quantity",
+        "orderAmount": "Amount",
+        "quiniela": "Quiniela",
+        "pale": "Pale",
+        "tripleta": "Triplet",
+        "playEmpty": "No plays available"
+    }
+}

@@ -1,0 +1,83 @@
+{
+    "common": {
+        "back": "Atrás",
+        "next": "Continuar",
+        "done": "Completar",
+        "save": "Aplicar",
+        "signOut": "Cerrar sesión"
+    },
+    "singIn": {
+        "messageTitle": "Inicio de sesión",
+        "messageContent": "Si has olvidado tu contraseña o tienes dificultades para iniciar sesión, no dudes en ponerte en contacto con tu supervisor para recibir asistencia.",
+        "signIn": "Iniciar sesión",
+        "username": "Usuario",
+        "password": "Contraseña"
+    },
+    "splash": {
+        "notConsortiumErrorMessage": "Este usuario actualmente no está asociado a ningún consorcio."
+    },
+    "consortium": {
+        "name": "Nombre del consorcio",
+        "maximumSaleAmount": "Monto máximo de venta",
+        "quinielaMaxAmount": "Monto máximo de quiniela",
+        "paleMaxAmount": "Monto máximo de pale",
+        "tripletaMaxAmount": "Monto máximo de tripleta",
+        "success": "Consorcio actualizado",
+        "empty": "No se encuentra el consorcio asociado"
+    },
+    "group": {
+        "name": "Nombre",
+        "maximumSaleAmount": "Monto máximo de venta",
+        "quinielaMaxAmount": "Monto máximo de quiniela",
+        "paleMaxAmount": "Monto máximo de pale",
+        "tripletaMaxAmount": "Monto máximo de tripleta",
+        "empty": "No hay grupos creados",
+        "createdSuccess": "Grupo creado",
+        "updateSuccess": "Grupo actualizado",
+        "deleteSuccess": "Grupo borrado",
+        "active": "Activo",
+        "deleteTitle": "Estas seguro de borrar este grupo",
+        "deleteContent": "Solo se pueden borrar grupos que no tengan una banca relacionadas"
+    },
+    "lottery": {
+        "name": "Name",
+        "success": "Lottery updated",
+        "active": "Active",
+        "quinielaFirstPrize": "Quiniela 1er premio",
+        "quinielaSecondPrize": "Quiniela 2da premio",
+        "quinielaThirdPrize": "Quiniela 3ra premio",
+        "paleFirstSecondPrize": "Pale 1er & 2da premio",
+        "paleFirstThirdPrize": "Pale 1er & 3da premio",
+        "paleSecondThirdPrize": "Pale 2da & 3ra premio",
+        "tripletaPrice": "Tripleta premio",
+        "timeOpen": "Hora de apertura",
+        "timeClose": "Hora de cierre"
+    },
+    "stand": {
+        "name": "Nombre",
+        "group": "Grupo",
+        "contraint": "Restrinción",
+        "username": "Usuario",
+        "maximumSaleAmount": "Monto máximo de venta",
+        "maximumCancellationAmount": "Monto máximo de cancelación",
+        "quinielaMaxAmount": "Monto máximo de quiniela",
+        "paleMaxAmount": "Monto máximo de pale",
+        "tripletaMaxAmount": "Monto máximo de tripleta",
+        "active": "Activo"
+    },
+    "monitoring": {
+        "dateForm": "Fecha",
+        "dateToday": "Hoy",
+        "dateYesterday": "Ayer",
+        "dateWeek": "Semana",
+        "dateMonth": "Mes",
+        "dateYear": "Año",
+        "orderForm": "Orden",
+        "orderQuantity": "Cantidad",
+        "orderAmount": "Monto",
+        "quiniela": "Quiniela",
+        "pale": "Pale",
+        "tripleta": "Tripleta",
+        "playEmpty": "No hay jugadas"
+    }
+}
