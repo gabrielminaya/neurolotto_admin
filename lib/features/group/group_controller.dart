@@ -31,6 +31,7 @@ class GroupController extends ValueNotifier<GroupControllerState> {
       final groups = await _client
           .from("groups")
           .select<PostgrestList>()
+          .eq("consortium_id", authController.consortium?.id)
           .order("name", ascending: true)
           .withConverter<List<GroupEntity>>((data) => data.map((e) => GroupEntity.fromJson(e)).toList());
       value = GroupControllerState(groups: groups);

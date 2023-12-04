@@ -79,5 +79,17 @@
         "pale": "Pale",
         "tripleta": "Tripleta",
         "playEmpty": "No hay jugadas"
+    },
+    "ticket": {
+        "cancelAction": "Anular",
+        "cancelActionTitle": "Confirmar Anulación del Ticket",
+        "cancelActionContent": "Esta acción no se puede deshacer. ¿Estás seguro?",
+        "cancelSuccess": "Ticket anulado",
+        "showDetails": "Ver detalles",
+        "empty": "No hay tickets disponibles",
+        "total": "Total",
+        "date": "Fecha",
+        "all": "Todos",
+        "stands": "Bancas"
     }
 }

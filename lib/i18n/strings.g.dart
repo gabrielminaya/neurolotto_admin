@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 65
+/// Strings: 75
 ///
-/// Built on 2023-11-18 at 15:33 UTC
+/// Built on 2023-12-04 at 19:41 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -157,6 +157,7 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsLotteryEn lottery = _StringsLotteryEn._(_root);
 	late final _StringsStandEn stand = _StringsStandEn._(_root);
 	late final _StringsMonitoringEn monitoring = _StringsMonitoringEn._(_root);
+	late final _StringsTicketEn ticket = _StringsTicketEn._(_root);
 }
 
 // Path: common
@@ -296,6 +297,25 @@ class _StringsMonitoringEn {
 	String get playEmpty => 'No plays available';
 }
 
+// Path: ticket
+class _StringsTicketEn {
+	_StringsTicketEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get cancelAction => 'Cancel';
+	String get cancelActionTitle => 'Confirm Ticket Cancellation';
+	String get cancelActionContent => 'This action cannot be undone. Are you sure?';
+	String get cancelSuccess => 'Ticket canceled';
+	String get showDetails => 'Show Details';
+	String get empty => 'No tickets available';
+	String get total => 'Total';
+	String get date => 'Date';
+	String get all => 'All';
+	String get stands => 'Lotttery Stands';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -367,6 +387,16 @@ extension on _StringsEn {
 			case 'monitoring.pale': return 'Pale';
 			case 'monitoring.tripleta': return 'Triplet';
 			case 'monitoring.playEmpty': return 'No plays available';
+			case 'ticket.cancelAction': return 'Cancel';
+			case 'ticket.cancelActionTitle': return 'Confirm Ticket Cancellation';
+			case 'ticket.cancelActionContent': return 'This action cannot be undone. Are you sure?';
+			case 'ticket.cancelSuccess': return 'Ticket canceled';
+			case 'ticket.showDetails': return 'Show Details';
+			case 'ticket.empty': return 'No tickets available';
+			case 'ticket.total': return 'Total';
+			case 'ticket.date': return 'Date';
+			case 'ticket.all': return 'All';
+			case 'ticket.stands': return 'Lotttery Stands';
 			default: return null;
 		}
 	}

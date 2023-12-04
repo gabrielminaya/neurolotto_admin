@@ -27,6 +27,10 @@ mixin _$TicketEntity {
   DateTime get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: "state_id")
   String get stateId => throw _privateConstructorUsedError;
+  @JsonKey(name: "lottery_stands")
+  LotteryStandEntity get lotteryStand => throw _privateConstructorUsedError;
+  @JsonKey(name: "ticket_states")
+  TicketStateEntity get ticketState => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +48,12 @@ abstract class $TicketEntityCopyWith<$Res> {
       {String id,
       @JsonKey(name: "sequence_number") int sequenceNumber,
       @JsonKey(name: "created_at") DateTime createdAt,
-      @JsonKey(name: "state_id") String stateId});
+      @JsonKey(name: "state_id") String stateId,
+      @JsonKey(name: "lottery_stands") LotteryStandEntity lotteryStand,
+      @JsonKey(name: "ticket_states") TicketStateEntity ticketState});
+
+  $LotteryStandEntityCopyWith<$Res> get lotteryStand;
+  $TicketStateEntityCopyWith<$Res> get ticketState;
 }
 
 /// @nodoc
@@ -64,6 +73,8 @@ class _$TicketEntityCopyWithImpl<$Res, $Val extends TicketEntity>
     Object? sequenceNumber = null,
     Object? createdAt = null,
     Object? stateId = null,
+    Object? lotteryStand = null,
+    Object? ticketState = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -82,7 +93,31 @@ class _$TicketEntityCopyWithImpl<$Res, $Val extends TicketEntity>
           ? _value.stateId
           : stateId // ignore: cast_nullable_to_non_nullable
               as String,
+      lotteryStand: null == lotteryStand
+          ? _value.lotteryStand
+          : lotteryStand // ignore: cast_nullable_to_non_nullable
+              as LotteryStandEntity,
+      ticketState: null == ticketState
+          ? _value.ticketState
+          : ticketState // ignore: cast_nullable_to_non_nullable
+              as TicketStateEntity,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LotteryStandEntityCopyWith<$Res> get lotteryStand {
+    return $LotteryStandEntityCopyWith<$Res>(_value.lotteryStand, (value) {
+      return _then(_value.copyWith(lotteryStand: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TicketStateEntityCopyWith<$Res> get ticketState {
+    return $TicketStateEntityCopyWith<$Res>(_value.ticketState, (value) {
+      return _then(_value.copyWith(ticketState: value) as $Val);
+    });
   }
 }
 
@@ -98,7 +133,14 @@ abstract class _$$TicketEntityImplCopyWith<$Res>
       {String id,
       @JsonKey(name: "sequence_number") int sequenceNumber,
       @JsonKey(name: "created_at") DateTime createdAt,
-      @JsonKey(name: "state_id") String stateId});
+      @JsonKey(name: "state_id") String stateId,
+      @JsonKey(name: "lottery_stands") LotteryStandEntity lotteryStand,
+      @JsonKey(name: "ticket_states") TicketStateEntity ticketState});
+
+  @override
+  $LotteryStandEntityCopyWith<$Res> get lotteryStand;
+  @override
+  $TicketStateEntityCopyWith<$Res> get ticketState;
 }
 
 /// @nodoc
@@ -116,6 +158,8 @@ class __$$TicketEntityImplCopyWithImpl<$Res>
     Object? sequenceNumber = null,
     Object? createdAt = null,
     Object? stateId = null,
+    Object? lotteryStand = null,
+    Object? ticketState = null,
   }) {
     return _then(_$TicketEntityImpl(
       id: null == id
@@ -134,6 +178,14 @@ class __$$TicketEntityImplCopyWithImpl<$Res>
           ? _value.stateId
           : stateId // ignore: cast_nullable_to_non_nullable
               as String,
+      lotteryStand: null == lotteryStand
+          ? _value.lotteryStand
+          : lotteryStand // ignore: cast_nullable_to_non_nullable
+              as LotteryStandEntity,
+      ticketState: null == ticketState
+          ? _value.ticketState
+          : ticketState // ignore: cast_nullable_to_non_nullable
+              as TicketStateEntity,
     ));
   }
 }
@@ -145,7 +197,9 @@ class _$TicketEntityImpl implements _TicketEntity {
       {required this.id,
       @JsonKey(name: "sequence_number") required this.sequenceNumber,
       @JsonKey(name: "created_at") required this.createdAt,
-      @JsonKey(name: "state_id") required this.stateId});
+      @JsonKey(name: "state_id") required this.stateId,
+      @JsonKey(name: "lottery_stands") required this.lotteryStand,
+      @JsonKey(name: "ticket_states") required this.ticketState});
 
   factory _$TicketEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$TicketEntityImplFromJson(json);
@@ -161,10 +215,16 @@ class _$TicketEntityImpl implements _TicketEntity {
   @override
   @JsonKey(name: "state_id")
   final String stateId;
+  @override
+  @JsonKey(name: "lottery_stands")
+  final LotteryStandEntity lotteryStand;
+  @override
+  @JsonKey(name: "ticket_states")
+  final TicketStateEntity ticketState;
 
   @override
   String toString() {
-    return 'TicketEntity(id: $id, sequenceNumber: $sequenceNumber, createdAt: $createdAt, stateId: $stateId)';
+    return 'TicketEntity(id: $id, sequenceNumber: $sequenceNumber, createdAt: $createdAt, stateId: $stateId, lotteryStand: $lotteryStand, ticketState: $ticketState)';
   }
 
   @override
@@ -177,13 +237,17 @@ class _$TicketEntityImpl implements _TicketEntity {
                 other.sequenceNumber == sequenceNumber) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.stateId, stateId) || other.stateId == stateId));
+            (identical(other.stateId, stateId) || other.stateId == stateId) &&
+            (identical(other.lotteryStand, lotteryStand) ||
+                other.lotteryStand == lotteryStand) &&
+            (identical(other.ticketState, ticketState) ||
+                other.ticketState == ticketState));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, sequenceNumber, createdAt, stateId);
+  int get hashCode => Object.hash(runtimeType, id, sequenceNumber, createdAt,
+      stateId, lotteryStand, ticketState);
 
   @JsonKey(ignore: true)
   @override
@@ -201,11 +265,14 @@ class _$TicketEntityImpl implements _TicketEntity {
 
 abstract class _TicketEntity implements TicketEntity {
   const factory _TicketEntity(
-          {required final String id,
-          @JsonKey(name: "sequence_number") required final int sequenceNumber,
-          @JsonKey(name: "created_at") required final DateTime createdAt,
-          @JsonKey(name: "state_id") required final String stateId}) =
-      _$TicketEntityImpl;
+      {required final String id,
+      @JsonKey(name: "sequence_number") required final int sequenceNumber,
+      @JsonKey(name: "created_at") required final DateTime createdAt,
+      @JsonKey(name: "state_id") required final String stateId,
+      @JsonKey(name: "lottery_stands")
+      required final LotteryStandEntity lotteryStand,
+      @JsonKey(name: "ticket_states")
+      required final TicketStateEntity ticketState}) = _$TicketEntityImpl;
 
   factory _TicketEntity.fromJson(Map<String, dynamic> json) =
       _$TicketEntityImpl.fromJson;
@@ -221,6 +288,12 @@ abstract class _TicketEntity implements TicketEntity {
   @override
   @JsonKey(name: "state_id")
   String get stateId;
+  @override
+  @JsonKey(name: "lottery_stands")
+  LotteryStandEntity get lotteryStand;
+  @override
+  @JsonKey(name: "ticket_states")
+  TicketStateEntity get ticketState;
   @override
   @JsonKey(ignore: true)
   _$$TicketEntityImplCopyWith<_$TicketEntityImpl> get copyWith =>

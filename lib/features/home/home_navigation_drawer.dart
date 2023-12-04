@@ -36,6 +36,10 @@ class HomeNavigationDrawer extends StatelessWidget {
           label: Text("Monitoring"),
         ),
         const NavigationDrawerDestination(
+          icon: Icon(Icons.attach_money),
+          label: Text("Sales"),
+        ),
+        const NavigationDrawerDestination(
           icon: Icon(Icons.receipt),
           label: Text("Tickets"),
         ),

@@ -79,5 +79,17 @@
         "pale": "Pale",
         "tripleta": "Triplet",
         "playEmpty": "No plays available"
+    },
+    "ticket": {
+        "cancelAction": "Cancel",
+        "cancelActionTitle": "Confirm Ticket Cancellation",
+        "cancelActionContent": "This action cannot be undone. Are you sure?",
+        "cancelSuccess": "Ticket canceled",
+        "showDetails": "Show Details",
+        "empty": "No tickets available",
+        "total": "Total",
+        "date": "Date",
+        "all": "All",
+        "stands": "Lotttery Stands"
     }
 }

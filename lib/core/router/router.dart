@@ -18,6 +18,7 @@ class AppRouter extends $AppRouter {
         guards: [AuthGuard(), ConsortiumGuard()],
         children: [
           AutoRoute(page: DashboardRoute.page),
+          AutoRoute(page: SaleRoute.page),
           AutoRoute(page: TicketRoute.page),
           AutoRoute(page: GroupFormRoute.page),
           AutoRoute(page: GroupRoute.page),

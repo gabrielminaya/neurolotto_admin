@@ -16,55 +16,16 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TicketControllerState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) failure,
-    required TResult Function() sucess,
-  }) =>
+  bool get isInitializedLoading => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isActionLoading => throw _privateConstructorUsedError;
+  List<TicketEntity> get tickets => throw _privateConstructorUsedError;
+  List<LotteryStandEntity> get lotteryStands =>
       throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? failure,
-    TResult? Function()? sucess,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? failure,
-    TResult Function()? sucess,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_TicketControllerInitial value) initial,
-    required TResult Function(_TicketControllerLoading value) loading,
-    required TResult Function(_TicketControllerFailure value) failure,
-    required TResult Function(_TicketControllerSuccess value) sucess,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TicketControllerInitial value)? initial,
-    TResult? Function(_TicketControllerLoading value)? loading,
-    TResult? Function(_TicketControllerFailure value)? failure,
-    TResult? Function(_TicketControllerSuccess value)? sucess,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TicketControllerInitial value)? initial,
-    TResult Function(_TicketControllerLoading value)? loading,
-    TResult Function(_TicketControllerFailure value)? failure,
-    TResult Function(_TicketControllerSuccess value)? sucess,
-    required TResult orElse(),
-  }) =>
+  String? get failureMessage => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $TicketControllerStateCopyWith<TicketControllerState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -73,6 +34,14 @@ abstract class $TicketControllerStateCopyWith<$Res> {
   factory $TicketControllerStateCopyWith(TicketControllerState value,
           $Res Function(TicketControllerState) then) =
       _$TicketControllerStateCopyWithImpl<$Res, TicketControllerState>;
+  @useResult
+  $Res call(
+      {bool isInitializedLoading,
+      bool isLoading,
+      bool isActionLoading,
+      List<TicketEntity> tickets,
+      List<LotteryStandEntity> lotteryStands,
+      String? failureMessage});
 }
 
 /// @nodoc
@@ -85,544 +54,235 @@ class _$TicketControllerStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isInitializedLoading = null,
+    Object? isLoading = null,
+    Object? isActionLoading = null,
+    Object? tickets = null,
+    Object? lotteryStands = null,
+    Object? failureMessage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      isInitializedLoading: null == isInitializedLoading
+          ? _value.isInitializedLoading
+          : isInitializedLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isActionLoading: null == isActionLoading
+          ? _value.isActionLoading
+          : isActionLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      tickets: null == tickets
+          ? _value.tickets
+          : tickets // ignore: cast_nullable_to_non_nullable
+              as List<TicketEntity>,
+      lotteryStands: null == lotteryStands
+          ? _value.lotteryStands
+          : lotteryStands // ignore: cast_nullable_to_non_nullable
+              as List<LotteryStandEntity>,
+      failureMessage: freezed == failureMessage
+          ? _value.failureMessage
+          : failureMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$TicketControllerInitialImplCopyWith<$Res> {
-  factory _$$TicketControllerInitialImplCopyWith(
-          _$TicketControllerInitialImpl value,
-          $Res Function(_$TicketControllerInitialImpl) then) =
-      __$$TicketControllerInitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$TicketControllerInitialImplCopyWithImpl<$Res>
-    extends _$TicketControllerStateCopyWithImpl<$Res,
-        _$TicketControllerInitialImpl>
-    implements _$$TicketControllerInitialImplCopyWith<$Res> {
-  __$$TicketControllerInitialImplCopyWithImpl(
-      _$TicketControllerInitialImpl _value,
-      $Res Function(_$TicketControllerInitialImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$TicketControllerInitialImpl
-    with DiagnosticableTreeMixin
-    implements _TicketControllerInitial {
-  const _$TicketControllerInitialImpl();
-
+abstract class _$$TicketControllerStateImplCopyWith<$Res>
+    implements $TicketControllerStateCopyWith<$Res> {
+  factory _$$TicketControllerStateImplCopyWith(
+          _$TicketControllerStateImpl value,
+          $Res Function(_$TicketControllerStateImpl) then) =
+      __$$TicketControllerStateImplCopyWithImpl<$Res>;
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TicketControllerState.initial()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'TicketControllerState.initial'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TicketControllerInitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) failure,
-    required TResult Function() sucess,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? failure,
-    TResult? Function()? sucess,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? failure,
-    TResult Function()? sucess,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_TicketControllerInitial value) initial,
-    required TResult Function(_TicketControllerLoading value) loading,
-    required TResult Function(_TicketControllerFailure value) failure,
-    required TResult Function(_TicketControllerSuccess value) sucess,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TicketControllerInitial value)? initial,
-    TResult? Function(_TicketControllerLoading value)? loading,
-    TResult? Function(_TicketControllerFailure value)? failure,
-    TResult? Function(_TicketControllerSuccess value)? sucess,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TicketControllerInitial value)? initial,
-    TResult Function(_TicketControllerLoading value)? loading,
-    TResult Function(_TicketControllerFailure value)? failure,
-    TResult Function(_TicketControllerSuccess value)? sucess,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _TicketControllerInitial implements TicketControllerState {
-  const factory _TicketControllerInitial() = _$TicketControllerInitialImpl;
-}
-
-/// @nodoc
-abstract class _$$TicketControllerLoadingImplCopyWith<$Res> {
-  factory _$$TicketControllerLoadingImplCopyWith(
-          _$TicketControllerLoadingImpl value,
-          $Res Function(_$TicketControllerLoadingImpl) then) =
-      __$$TicketControllerLoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$TicketControllerLoadingImplCopyWithImpl<$Res>
-    extends _$TicketControllerStateCopyWithImpl<$Res,
-        _$TicketControllerLoadingImpl>
-    implements _$$TicketControllerLoadingImplCopyWith<$Res> {
-  __$$TicketControllerLoadingImplCopyWithImpl(
-      _$TicketControllerLoadingImpl _value,
-      $Res Function(_$TicketControllerLoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$TicketControllerLoadingImpl
-    with DiagnosticableTreeMixin
-    implements _TicketControllerLoading {
-  const _$TicketControllerLoadingImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TicketControllerState.loading()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'TicketControllerState.loading'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TicketControllerLoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) failure,
-    required TResult Function() sucess,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? failure,
-    TResult? Function()? sucess,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? failure,
-    TResult Function()? sucess,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_TicketControllerInitial value) initial,
-    required TResult Function(_TicketControllerLoading value) loading,
-    required TResult Function(_TicketControllerFailure value) failure,
-    required TResult Function(_TicketControllerSuccess value) sucess,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TicketControllerInitial value)? initial,
-    TResult? Function(_TicketControllerLoading value)? loading,
-    TResult? Function(_TicketControllerFailure value)? failure,
-    TResult? Function(_TicketControllerSuccess value)? sucess,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TicketControllerInitial value)? initial,
-    TResult Function(_TicketControllerLoading value)? loading,
-    TResult Function(_TicketControllerFailure value)? failure,
-    TResult Function(_TicketControllerSuccess value)? sucess,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _TicketControllerLoading implements TicketControllerState {
-  const factory _TicketControllerLoading() = _$TicketControllerLoadingImpl;
-}
-
-/// @nodoc
-abstract class _$$TicketControllerFailureImplCopyWith<$Res> {
-  factory _$$TicketControllerFailureImplCopyWith(
-          _$TicketControllerFailureImpl value,
-          $Res Function(_$TicketControllerFailureImpl) then) =
-      __$$TicketControllerFailureImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call(
+      {bool isInitializedLoading,
+      bool isLoading,
+      bool isActionLoading,
+      List<TicketEntity> tickets,
+      List<LotteryStandEntity> lotteryStands,
+      String? failureMessage});
 }
 
 /// @nodoc
-class __$$TicketControllerFailureImplCopyWithImpl<$Res>
+class __$$TicketControllerStateImplCopyWithImpl<$Res>
     extends _$TicketControllerStateCopyWithImpl<$Res,
-        _$TicketControllerFailureImpl>
-    implements _$$TicketControllerFailureImplCopyWith<$Res> {
-  __$$TicketControllerFailureImplCopyWithImpl(
-      _$TicketControllerFailureImpl _value,
-      $Res Function(_$TicketControllerFailureImpl) _then)
+        _$TicketControllerStateImpl>
+    implements _$$TicketControllerStateImplCopyWith<$Res> {
+  __$$TicketControllerStateImplCopyWithImpl(_$TicketControllerStateImpl _value,
+      $Res Function(_$TicketControllerStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? isInitializedLoading = null,
+    Object? isLoading = null,
+    Object? isActionLoading = null,
+    Object? tickets = null,
+    Object? lotteryStands = null,
+    Object? failureMessage = freezed,
   }) {
-    return _then(_$TicketControllerFailureImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$TicketControllerStateImpl(
+      isInitializedLoading: null == isInitializedLoading
+          ? _value.isInitializedLoading
+          : isInitializedLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isActionLoading: null == isActionLoading
+          ? _value.isActionLoading
+          : isActionLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      tickets: null == tickets
+          ? _value._tickets
+          : tickets // ignore: cast_nullable_to_non_nullable
+              as List<TicketEntity>,
+      lotteryStands: null == lotteryStands
+          ? _value._lotteryStands
+          : lotteryStands // ignore: cast_nullable_to_non_nullable
+              as List<LotteryStandEntity>,
+      failureMessage: freezed == failureMessage
+          ? _value.failureMessage
+          : failureMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$TicketControllerFailureImpl
+class _$TicketControllerStateImpl
     with DiagnosticableTreeMixin
-    implements _TicketControllerFailure {
-  const _$TicketControllerFailureImpl(this.message);
+    implements _TicketControllerState {
+  const _$TicketControllerStateImpl(
+      {this.isInitializedLoading = false,
+      this.isLoading = false,
+      this.isActionLoading = false,
+      final List<TicketEntity> tickets = const [],
+      final List<LotteryStandEntity> lotteryStands = const [],
+      this.failureMessage = null})
+      : _tickets = tickets,
+        _lotteryStands = lotteryStands;
 
   @override
-  final String message;
+  @JsonKey()
+  final bool isInitializedLoading;
+  @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isActionLoading;
+  final List<TicketEntity> _tickets;
+  @override
+  @JsonKey()
+  List<TicketEntity> get tickets {
+    if (_tickets is EqualUnmodifiableListView) return _tickets;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tickets);
+  }
+
+  final List<LotteryStandEntity> _lotteryStands;
+  @override
+  @JsonKey()
+  List<LotteryStandEntity> get lotteryStands {
+    if (_lotteryStands is EqualUnmodifiableListView) return _lotteryStands;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lotteryStands);
+  }
+
+  @override
+  @JsonKey()
+  final String? failureMessage;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TicketControllerState.failure(message: $message)';
+    return 'TicketControllerState(isInitializedLoading: $isInitializedLoading, isLoading: $isLoading, isActionLoading: $isActionLoading, tickets: $tickets, lotteryStands: $lotteryStands, failureMessage: $failureMessage)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'TicketControllerState.failure'))
-      ..add(DiagnosticsProperty('message', message));
+      ..add(DiagnosticsProperty('type', 'TicketControllerState'))
+      ..add(DiagnosticsProperty('isInitializedLoading', isInitializedLoading))
+      ..add(DiagnosticsProperty('isLoading', isLoading))
+      ..add(DiagnosticsProperty('isActionLoading', isActionLoading))
+      ..add(DiagnosticsProperty('tickets', tickets))
+      ..add(DiagnosticsProperty('lotteryStands', lotteryStands))
+      ..add(DiagnosticsProperty('failureMessage', failureMessage));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TicketControllerFailureImpl &&
-            (identical(other.message, message) || other.message == message));
+            other is _$TicketControllerStateImpl &&
+            (identical(other.isInitializedLoading, isInitializedLoading) ||
+                other.isInitializedLoading == isInitializedLoading) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isActionLoading, isActionLoading) ||
+                other.isActionLoading == isActionLoading) &&
+            const DeepCollectionEquality().equals(other._tickets, _tickets) &&
+            const DeepCollectionEquality()
+                .equals(other._lotteryStands, _lotteryStands) &&
+            (identical(other.failureMessage, failureMessage) ||
+                other.failureMessage == failureMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isInitializedLoading,
+      isLoading,
+      isActionLoading,
+      const DeepCollectionEquality().hash(_tickets),
+      const DeepCollectionEquality().hash(_lotteryStands),
+      failureMessage);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TicketControllerFailureImplCopyWith<_$TicketControllerFailureImpl>
-      get copyWith => __$$TicketControllerFailureImplCopyWithImpl<
-          _$TicketControllerFailureImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) failure,
-    required TResult Function() sucess,
-  }) {
-    return failure(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? failure,
-    TResult? Function()? sucess,
-  }) {
-    return failure?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? failure,
-    TResult Function()? sucess,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_TicketControllerInitial value) initial,
-    required TResult Function(_TicketControllerLoading value) loading,
-    required TResult Function(_TicketControllerFailure value) failure,
-    required TResult Function(_TicketControllerSuccess value) sucess,
-  }) {
-    return failure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TicketControllerInitial value)? initial,
-    TResult? Function(_TicketControllerLoading value)? loading,
-    TResult? Function(_TicketControllerFailure value)? failure,
-    TResult? Function(_TicketControllerSuccess value)? sucess,
-  }) {
-    return failure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TicketControllerInitial value)? initial,
-    TResult Function(_TicketControllerLoading value)? loading,
-    TResult Function(_TicketControllerFailure value)? failure,
-    TResult Function(_TicketControllerSuccess value)? sucess,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this);
-    }
-    return orElse();
-  }
+  _$$TicketControllerStateImplCopyWith<_$TicketControllerStateImpl>
+      get copyWith => __$$TicketControllerStateImplCopyWithImpl<
+          _$TicketControllerStateImpl>(this, _$identity);
 }
 
-abstract class _TicketControllerFailure implements TicketControllerState {
-  const factory _TicketControllerFailure(final String message) =
-      _$TicketControllerFailureImpl;
+abstract class _TicketControllerState implements TicketControllerState {
+  const factory _TicketControllerState(
+      {final bool isInitializedLoading,
+      final bool isLoading,
+      final bool isActionLoading,
+      final List<TicketEntity> tickets,
+      final List<LotteryStandEntity> lotteryStands,
+      final String? failureMessage}) = _$TicketControllerStateImpl;
 
-  String get message;
+  @override
+  bool get isInitializedLoading;
+  @override
+  bool get isLoading;
+  @override
+  bool get isActionLoading;
+  @override
+  List<TicketEntity> get tickets;
+  @override
+  List<LotteryStandEntity> get lotteryStands;
+  @override
+  String? get failureMessage;
+  @override
   @JsonKey(ignore: true)
-  _$$TicketControllerFailureImplCopyWith<_$TicketControllerFailureImpl>
+  _$$TicketControllerStateImplCopyWith<_$TicketControllerStateImpl>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$TicketControllerSuccessImplCopyWith<$Res> {
-  factory _$$TicketControllerSuccessImplCopyWith(
-          _$TicketControllerSuccessImpl value,
-          $Res Function(_$TicketControllerSuccessImpl) then) =
-      __$$TicketControllerSuccessImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$TicketControllerSuccessImplCopyWithImpl<$Res>
-    extends _$TicketControllerStateCopyWithImpl<$Res,
-        _$TicketControllerSuccessImpl>
-    implements _$$TicketControllerSuccessImplCopyWith<$Res> {
-  __$$TicketControllerSuccessImplCopyWithImpl(
-      _$TicketControllerSuccessImpl _value,
-      $Res Function(_$TicketControllerSuccessImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$TicketControllerSuccessImpl
-    with DiagnosticableTreeMixin
-    implements _TicketControllerSuccess {
-  const _$TicketControllerSuccessImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TicketControllerState.sucess()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'TicketControllerState.sucess'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TicketControllerSuccessImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) failure,
-    required TResult Function() sucess,
-  }) {
-    return sucess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? failure,
-    TResult? Function()? sucess,
-  }) {
-    return sucess?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? failure,
-    TResult Function()? sucess,
-    required TResult orElse(),
-  }) {
-    if (sucess != null) {
-      return sucess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_TicketControllerInitial value) initial,
-    required TResult Function(_TicketControllerLoading value) loading,
-    required TResult Function(_TicketControllerFailure value) failure,
-    required TResult Function(_TicketControllerSuccess value) sucess,
-  }) {
-    return sucess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TicketControllerInitial value)? initial,
-    TResult? Function(_TicketControllerLoading value)? loading,
-    TResult? Function(_TicketControllerFailure value)? failure,
-    TResult? Function(_TicketControllerSuccess value)? sucess,
-  }) {
-    return sucess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TicketControllerInitial value)? initial,
-    TResult Function(_TicketControllerLoading value)? loading,
-    TResult Function(_TicketControllerFailure value)? failure,
-    TResult Function(_TicketControllerSuccess value)? sucess,
-    required TResult orElse(),
-  }) {
-    if (sucess != null) {
-      return sucess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _TicketControllerSuccess implements TicketControllerState {
-  const factory _TicketControllerSuccess() = _$TicketControllerSuccessImpl;
 }

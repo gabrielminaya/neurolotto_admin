@@ -12,14 +12,16 @@ class HomeView extends StatelessWidget {
   int getSelectedIndex() {
     final path = router.current.path;
 
-    debugPrint(path);
-
     if (path.contains(DashboardRoute.name)) {
       return 0;
     }
 
-    if (path.contains(TicketRoute.name)) {
+    if (path.contains(SaleRoute.name)) {
       return 1;
+    }
+
+    if (path.contains(TicketRoute.name)) {
+      return 2;
     }
 
     if (path.contains(LotteryRoute.name)) {
@@ -43,22 +45,26 @@ class HomeView extends StatelessWidget {
     }
 
     if (index == 1) {
-      return router.navigate(const TicketRoute());
+      return router.navigate(SaleRoute());
     }
 
     if (index == 2) {
-      return router.navigate(const ConsortiumRoute());
+      return router.navigate(const TicketRoute());
     }
 
     if (index == 3) {
-      return router.navigate(const LotteryRoute());
+      return router.navigate(const ConsortiumRoute());
     }
 
     if (index == 4) {
-      return router.navigate(const GroupRoute());
+      return router.navigate(const LotteryRoute());
     }
 
     if (index == 5) {
+      return router.navigate(const GroupRoute());
+    }
+
+    if (index == 6) {
       return router.navigate(const StandRoute());
     }
   }
