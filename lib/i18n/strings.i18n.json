@@ -91,5 +91,31 @@
         "date": "Fecha",
         "all": "Todos",
         "stands": "Bancas"
+    },
+    "sales": {
+        "title": "Ventas",
+        "stand": "Bancas",
+        "options": "Opciones",
+        "all": "Todas",
+        "date": "Fecha",
+        "groups": "Grupos",
+        "lotteries": "Loterías",
+        "bank": "Bancas",
+        "sales": "Ganancias",
+        "prizes": "Premios",
+        "balance": "Balance",
+        "total": "Total"
+    },
+    "result": {
+        "add": "Añadir",
+        "edit": "Editar",
+        "date": "Fecha",
+        "lottery": "Lotería",
+        "group": "Grupo",
+        "stand": "Banco",
+        "firstPrize": "Primer número",
+        "secondPrize": "Segundo número",
+        "thirdPrize": "Tercer número",
+        "empty": "No hay resultados disponibles"
     }
 }

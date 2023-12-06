@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 75
+/// Strings: 97
 ///
-/// Built on 2023-12-04 at 19:41 UTC
+/// Built on 2023-12-06 at 14:55 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -158,6 +158,8 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsStandEn stand = _StringsStandEn._(_root);
 	late final _StringsMonitoringEn monitoring = _StringsMonitoringEn._(_root);
 	late final _StringsTicketEn ticket = _StringsTicketEn._(_root);
+	late final _StringsSalesEn sales = _StringsSalesEn._(_root);
+	late final _StringsResultEn result = _StringsResultEn._(_root);
 }
 
 // Path: common
@@ -316,6 +318,46 @@ class _StringsTicketEn {
 	String get stands => 'Lotttery Stands';
 }
 
+// Path: sales
+class _StringsSalesEn {
+	_StringsSalesEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Sales';
+	String get stand => 'Stands';
+	String get options => 'Options';
+	String get all => 'All';
+	String get date => 'Date';
+	String get groups => 'Groups';
+	String get lotteries => 'Lotteries';
+	String get bank => 'Banks';
+	String get sales => 'Profits';
+	String get prizes => 'Prizes';
+	String get balance => 'Balance';
+	String get total => 'Total';
+}
+
+// Path: result
+class _StringsResultEn {
+	_StringsResultEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get add => 'Add';
+	String get edit => 'Edit';
+	String get date => 'Date';
+	String get lottery => 'Lottery';
+	String get group => 'Group';
+	String get stand => 'Stand';
+	String get firstPrize => 'First number';
+	String get secondPrize => 'Second number';
+	String get thirdPrize => 'Third number';
+	String get empty => 'No results available';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -397,6 +439,28 @@ extension on _StringsEn {
 			case 'ticket.date': return 'Date';
 			case 'ticket.all': return 'All';
 			case 'ticket.stands': return 'Lotttery Stands';
+			case 'sales.title': return 'Sales';
+			case 'sales.stand': return 'Stands';
+			case 'sales.options': return 'Options';
+			case 'sales.all': return 'All';
+			case 'sales.date': return 'Date';
+			case 'sales.groups': return 'Groups';
+			case 'sales.lotteries': return 'Lotteries';
+			case 'sales.bank': return 'Banks';
+			case 'sales.sales': return 'Profits';
+			case 'sales.prizes': return 'Prizes';
+			case 'sales.balance': return 'Balance';
+			case 'sales.total': return 'Total';
+			case 'result.add': return 'Add';
+			case 'result.edit': return 'Edit';
+			case 'result.date': return 'Date';
+			case 'result.lottery': return 'Lottery';
+			case 'result.group': return 'Group';
+			case 'result.stand': return 'Stand';
+			case 'result.firstPrize': return 'First number';
+			case 'result.secondPrize': return 'Second number';
+			case 'result.thirdPrize': return 'Third number';
+			case 'result.empty': return 'No results available';
 			default: return null;
 		}
 	}

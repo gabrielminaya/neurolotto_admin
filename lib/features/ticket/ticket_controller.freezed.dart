@@ -23,6 +23,7 @@ mixin _$TicketControllerState {
   List<LotteryStandEntity> get lotteryStands =>
       throw _privateConstructorUsedError;
   String? get failureMessage => throw _privateConstructorUsedError;
+  DateTime get selectedDate => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TicketControllerStateCopyWith<TicketControllerState> get copyWith =>
@@ -41,7 +42,8 @@ abstract class $TicketControllerStateCopyWith<$Res> {
       bool isActionLoading,
       List<TicketEntity> tickets,
       List<LotteryStandEntity> lotteryStands,
-      String? failureMessage});
+      String? failureMessage,
+      DateTime selectedDate});
 }
 
 /// @nodoc
@@ -64,6 +66,7 @@ class _$TicketControllerStateCopyWithImpl<$Res,
     Object? tickets = null,
     Object? lotteryStands = null,
     Object? failureMessage = freezed,
+    Object? selectedDate = null,
   }) {
     return _then(_value.copyWith(
       isInitializedLoading: null == isInitializedLoading
@@ -90,6 +93,10 @@ class _$TicketControllerStateCopyWithImpl<$Res,
           ? _value.failureMessage
           : failureMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      selectedDate: null == selectedDate
+          ? _value.selectedDate
+          : selectedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -109,7 +116,8 @@ abstract class _$$TicketControllerStateImplCopyWith<$Res>
       bool isActionLoading,
       List<TicketEntity> tickets,
       List<LotteryStandEntity> lotteryStands,
-      String? failureMessage});
+      String? failureMessage,
+      DateTime selectedDate});
 }
 
 /// @nodoc
@@ -130,6 +138,7 @@ class __$$TicketControllerStateImplCopyWithImpl<$Res>
     Object? tickets = null,
     Object? lotteryStands = null,
     Object? failureMessage = freezed,
+    Object? selectedDate = null,
   }) {
     return _then(_$TicketControllerStateImpl(
       isInitializedLoading: null == isInitializedLoading
@@ -156,6 +165,10 @@ class __$$TicketControllerStateImplCopyWithImpl<$Res>
           ? _value.failureMessage
           : failureMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      selectedDate: null == selectedDate
+          ? _value.selectedDate
+          : selectedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -171,7 +184,8 @@ class _$TicketControllerStateImpl
       this.isActionLoading = false,
       final List<TicketEntity> tickets = const [],
       final List<LotteryStandEntity> lotteryStands = const [],
-      this.failureMessage = null})
+      this.failureMessage = null,
+      required this.selectedDate})
       : _tickets = tickets,
         _lotteryStands = lotteryStands;
 
@@ -205,10 +219,12 @@ class _$TicketControllerStateImpl
   @override
   @JsonKey()
   final String? failureMessage;
+  @override
+  final DateTime selectedDate;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TicketControllerState(isInitializedLoading: $isInitializedLoading, isLoading: $isLoading, isActionLoading: $isActionLoading, tickets: $tickets, lotteryStands: $lotteryStands, failureMessage: $failureMessage)';
+    return 'TicketControllerState(isInitializedLoading: $isInitializedLoading, isLoading: $isLoading, isActionLoading: $isActionLoading, tickets: $tickets, lotteryStands: $lotteryStands, failureMessage: $failureMessage, selectedDate: $selectedDate)';
   }
 
   @override
@@ -221,7 +237,8 @@ class _$TicketControllerStateImpl
       ..add(DiagnosticsProperty('isActionLoading', isActionLoading))
       ..add(DiagnosticsProperty('tickets', tickets))
       ..add(DiagnosticsProperty('lotteryStands', lotteryStands))
-      ..add(DiagnosticsProperty('failureMessage', failureMessage));
+      ..add(DiagnosticsProperty('failureMessage', failureMessage))
+      ..add(DiagnosticsProperty('selectedDate', selectedDate));
   }
 
   @override
@@ -239,7 +256,9 @@ class _$TicketControllerStateImpl
             const DeepCollectionEquality()
                 .equals(other._lotteryStands, _lotteryStands) &&
             (identical(other.failureMessage, failureMessage) ||
-                other.failureMessage == failureMessage));
+                other.failureMessage == failureMessage) &&
+            (identical(other.selectedDate, selectedDate) ||
+                other.selectedDate == selectedDate));
   }
 
   @override
@@ -250,7 +269,8 @@ class _$TicketControllerStateImpl
       isActionLoading,
       const DeepCollectionEquality().hash(_tickets),
       const DeepCollectionEquality().hash(_lotteryStands),
-      failureMessage);
+      failureMessage,
+      selectedDate);
 
   @JsonKey(ignore: true)
   @override
@@ -267,7 +287,8 @@ abstract class _TicketControllerState implements TicketControllerState {
       final bool isActionLoading,
       final List<TicketEntity> tickets,
       final List<LotteryStandEntity> lotteryStands,
-      final String? failureMessage}) = _$TicketControllerStateImpl;
+      final String? failureMessage,
+      required final DateTime selectedDate}) = _$TicketControllerStateImpl;
 
   @override
   bool get isInitializedLoading;
@@ -281,6 +302,8 @@ abstract class _TicketControllerState implements TicketControllerState {
   List<LotteryStandEntity> get lotteryStands;
   @override
   String? get failureMessage;
+  @override
+  DateTime get selectedDate;
   @override
   @JsonKey(ignore: true)
   _$$TicketControllerStateImplCopyWith<_$TicketControllerStateImpl>

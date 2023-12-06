@@ -2,10 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
-import 'package:neurolotto_admin/core/entities/lottery_stand_entity.dart';
-import 'package:neurolotto_admin/core/entities/ticket_entity.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../core/entities/lottery_stand_entity.dart';
+import '../../core/entities/ticket_entity.dart';
 import '../../core/services.dart';
 
 part 'ticket_controller.freezed.dart';
@@ -19,12 +19,13 @@ sealed class TicketControllerState with _$TicketControllerState {
     @Default([]) List<TicketEntity> tickets,
     @Default([]) List<LotteryStandEntity> lotteryStands,
     @Default(null) String? failureMessage,
+    required DateTime selectedDate,
   }) = _TicketControllerState;
 }
 
 @LazySingleton()
 class TicketController extends ValueNotifier<TicketControllerState> {
-  TicketController(this._client) : super(const TicketControllerState());
+  TicketController(this._client) : super(TicketControllerState(selectedDate: DateTime.now()));
 
   final SupabaseClient _client;
 
@@ -45,8 +46,12 @@ class TicketController extends ValueNotifier<TicketControllerState> {
     }
   }
 
-  Future<void> fetch({DateTime? date, LotteryStandEntity? stand}) async {
+  Future<void> fetch({DateTime? atDate, LotteryStandEntity? stand}) async {
     value = value.copyWith(isLoading: true);
+
+    if (atDate != null) value = value.copyWith(selectedDate: atDate);
+
+    debugPrint("fetch ${atDate?.toIso8601String()}  ${value.selectedDate.toIso8601String()}");
 
     try {
       final builder = _client
@@ -58,8 +63,8 @@ class TicketController extends ValueNotifier<TicketControllerState> {
       }
 
       final tickets = await builder
-          .lte("created_at", DateFormat("yyyy-MM-dd 23:59").format(date ?? DateTime.now()))
-          .gte("created_at", DateFormat("yyyy-MM-dd 00:00").format(date ?? DateTime.now()))
+          .lte("created_at", DateFormat("yyyy-MM-dd 23:59").format(atDate ?? value.selectedDate))
+          .gte("created_at", DateFormat("yyyy-MM-dd 00:00").format(atDate ?? value.selectedDate))
           .order("created_at", ascending: false)
           .withConverter<List<TicketEntity>>(
             (data) => data.map((e) => TicketEntity.fromJson(e)).toList(),

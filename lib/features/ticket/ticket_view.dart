@@ -32,10 +32,9 @@ class _TicketViewState extends State<TicketView> {
     super.initState();
 
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) {
-        _controller.initialize();
-        _controller.fetch();
-      },
+      (_) => _controller
+        ..initialize()
+        ..fetch(),
     );
   }
 
@@ -53,17 +52,13 @@ class _TicketViewState extends State<TicketView> {
                     Flexible(
                       child: FormBuilderDateTimePicker(
                         name: 'date',
+                        decoration: InputDecoration(labelText: t.ticket.date),
+                        initialDate: DateTime.now(),
                         firstDate: DateTime(2023),
                         lastDate: DateTime.now(),
-                        keyboardType: TextInputType.datetime,
+                        initialValue: DateTime.now(),
                         inputType: InputType.date,
-                        format: DateFormat("yyyy-MM-dd"),
-                        onChanged: (value) => _controller.fetch(date: value),
-                        decoration: InputDecoration(
-                          labelText: t.ticket.date,
-                          prefixIcon: const Icon(Icons.calendar_today),
-                          border: const OutlineInputBorder(),
-                        ),
+                        onChanged: (value) => _controller.fetch(atDate: value),
                       ),
                     ),
                     hgap(10),

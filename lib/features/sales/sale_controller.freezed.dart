@@ -17,7 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SaleControllerState {
   bool get isLoading => throw _privateConstructorUsedError;
-  int get searchOption => throw _privateConstructorUsedError;
+  bool get isActionLoading => throw _privateConstructorUsedError;
+  String? get failureMessage => throw _privateConstructorUsedError;
+  List<SaleEntity> get sales => throw _privateConstructorUsedError;
+  List<GroupEntity> get groups => throw _privateConstructorUsedError;
+  List<LotteryStandEntity> get lotteryStands =>
+      throw _privateConstructorUsedError;
+  DateTime get selectedDate => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SaleControllerStateCopyWith<SaleControllerState> get copyWith =>
@@ -30,7 +36,14 @@ abstract class $SaleControllerStateCopyWith<$Res> {
           SaleControllerState value, $Res Function(SaleControllerState) then) =
       _$SaleControllerStateCopyWithImpl<$Res, SaleControllerState>;
   @useResult
-  $Res call({bool isLoading, int searchOption});
+  $Res call(
+      {bool isLoading,
+      bool isActionLoading,
+      String? failureMessage,
+      List<SaleEntity> sales,
+      List<GroupEntity> groups,
+      List<LotteryStandEntity> lotteryStands,
+      DateTime selectedDate});
 }
 
 /// @nodoc
@@ -47,17 +60,42 @@ class _$SaleControllerStateCopyWithImpl<$Res, $Val extends SaleControllerState>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? searchOption = null,
+    Object? isActionLoading = null,
+    Object? failureMessage = freezed,
+    Object? sales = null,
+    Object? groups = null,
+    Object? lotteryStands = null,
+    Object? selectedDate = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      searchOption: null == searchOption
-          ? _value.searchOption
-          : searchOption // ignore: cast_nullable_to_non_nullable
-              as int,
+      isActionLoading: null == isActionLoading
+          ? _value.isActionLoading
+          : isActionLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      failureMessage: freezed == failureMessage
+          ? _value.failureMessage
+          : failureMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sales: null == sales
+          ? _value.sales
+          : sales // ignore: cast_nullable_to_non_nullable
+              as List<SaleEntity>,
+      groups: null == groups
+          ? _value.groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<GroupEntity>,
+      lotteryStands: null == lotteryStands
+          ? _value.lotteryStands
+          : lotteryStands // ignore: cast_nullable_to_non_nullable
+              as List<LotteryStandEntity>,
+      selectedDate: null == selectedDate
+          ? _value.selectedDate
+          : selectedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -70,7 +108,14 @@ abstract class _$$SaleControllerStateImplCopyWith<$Res>
       __$$SaleControllerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, int searchOption});
+  $Res call(
+      {bool isLoading,
+      bool isActionLoading,
+      String? failureMessage,
+      List<SaleEntity> sales,
+      List<GroupEntity> groups,
+      List<LotteryStandEntity> lotteryStands,
+      DateTime selectedDate});
 }
 
 /// @nodoc
@@ -85,17 +130,42 @@ class __$$SaleControllerStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? searchOption = null,
+    Object? isActionLoading = null,
+    Object? failureMessage = freezed,
+    Object? sales = null,
+    Object? groups = null,
+    Object? lotteryStands = null,
+    Object? selectedDate = null,
   }) {
     return _then(_$SaleControllerStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      searchOption: null == searchOption
-          ? _value.searchOption
-          : searchOption // ignore: cast_nullable_to_non_nullable
-              as int,
+      isActionLoading: null == isActionLoading
+          ? _value.isActionLoading
+          : isActionLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      failureMessage: freezed == failureMessage
+          ? _value.failureMessage
+          : failureMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sales: null == sales
+          ? _value._sales
+          : sales // ignore: cast_nullable_to_non_nullable
+              as List<SaleEntity>,
+      groups: null == groups
+          ? _value._groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<GroupEntity>,
+      lotteryStands: null == lotteryStands
+          ? _value._lotteryStands
+          : lotteryStands // ignore: cast_nullable_to_non_nullable
+              as List<LotteryStandEntity>,
+      selectedDate: null == selectedDate
+          ? _value.selectedDate
+          : selectedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -106,18 +176,59 @@ class _$SaleControllerStateImpl
     with DiagnosticableTreeMixin
     implements _SaleControllerState {
   const _$SaleControllerStateImpl(
-      {this.isLoading = false, this.searchOption = 1});
+      {this.isLoading = false,
+      this.isActionLoading = false,
+      this.failureMessage = null,
+      final List<SaleEntity> sales = const [],
+      final List<GroupEntity> groups = const [],
+      final List<LotteryStandEntity> lotteryStands = const [],
+      required this.selectedDate})
+      : _sales = sales,
+        _groups = groups,
+        _lotteryStands = lotteryStands;
 
   @override
   @JsonKey()
   final bool isLoading;
   @override
   @JsonKey()
-  final int searchOption;
+  final bool isActionLoading;
+  @override
+  @JsonKey()
+  final String? failureMessage;
+  final List<SaleEntity> _sales;
+  @override
+  @JsonKey()
+  List<SaleEntity> get sales {
+    if (_sales is EqualUnmodifiableListView) return _sales;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sales);
+  }
+
+  final List<GroupEntity> _groups;
+  @override
+  @JsonKey()
+  List<GroupEntity> get groups {
+    if (_groups is EqualUnmodifiableListView) return _groups;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_groups);
+  }
+
+  final List<LotteryStandEntity> _lotteryStands;
+  @override
+  @JsonKey()
+  List<LotteryStandEntity> get lotteryStands {
+    if (_lotteryStands is EqualUnmodifiableListView) return _lotteryStands;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lotteryStands);
+  }
+
+  @override
+  final DateTime selectedDate;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SaleControllerState(isLoading: $isLoading, searchOption: $searchOption)';
+    return 'SaleControllerState(isLoading: $isLoading, isActionLoading: $isActionLoading, failureMessage: $failureMessage, sales: $sales, groups: $groups, lotteryStands: $lotteryStands, selectedDate: $selectedDate)';
   }
 
   @override
@@ -126,7 +237,12 @@ class _$SaleControllerStateImpl
     properties
       ..add(DiagnosticsProperty('type', 'SaleControllerState'))
       ..add(DiagnosticsProperty('isLoading', isLoading))
-      ..add(DiagnosticsProperty('searchOption', searchOption));
+      ..add(DiagnosticsProperty('isActionLoading', isActionLoading))
+      ..add(DiagnosticsProperty('failureMessage', failureMessage))
+      ..add(DiagnosticsProperty('sales', sales))
+      ..add(DiagnosticsProperty('groups', groups))
+      ..add(DiagnosticsProperty('lotteryStands', lotteryStands))
+      ..add(DiagnosticsProperty('selectedDate', selectedDate));
   }
 
   @override
@@ -136,12 +252,28 @@ class _$SaleControllerStateImpl
             other is _$SaleControllerStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.searchOption, searchOption) ||
-                other.searchOption == searchOption));
+            (identical(other.isActionLoading, isActionLoading) ||
+                other.isActionLoading == isActionLoading) &&
+            (identical(other.failureMessage, failureMessage) ||
+                other.failureMessage == failureMessage) &&
+            const DeepCollectionEquality().equals(other._sales, _sales) &&
+            const DeepCollectionEquality().equals(other._groups, _groups) &&
+            const DeepCollectionEquality()
+                .equals(other._lotteryStands, _lotteryStands) &&
+            (identical(other.selectedDate, selectedDate) ||
+                other.selectedDate == selectedDate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, searchOption);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      isActionLoading,
+      failureMessage,
+      const DeepCollectionEquality().hash(_sales),
+      const DeepCollectionEquality().hash(_groups),
+      const DeepCollectionEquality().hash(_lotteryStands),
+      selectedDate);
 
   @JsonKey(ignore: true)
   @override
@@ -154,12 +286,27 @@ class _$SaleControllerStateImpl
 abstract class _SaleControllerState implements SaleControllerState {
   const factory _SaleControllerState(
       {final bool isLoading,
-      final int searchOption}) = _$SaleControllerStateImpl;
+      final bool isActionLoading,
+      final String? failureMessage,
+      final List<SaleEntity> sales,
+      final List<GroupEntity> groups,
+      final List<LotteryStandEntity> lotteryStands,
+      required final DateTime selectedDate}) = _$SaleControllerStateImpl;
 
   @override
   bool get isLoading;
   @override
-  int get searchOption;
+  bool get isActionLoading;
+  @override
+  String? get failureMessage;
+  @override
+  List<SaleEntity> get sales;
+  @override
+  List<GroupEntity> get groups;
+  @override
+  List<LotteryStandEntity> get lotteryStands;
+  @override
+  DateTime get selectedDate;
   @override
   @JsonKey(ignore: true)
   _$$SaleControllerStateImplCopyWith<_$SaleControllerStateImpl> get copyWith =>

@@ -91,5 +91,31 @@
         "date": "Date",
         "all": "All",
         "stands": "Lotttery Stands"
+    },
+    "sales": {
+        "title": "Sales",
+        "stand": "Stands",
+        "options": "Options",
+        "all": "All",
+        "date": "Date",
+        "groups": "Groups",
+        "lotteries": "Lotteries",
+        "bank": "Banks",
+        "sales": "Profits",
+        "prizes": "Prizes",
+        "balance": "Balance",
+        "total": "Total"
+    },
+    "result": {
+        "add": "Add",
+        "edit": "Edit",
+        "date": "Date",
+        "lottery": "Lottery",
+        "group": "Group",
+        "stand": "Stand",
+        "firstPrize": "First number",
+        "secondPrize": "Second number",
+        "thirdPrize": "Third number",
+        "empty": "No results available"
     }
 }

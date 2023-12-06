@@ -40,6 +40,10 @@ class HomeNavigationDrawer extends StatelessWidget {
           label: Text("Sales"),
         ),
         const NavigationDrawerDestination(
+          icon: Icon(Icons.show_chart),
+          label: Text("Results"),
+        ),
+        const NavigationDrawerDestination(
           icon: Icon(Icons.receipt),
           label: Text("Tickets"),
         ),
