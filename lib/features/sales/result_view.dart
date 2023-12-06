@@ -196,7 +196,7 @@ class _ResultViewState extends State<ResultView> {
         builder: (context, constraints) => CustomScrollView(
           slivers: [
             SliverPadding(
-              padding: const EdgeInsets.all(20),
+              padding: p12,
               sliver: SliverToBoxAdapter(
                 child: FormBuilderDateTimePicker(
                   name: 'date',

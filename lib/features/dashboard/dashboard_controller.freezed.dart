@@ -19,8 +19,7 @@ mixin _$DashboardControllerState {
   bool get isLoading => throw _privateConstructorUsedError;
   String? get failureMessage => throw _privateConstructorUsedError;
   List<HotNumberEntity> get hotNumbers => throw _privateConstructorUsedError;
-  int get dateOption => throw _privateConstructorUsedError;
-  DateTimeRange get dates => throw _privateConstructorUsedError;
+  DateTime get selectedDate => throw _privateConstructorUsedError;
   bool get orderByQuantity => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -38,8 +37,7 @@ abstract class $DashboardControllerStateCopyWith<$Res> {
       {bool isLoading,
       String? failureMessage,
       List<HotNumberEntity> hotNumbers,
-      int dateOption,
-      DateTimeRange dates,
+      DateTime selectedDate,
       bool orderByQuantity});
 }
 
@@ -60,8 +58,7 @@ class _$DashboardControllerStateCopyWithImpl<$Res,
     Object? isLoading = null,
     Object? failureMessage = freezed,
     Object? hotNumbers = null,
-    Object? dateOption = null,
-    Object? dates = null,
+    Object? selectedDate = null,
     Object? orderByQuantity = null,
   }) {
     return _then(_value.copyWith(
@@ -77,14 +74,10 @@ class _$DashboardControllerStateCopyWithImpl<$Res,
           ? _value.hotNumbers
           : hotNumbers // ignore: cast_nullable_to_non_nullable
               as List<HotNumberEntity>,
-      dateOption: null == dateOption
-          ? _value.dateOption
-          : dateOption // ignore: cast_nullable_to_non_nullable
-              as int,
-      dates: null == dates
-          ? _value.dates
-          : dates // ignore: cast_nullable_to_non_nullable
-              as DateTimeRange,
+      selectedDate: null == selectedDate
+          ? _value.selectedDate
+          : selectedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       orderByQuantity: null == orderByQuantity
           ? _value.orderByQuantity
           : orderByQuantity // ignore: cast_nullable_to_non_nullable
@@ -106,8 +99,7 @@ abstract class _$$DashboardControllerStateImplCopyWith<$Res>
       {bool isLoading,
       String? failureMessage,
       List<HotNumberEntity> hotNumbers,
-      int dateOption,
-      DateTimeRange dates,
+      DateTime selectedDate,
       bool orderByQuantity});
 }
 
@@ -127,8 +119,7 @@ class __$$DashboardControllerStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? failureMessage = freezed,
     Object? hotNumbers = null,
-    Object? dateOption = null,
-    Object? dates = null,
+    Object? selectedDate = null,
     Object? orderByQuantity = null,
   }) {
     return _then(_$DashboardControllerStateImpl(
@@ -144,14 +135,10 @@ class __$$DashboardControllerStateImplCopyWithImpl<$Res>
           ? _value._hotNumbers
           : hotNumbers // ignore: cast_nullable_to_non_nullable
               as List<HotNumberEntity>,
-      dateOption: null == dateOption
-          ? _value.dateOption
-          : dateOption // ignore: cast_nullable_to_non_nullable
-              as int,
-      dates: null == dates
-          ? _value.dates
-          : dates // ignore: cast_nullable_to_non_nullable
-              as DateTimeRange,
+      selectedDate: null == selectedDate
+          ? _value.selectedDate
+          : selectedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       orderByQuantity: null == orderByQuantity
           ? _value.orderByQuantity
           : orderByQuantity // ignore: cast_nullable_to_non_nullable
@@ -169,8 +156,7 @@ class _$DashboardControllerStateImpl
       {this.isLoading = false,
       this.failureMessage = null,
       final List<HotNumberEntity> hotNumbers = const [],
-      this.dateOption = 1,
-      required this.dates,
+      required this.selectedDate,
       this.orderByQuantity = true})
       : _hotNumbers = hotNumbers;
 
@@ -190,17 +176,14 @@ class _$DashboardControllerStateImpl
   }
 
   @override
-  @JsonKey()
-  final int dateOption;
-  @override
-  final DateTimeRange dates;
+  final DateTime selectedDate;
   @override
   @JsonKey()
   final bool orderByQuantity;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DashboardControllerState(isLoading: $isLoading, failureMessage: $failureMessage, hotNumbers: $hotNumbers, dateOption: $dateOption, dates: $dates, orderByQuantity: $orderByQuantity)';
+    return 'DashboardControllerState(isLoading: $isLoading, failureMessage: $failureMessage, hotNumbers: $hotNumbers, selectedDate: $selectedDate, orderByQuantity: $orderByQuantity)';
   }
 
   @override
@@ -211,8 +194,7 @@ class _$DashboardControllerStateImpl
       ..add(DiagnosticsProperty('isLoading', isLoading))
       ..add(DiagnosticsProperty('failureMessage', failureMessage))
       ..add(DiagnosticsProperty('hotNumbers', hotNumbers))
-      ..add(DiagnosticsProperty('dateOption', dateOption))
-      ..add(DiagnosticsProperty('dates', dates))
+      ..add(DiagnosticsProperty('selectedDate', selectedDate))
       ..add(DiagnosticsProperty('orderByQuantity', orderByQuantity));
   }
 
@@ -227,9 +209,8 @@ class _$DashboardControllerStateImpl
                 other.failureMessage == failureMessage) &&
             const DeepCollectionEquality()
                 .equals(other._hotNumbers, _hotNumbers) &&
-            (identical(other.dateOption, dateOption) ||
-                other.dateOption == dateOption) &&
-            (identical(other.dates, dates) || other.dates == dates) &&
+            (identical(other.selectedDate, selectedDate) ||
+                other.selectedDate == selectedDate) &&
             (identical(other.orderByQuantity, orderByQuantity) ||
                 other.orderByQuantity == orderByQuantity));
   }
@@ -240,8 +221,7 @@ class _$DashboardControllerStateImpl
       isLoading,
       failureMessage,
       const DeepCollectionEquality().hash(_hotNumbers),
-      dateOption,
-      dates,
+      selectedDate,
       orderByQuantity);
 
   @JsonKey(ignore: true)
@@ -257,8 +237,7 @@ abstract class _DashboardControllerState implements DashboardControllerState {
       {final bool isLoading,
       final String? failureMessage,
       final List<HotNumberEntity> hotNumbers,
-      final int dateOption,
-      required final DateTimeRange dates,
+      required final DateTime selectedDate,
       final bool orderByQuantity}) = _$DashboardControllerStateImpl;
 
   @override
@@ -268,9 +247,7 @@ abstract class _DashboardControllerState implements DashboardControllerState {
   @override
   List<HotNumberEntity> get hotNumbers;
   @override
-  int get dateOption;
-  @override
-  DateTimeRange get dates;
+  DateTime get selectedDate;
   @override
   bool get orderByQuantity;
   @override

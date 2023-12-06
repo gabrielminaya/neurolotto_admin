@@ -37,6 +37,10 @@ class _SaleViewState extends State<SaleView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _saleController.fetch(),
+        child: const Icon(Icons.refresh),
+      ),
       body: CustomScrollView(
         slivers: [
           SliverPadding(

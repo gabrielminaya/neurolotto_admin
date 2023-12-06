@@ -1,77 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:neurolotto_admin/core/extensions/context.dart';
 
 import '../../core/router/router.gr.dart';
 import '../../core/services.dart';
-import 'home_navigation_drawer.dart';
 
 @RoutePage()
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
-
-  int getSelectedIndex() {
-    final path = router.current.path;
-
-    if (path.contains(DashboardRoute.name)) {
-      return 0;
-    }
-
-    if (path.contains(SaleRoute.name)) {
-      return 1;
-    }
-
-    if (path.contains(TicketRoute.name)) {
-      return 2;
-    }
-
-    if (path.contains(LotteryRoute.name)) {
-      return 3;
-    }
-
-    if (path.contains(GroupRoute.name)) {
-      return 4;
-    }
-
-    if (path.contains(StandRoute.name)) {
-      return 5;
-    }
-
-    return 0;
-  }
-
-  void onDestinationSelected(int index) async {
-    if (index == 0) {
-      return router.navigate(const DashboardRoute());
-    }
-
-    if (index == 1) {
-      return router.navigate(const SaleRoute());
-    }
-
-    if (index == 2) {
-      return router.navigate(const ResultRoute());
-    }
-
-    if (index == 3) {
-      return router.navigate(const TicketRoute());
-    }
-
-    if (index == 4) {
-      return router.navigate(const ConsortiumRoute());
-    }
-
-    if (index == 5) {
-      return router.navigate(const LotteryRoute());
-    }
-
-    if (index == 6) {
-      return router.navigate(const GroupRoute());
-    }
-
-    if (index == 7) {
-      return router.navigate(const StandRoute());
-    }
-  }
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
@@ -84,7 +20,7 @@ class HomeView extends StatelessWidget {
           onPressed: () => authController.signOut(
             onSuccess: () => router.replaceAll([SignInRoute()]),
           ),
-          icon: const Icon(Icons.logout_outlined),
+          icon: Icon(Icons.logout_outlined, color: context.colorScheme.error),
         ),
       ],
     );
@@ -95,30 +31,105 @@ class HomeView extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final isSmallLayout = constraints.maxWidth < 700;
-        return Scaffold(
-          body: Visibility(
+
+        return AutoTabsRouter(
+          routes: const [
+            DashboardRoute(),
+            SaleRoute(),
+            ResultRoute(),
+            TicketRoute(),
+          ],
+          builder: (context, child) => Visibility(
             visible: isSmallLayout,
             replacement: Row(
               children: [
-                HomeNavigationDrawer(
-                  selectedIndex: getSelectedIndex(),
-                  onDestinationSelected: onDestinationSelected,
+                NavigationRail(
+                  destinations: const [
+                    NavigationRailDestination(
+                      icon: Icon(Icons.dashboard),
+                      label: Text("Monitoring"),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.attach_money),
+                      label: Text("Sales"),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.show_chart),
+                      label: Text("Results"),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.receipt),
+                      label: Text("Tickets"),
+                    ),
+                  ],
+                  selectedIndex: AutoTabsRouter.of(context).activeIndex,
+                  onDestinationSelected: AutoTabsRouter.of(context).setActiveIndex,
+                  labelType: NavigationRailLabelType.all,
                 ),
+                const VerticalDivider(),
                 Expanded(
                   child: Scaffold(
                     appBar: buildAppBar(context),
-                    body: const AutoRouter(),
+                    body: child,
                   ),
                 ),
               ],
             ),
             child: Scaffold(
               appBar: buildAppBar(context),
-              drawer: HomeNavigationDrawer(
-                selectedIndex: getSelectedIndex(),
-                onDestinationSelected: onDestinationSelected,
+              drawer: NavigationDrawer(
+                selectedIndex: 1,
+                onDestinationSelected: (index) {},
+                children: [
+                  ListTile(
+                    isThreeLine: true,
+                    title: Text(authController.consortium?.name ?? ""),
+                    subtitle: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(authController.user?.id ?? "", style: const TextStyle(fontSize: 10)),
+                        Text(authController.user?.email ?? "", style: const TextStyle(fontSize: 10)),
+                      ],
+                    ),
+                  ),
+                  const Divider(),
+                  const NavigationDrawerDestination(
+                    icon: Icon(Icons.dashboard),
+                    label: Text("Monitoring"),
+                  ),
+                  const NavigationDrawerDestination(
+                    icon: Icon(Icons.attach_money),
+                    label: Text("Sales"),
+                  ),
+                  const NavigationDrawerDestination(
+                    icon: Icon(Icons.show_chart),
+                    label: Text("Results"),
+                  ),
+                  const NavigationDrawerDestination(
+                    icon: Icon(Icons.receipt),
+                    label: Text("Tickets"),
+                  ),
+                  const Divider(),
+                  const NavigationDrawerDestination(
+                    icon: Icon(Icons.settings),
+                    label: Text("Manage consortium"),
+                  ),
+                  const NavigationDrawerDestination(
+                    icon: Icon(Icons.settings),
+                    label: Text("Manage lotteries"),
+                  ),
+                  const NavigationDrawerDestination(
+                    icon: Icon(Icons.settings),
+                    label: Text("Manage groups"),
+                  ),
+                  const NavigationDrawerDestination(
+                    icon: Icon(Icons.settings),
+                    label: Text("Manage stands"),
+                  ),
+                ],
               ),
-              body: const AutoRouter(),
+              body: child,
             ),
           ),
         );
