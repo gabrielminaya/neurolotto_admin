@@ -31,6 +31,8 @@ class AppRouter extends $AppRouter {
       ),
       AutoRoute(page: StandDetailRoute.page),
       AutoRoute(page: StandFormRoute.page, fullscreenDialog: true),
+      AutoRoute(page: GroupDetailRoute.page),
+      AutoRoute(page: GroupFormRoute.page, fullscreenDialog: true),
       AutoRoute(page: SplashRoute.page, initial: true, guards: [AuthGuard()]),
       AutoRoute(page: SignInRoute.page),
     ];

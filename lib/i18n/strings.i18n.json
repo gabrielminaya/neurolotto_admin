@@ -27,12 +27,18 @@
         "empty": "No se encuentra el consorcio asociado"
     },
     "group": {
+        "title": "Grupos",
+        "detail": "Detalles",
         "name": "Nombre",
+        "selectAGroup": "Seleccionar un grupo",
         "maximumSaleAmount": "Monto máximo de venta",
         "quinielaMaxAmount": "Monto máximo de quiniela",
         "paleMaxAmount": "Monto máximo de pale",
         "tripletaMaxAmount": "Monto máximo de tripleta",
         "empty": "No hay grupos creados",
+        "add": "Añadir",
+        "edit": "Editar",
+        "delete": "Borrar",
         "createdSuccess": "Grupo creado",
         "updateSuccess": "Grupo actualizado",
         "deleteSuccess": "Grupo borrado",
@@ -41,9 +47,13 @@
         "deleteContent": "Solo se pueden borrar grupos que no tengan una banca relacionadas"
     },
     "lottery": {
+        "title": "Loterías",
+        "detail": "Detalles",
         "name": "Name",
         "success": "Lottery updated",
         "active": "Active",
+        "edit": "Edit",
+        "selectALottery": "Select a lottery",
         "quinielaFirstPrize": "Quiniela 1er premio",
         "quinielaSecondPrize": "Quiniela 2da premio",
         "quinielaThirdPrize": "Quiniela 3ra premio",

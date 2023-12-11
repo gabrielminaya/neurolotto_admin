@@ -59,7 +59,7 @@ class HomeView extends StatelessWidget {
                   onDestinationSelected: AutoTabsRouter.of(context).setActiveIndex,
                   labelType: NavigationRailLabelType.all,
                 ),
-                const VerticalDivider(width: 3),
+                const VerticalDivider(width: 1),
                 Expanded(
                   child: Scaffold(
                     body: child,

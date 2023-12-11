@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:intl/intl.dart';
 
 import '../../core/adaptative_dialog.dart';
 import '../../core/constants.dart';
@@ -127,6 +128,10 @@ class StandItems extends StatelessWidget {
             leading: const Icon(Icons.store),
             title: Text(stand.name),
             onTap: () => onStandSelected(stand),
+            trailing: Visibility(
+              visible: selectedStand == stand,
+              child: const Icon(Icons.arrow_right),
+            ),
           );
         },
       ),
@@ -194,31 +199,34 @@ class StandDetail extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.attach_money),
             title: Text(t.stand.maximumCancellationAmount),
-            subtitle: Text(stand.maximumCancellationAmount.toStringAsFixed(0)),
+            subtitle: Text(NumberFormat.simpleCurrency().format(stand.maximumCancellationAmount)),
           ),
           const Divider(height: 0),
           ListTile(
             leading: const Icon(Icons.attach_money),
             title: Text(t.stand.maximumSaleAmount),
-            subtitle: Text(stand.maximumSaleAmount.toStringAsFixed(0)),
+            subtitle: Text(NumberFormat.simpleCurrency().format(stand.maximumSaleAmount)),
           ),
           const Divider(height: 0),
           ListTile(
+            enabled: stand.quinielaMaxAmount != null,
             leading: const Icon(Icons.attach_money),
             title: Text(t.stand.quinielaMaxAmount),
-            subtitle: Text(stand.quinielaMaxAmount?.toStringAsFixed(0) ?? "N/A"),
+            subtitle: Text(NumberFormat.simpleCurrency().format(stand.quinielaMaxAmount ?? 0)),
           ),
           const Divider(height: 0),
           ListTile(
+            enabled: stand.paleMaxAmount != null,
             leading: const Icon(Icons.attach_money),
             title: Text(t.stand.paleMaxAmount),
-            subtitle: Text(stand.paleMaxAmount?.toStringAsFixed(0) ?? "N/A"),
+            subtitle: Text(NumberFormat.simpleCurrency().format(stand.paleMaxAmount ?? 0)),
           ),
           const Divider(height: 0),
           ListTile(
+            enabled: stand.tripletaMaxAmount != null,
             leading: const Icon(Icons.attach_money),
             title: Text(t.stand.tripletaMaxAmount),
-            subtitle: Text(stand.tripletaMaxAmount?.toStringAsFixed(0) ?? "N/A"),
+            subtitle: Text(NumberFormat.simpleCurrency().format(stand.tripletaMaxAmount ?? 0)),
           ),
           const Divider(height: 0),
           ListTile(

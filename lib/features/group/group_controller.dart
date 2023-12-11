@@ -68,8 +68,9 @@ class GroupController extends ValueNotifier<GroupControllerState> {
         final currentGroups = [...value.groups, createdGroup];
         currentGroups.sort((a, b) => a.name.compareTo(b.name));
         value = value.copyWith(groups: currentGroups);
-        onSuccess();
       }
+
+      onSuccess();
     } on PostgrestException catch (e) {
       onFailure(e.message);
     } finally {

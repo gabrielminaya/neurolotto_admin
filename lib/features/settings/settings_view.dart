@@ -25,9 +25,9 @@ class SettingsView extends StatelessWidget {
               isScrollable: constraints.maxWidth < tabletBreakpoint ? false : true,
               tabAlignment: constraints.maxWidth < tabletBreakpoint ? TabAlignment.fill : TabAlignment.start,
               tabs: const [
-                Tab(text: "Stand"),
-                Tab(text: "Group"),
-                Tab(text: "Lottery"),
+                Tab(text: "Stands"),
+                Tab(text: "Groups"),
+                Tab(text: "Lotteries"),
                 Tab(text: "Consortium"),
               ],
             ),

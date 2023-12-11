@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 101
+/// Strings: 110
 ///
-/// Built on 2023-12-11 at 14:03 UTC
+/// Built on 2023-12-11 at 15:06 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -224,18 +224,24 @@ class _StringsGroupEn {
 	final _StringsEn _root; // ignore: unused_field
 
 	// Translations
+	String get title => 'Groups';
+	String get detail => 'Details';
 	String get name => 'Name';
-	String get maximumSaleAmount => 'Maximum Sale Amount';
-	String get quinielaMaxAmount => 'Maximum Quiniela Amount';
-	String get paleMaxAmount => 'Maximum Pale Amount';
-	String get tripletaMaxAmount => 'Maximum Triplet Amount';
+	String get selectAGroup => 'Select a group';
+	String get add => 'Add';
+	String get edit => 'Edit';
+	String get delete => 'Delete';
+	String get maximumSaleAmount => 'Maximum sale amount';
+	String get quinielaMaxAmount => 'Maximum quiniela amount';
+	String get paleMaxAmount => 'Maximum pale amount';
+	String get tripletaMaxAmount => 'Maximum triplet amount';
 	String get empty => 'No groups created';
 	String get createdSuccess => 'Group created';
 	String get updateSuccess => 'Group updated';
 	String get deleteSuccess => 'Group deleted';
 	String get active => 'Active';
 	String get deleteTitle => 'Are you sure you want to delete this group';
-	String get deleteContent => 'Only groups without related banks can be deleted';
+	String get deleteContent => 'Only groups without associated benches can be deleted';
 }
 
 // Path: lottery
@@ -245,18 +251,21 @@ class _StringsLotteryEn {
 	final _StringsEn _root; // ignore: unused_field
 
 	// Translations
+	String get title => 'Lotteries';
+	String get detail => 'Details';
 	String get name => 'Name';
 	String get success => 'Lottery updated';
 	String get active => 'Active';
-	String get quinielaFirstPrize => 'Quiniela 1st Prize';
-	String get quinielaSecondPrize => 'Quiniela 2nd Prize';
-	String get quinielaThirdPrize => 'Quiniela 3rd Prize';
-	String get paleFirstSecondPrize => 'Pale 1 & 2 Prize';
-	String get paleFirstThirdPrize => 'Pale 1 & 3 Prize';
-	String get paleSecondThirdPrize => 'Pale 2 & 3 Prize';
-	String get tripletaPrice => 'Tripleta Prize';
-	String get timeOpen => 'Opening Time';
-	String get timeClose => 'Closing Time';
+	String get selectALottery => 'Select a lottery';
+	String get quinielaFirstPrize => 'Quiniela 1st prize';
+	String get quinielaSecondPrize => 'Quiniela 2nd prize';
+	String get quinielaThirdPrize => 'Quiniela 3rd prize';
+	String get paleFirstSecondPrize => 'Pale 1st & 2nd prize';
+	String get paleFirstThirdPrize => 'Pale 1st & 3rd prize';
+	String get paleSecondThirdPrize => 'Pale 2nd & 3rd prize';
+	String get tripletaPrice => 'Tripleta prize';
+	String get timeOpen => 'Opening time';
+	String get timeClose => 'Closing time';
 }
 
 // Path: stand
@@ -387,30 +396,39 @@ extension on _StringsEn {
 			case 'consortium.tripletaMaxAmount': return 'Maximum Triplet Amount';
 			case 'consortium.success': return 'Consortium updated';
 			case 'consortium.empty': return 'No associated consortium found';
+			case 'group.title': return 'Groups';
+			case 'group.detail': return 'Details';
 			case 'group.name': return 'Name';
-			case 'group.maximumSaleAmount': return 'Maximum Sale Amount';
-			case 'group.quinielaMaxAmount': return 'Maximum Quiniela Amount';
-			case 'group.paleMaxAmount': return 'Maximum Pale Amount';
-			case 'group.tripletaMaxAmount': return 'Maximum Triplet Amount';
+			case 'group.selectAGroup': return 'Select a group';
+			case 'group.add': return 'Add';
+			case 'group.edit': return 'Edit';
+			case 'group.delete': return 'Delete';
+			case 'group.maximumSaleAmount': return 'Maximum sale amount';
+			case 'group.quinielaMaxAmount': return 'Maximum quiniela amount';
+			case 'group.paleMaxAmount': return 'Maximum pale amount';
+			case 'group.tripletaMaxAmount': return 'Maximum triplet amount';
 			case 'group.empty': return 'No groups created';
 			case 'group.createdSuccess': return 'Group created';
 			case 'group.updateSuccess': return 'Group updated';
 			case 'group.deleteSuccess': return 'Group deleted';
 			case 'group.active': return 'Active';
 			case 'group.deleteTitle': return 'Are you sure you want to delete this group';
-			case 'group.deleteContent': return 'Only groups without related banks can be deleted';
+			case 'group.deleteContent': return 'Only groups without associated benches can be deleted';
+			case 'lottery.title': return 'Lotteries';
+			case 'lottery.detail': return 'Details';
 			case 'lottery.name': return 'Name';
 			case 'lottery.success': return 'Lottery updated';
 			case 'lottery.active': return 'Active';
-			case 'lottery.quinielaFirstPrize': return 'Quiniela 1st Prize';
-			case 'lottery.quinielaSecondPrize': return 'Quiniela 2nd Prize';
-			case 'lottery.quinielaThirdPrize': return 'Quiniela 3rd Prize';
-			case 'lottery.paleFirstSecondPrize': return 'Pale 1 & 2 Prize';
-			case 'lottery.paleFirstThirdPrize': return 'Pale 1 & 3 Prize';
-			case 'lottery.paleSecondThirdPrize': return 'Pale 2 & 3 Prize';
-			case 'lottery.tripletaPrice': return 'Tripleta Prize';
-			case 'lottery.timeOpen': return 'Opening Time';
-			case 'lottery.timeClose': return 'Closing Time';
+			case 'lottery.selectALottery': return 'Select a lottery';
+			case 'lottery.quinielaFirstPrize': return 'Quiniela 1st prize';
+			case 'lottery.quinielaSecondPrize': return 'Quiniela 2nd prize';
+			case 'lottery.quinielaThirdPrize': return 'Quiniela 3rd prize';
+			case 'lottery.paleFirstSecondPrize': return 'Pale 1st & 2nd prize';
+			case 'lottery.paleFirstThirdPrize': return 'Pale 1st & 3rd prize';
+			case 'lottery.paleSecondThirdPrize': return 'Pale 2nd & 3rd prize';
+			case 'lottery.tripletaPrice': return 'Tripleta prize';
+			case 'lottery.timeOpen': return 'Opening time';
+			case 'lottery.timeClose': return 'Closing time';
 			case 'stand.title': return 'Benches';
 			case 'stand.detail': return 'Details';
 			case 'stand.name': return 'Name';

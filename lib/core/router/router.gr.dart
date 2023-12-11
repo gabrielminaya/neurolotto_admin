@@ -21,9 +21,9 @@ import 'package:neurolotto_admin/features/consortium/consortium_view.dart'
 import 'package:neurolotto_admin/features/dashboard/dashboard_view.dart'
     deferred as _i2;
 import 'package:neurolotto_admin/features/group/group_form_view.dart'
-    deferred as _i3;
-import 'package:neurolotto_admin/features/group/group_view.dart'
     deferred as _i4;
+import 'package:neurolotto_admin/features/group/group_view.dart'
+    deferred as _i3;
 import 'package:neurolotto_admin/features/home/home_view.dart' deferred as _i5;
 import 'package:neurolotto_admin/features/lottery/lottery_form_view.dart'
     deferred as _i6;
@@ -68,14 +68,28 @@ abstract class $AppRouter extends _i17.RootStackRouter {
         ),
       );
     },
+    GroupDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<GroupDetailRouteArgs>();
+      return _i17.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i17.DeferredWidget(
+          _i3.loadLibrary,
+          () => _i3.GroupDetail(
+            key: args.key,
+            group: args.group,
+            onGroupDelete: args.onGroupDelete,
+          ),
+        ),
+      );
+    },
     GroupFormRoute.name: (routeData) {
       final args = routeData.argsAs<GroupFormRouteArgs>(
           orElse: () => const GroupFormRouteArgs());
       return _i17.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i17.DeferredWidget(
-          _i3.loadLibrary,
-          () => _i3.GroupFormView(
+          _i4.loadLibrary,
+          () => _i4.GroupFormView(
             key: args.key,
             group: args.group,
           ),
@@ -86,8 +100,8 @@ abstract class $AppRouter extends _i17.RootStackRouter {
       return _i17.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i17.DeferredWidget(
-          _i4.loadLibrary,
-          () => _i4.GroupView(),
+          _i3.loadLibrary,
+          () => _i3.GroupView(),
         ),
       );
     },
@@ -258,7 +272,50 @@ class DashboardRoute extends _i17.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.GroupFormView]
+/// [_i3.GroupDetail]
+class GroupDetailRoute extends _i17.PageRouteInfo<GroupDetailRouteArgs> {
+  GroupDetailRoute({
+    _i18.Key? key,
+    required _i19.GroupEntity group,
+    required void Function() onGroupDelete,
+    List<_i17.PageRouteInfo>? children,
+  }) : super(
+          GroupDetailRoute.name,
+          args: GroupDetailRouteArgs(
+            key: key,
+            group: group,
+            onGroupDelete: onGroupDelete,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'GroupDetailRoute';
+
+  static const _i17.PageInfo<GroupDetailRouteArgs> page =
+      _i17.PageInfo<GroupDetailRouteArgs>(name);
+}
+
+class GroupDetailRouteArgs {
+  const GroupDetailRouteArgs({
+    this.key,
+    required this.group,
+    required this.onGroupDelete,
+  });
+
+  final _i18.Key? key;
+
+  final _i19.GroupEntity group;
+
+  final void Function() onGroupDelete;
+
+  @override
+  String toString() {
+    return 'GroupDetailRouteArgs{key: $key, group: $group, onGroupDelete: $onGroupDelete}';
+  }
+}
+
+/// generated route for
+/// [_i4.GroupFormView]
 class GroupFormRoute extends _i17.PageRouteInfo<GroupFormRouteArgs> {
   GroupFormRoute({
     _i18.Key? key,
@@ -296,7 +353,7 @@ class GroupFormRouteArgs {
 }
 
 /// generated route for
-/// [_i4.GroupView]
+/// [_i3.GroupView]
 class GroupRoute extends _i17.PageRouteInfo<void> {
   const GroupRoute({List<_i17.PageRouteInfo>? children})
       : super(
