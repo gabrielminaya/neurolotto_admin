@@ -7,7 +7,6 @@ import '../../core/constants.dart';
 import '../../core/entities/lottery_entity.dart';
 import '../../core/extensions/value_notifier.dart';
 import '../../core/service_locator/get_it.dart';
-import '../../core/services.dart';
 import '../../core/themes/async_button_builder.dart';
 import '../../i18n/strings.g.dart';
 import 'lottery_controller.dart';
@@ -56,6 +55,8 @@ class LotteryFormView extends StatelessWidget {
             showCloseIcon: true,
           ),
         );
+
+        context.router.pop();
       },
       onSuccess: () {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -64,7 +65,8 @@ class LotteryFormView extends StatelessWidget {
             showCloseIcon: true,
           ),
         );
-        router.back();
+
+        context.router.pop();
       },
     );
   }
@@ -72,6 +74,9 @@ class LotteryFormView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(lottery.name),
+      ),
       body: FormBuilder(
         key: _formKey,
         initialValue: {
@@ -87,119 +92,113 @@ class LotteryFormView extends StatelessWidget {
           "timeClose": DateTime.parse("2000-01-01 ${lottery.timeClose}"),
           "active": lottery.status,
         },
-        child: LayoutBuilder(
-          builder: (context, constraints) => SizedBox(
-            width: constraints.maxWidth < 700 ? constraints.maxWidth : constraints.maxWidth * 0.5,
-            child: ListView(
-              padding: p12,
-              children: [
-                FormBuilderTextField(
-                  name: 'name',
-                  decoration: InputDecoration(label: Text(t.lottery.name)),
-                  validator: FormBuilderValidators.required(),
-                ),
-                vgap(10),
-                FormBuilderDateTimePicker(
-                  name: 'timeOpen',
-                  inputType: InputType.time,
-                  decoration: InputDecoration(label: Text(t.lottery.timeOpen)),
-                  validator: FormBuilderValidators.required(),
-                ),
-                vgap(10),
-                FormBuilderDateTimePicker(
-                  name: 'timeClose',
-                  inputType: InputType.time,
-                  decoration: InputDecoration(label: Text(t.lottery.timeClose)),
-                  validator: FormBuilderValidators.required(),
-                ),
-                const Divider(height: 30),
-                FormBuilderTextField(
-                  name: 'quinielaFirstPrize',
-                  decoration: InputDecoration(label: Text(t.lottery.quinielaFirstPrize)),
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(),
-                    FormBuilderValidators.integer(),
-                  ]),
-                ),
-                vgap(10),
-                FormBuilderTextField(
-                  name: 'quinielaSecondPrize',
-                  decoration: InputDecoration(label: Text(t.lottery.quinielaSecondPrize)),
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(),
-                    FormBuilderValidators.integer(),
-                  ]),
-                ),
-                vgap(10),
-                FormBuilderTextField(
-                  name: 'quinielaThirdPrize',
-                  decoration: InputDecoration(label: Text(t.lottery.quinielaThirdPrize)),
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(),
-                    FormBuilderValidators.integer(),
-                  ]),
-                ),
-                vgap(10),
-                FormBuilderTextField(
-                  name: 'paleFirstSecondPrize',
-                  decoration: InputDecoration(label: Text(t.lottery.paleFirstSecondPrize)),
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(),
-                    FormBuilderValidators.integer(),
-                  ]),
-                ),
-                vgap(10),
-                FormBuilderTextField(
-                  name: 'paleFirstThirdPrize',
-                  decoration: InputDecoration(label: Text(t.lottery.paleFirstThirdPrize)),
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(),
-                    FormBuilderValidators.integer(),
-                  ]),
-                ),
-                vgap(10),
-                FormBuilderTextField(
-                  name: 'paleSecondThirdPrize',
-                  decoration: InputDecoration(label: Text(t.lottery.paleSecondThirdPrize)),
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(),
-                    FormBuilderValidators.integer(),
-                  ]),
-                ),
-                vgap(10),
-                FormBuilderTextField(
-                  name: 'tripletaPrice',
-                  decoration: InputDecoration(label: Text(t.lottery.tripletaPrice)),
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(),
-                    FormBuilderValidators.integer(),
-                  ]),
-                ),
-                vgap(10),
-                FormBuilderSwitch(
-                  name: 'active',
-                  title: Text(t.lottery.active),
-                  validator: FormBuilderValidators.required(),
-                ),
-                ButtonBar(
-                  children: [
-                    OutlinedButton(
-                      onPressed: () => router.back(),
-                      child: Text(t.common.back),
-                    ),
-                    _lotteryController.watch(
-                      (context, state) => AsyncButtonBuilder(
-                        idleStateWidget: Text(t.common.save),
-                        state: state.isActionLoading ? AsyncButtonBuilderState.loading : AsyncButtonBuilderState.idle,
-                        buttonWidget: (stateWidget) =>
-                            FilledButton(onPressed: () => onSubmit(context), child: stateWidget),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+        child: ListView(
+          padding: p12,
+          children: [
+            FormBuilderTextField(
+              name: 'name',
+              decoration: InputDecoration(label: Text(t.lottery.name)),
+              validator: FormBuilderValidators.required(),
             ),
-          ),
+            vgap(10),
+            FormBuilderDateTimePicker(
+              name: 'timeOpen',
+              inputType: InputType.time,
+              decoration: InputDecoration(label: Text(t.lottery.timeOpen)),
+              validator: FormBuilderValidators.required(),
+            ),
+            vgap(10),
+            FormBuilderDateTimePicker(
+              name: 'timeClose',
+              inputType: InputType.time,
+              decoration: InputDecoration(label: Text(t.lottery.timeClose)),
+              validator: FormBuilderValidators.required(),
+            ),
+            const Divider(height: 30),
+            FormBuilderTextField(
+              name: 'quinielaFirstPrize',
+              decoration: InputDecoration(label: Text(t.lottery.quinielaFirstPrize)),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+                FormBuilderValidators.integer(),
+              ]),
+            ),
+            vgap(10),
+            FormBuilderTextField(
+              name: 'quinielaSecondPrize',
+              decoration: InputDecoration(label: Text(t.lottery.quinielaSecondPrize)),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+                FormBuilderValidators.integer(),
+              ]),
+            ),
+            vgap(10),
+            FormBuilderTextField(
+              name: 'quinielaThirdPrize',
+              decoration: InputDecoration(label: Text(t.lottery.quinielaThirdPrize)),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+                FormBuilderValidators.integer(),
+              ]),
+            ),
+            vgap(10),
+            FormBuilderTextField(
+              name: 'paleFirstSecondPrize',
+              decoration: InputDecoration(label: Text(t.lottery.paleFirstSecondPrize)),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+                FormBuilderValidators.integer(),
+              ]),
+            ),
+            vgap(10),
+            FormBuilderTextField(
+              name: 'paleFirstThirdPrize',
+              decoration: InputDecoration(label: Text(t.lottery.paleFirstThirdPrize)),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+                FormBuilderValidators.integer(),
+              ]),
+            ),
+            vgap(10),
+            FormBuilderTextField(
+              name: 'paleSecondThirdPrize',
+              decoration: InputDecoration(label: Text(t.lottery.paleSecondThirdPrize)),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+                FormBuilderValidators.integer(),
+              ]),
+            ),
+            vgap(10),
+            FormBuilderTextField(
+              name: 'tripletaPrice',
+              decoration: InputDecoration(label: Text(t.lottery.tripletaPrice)),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+                FormBuilderValidators.integer(),
+              ]),
+            ),
+            vgap(10),
+            FormBuilderSwitch(
+              name: 'active',
+              title: Text(t.lottery.active),
+              validator: FormBuilderValidators.required(),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          children: [
+            Expanded(
+              child: _lotteryController.watch(
+                (context, state) => AsyncButtonBuilder(
+                  idleStateWidget: Text(t.common.save),
+                  state: state.isActionLoading ? AsyncButtonBuilderState.loading : AsyncButtonBuilderState.idle,
+                  buttonWidget: (stateWidget) => FilledButton(onPressed: () => onSubmit(context), child: stateWidget),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

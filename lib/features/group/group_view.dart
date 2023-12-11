@@ -72,8 +72,8 @@ class _GroupViewState extends State<GroupView> {
                     (context, standOrNone) => GroupItems(
                       groups: state.groups,
                       selectedGroup: standOrNone,
-                      onGroupSelected: (stand) {
-                        _currentGroup.value = stand;
+                      onGroupSelected: (group) {
+                        _currentGroup.value = group;
                       },
                     ),
                   ),

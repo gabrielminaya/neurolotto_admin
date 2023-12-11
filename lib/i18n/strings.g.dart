@@ -6,7 +6,7 @@
 /// Locales: 1
 /// Strings: 110
 ///
-/// Built on 2023-12-11 at 15:06 UTC
+/// Built on 2023-12-11 at 18:03 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -275,7 +275,7 @@ class _StringsStandEn {
 	final _StringsEn _root; // ignore: unused_field
 
 	// Translations
-	String get title => 'Benches';
+	String get title => 'Stands';
 	String get detail => 'Details';
 	String get name => 'Name';
 	String get group => 'Group';
@@ -429,7 +429,7 @@ extension on _StringsEn {
 			case 'lottery.tripletaPrice': return 'Tripleta prize';
 			case 'lottery.timeOpen': return 'Opening time';
 			case 'lottery.timeClose': return 'Closing time';
-			case 'stand.title': return 'Benches';
+			case 'stand.title': return 'Stands';
 			case 'stand.detail': return 'Details';
 			case 'stand.name': return 'Name';
 			case 'stand.group': return 'Group';

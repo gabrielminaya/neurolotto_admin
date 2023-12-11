@@ -26,9 +26,9 @@ import 'package:neurolotto_admin/features/group/group_view.dart'
     deferred as _i3;
 import 'package:neurolotto_admin/features/home/home_view.dart' deferred as _i5;
 import 'package:neurolotto_admin/features/lottery/lottery_form_view.dart'
-    deferred as _i6;
-import 'package:neurolotto_admin/features/lottery/lottery_view.dart'
     deferred as _i7;
+import 'package:neurolotto_admin/features/lottery/lottery_view.dart'
+    deferred as _i6;
 import 'package:neurolotto_admin/features/sales/result_view.dart'
     deferred as _i8;
 import 'package:neurolotto_admin/features/sales/sale_view.dart' deferred as _i9;
@@ -114,13 +114,26 @@ abstract class $AppRouter extends _i17.RootStackRouter {
         ),
       );
     },
+    LotteryDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<LotteryDetailRouteArgs>();
+      return _i17.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i17.DeferredWidget(
+          _i6.loadLibrary,
+          () => _i6.LotteryDetail(
+            key: args.key,
+            lottery: args.lottery,
+          ),
+        ),
+      );
+    },
     LotteryFormRoute.name: (routeData) {
       final args = routeData.argsAs<LotteryFormRouteArgs>();
       return _i17.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i17.DeferredWidget(
-          _i6.loadLibrary,
-          () => _i6.LotteryFormView(
+          _i7.loadLibrary,
+          () => _i7.LotteryFormView(
             key: args.key,
             lottery: args.lottery,
           ),
@@ -131,8 +144,8 @@ abstract class $AppRouter extends _i17.RootStackRouter {
       return _i17.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i17.DeferredWidget(
-          _i7.loadLibrary,
-          () => _i7.LotteryView(),
+          _i6.loadLibrary,
+          () => _i6.LotteryView(),
         ),
       );
     },
@@ -381,7 +394,45 @@ class HomeRoute extends _i17.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.LotteryFormView]
+/// [_i6.LotteryDetail]
+class LotteryDetailRoute extends _i17.PageRouteInfo<LotteryDetailRouteArgs> {
+  LotteryDetailRoute({
+    _i18.Key? key,
+    required _i20.LotteryEntity lottery,
+    List<_i17.PageRouteInfo>? children,
+  }) : super(
+          LotteryDetailRoute.name,
+          args: LotteryDetailRouteArgs(
+            key: key,
+            lottery: lottery,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'LotteryDetailRoute';
+
+  static const _i17.PageInfo<LotteryDetailRouteArgs> page =
+      _i17.PageInfo<LotteryDetailRouteArgs>(name);
+}
+
+class LotteryDetailRouteArgs {
+  const LotteryDetailRouteArgs({
+    this.key,
+    required this.lottery,
+  });
+
+  final _i18.Key? key;
+
+  final _i20.LotteryEntity lottery;
+
+  @override
+  String toString() {
+    return 'LotteryDetailRouteArgs{key: $key, lottery: $lottery}';
+  }
+}
+
+/// generated route for
+/// [_i7.LotteryFormView]
 class LotteryFormRoute extends _i17.PageRouteInfo<LotteryFormRouteArgs> {
   LotteryFormRoute({
     _i18.Key? key,
@@ -419,7 +470,7 @@ class LotteryFormRouteArgs {
 }
 
 /// generated route for
-/// [_i7.LotteryView]
+/// [_i6.LotteryView]
 class LotteryRoute extends _i17.PageRouteInfo<void> {
   const LotteryRoute({List<_i17.PageRouteInfo>? children})
       : super(
