@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 97
+/// Strings: 101
 ///
-/// Built on 2023-12-06 at 14:55 UTC
+/// Built on 2023-12-11 at 14:03 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -174,6 +174,7 @@ class _StringsCommonEn {
 	String get done => 'Done';
 	String get save => 'Apply';
 	String get signOut => 'Sign out';
+	String get edit => 'Edit';
 }
 
 // Path: signIn
@@ -265,8 +266,11 @@ class _StringsStandEn {
 	final _StringsEn _root; // ignore: unused_field
 
 	// Translations
+	String get title => 'Benches';
+	String get detail => 'Details';
 	String get name => 'Name';
 	String get group => 'Group';
+	String get selectAStand => 'Select a bench';
 	String get contraint => 'Constraint';
 	String get username => 'Username';
 	String get maximumSaleAmount => 'Maximum sale amount';
@@ -369,6 +373,7 @@ extension on _StringsEn {
 			case 'common.done': return 'Done';
 			case 'common.save': return 'Apply';
 			case 'common.signOut': return 'Sign out';
+			case 'common.edit': return 'Edit';
 			case 'signIn.messageTitle': return 'Sign-In';
 			case 'signIn.messageContent': return 'If you have forgotten your password or are experiencing difficulties in signing in, feel free to get in touch with your supervisor for assistance.';
 			case 'signIn.signIn': return 'Sign In';
@@ -406,8 +411,11 @@ extension on _StringsEn {
 			case 'lottery.tripletaPrice': return 'Tripleta Prize';
 			case 'lottery.timeOpen': return 'Opening Time';
 			case 'lottery.timeClose': return 'Closing Time';
+			case 'stand.title': return 'Benches';
+			case 'stand.detail': return 'Details';
 			case 'stand.name': return 'Name';
 			case 'stand.group': return 'Group';
+			case 'stand.selectAStand': return 'Select a bench';
 			case 'stand.contraint': return 'Constraint';
 			case 'stand.username': return 'Username';
 			case 'stand.maximumSaleAmount': return 'Maximum sale amount';

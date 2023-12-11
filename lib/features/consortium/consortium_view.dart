@@ -96,62 +96,64 @@ class _ConsortiumViewState extends State<ConsortiumView> {
               "tripletaMaxAmount": state.consortium?.tripletaMaxAmount.toStringAsFixed(0),
             },
             child: LayoutBuilder(
-              builder: (context, constraints) => SizedBox(
-                width: constraints.maxWidth < 1000 ? constraints.maxWidth : constraints.maxWidth * 0.4,
-                child: ListView(
-                  padding: p12,
-                  children: [
-                    FormBuilderTextField(
-                      name: 'name',
-                      decoration: InputDecoration(label: Text(t.consortium.name)),
-                      validator: FormBuilderValidators.required(),
-                    ),
-                    vgap(15),
-                    FormBuilderTextField(
-                      name: 'maximumSaleAmount',
-                      decoration: InputDecoration(label: Text(t.consortium.maximumSaleAmount)),
-                      validator: FormBuilderValidators.compose([
-                        FormBuilderValidators.required(),
-                        FormBuilderValidators.integer(),
-                      ]),
-                    ),
-                    vgap(15),
-                    FormBuilderTextField(
-                      name: 'quinielaMaxAmount',
-                      decoration: InputDecoration(label: Text(t.consortium.quinielaMaxAmount)),
-                      validator: FormBuilderValidators.compose([
-                        FormBuilderValidators.required(),
-                        FormBuilderValidators.integer(),
-                      ]),
-                    ),
-                    vgap(15),
-                    FormBuilderTextField(
-                      name: 'paleMaxAmount',
-                      decoration: InputDecoration(label: Text(t.consortium.paleMaxAmount)),
-                      validator: FormBuilderValidators.compose([
-                        FormBuilderValidators.required(),
-                        FormBuilderValidators.integer(),
-                      ]),
-                    ),
-                    vgap(15),
-                    FormBuilderTextField(
-                      name: 'tripletaMaxAmount',
-                      decoration: InputDecoration(label: Text(t.consortium.tripletaMaxAmount)),
-                      validator: FormBuilderValidators.compose([
-                        FormBuilderValidators.required(),
-                        FormBuilderValidators.integer(),
-                      ]),
-                    ),
-                    vgap(15),
-                    AsyncButtonBuilder(
-                      idleStateWidget: Text(t.common.save),
-                      state: state.isUpdateLoading ? AsyncButtonBuilderState.loading : AsyncButtonBuilderState.idle,
-                      buttonWidget: (stateWidget) => FilledButton(
-                        onPressed: () => onUpdate(context, state.consortium!),
-                        child: stateWidget,
+              builder: (context, constraints) => Center(
+                child: SizedBox(
+                  width: constraints.maxWidth < 1000 ? constraints.maxWidth : constraints.maxWidth * 0.4,
+                  child: ListView(
+                    padding: p12,
+                    children: [
+                      FormBuilderTextField(
+                        name: 'name',
+                        decoration: InputDecoration(label: Text(t.consortium.name)),
+                        validator: FormBuilderValidators.required(),
                       ),
-                    ),
-                  ],
+                      vgap(15),
+                      FormBuilderTextField(
+                        name: 'maximumSaleAmount',
+                        decoration: InputDecoration(label: Text(t.consortium.maximumSaleAmount)),
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(),
+                          FormBuilderValidators.integer(),
+                        ]),
+                      ),
+                      vgap(15),
+                      FormBuilderTextField(
+                        name: 'quinielaMaxAmount',
+                        decoration: InputDecoration(label: Text(t.consortium.quinielaMaxAmount)),
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(),
+                          FormBuilderValidators.integer(),
+                        ]),
+                      ),
+                      vgap(15),
+                      FormBuilderTextField(
+                        name: 'paleMaxAmount',
+                        decoration: InputDecoration(label: Text(t.consortium.paleMaxAmount)),
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(),
+                          FormBuilderValidators.integer(),
+                        ]),
+                      ),
+                      vgap(15),
+                      FormBuilderTextField(
+                        name: 'tripletaMaxAmount',
+                        decoration: InputDecoration(label: Text(t.consortium.tripletaMaxAmount)),
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(),
+                          FormBuilderValidators.integer(),
+                        ]),
+                      ),
+                      vgap(15),
+                      AsyncButtonBuilder(
+                        idleStateWidget: Text(t.common.save),
+                        state: state.isUpdateLoading ? AsyncButtonBuilderState.loading : AsyncButtonBuilderState.idle,
+                        buttonWidget: (stateWidget) => FilledButton(
+                          onPressed: () => onUpdate(context, state.consortium!),
+                          child: stateWidget,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

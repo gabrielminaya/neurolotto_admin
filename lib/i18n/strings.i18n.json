@@ -4,7 +4,8 @@
         "next": "Continuar",
         "done": "Completar",
         "save": "Aplicar",
-        "signOut": "Cerrar sesión"
+        "signOut": "Cerrar sesión",
+        "edit": "Editar"
     },
     "singIn": {
         "messageTitle": "Inicio de sesión",
@@ -54,8 +55,11 @@
         "timeClose": "Hora de cierre"
     },
     "stand": {
+        "title": "Bancas",
+        "detail": "Detalles",
         "name": "Nombre",
         "group": "Grupo",
+        "selectAStand": "Seleccionar una banca",
         "contraint": "Restrinción",
         "username": "Usuario",
         "maximumSaleAmount": "Monto máximo de venta",

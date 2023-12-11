@@ -28,7 +28,7 @@ class ResultController extends ValueNotifier<ResultControllerState> {
   final SupabaseClient _client;
 
   Future<void> initialize() async {
-    value = const ResultControllerState(isResultLoading: true);
+    value = value.copyWith(isResultLoading: true);
 
     try {
       final lotteries = await _client.from("lotteries").select<PostgrestList>().withConverter<List<LotteryEntity>>(

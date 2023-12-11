@@ -33,7 +33,7 @@ class _ResultViewState extends State<ResultView> {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback(
       (_) => _resultController
-        ..initialize
+        ..initialize()
         ..fetchResults(),
     );
   }

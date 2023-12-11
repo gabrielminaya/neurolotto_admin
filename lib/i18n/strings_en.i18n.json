@@ -4,7 +4,8 @@
         "next": "Next",
         "done": "Done",
         "save": "Apply",
-        "signOut": "Sign out"
+        "signOut": "Sign out",
+        "edit": "Edit"
     },
     "signIn": {
         "messageTitle": "Sign-In",
@@ -54,8 +55,11 @@
         "timeClose": "Closing Time"
     },
     "stand": {
+        "title": "Benches",
+        "detail": "Details",
         "name": "Name",
         "group": "Group",
+        "selectAStand": "Select a bench",
         "contraint": "Constraint",
         "username": "Username",
         "maximumSaleAmount": "Maximum sale amount",

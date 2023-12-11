@@ -58,7 +58,7 @@ class LotteryController extends ValueNotifier<LotteryControllerState> {
             "pale_first_second_prize": lottery.paleFirstSecondPrize,
             "pale_first_third_prize": lottery.paleFirstThirdPrize,
             "pale_second_third_prize": lottery.paleSecondThirdPrize,
-            "tripleta_price": lottery.tripletaPrice,
+            "tripleta_prize": lottery.tripletaPrice,
             "time_open": lottery.timeOpen,
             "time_close": lottery.timeClose
           })

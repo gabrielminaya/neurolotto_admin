@@ -22,5 +22,8 @@ const py8 = EdgeInsets.symmetric(vertical: 8);
 const py12 = EdgeInsets.symmetric(vertical: 12);
 const py16 = EdgeInsets.symmetric(vertical: 16);
 
+const tabletBreakpoint = 720.0;
+const desktopBreakpoint = 1440.0;
+
 hgap(double size) => SizedBox(width: size);
 vgap(double size) => SizedBox(height: size);
