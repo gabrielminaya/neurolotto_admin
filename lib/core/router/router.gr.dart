@@ -77,7 +77,6 @@ abstract class $AppRouter extends _i17.RootStackRouter {
           () => _i3.GroupDetail(
             key: args.key,
             group: args.group,
-            onGroupDelete: args.onGroupDelete,
           ),
         ),
       );
@@ -290,14 +289,12 @@ class GroupDetailRoute extends _i17.PageRouteInfo<GroupDetailRouteArgs> {
   GroupDetailRoute({
     _i18.Key? key,
     required _i19.GroupEntity group,
-    required void Function() onGroupDelete,
     List<_i17.PageRouteInfo>? children,
   }) : super(
           GroupDetailRoute.name,
           args: GroupDetailRouteArgs(
             key: key,
             group: group,
-            onGroupDelete: onGroupDelete,
           ),
           initialChildren: children,
         );
@@ -312,18 +309,15 @@ class GroupDetailRouteArgs {
   const GroupDetailRouteArgs({
     this.key,
     required this.group,
-    required this.onGroupDelete,
   });
 
   final _i18.Key? key;
 
   final _i19.GroupEntity group;
 
-  final void Function() onGroupDelete;
-
   @override
   String toString() {
-    return 'GroupDetailRouteArgs{key: $key, group: $group, onGroupDelete: $onGroupDelete}';
+    return 'GroupDetailRouteArgs{key: $key, group: $group}';
   }
 }
 

@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
-import 'package:neurolotto_admin/features/lottery/lottery_form_view.dart';
 
 import '../../core/adaptative_dialog.dart';
 import '../../core/constants.dart';
@@ -13,6 +12,7 @@ import '../../core/service_locator/get_it.dart';
 import '../../core/services.dart';
 import '../../i18n/strings.g.dart';
 import 'lottery_controller.dart';
+import 'lottery_form_view.dart';
 
 @RoutePage()
 class LotteryView extends StatefulWidget {
@@ -24,7 +24,6 @@ class LotteryView extends StatefulWidget {
 
 class _LotteryViewState extends State<LotteryView> {
   final _lotteryController = getIt.get<LotteryController>();
-  final _currentLottery = ValueNotifier<LotteryEntity?>(null);
 
   @override
   void initState() {
@@ -52,9 +51,9 @@ class _LotteryViewState extends State<LotteryView> {
             if (constraints.maxWidth <= tabletBreakpoint) {
               return LotteryItems(
                 lotteries: state.lotteries,
-                selectedLottery: _currentLottery.value,
+                selectedLottery: state.selectedLottery,
                 onLotterySelected: (lottery) {
-                  _currentLottery.value = lottery;
+                  _lotteryController.select(lottery);
                   router.push(LotteryDetailRoute(lottery: lottery));
                 },
               );
@@ -64,28 +63,24 @@ class _LotteryViewState extends State<LotteryView> {
               children: [
                 Flexible(
                   flex: 1,
-                  child: _currentLottery.watch(
-                    (context, standOrNone) => LotteryItems(
-                      lotteries: state.lotteries,
-                      selectedLottery: standOrNone,
-                      onLotterySelected: (lottery) {
-                        _currentLottery.value = lottery;
-                      },
-                    ),
+                  child: LotteryItems(
+                    lotteries: state.lotteries,
+                    selectedLottery: state.selectedLottery,
+                    onLotterySelected: (lottery) => _lotteryController.select(lottery),
                   ),
                 ),
                 const VerticalDivider(width: 0),
                 Flexible(
                   flex: 3,
-                  child: _currentLottery.watch(
-                    (context, state) {
-                      if (state == null) {
+                  child: Builder(
+                    builder: (_) {
+                      if (state.selectedLottery == null) {
                         return Center(
-                          child: Text(t.stand.selectAStand),
+                          child: Text(t.lottery.selectALottery),
                         );
                       }
 
-                      return LotteryDetail(lottery: state);
+                      return LotteryDetail(lottery: state.selectedLottery!);
                     },
                   ),
                 ),

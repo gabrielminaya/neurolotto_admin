@@ -26,7 +26,6 @@ class GroupView extends StatefulWidget {
 
 class _GroupViewState extends State<GroupView> {
   final _groupController = getIt.get<GroupController>();
-  final _currentGroup = ValueNotifier<GroupEntity?>(null);
 
   @override
   void initState() {
@@ -53,13 +52,10 @@ class _GroupViewState extends State<GroupView> {
             if (constraints.maxWidth <= tabletBreakpoint) {
               return GroupItems(
                 groups: state.groups,
-                selectedGroup: _currentGroup.value,
+                selectedGroup: state.selectedGroup,
                 onGroupSelected: (group) {
-                  _currentGroup.value = group;
-                  router.push(GroupDetailRoute(
-                    group: group,
-                    onGroupDelete: () => _currentGroup.value = null,
-                  ));
+                  _groupController.select(group);
+                  router.push(GroupDetailRoute(group: group));
                 },
               );
             }
@@ -68,33 +64,24 @@ class _GroupViewState extends State<GroupView> {
               children: [
                 Flexible(
                   flex: 1,
-                  child: _currentGroup.watch(
-                    (context, standOrNone) => GroupItems(
-                      groups: state.groups,
-                      selectedGroup: standOrNone,
-                      onGroupSelected: (group) {
-                        _currentGroup.value = group;
-                      },
-                    ),
+                  child: GroupItems(
+                    groups: state.groups,
+                    selectedGroup: state.selectedGroup,
+                    onGroupSelected: (group) => _groupController.select(group),
                   ),
                 ),
                 const VerticalDivider(width: 0),
                 Flexible(
                   flex: 3,
-                  child: _currentGroup.watch(
-                    (context, state) {
-                      if (state == null) {
-                        return Center(
-                          child: Text(t.stand.selectAStand),
-                        );
-                      }
-
-                      return GroupDetail(
-                        group: state,
-                        onGroupDelete: () => _currentGroup.value = null,
+                  child: Builder(builder: (_) {
+                    if (state.selectedGroup == null) {
+                      return Center(
+                        child: Text(t.group.selectAGroup),
                       );
-                    },
-                  ),
+                    }
+
+                    return GroupDetail(group: state.selectedGroup!);
+                  }),
                 ),
               ],
             );
@@ -176,10 +163,9 @@ class GroupItems extends StatelessWidget {
 
 @RoutePage(name: "GroupDetailRoute")
 class GroupDetail extends StatelessWidget {
-  GroupDetail({super.key, required this.group, required this.onGroupDelete});
+  GroupDetail({super.key, required this.group});
 
   final GroupEntity group;
-  final VoidCallback onGroupDelete;
 
   final groupController = getIt.get<GroupController>();
 
@@ -211,7 +197,6 @@ class GroupDetail extends StatelessWidget {
                   },
                   onSuccess: () {
                     router.pop();
-                    onGroupDelete.call();
                   },
                 ),
                 child: stateWidget,

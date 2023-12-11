@@ -20,6 +20,7 @@ mixin _$GroupControllerState {
   bool get isActionLoading => throw _privateConstructorUsedError;
   String? get failureMessage => throw _privateConstructorUsedError;
   List<GroupEntity> get groups => throw _privateConstructorUsedError;
+  GroupEntity? get selectedGroup => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GroupControllerStateCopyWith<GroupControllerState> get copyWith =>
@@ -36,7 +37,10 @@ abstract class $GroupControllerStateCopyWith<$Res> {
       {bool isLoading,
       bool isActionLoading,
       String? failureMessage,
-      List<GroupEntity> groups});
+      List<GroupEntity> groups,
+      GroupEntity? selectedGroup});
+
+  $GroupEntityCopyWith<$Res>? get selectedGroup;
 }
 
 /// @nodoc
@@ -57,6 +61,7 @@ class _$GroupControllerStateCopyWithImpl<$Res,
     Object? isActionLoading = null,
     Object? failureMessage = freezed,
     Object? groups = null,
+    Object? selectedGroup = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -75,7 +80,23 @@ class _$GroupControllerStateCopyWithImpl<$Res,
           ? _value.groups
           : groups // ignore: cast_nullable_to_non_nullable
               as List<GroupEntity>,
+      selectedGroup: freezed == selectedGroup
+          ? _value.selectedGroup
+          : selectedGroup // ignore: cast_nullable_to_non_nullable
+              as GroupEntity?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $GroupEntityCopyWith<$Res>? get selectedGroup {
+    if (_value.selectedGroup == null) {
+      return null;
+    }
+
+    return $GroupEntityCopyWith<$Res>(_value.selectedGroup!, (value) {
+      return _then(_value.copyWith(selectedGroup: value) as $Val);
+    });
   }
 }
 
@@ -91,7 +112,11 @@ abstract class _$$GroupControllerStateImplCopyWith<$Res>
       {bool isLoading,
       bool isActionLoading,
       String? failureMessage,
-      List<GroupEntity> groups});
+      List<GroupEntity> groups,
+      GroupEntity? selectedGroup});
+
+  @override
+  $GroupEntityCopyWith<$Res>? get selectedGroup;
 }
 
 /// @nodoc
@@ -109,6 +134,7 @@ class __$$GroupControllerStateImplCopyWithImpl<$Res>
     Object? isActionLoading = null,
     Object? failureMessage = freezed,
     Object? groups = null,
+    Object? selectedGroup = freezed,
   }) {
     return _then(_$GroupControllerStateImpl(
       isLoading: null == isLoading
@@ -127,6 +153,10 @@ class __$$GroupControllerStateImplCopyWithImpl<$Res>
           ? _value._groups
           : groups // ignore: cast_nullable_to_non_nullable
               as List<GroupEntity>,
+      selectedGroup: freezed == selectedGroup
+          ? _value.selectedGroup
+          : selectedGroup // ignore: cast_nullable_to_non_nullable
+              as GroupEntity?,
     ));
   }
 }
@@ -140,7 +170,8 @@ class _$GroupControllerStateImpl
       {this.isLoading = false,
       this.isActionLoading = false,
       this.failureMessage = null,
-      final List<GroupEntity> groups = const []})
+      final List<GroupEntity> groups = const [],
+      this.selectedGroup = null})
       : _groups = groups;
 
   @override
@@ -162,8 +193,12 @@ class _$GroupControllerStateImpl
   }
 
   @override
+  @JsonKey()
+  final GroupEntity? selectedGroup;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GroupControllerState(isLoading: $isLoading, isActionLoading: $isActionLoading, failureMessage: $failureMessage, groups: $groups)';
+    return 'GroupControllerState(isLoading: $isLoading, isActionLoading: $isActionLoading, failureMessage: $failureMessage, groups: $groups, selectedGroup: $selectedGroup)';
   }
 
   @override
@@ -174,7 +209,8 @@ class _$GroupControllerStateImpl
       ..add(DiagnosticsProperty('isLoading', isLoading))
       ..add(DiagnosticsProperty('isActionLoading', isActionLoading))
       ..add(DiagnosticsProperty('failureMessage', failureMessage))
-      ..add(DiagnosticsProperty('groups', groups));
+      ..add(DiagnosticsProperty('groups', groups))
+      ..add(DiagnosticsProperty('selectedGroup', selectedGroup));
   }
 
   @override
@@ -188,12 +224,19 @@ class _$GroupControllerStateImpl
                 other.isActionLoading == isActionLoading) &&
             (identical(other.failureMessage, failureMessage) ||
                 other.failureMessage == failureMessage) &&
-            const DeepCollectionEquality().equals(other._groups, _groups));
+            const DeepCollectionEquality().equals(other._groups, _groups) &&
+            (identical(other.selectedGroup, selectedGroup) ||
+                other.selectedGroup == selectedGroup));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isActionLoading,
-      failureMessage, const DeepCollectionEquality().hash(_groups));
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      isActionLoading,
+      failureMessage,
+      const DeepCollectionEquality().hash(_groups),
+      selectedGroup);
 
   @JsonKey(ignore: true)
   @override
@@ -209,7 +252,8 @@ abstract class _GroupControllerState implements GroupControllerState {
       {final bool isLoading,
       final bool isActionLoading,
       final String? failureMessage,
-      final List<GroupEntity> groups}) = _$GroupControllerStateImpl;
+      final List<GroupEntity> groups,
+      final GroupEntity? selectedGroup}) = _$GroupControllerStateImpl;
 
   @override
   bool get isLoading;
@@ -219,6 +263,8 @@ abstract class _GroupControllerState implements GroupControllerState {
   String? get failureMessage;
   @override
   List<GroupEntity> get groups;
+  @override
+  GroupEntity? get selectedGroup;
   @override
   @JsonKey(ignore: true)
   _$$GroupControllerStateImplCopyWith<_$GroupControllerStateImpl>

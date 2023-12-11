@@ -24,7 +24,6 @@ class StandView extends StatefulWidget {
 
 class _StandViewState extends State<StandView> {
   final _standController = getIt.get<StandController>();
-  final _currentStand = ValueNotifier<LotteryStandEntity?>(null);
 
   @override
   void initState() {
@@ -51,9 +50,9 @@ class _StandViewState extends State<StandView> {
             if (constraints.maxWidth <= tabletBreakpoint) {
               return StandItems(
                 stands: state.stands,
-                selectedStand: _currentStand.value,
+                selectedStand: state.currentStand,
                 onStandSelected: (stand) {
-                  _currentStand.value = stand;
+                  _standController.setStand(stand);
                   router.push(StandDetailRoute(stand: stand));
                 },
               );
@@ -63,30 +62,26 @@ class _StandViewState extends State<StandView> {
               children: [
                 Flexible(
                   flex: 1,
-                  child: _currentStand.watch(
-                    (context, standOrNone) => StandItems(
-                      stands: state.stands,
-                      selectedStand: standOrNone,
-                      onStandSelected: (stand) {
-                        _currentStand.value = stand;
-                      },
-                    ),
+                  child: StandItems(
+                    stands: state.stands,
+                    selectedStand: state.currentStand,
+                    onStandSelected: (stand) {
+                      _standController.setStand(stand);
+                    },
                   ),
                 ),
                 const VerticalDivider(width: 0),
                 Flexible(
                   flex: 3,
-                  child: _currentStand.watch(
-                    (context, state) {
-                      if (state == null) {
-                        return Center(
-                          child: Text(t.stand.selectAStand),
-                        );
-                      }
+                  child: Builder(builder: (_) {
+                    if (state.currentStand == null) {
+                      return Center(
+                        child: Text(t.stand.selectAStand),
+                      );
+                    }
 
-                      return StandDetail(stand: state);
-                    },
-                  ),
+                    return StandDetail(stand: state.currentStand!);
+                  }),
                 ),
               ],
             );

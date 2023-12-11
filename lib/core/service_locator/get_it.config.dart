@@ -74,7 +74,7 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i15.SaleController(gh<_i5.SupabaseClient>()));
     gh.factory<_i16.SplashController>(
         () => _i16.SplashController(gh<_i5.SupabaseClient>()));
-    gh.factory<_i17.StandController>(
+    gh.lazySingleton<_i17.StandController>(
         () => _i17.StandController(gh<_i5.SupabaseClient>()));
     gh.factory<_i18.StandPasswordController>(
         () => _i18.StandPasswordController(gh<_i5.SupabaseClient>()));

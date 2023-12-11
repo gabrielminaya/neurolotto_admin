@@ -24,6 +24,7 @@ mixin _$StandControllerState {
   List<ConstraintLevelEntity> get constraints =>
       throw _privateConstructorUsedError;
   List<LotteryStandEntity> get stands => throw _privateConstructorUsedError;
+  LotteryStandEntity? get currentStand => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $StandControllerStateCopyWith<StandControllerState> get copyWith =>
@@ -43,7 +44,10 @@ abstract class $StandControllerStateCopyWith<$Res> {
       String? failureMessage,
       List<GroupEntity> groups,
       List<ConstraintLevelEntity> constraints,
-      List<LotteryStandEntity> stands});
+      List<LotteryStandEntity> stands,
+      LotteryStandEntity? currentStand});
+
+  $LotteryStandEntityCopyWith<$Res>? get currentStand;
 }
 
 /// @nodoc
@@ -67,6 +71,7 @@ class _$StandControllerStateCopyWithImpl<$Res,
     Object? groups = null,
     Object? constraints = null,
     Object? stands = null,
+    Object? currentStand = freezed,
   }) {
     return _then(_value.copyWith(
       isUpdateLoading: null == isUpdateLoading
@@ -97,7 +102,23 @@ class _$StandControllerStateCopyWithImpl<$Res,
           ? _value.stands
           : stands // ignore: cast_nullable_to_non_nullable
               as List<LotteryStandEntity>,
+      currentStand: freezed == currentStand
+          ? _value.currentStand
+          : currentStand // ignore: cast_nullable_to_non_nullable
+              as LotteryStandEntity?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LotteryStandEntityCopyWith<$Res>? get currentStand {
+    if (_value.currentStand == null) {
+      return null;
+    }
+
+    return $LotteryStandEntityCopyWith<$Res>(_value.currentStand!, (value) {
+      return _then(_value.copyWith(currentStand: value) as $Val);
+    });
   }
 }
 
@@ -116,7 +137,11 @@ abstract class _$$StandControllerStateImplCopyWith<$Res>
       String? failureMessage,
       List<GroupEntity> groups,
       List<ConstraintLevelEntity> constraints,
-      List<LotteryStandEntity> stands});
+      List<LotteryStandEntity> stands,
+      LotteryStandEntity? currentStand});
+
+  @override
+  $LotteryStandEntityCopyWith<$Res>? get currentStand;
 }
 
 /// @nodoc
@@ -137,6 +162,7 @@ class __$$StandControllerStateImplCopyWithImpl<$Res>
     Object? groups = null,
     Object? constraints = null,
     Object? stands = null,
+    Object? currentStand = freezed,
   }) {
     return _then(_$StandControllerStateImpl(
       isUpdateLoading: null == isUpdateLoading
@@ -167,6 +193,10 @@ class __$$StandControllerStateImplCopyWithImpl<$Res>
           ? _value._stands
           : stands // ignore: cast_nullable_to_non_nullable
               as List<LotteryStandEntity>,
+      currentStand: freezed == currentStand
+          ? _value.currentStand
+          : currentStand // ignore: cast_nullable_to_non_nullable
+              as LotteryStandEntity?,
     ));
   }
 }
@@ -183,7 +213,8 @@ class _$StandControllerStateImpl
       this.failureMessage = null,
       final List<GroupEntity> groups = const [],
       final List<ConstraintLevelEntity> constraints = const [],
-      final List<LotteryStandEntity> stands = const []})
+      final List<LotteryStandEntity> stands = const [],
+      this.currentStand = null})
       : _groups = groups,
         _constraints = constraints,
         _stands = stands;
@@ -228,8 +259,12 @@ class _$StandControllerStateImpl
   }
 
   @override
+  @JsonKey()
+  final LotteryStandEntity? currentStand;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'StandControllerState(isUpdateLoading: $isUpdateLoading, isFormLoading: $isFormLoading, isLoading: $isLoading, failureMessage: $failureMessage, groups: $groups, constraints: $constraints, stands: $stands)';
+    return 'StandControllerState(isUpdateLoading: $isUpdateLoading, isFormLoading: $isFormLoading, isLoading: $isLoading, failureMessage: $failureMessage, groups: $groups, constraints: $constraints, stands: $stands, currentStand: $currentStand)';
   }
 
   @override
@@ -243,7 +278,8 @@ class _$StandControllerStateImpl
       ..add(DiagnosticsProperty('failureMessage', failureMessage))
       ..add(DiagnosticsProperty('groups', groups))
       ..add(DiagnosticsProperty('constraints', constraints))
-      ..add(DiagnosticsProperty('stands', stands));
+      ..add(DiagnosticsProperty('stands', stands))
+      ..add(DiagnosticsProperty('currentStand', currentStand));
   }
 
   @override
@@ -262,7 +298,9 @@ class _$StandControllerStateImpl
             const DeepCollectionEquality().equals(other._groups, _groups) &&
             const DeepCollectionEquality()
                 .equals(other._constraints, _constraints) &&
-            const DeepCollectionEquality().equals(other._stands, _stands));
+            const DeepCollectionEquality().equals(other._stands, _stands) &&
+            (identical(other.currentStand, currentStand) ||
+                other.currentStand == currentStand));
   }
 
   @override
@@ -274,7 +312,8 @@ class _$StandControllerStateImpl
       failureMessage,
       const DeepCollectionEquality().hash(_groups),
       const DeepCollectionEquality().hash(_constraints),
-      const DeepCollectionEquality().hash(_stands));
+      const DeepCollectionEquality().hash(_stands),
+      currentStand);
 
   @JsonKey(ignore: true)
   @override
@@ -293,7 +332,8 @@ abstract class _StandControllerState implements StandControllerState {
       final String? failureMessage,
       final List<GroupEntity> groups,
       final List<ConstraintLevelEntity> constraints,
-      final List<LotteryStandEntity> stands}) = _$StandControllerStateImpl;
+      final List<LotteryStandEntity> stands,
+      final LotteryStandEntity? currentStand}) = _$StandControllerStateImpl;
 
   @override
   bool get isUpdateLoading;
@@ -309,6 +349,8 @@ abstract class _StandControllerState implements StandControllerState {
   List<ConstraintLevelEntity> get constraints;
   @override
   List<LotteryStandEntity> get stands;
+  @override
+  LotteryStandEntity? get currentStand;
   @override
   @JsonKey(ignore: true)
   _$$StandControllerStateImplCopyWith<_$StandControllerStateImpl>

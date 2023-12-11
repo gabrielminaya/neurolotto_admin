@@ -20,6 +20,7 @@ mixin _$LotteryControllerState {
   bool get isActionLoading => throw _privateConstructorUsedError;
   String? get failureMessage => throw _privateConstructorUsedError;
   List<LotteryEntity> get lotteries => throw _privateConstructorUsedError;
+  LotteryEntity? get selectedLottery => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LotteryControllerStateCopyWith<LotteryControllerState> get copyWith =>
@@ -36,7 +37,10 @@ abstract class $LotteryControllerStateCopyWith<$Res> {
       {bool isLoading,
       bool isActionLoading,
       String? failureMessage,
-      List<LotteryEntity> lotteries});
+      List<LotteryEntity> lotteries,
+      LotteryEntity? selectedLottery});
+
+  $LotteryEntityCopyWith<$Res>? get selectedLottery;
 }
 
 /// @nodoc
@@ -57,6 +61,7 @@ class _$LotteryControllerStateCopyWithImpl<$Res,
     Object? isActionLoading = null,
     Object? failureMessage = freezed,
     Object? lotteries = null,
+    Object? selectedLottery = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -75,7 +80,23 @@ class _$LotteryControllerStateCopyWithImpl<$Res,
           ? _value.lotteries
           : lotteries // ignore: cast_nullable_to_non_nullable
               as List<LotteryEntity>,
+      selectedLottery: freezed == selectedLottery
+          ? _value.selectedLottery
+          : selectedLottery // ignore: cast_nullable_to_non_nullable
+              as LotteryEntity?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LotteryEntityCopyWith<$Res>? get selectedLottery {
+    if (_value.selectedLottery == null) {
+      return null;
+    }
+
+    return $LotteryEntityCopyWith<$Res>(_value.selectedLottery!, (value) {
+      return _then(_value.copyWith(selectedLottery: value) as $Val);
+    });
   }
 }
 
@@ -92,7 +113,11 @@ abstract class _$$LotteryControllerStateImplCopyWith<$Res>
       {bool isLoading,
       bool isActionLoading,
       String? failureMessage,
-      List<LotteryEntity> lotteries});
+      List<LotteryEntity> lotteries,
+      LotteryEntity? selectedLottery});
+
+  @override
+  $LotteryEntityCopyWith<$Res>? get selectedLottery;
 }
 
 /// @nodoc
@@ -112,6 +137,7 @@ class __$$LotteryControllerStateImplCopyWithImpl<$Res>
     Object? isActionLoading = null,
     Object? failureMessage = freezed,
     Object? lotteries = null,
+    Object? selectedLottery = freezed,
   }) {
     return _then(_$LotteryControllerStateImpl(
       isLoading: null == isLoading
@@ -130,6 +156,10 @@ class __$$LotteryControllerStateImplCopyWithImpl<$Res>
           ? _value._lotteries
           : lotteries // ignore: cast_nullable_to_non_nullable
               as List<LotteryEntity>,
+      selectedLottery: freezed == selectedLottery
+          ? _value.selectedLottery
+          : selectedLottery // ignore: cast_nullable_to_non_nullable
+              as LotteryEntity?,
     ));
   }
 }
@@ -141,7 +171,8 @@ class _$LotteryControllerStateImpl implements _LotteryControllerState {
       {this.isLoading = false,
       this.isActionLoading = false,
       this.failureMessage = null,
-      final List<LotteryEntity> lotteries = const []})
+      final List<LotteryEntity> lotteries = const [],
+      this.selectedLottery = null})
       : _lotteries = lotteries;
 
   @override
@@ -163,8 +194,12 @@ class _$LotteryControllerStateImpl implements _LotteryControllerState {
   }
 
   @override
+  @JsonKey()
+  final LotteryEntity? selectedLottery;
+
+  @override
   String toString() {
-    return 'LotteryControllerState(isLoading: $isLoading, isActionLoading: $isActionLoading, failureMessage: $failureMessage, lotteries: $lotteries)';
+    return 'LotteryControllerState(isLoading: $isLoading, isActionLoading: $isActionLoading, failureMessage: $failureMessage, lotteries: $lotteries, selectedLottery: $selectedLottery)';
   }
 
   @override
@@ -179,12 +214,19 @@ class _$LotteryControllerStateImpl implements _LotteryControllerState {
             (identical(other.failureMessage, failureMessage) ||
                 other.failureMessage == failureMessage) &&
             const DeepCollectionEquality()
-                .equals(other._lotteries, _lotteries));
+                .equals(other._lotteries, _lotteries) &&
+            (identical(other.selectedLottery, selectedLottery) ||
+                other.selectedLottery == selectedLottery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isActionLoading,
-      failureMessage, const DeepCollectionEquality().hash(_lotteries));
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      isActionLoading,
+      failureMessage,
+      const DeepCollectionEquality().hash(_lotteries),
+      selectedLottery);
 
   @JsonKey(ignore: true)
   @override
@@ -199,7 +241,8 @@ abstract class _LotteryControllerState implements LotteryControllerState {
       {final bool isLoading,
       final bool isActionLoading,
       final String? failureMessage,
-      final List<LotteryEntity> lotteries}) = _$LotteryControllerStateImpl;
+      final List<LotteryEntity> lotteries,
+      final LotteryEntity? selectedLottery}) = _$LotteryControllerStateImpl;
 
   @override
   bool get isLoading;
@@ -209,6 +252,8 @@ abstract class _LotteryControllerState implements LotteryControllerState {
   String? get failureMessage;
   @override
   List<LotteryEntity> get lotteries;
+  @override
+  LotteryEntity? get selectedLottery;
   @override
   @JsonKey(ignore: true)
   _$$LotteryControllerStateImplCopyWith<_$LotteryControllerStateImpl>

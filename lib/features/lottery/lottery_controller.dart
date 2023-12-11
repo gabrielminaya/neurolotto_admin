@@ -14,6 +14,7 @@ sealed class LotteryControllerState with _$LotteryControllerState {
     @Default(false) bool isActionLoading,
     @Default(null) String? failureMessage,
     @Default([]) List<LotteryEntity> lotteries,
+    @Default(null) LotteryEntity? selectedLottery,
   }) = _LotteryControllerState;
 }
 
@@ -22,6 +23,10 @@ class LotteryController extends ValueNotifier<LotteryControllerState> {
   LotteryController(this._client) : super(const LotteryControllerState());
 
   final SupabaseClient _client;
+
+  void select(LotteryEntity lottery) {
+    value = value.copyWith(selectedLottery: lottery);
+  }
 
   Future<void> fetch() async {
     value = const LotteryControllerState(isLoading: true);
@@ -67,12 +72,13 @@ class LotteryController extends ValueNotifier<LotteryControllerState> {
           .single()
           .withConverter<LotteryEntity?>((data) => data == null ? null : LotteryEntity.fromJson(data));
 
-      if (createdLottery != null) {
-        final currentLotteries = [...value.lotteries];
-        currentLotteries.removeWhere((element) => element.id == lottery.id);
-        currentLotteries.add(createdLottery);
-        currentLotteries.sort((a, b) => a.name.compareTo(b.name));
-        value = value.copyWith(lotteries: currentLotteries);
+      final currentLotteries = [...value.lotteries];
+      final index = currentLotteries.indexWhere((element) => element.id == lottery.id);
+
+      if (index >= 0 && createdLottery != null) {
+        currentLotteries.removeAt(index);
+        currentLotteries.insert(index, createdLottery);
+        value = value.copyWith(lotteries: currentLotteries, selectedLottery: createdLottery);
         onSuccess();
       }
     } on PostgrestException catch (e) {

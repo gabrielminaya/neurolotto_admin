@@ -15,6 +15,7 @@ class GroupControllerState with _$GroupControllerState {
     @Default(false) bool isActionLoading,
     @Default(null) String? failureMessage,
     @Default([]) List<GroupEntity> groups,
+    @Default(null) GroupEntity? selectedGroup,
   }) = _GroupControllerState;
 }
 
@@ -23,6 +24,10 @@ class GroupController extends ValueNotifier<GroupControllerState> {
   GroupController(this._client) : super(const GroupControllerState());
 
   final SupabaseClient _client;
+
+  void select(GroupEntity group) {
+    value = value.copyWith(selectedGroup: group);
+  }
 
   Future<void> fetch() async {
     value = const GroupControllerState(isLoading: true);
@@ -67,7 +72,7 @@ class GroupController extends ValueNotifier<GroupControllerState> {
       if (createdGroup != null) {
         final currentGroups = [...value.groups, createdGroup];
         currentGroups.sort((a, b) => a.name.compareTo(b.name));
-        value = value.copyWith(groups: currentGroups);
+        value = value.copyWith(groups: currentGroups, selectedGroup: createdGroup);
       }
 
       onSuccess();
@@ -104,7 +109,7 @@ class GroupController extends ValueNotifier<GroupControllerState> {
         currentGroups.removeWhere((element) => element.id == group.id);
         currentGroups.add(createdGroup);
         currentGroups.sort((a, b) => a.name.compareTo(b.name));
-        value = value.copyWith(groups: currentGroups);
+        value = value.copyWith(groups: currentGroups, selectedGroup: createdGroup);
         onSuccess();
       }
     } on PostgrestException catch (e) {
@@ -126,7 +131,7 @@ class GroupController extends ValueNotifier<GroupControllerState> {
 
       final currentGroups = [...value.groups];
       currentGroups.remove(group);
-      value = value.copyWith(groups: currentGroups);
+      value = value.copyWith(groups: currentGroups, selectedGroup: null);
       onSuccess();
     } on PostgrestException catch (e) {
       onFailure(e.message);

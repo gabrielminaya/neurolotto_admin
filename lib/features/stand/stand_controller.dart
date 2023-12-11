@@ -20,14 +20,19 @@ sealed class StandControllerState with _$StandControllerState {
     @Default([]) List<GroupEntity> groups,
     @Default([]) List<ConstraintLevelEntity> constraints,
     @Default([]) List<LotteryStandEntity> stands,
+    @Default(null) LotteryStandEntity? currentStand,
   }) = _StandControllerState;
 }
 
-@Injectable()
+@LazySingleton()
 class StandController extends ValueNotifier<StandControllerState> {
   StandController(this._client) : super(const StandControllerState());
 
   final SupabaseClient _client;
+
+  void setStand(LotteryStandEntity stand) {
+    value = value.copyWith(currentStand: stand);
+  }
 
   Future<void> fetchFormDependecies() async {
     value = value.copyWith(isFormLoading: true);
@@ -94,6 +99,16 @@ class StandController extends ValueNotifier<StandControllerState> {
         "tripleta_max_amount": stand.tripletaMaxAmount,
       }).eq("id", stand.id);
 
+      final currentStands = [...value.stands];
+      final index = currentStands.indexWhere((element) => element.id == stand.id);
+
+      if (index >= 0) {
+        currentStands.removeAt(index);
+        currentStands.insert(index, stand);
+        value = value.copyWith(stands: currentStands);
+      }
+
+      value = value.copyWith(currentStand: stand);
       onSuccess();
     } on PostgrestException catch (error) {
       onFailure(error.message);

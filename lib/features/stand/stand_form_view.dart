@@ -16,10 +16,12 @@ import 'stand_controller.dart';
 
 @RoutePage()
 class StandFormView extends StatefulWidget {
-  const StandFormView({super.key, required this.stand});
+  const StandFormView({
+    super.key,
+    required this.stand,
+  });
 
   final LotteryStandEntity stand;
-
   @override
   State<StandFormView> createState() => _StandFormViewState();
 }
@@ -50,26 +52,29 @@ class _StandFormViewState extends State<StandFormView> {
     final paleMaxAmount = _formKey.currentState?.value["paleMaxAmount"] as String?;
     final tripletaMaxAmount = _formKey.currentState?.value["tripletaMaxAmount"] as String?;
 
+    final editedStand = widget.stand.copyWith(
+      name: name,
+      group: group,
+      constraintLevel: contraint,
+      active: active,
+      maximumCancellationAmount: num.parse(maximumCancellationAmount),
+      maximumSaleAmount: num.parse(maximumSaleAmount),
+      quinielaMaxAmount: quinielaMaxAmount != null ? num.parse(quinielaMaxAmount) : null,
+      paleMaxAmount: paleMaxAmount != null ? num.parse(paleMaxAmount) : null,
+      tripletaMaxAmount: tripletaMaxAmount != null ? num.parse(tripletaMaxAmount) : null,
+    );
+
     return _standController.update(
-      stand: widget.stand.copyWith(
-        name: name,
-        group: group,
-        constraintLevel: contraint,
-        active: active,
-        maximumCancellationAmount: num.parse(maximumCancellationAmount),
-        maximumSaleAmount: num.parse(maximumSaleAmount),
-        quinielaMaxAmount: quinielaMaxAmount != null ? num.parse(quinielaMaxAmount) : null,
-        paleMaxAmount: paleMaxAmount != null ? num.parse(paleMaxAmount) : null,
-        tripletaMaxAmount: tripletaMaxAmount != null ? num.parse(tripletaMaxAmount) : null,
-      ),
+      stand: editedStand,
       onFailure: (message) {
-        context.router.pop();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(message),
             showCloseIcon: true,
           ),
         );
+
+        context.router.pop();
       },
       onSuccess: () {
         context.router.pop();
