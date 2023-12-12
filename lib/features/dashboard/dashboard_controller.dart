@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../core/entities/hot_number_entity.dart';
+import '../../core/services.dart';
 
 part 'dashboard_controller.freezed.dart';
 
@@ -35,6 +36,7 @@ class DashboardController extends ValueNotifier<DashboardControllerState> {
     try {
       final hotNumbers = await _client
           .rpc("get_most_played_numbers", params: {
+            "in_consortium_id": authController.consortium?.id,
             "in_from": DateFormat("yyyy-MM-dd 00:00").format(atDate ?? value.selectedDate),
             "in_to": DateFormat("yyyy-MM-dd 23:59").format(atDate ?? value.selectedDate),
             "order_by_quantity": orderByQuantity ?? value.orderByQuantity,
