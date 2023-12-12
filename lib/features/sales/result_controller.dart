@@ -31,7 +31,11 @@ class ResultController extends ValueNotifier<ResultControllerState> {
     value = value.copyWith(isResultLoading: true);
 
     try {
-      final lotteries = await _client.from("lotteries").select<PostgrestList>().withConverter<List<LotteryEntity>>(
+      final lotteries = await _client
+          .from("lotteries")
+          .select<PostgrestList>()
+          .eq("consortium_id", authController.consortium?.id)
+          .withConverter<List<LotteryEntity>>(
             (data) => data.map((e) => LotteryEntity.fromJson(e)).toList(),
           );
 

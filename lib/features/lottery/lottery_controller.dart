@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../core/entities/lottery_entity.dart';
+import '../../core/services.dart';
 
 part 'lottery_controller.freezed.dart';
 
@@ -35,6 +36,7 @@ class LotteryController extends ValueNotifier<LotteryControllerState> {
       final lotteries = await _client
           .from("lotteries")
           .select<PostgrestList>()
+          .eq("consortium_id", authController.consortium?.id)
           .withConverter<List<LotteryEntity>>((data) => data.map((e) => LotteryEntity.fromJson(e)).toList());
       value = LotteryControllerState(lotteries: lotteries);
     } on PostgrestException catch (e) {

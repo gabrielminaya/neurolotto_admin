@@ -10,7 +10,7 @@ import '../../../core/service_locator/get_it.dart';
 import '../../../core/services.dart';
 import '../../../i18n/strings.g.dart';
 import '../../core/router/router.gr.dart';
-import '../../core/themes/async_button_builder.dart';
+import '../../core/async_button_builder.dart';
 import 'auth_controller.dart';
 
 @RoutePage()
