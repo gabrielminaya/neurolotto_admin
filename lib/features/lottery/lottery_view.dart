@@ -226,6 +226,12 @@ class LotteryDetail extends StatelessWidget {
             title: Text(t.lottery.tripletaPrice),
             subtitle: Text(NumberFormat.simpleCurrency().format(lottery.tripletaPrice)),
           ),
+          const Divider(height: 0),
+          ListTile(
+            leading: const Icon(Icons.monetization_on_outlined),
+            title: Text(t.lottery.active),
+            subtitle: Text(lottery.status.toString().toUpperCase()),
+          ),
         ],
       ),
     );

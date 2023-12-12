@@ -13,7 +13,7 @@ class TicketDetailControllerState with _$TicketDetailControllerState {
   const factory TicketDetailControllerState.initial() = _TicketDetailControllerInitial;
   const factory TicketDetailControllerState.loading() = _TicketDetailControllerLoading;
   const factory TicketDetailControllerState.failure(String message) = _TicketDetailControllerFailure;
-  const factory TicketDetailControllerState.sucess(List<PlayEntity> plays) = _TicketDetailControllerSuccess;
+  const factory TicketDetailControllerState.success(List<PlayEntity> plays) = _TicketDetailControllerSuccess;
 }
 
 @LazySingleton()
@@ -32,7 +32,7 @@ class TicketDetailController extends ValueNotifier<TicketDetailControllerState> 
           .eq("ticket_id", ticket.id)
           .withConverter<List<PlayEntity>>((data) => data.map((e) => PlayEntity.fromJson(e)).toList());
 
-      value = TicketDetailControllerState.sucess(plays);
+      value = TicketDetailControllerState.success(plays);
     } on PostgrestException catch (error) {
       debugPrint(error.message);
       value = TicketDetailControllerState.failure(error.message);

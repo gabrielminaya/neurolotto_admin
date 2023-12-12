@@ -14,6 +14,7 @@ import 'package:neurolotto_admin/core/entities/group_entity.dart' as _i19;
 import 'package:neurolotto_admin/core/entities/lottery_entity.dart' as _i20;
 import 'package:neurolotto_admin/core/entities/lottery_stand_entity.dart'
     as _i21;
+import 'package:neurolotto_admin/core/entities/ticket_entity.dart' as _i22;
 import 'package:neurolotto_admin/features/auth/sign_in_view.dart'
     deferred as _i11;
 import 'package:neurolotto_admin/features/consortium/consortium_view.dart'
@@ -105,11 +106,13 @@ abstract class $AppRouter extends _i17.RootStackRouter {
       );
     },
     HomeRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
       return _i17.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i17.DeferredWidget(
           _i5.loadLibrary,
-          () => _i5.HomeView(),
+          () => _i5.HomeView(key: args.key),
         ),
       );
     },
@@ -240,6 +243,19 @@ abstract class $AppRouter extends _i17.RootStackRouter {
         child: _i17.DeferredWidget(
           _i13.loadLibrary,
           () => _i13.StandView(),
+        ),
+      );
+    },
+    TicketDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<TicketDetailRouteArgs>();
+      return _i17.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i17.DeferredWidget(
+          _i16.loadLibrary,
+          () => _i16.TicketDetail(
+            key: args.key,
+            ticket: args.ticket,
+          ),
         ),
       );
     },
@@ -375,16 +391,31 @@ class GroupRoute extends _i17.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.HomeView]
-class HomeRoute extends _i17.PageRouteInfo<void> {
-  const HomeRoute({List<_i17.PageRouteInfo>? children})
-      : super(
+class HomeRoute extends _i17.PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({
+    _i18.Key? key,
+    List<_i17.PageRouteInfo>? children,
+  }) : super(
           HomeRoute.name,
+          args: HomeRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'HomeRoute';
 
-  static const _i17.PageInfo<void> page = _i17.PageInfo<void>(name);
+  static const _i17.PageInfo<HomeRouteArgs> page =
+      _i17.PageInfo<HomeRouteArgs>(name);
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({this.key});
+
+  final _i18.Key? key;
+
+  @override
+  String toString() {
+    return 'HomeRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -688,6 +719,44 @@ class StandRoute extends _i17.PageRouteInfo<void> {
   static const String name = 'StandRoute';
 
   static const _i17.PageInfo<void> page = _i17.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i16.TicketDetail]
+class TicketDetailRoute extends _i17.PageRouteInfo<TicketDetailRouteArgs> {
+  TicketDetailRoute({
+    _i18.Key? key,
+    required _i22.TicketEntity ticket,
+    List<_i17.PageRouteInfo>? children,
+  }) : super(
+          TicketDetailRoute.name,
+          args: TicketDetailRouteArgs(
+            key: key,
+            ticket: ticket,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'TicketDetailRoute';
+
+  static const _i17.PageInfo<TicketDetailRouteArgs> page =
+      _i17.PageInfo<TicketDetailRouteArgs>(name);
+}
+
+class TicketDetailRouteArgs {
+  const TicketDetailRouteArgs({
+    this.key,
+    required this.ticket,
+  });
+
+  final _i18.Key? key;
+
+  final _i22.TicketEntity ticket;
+
+  @override
+  String toString() {
+    return 'TicketDetailRouteArgs{key: $key, ticket: $ticket}';
+  }
 }
 
 /// generated route for

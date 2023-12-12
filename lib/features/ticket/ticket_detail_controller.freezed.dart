@@ -21,7 +21,7 @@ mixin _$TicketDetailControllerState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(List<PlayEntity> plays) sucess,
+    required TResult Function(List<PlayEntity> plays) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$TicketDetailControllerState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(List<PlayEntity> plays)? sucess,
+    TResult? Function(List<PlayEntity> plays)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$TicketDetailControllerState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(List<PlayEntity> plays)? sucess,
+    TResult Function(List<PlayEntity> plays)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ mixin _$TicketDetailControllerState {
     required TResult Function(_TicketDetailControllerInitial value) initial,
     required TResult Function(_TicketDetailControllerLoading value) loading,
     required TResult Function(_TicketDetailControllerFailure value) failure,
-    required TResult Function(_TicketDetailControllerSuccess value) sucess,
+    required TResult Function(_TicketDetailControllerSuccess value) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,7 +54,7 @@ mixin _$TicketDetailControllerState {
     TResult? Function(_TicketDetailControllerInitial value)? initial,
     TResult? Function(_TicketDetailControllerLoading value)? loading,
     TResult? Function(_TicketDetailControllerFailure value)? failure,
-    TResult? Function(_TicketDetailControllerSuccess value)? sucess,
+    TResult? Function(_TicketDetailControllerSuccess value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,7 +62,7 @@ mixin _$TicketDetailControllerState {
     TResult Function(_TicketDetailControllerInitial value)? initial,
     TResult Function(_TicketDetailControllerLoading value)? loading,
     TResult Function(_TicketDetailControllerFailure value)? failure,
-    TResult Function(_TicketDetailControllerSuccess value)? sucess,
+    TResult Function(_TicketDetailControllerSuccess value)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -143,7 +143,7 @@ class _$TicketDetailControllerInitialImpl
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(List<PlayEntity> plays) sucess,
+    required TResult Function(List<PlayEntity> plays) success,
   }) {
     return initial();
   }
@@ -154,7 +154,7 @@ class _$TicketDetailControllerInitialImpl
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(List<PlayEntity> plays)? sucess,
+    TResult? Function(List<PlayEntity> plays)? success,
   }) {
     return initial?.call();
   }
@@ -165,7 +165,7 @@ class _$TicketDetailControllerInitialImpl
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(List<PlayEntity> plays)? sucess,
+    TResult Function(List<PlayEntity> plays)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -180,7 +180,7 @@ class _$TicketDetailControllerInitialImpl
     required TResult Function(_TicketDetailControllerInitial value) initial,
     required TResult Function(_TicketDetailControllerLoading value) loading,
     required TResult Function(_TicketDetailControllerFailure value) failure,
-    required TResult Function(_TicketDetailControllerSuccess value) sucess,
+    required TResult Function(_TicketDetailControllerSuccess value) success,
   }) {
     return initial(this);
   }
@@ -191,7 +191,7 @@ class _$TicketDetailControllerInitialImpl
     TResult? Function(_TicketDetailControllerInitial value)? initial,
     TResult? Function(_TicketDetailControllerLoading value)? loading,
     TResult? Function(_TicketDetailControllerFailure value)? failure,
-    TResult? Function(_TicketDetailControllerSuccess value)? sucess,
+    TResult? Function(_TicketDetailControllerSuccess value)? success,
   }) {
     return initial?.call(this);
   }
@@ -202,7 +202,7 @@ class _$TicketDetailControllerInitialImpl
     TResult Function(_TicketDetailControllerInitial value)? initial,
     TResult Function(_TicketDetailControllerLoading value)? loading,
     TResult Function(_TicketDetailControllerFailure value)? failure,
-    TResult Function(_TicketDetailControllerSuccess value)? sucess,
+    TResult Function(_TicketDetailControllerSuccess value)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -272,7 +272,7 @@ class _$TicketDetailControllerLoadingImpl
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(List<PlayEntity> plays) sucess,
+    required TResult Function(List<PlayEntity> plays) success,
   }) {
     return loading();
   }
@@ -283,7 +283,7 @@ class _$TicketDetailControllerLoadingImpl
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(List<PlayEntity> plays)? sucess,
+    TResult? Function(List<PlayEntity> plays)? success,
   }) {
     return loading?.call();
   }
@@ -294,7 +294,7 @@ class _$TicketDetailControllerLoadingImpl
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(List<PlayEntity> plays)? sucess,
+    TResult Function(List<PlayEntity> plays)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -309,7 +309,7 @@ class _$TicketDetailControllerLoadingImpl
     required TResult Function(_TicketDetailControllerInitial value) initial,
     required TResult Function(_TicketDetailControllerLoading value) loading,
     required TResult Function(_TicketDetailControllerFailure value) failure,
-    required TResult Function(_TicketDetailControllerSuccess value) sucess,
+    required TResult Function(_TicketDetailControllerSuccess value) success,
   }) {
     return loading(this);
   }
@@ -320,7 +320,7 @@ class _$TicketDetailControllerLoadingImpl
     TResult? Function(_TicketDetailControllerInitial value)? initial,
     TResult? Function(_TicketDetailControllerLoading value)? loading,
     TResult? Function(_TicketDetailControllerFailure value)? failure,
-    TResult? Function(_TicketDetailControllerSuccess value)? sucess,
+    TResult? Function(_TicketDetailControllerSuccess value)? success,
   }) {
     return loading?.call(this);
   }
@@ -331,7 +331,7 @@ class _$TicketDetailControllerLoadingImpl
     TResult Function(_TicketDetailControllerInitial value)? initial,
     TResult Function(_TicketDetailControllerLoading value)? loading,
     TResult Function(_TicketDetailControllerFailure value)? failure,
-    TResult Function(_TicketDetailControllerSuccess value)? sucess,
+    TResult Function(_TicketDetailControllerSuccess value)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -429,7 +429,7 @@ class _$TicketDetailControllerFailureImpl
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(List<PlayEntity> plays) sucess,
+    required TResult Function(List<PlayEntity> plays) success,
   }) {
     return failure(message);
   }
@@ -440,7 +440,7 @@ class _$TicketDetailControllerFailureImpl
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(List<PlayEntity> plays)? sucess,
+    TResult? Function(List<PlayEntity> plays)? success,
   }) {
     return failure?.call(message);
   }
@@ -451,7 +451,7 @@ class _$TicketDetailControllerFailureImpl
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(List<PlayEntity> plays)? sucess,
+    TResult Function(List<PlayEntity> plays)? success,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -466,7 +466,7 @@ class _$TicketDetailControllerFailureImpl
     required TResult Function(_TicketDetailControllerInitial value) initial,
     required TResult Function(_TicketDetailControllerLoading value) loading,
     required TResult Function(_TicketDetailControllerFailure value) failure,
-    required TResult Function(_TicketDetailControllerSuccess value) sucess,
+    required TResult Function(_TicketDetailControllerSuccess value) success,
   }) {
     return failure(this);
   }
@@ -477,7 +477,7 @@ class _$TicketDetailControllerFailureImpl
     TResult? Function(_TicketDetailControllerInitial value)? initial,
     TResult? Function(_TicketDetailControllerLoading value)? loading,
     TResult? Function(_TicketDetailControllerFailure value)? failure,
-    TResult? Function(_TicketDetailControllerSuccess value)? sucess,
+    TResult? Function(_TicketDetailControllerSuccess value)? success,
   }) {
     return failure?.call(this);
   }
@@ -488,7 +488,7 @@ class _$TicketDetailControllerFailureImpl
     TResult Function(_TicketDetailControllerInitial value)? initial,
     TResult Function(_TicketDetailControllerLoading value)? loading,
     TResult Function(_TicketDetailControllerFailure value)? failure,
-    TResult Function(_TicketDetailControllerSuccess value)? sucess,
+    TResult Function(_TicketDetailControllerSuccess value)? success,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -562,14 +562,14 @@ class _$TicketDetailControllerSuccessImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TicketDetailControllerState.sucess(plays: $plays)';
+    return 'TicketDetailControllerState.success(plays: $plays)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'TicketDetailControllerState.sucess'))
+      ..add(DiagnosticsProperty('type', 'TicketDetailControllerState.success'))
       ..add(DiagnosticsProperty('plays', plays));
   }
 
@@ -599,9 +599,9 @@ class _$TicketDetailControllerSuccessImpl
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(List<PlayEntity> plays) sucess,
+    required TResult Function(List<PlayEntity> plays) success,
   }) {
-    return sucess(plays);
+    return success(plays);
   }
 
   @override
@@ -610,9 +610,9 @@ class _$TicketDetailControllerSuccessImpl
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(List<PlayEntity> plays)? sucess,
+    TResult? Function(List<PlayEntity> plays)? success,
   }) {
-    return sucess?.call(plays);
+    return success?.call(plays);
   }
 
   @override
@@ -621,11 +621,11 @@ class _$TicketDetailControllerSuccessImpl
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(List<PlayEntity> plays)? sucess,
+    TResult Function(List<PlayEntity> plays)? success,
     required TResult orElse(),
   }) {
-    if (sucess != null) {
-      return sucess(plays);
+    if (success != null) {
+      return success(plays);
     }
     return orElse();
   }
@@ -636,9 +636,9 @@ class _$TicketDetailControllerSuccessImpl
     required TResult Function(_TicketDetailControllerInitial value) initial,
     required TResult Function(_TicketDetailControllerLoading value) loading,
     required TResult Function(_TicketDetailControllerFailure value) failure,
-    required TResult Function(_TicketDetailControllerSuccess value) sucess,
+    required TResult Function(_TicketDetailControllerSuccess value) success,
   }) {
-    return sucess(this);
+    return success(this);
   }
 
   @override
@@ -647,9 +647,9 @@ class _$TicketDetailControllerSuccessImpl
     TResult? Function(_TicketDetailControllerInitial value)? initial,
     TResult? Function(_TicketDetailControllerLoading value)? loading,
     TResult? Function(_TicketDetailControllerFailure value)? failure,
-    TResult? Function(_TicketDetailControllerSuccess value)? sucess,
+    TResult? Function(_TicketDetailControllerSuccess value)? success,
   }) {
-    return sucess?.call(this);
+    return success?.call(this);
   }
 
   @override
@@ -658,11 +658,11 @@ class _$TicketDetailControllerSuccessImpl
     TResult Function(_TicketDetailControllerInitial value)? initial,
     TResult Function(_TicketDetailControllerLoading value)? loading,
     TResult Function(_TicketDetailControllerFailure value)? failure,
-    TResult Function(_TicketDetailControllerSuccess value)? sucess,
+    TResult Function(_TicketDetailControllerSuccess value)? success,
     required TResult orElse(),
   }) {
-    if (sucess != null) {
-      return sucess(this);
+    if (success != null) {
+      return success(this);
     }
     return orElse();
   }

@@ -24,6 +24,7 @@ mixin _$TicketControllerState {
       throw _privateConstructorUsedError;
   String? get failureMessage => throw _privateConstructorUsedError;
   DateTime get selectedDate => throw _privateConstructorUsedError;
+  TicketEntity? get selectedTicket => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TicketControllerStateCopyWith<TicketControllerState> get copyWith =>
@@ -43,7 +44,10 @@ abstract class $TicketControllerStateCopyWith<$Res> {
       List<TicketEntity> tickets,
       List<LotteryStandEntity> lotteryStands,
       String? failureMessage,
-      DateTime selectedDate});
+      DateTime selectedDate,
+      TicketEntity? selectedTicket});
+
+  $TicketEntityCopyWith<$Res>? get selectedTicket;
 }
 
 /// @nodoc
@@ -67,6 +71,7 @@ class _$TicketControllerStateCopyWithImpl<$Res,
     Object? lotteryStands = null,
     Object? failureMessage = freezed,
     Object? selectedDate = null,
+    Object? selectedTicket = freezed,
   }) {
     return _then(_value.copyWith(
       isInitializedLoading: null == isInitializedLoading
@@ -97,7 +102,23 @@ class _$TicketControllerStateCopyWithImpl<$Res,
           ? _value.selectedDate
           : selectedDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      selectedTicket: freezed == selectedTicket
+          ? _value.selectedTicket
+          : selectedTicket // ignore: cast_nullable_to_non_nullable
+              as TicketEntity?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TicketEntityCopyWith<$Res>? get selectedTicket {
+    if (_value.selectedTicket == null) {
+      return null;
+    }
+
+    return $TicketEntityCopyWith<$Res>(_value.selectedTicket!, (value) {
+      return _then(_value.copyWith(selectedTicket: value) as $Val);
+    });
   }
 }
 
@@ -117,7 +138,11 @@ abstract class _$$TicketControllerStateImplCopyWith<$Res>
       List<TicketEntity> tickets,
       List<LotteryStandEntity> lotteryStands,
       String? failureMessage,
-      DateTime selectedDate});
+      DateTime selectedDate,
+      TicketEntity? selectedTicket});
+
+  @override
+  $TicketEntityCopyWith<$Res>? get selectedTicket;
 }
 
 /// @nodoc
@@ -139,6 +164,7 @@ class __$$TicketControllerStateImplCopyWithImpl<$Res>
     Object? lotteryStands = null,
     Object? failureMessage = freezed,
     Object? selectedDate = null,
+    Object? selectedTicket = freezed,
   }) {
     return _then(_$TicketControllerStateImpl(
       isInitializedLoading: null == isInitializedLoading
@@ -169,6 +195,10 @@ class __$$TicketControllerStateImplCopyWithImpl<$Res>
           ? _value.selectedDate
           : selectedDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      selectedTicket: freezed == selectedTicket
+          ? _value.selectedTicket
+          : selectedTicket // ignore: cast_nullable_to_non_nullable
+              as TicketEntity?,
     ));
   }
 }
@@ -185,7 +215,8 @@ class _$TicketControllerStateImpl
       final List<TicketEntity> tickets = const [],
       final List<LotteryStandEntity> lotteryStands = const [],
       this.failureMessage = null,
-      required this.selectedDate})
+      required this.selectedDate,
+      this.selectedTicket = null})
       : _tickets = tickets,
         _lotteryStands = lotteryStands;
 
@@ -221,10 +252,13 @@ class _$TicketControllerStateImpl
   final String? failureMessage;
   @override
   final DateTime selectedDate;
+  @override
+  @JsonKey()
+  final TicketEntity? selectedTicket;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TicketControllerState(isInitializedLoading: $isInitializedLoading, isLoading: $isLoading, isActionLoading: $isActionLoading, tickets: $tickets, lotteryStands: $lotteryStands, failureMessage: $failureMessage, selectedDate: $selectedDate)';
+    return 'TicketControllerState(isInitializedLoading: $isInitializedLoading, isLoading: $isLoading, isActionLoading: $isActionLoading, tickets: $tickets, lotteryStands: $lotteryStands, failureMessage: $failureMessage, selectedDate: $selectedDate, selectedTicket: $selectedTicket)';
   }
 
   @override
@@ -238,7 +272,8 @@ class _$TicketControllerStateImpl
       ..add(DiagnosticsProperty('tickets', tickets))
       ..add(DiagnosticsProperty('lotteryStands', lotteryStands))
       ..add(DiagnosticsProperty('failureMessage', failureMessage))
-      ..add(DiagnosticsProperty('selectedDate', selectedDate));
+      ..add(DiagnosticsProperty('selectedDate', selectedDate))
+      ..add(DiagnosticsProperty('selectedTicket', selectedTicket));
   }
 
   @override
@@ -258,7 +293,9 @@ class _$TicketControllerStateImpl
             (identical(other.failureMessage, failureMessage) ||
                 other.failureMessage == failureMessage) &&
             (identical(other.selectedDate, selectedDate) ||
-                other.selectedDate == selectedDate));
+                other.selectedDate == selectedDate) &&
+            (identical(other.selectedTicket, selectedTicket) ||
+                other.selectedTicket == selectedTicket));
   }
 
   @override
@@ -270,7 +307,8 @@ class _$TicketControllerStateImpl
       const DeepCollectionEquality().hash(_tickets),
       const DeepCollectionEquality().hash(_lotteryStands),
       failureMessage,
-      selectedDate);
+      selectedDate,
+      selectedTicket);
 
   @JsonKey(ignore: true)
   @override
@@ -288,7 +326,8 @@ abstract class _TicketControllerState implements TicketControllerState {
       final List<TicketEntity> tickets,
       final List<LotteryStandEntity> lotteryStands,
       final String? failureMessage,
-      required final DateTime selectedDate}) = _$TicketControllerStateImpl;
+      required final DateTime selectedDate,
+      final TicketEntity? selectedTicket}) = _$TicketControllerStateImpl;
 
   @override
   bool get isInitializedLoading;
@@ -304,6 +343,8 @@ abstract class _TicketControllerState implements TicketControllerState {
   String? get failureMessage;
   @override
   DateTime get selectedDate;
+  @override
+  TicketEntity? get selectedTicket;
   @override
   @JsonKey(ignore: true)
   _$$TicketControllerStateImplCopyWith<_$TicketControllerStateImpl>

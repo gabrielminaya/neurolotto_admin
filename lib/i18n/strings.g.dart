@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 110
+/// Strings: 120
 ///
-/// Built on 2023-12-11 at 19:42 UTC
+/// Built on 2023-12-12 at 19:03 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -227,7 +227,7 @@ class _StringsGroupEn {
 	String get title => 'Groups';
 	String get detail => 'Details';
 	String get name => 'Name';
-	String get selectAGroup => 'Select a group';
+	String get selectAGroup => 'No group selected';
 	String get add => 'Add';
 	String get edit => 'Edit';
 	String get delete => 'Delete';
@@ -256,7 +256,7 @@ class _StringsLotteryEn {
 	String get name => 'Name';
 	String get success => 'Lottery updated';
 	String get active => 'Active';
-	String get selectALottery => 'Select a lottery';
+	String get selectALottery => 'No lottery selected';
 	String get quinielaFirstPrize => 'Quiniela 1st prize';
 	String get quinielaSecondPrize => 'Quiniela 2nd prize';
 	String get quinielaThirdPrize => 'Quiniela 3rd prize';
@@ -279,7 +279,7 @@ class _StringsStandEn {
 	String get detail => 'Details';
 	String get name => 'Name';
 	String get group => 'Group';
-	String get selectAStand => 'Select a bench';
+	String get selectAStand => 'No stand selected';
 	String get contraint => 'Constraint';
 	String get username => 'Username';
 	String get maximumSaleAmount => 'Maximum sale amount';
@@ -319,11 +319,21 @@ class _StringsTicketEn {
 	final _StringsEn _root; // ignore: unused_field
 
 	// Translations
+	String get title => 'Tickets';
+	String get detail => 'Details';
+	String get number => 'Number';
+	String get group => 'Grupo';
+	String get stand => 'Stand';
+	String get lottery => 'Lottery';
+	String get play => 'Play';
+	String get amount => 'Amount';
+	String get status => 'Status';
 	String get cancelAction => 'Cancel';
 	String get cancelActionTitle => 'Confirm Ticket Cancellation';
 	String get cancelActionContent => 'This action cannot be undone. Are you sure?';
 	String get cancelSuccess => 'Ticket canceled';
 	String get showDetails => 'Show Details';
+	String get selectATicket => 'No ticket selected';
 	String get empty => 'No tickets available';
 	String get total => 'Total';
 	String get date => 'Date';
@@ -399,7 +409,7 @@ extension on _StringsEn {
 			case 'group.title': return 'Groups';
 			case 'group.detail': return 'Details';
 			case 'group.name': return 'Name';
-			case 'group.selectAGroup': return 'Select a group';
+			case 'group.selectAGroup': return 'No group selected';
 			case 'group.add': return 'Add';
 			case 'group.edit': return 'Edit';
 			case 'group.delete': return 'Delete';
@@ -419,7 +429,7 @@ extension on _StringsEn {
 			case 'lottery.name': return 'Name';
 			case 'lottery.success': return 'Lottery updated';
 			case 'lottery.active': return 'Active';
-			case 'lottery.selectALottery': return 'Select a lottery';
+			case 'lottery.selectALottery': return 'No lottery selected';
 			case 'lottery.quinielaFirstPrize': return 'Quiniela 1st prize';
 			case 'lottery.quinielaSecondPrize': return 'Quiniela 2nd prize';
 			case 'lottery.quinielaThirdPrize': return 'Quiniela 3rd prize';
@@ -433,7 +443,7 @@ extension on _StringsEn {
 			case 'stand.detail': return 'Details';
 			case 'stand.name': return 'Name';
 			case 'stand.group': return 'Group';
-			case 'stand.selectAStand': return 'Select a bench';
+			case 'stand.selectAStand': return 'No stand selected';
 			case 'stand.contraint': return 'Constraint';
 			case 'stand.username': return 'Username';
 			case 'stand.maximumSaleAmount': return 'Maximum sale amount';
@@ -455,11 +465,21 @@ extension on _StringsEn {
 			case 'monitoring.pale': return 'Pale';
 			case 'monitoring.tripleta': return 'Triplet';
 			case 'monitoring.playEmpty': return 'No plays available';
+			case 'ticket.title': return 'Tickets';
+			case 'ticket.detail': return 'Details';
+			case 'ticket.number': return 'Number';
+			case 'ticket.group': return 'Grupo';
+			case 'ticket.stand': return 'Stand';
+			case 'ticket.lottery': return 'Lottery';
+			case 'ticket.play': return 'Play';
+			case 'ticket.amount': return 'Amount';
+			case 'ticket.status': return 'Status';
 			case 'ticket.cancelAction': return 'Cancel';
 			case 'ticket.cancelActionTitle': return 'Confirm Ticket Cancellation';
 			case 'ticket.cancelActionContent': return 'This action cannot be undone. Are you sure?';
 			case 'ticket.cancelSuccess': return 'Ticket canceled';
 			case 'ticket.showDetails': return 'Show Details';
+			case 'ticket.selectATicket': return 'No ticket selected';
 			case 'ticket.empty': return 'No tickets available';
 			case 'ticket.total': return 'Total';
 			case 'ticket.date': return 'Date';

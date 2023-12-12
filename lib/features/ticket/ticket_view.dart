@@ -10,7 +10,9 @@ import '../../core/entities/ticket_entity.dart';
 import '../../core/extensions/context.dart';
 import '../../core/extensions/number.dart';
 import '../../core/extensions/value_notifier.dart';
+import '../../core/router/router.gr.dart';
 import '../../core/service_locator/get_it.dart';
+import '../../core/services.dart';
 import '../../core/themes/async_button_builder.dart';
 import '../../i18n/strings.g.dart';
 import 'ticket_controller.dart';
@@ -25,14 +27,15 @@ class TicketView extends StatefulWidget {
 }
 
 class _TicketViewState extends State<TicketView> {
-  final _controller = getIt.get<TicketController>();
+  final _ticketController = getIt.get<TicketController>();
+  final _ticketDetailController = getIt.get<TicketDetailController>();
 
   @override
   void initState() {
     super.initState();
 
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => _controller
+      (_) => _ticketController
         ..initialize()
         ..fetch(),
     );
@@ -41,178 +44,173 @@ class _TicketViewState extends State<TicketView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) => CustomScrollView(
-          slivers: [
-            SliverPadding(
-              padding: p12,
-              sliver: SliverToBoxAdapter(
-                child: Row(
-                  children: [
-                    Flexible(
-                      child: FormBuilderDateTimePicker(
-                        name: 'date',
-                        decoration: InputDecoration(labelText: t.ticket.date),
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(2023),
-                        lastDate: DateTime.now(),
-                        initialValue: DateTime.now(),
-                        inputType: InputType.date,
-                        onChanged: (value) => _controller.fetch(atDate: value),
-                      ),
-                    ),
-                    hgap(10),
-                    Flexible(
-                      child: _controller.watch((context, state) {
-                        if (state.isInitializedLoading) {
-                          return const Center(child: LinearProgressIndicator());
-                        }
+      body: _ticketController.watch((context, state) {
+        if (state.isLoading) {
+          return const Center(child: CircularProgressIndicator());
+        }
 
-                        return FormBuilderDropdown<LotteryStandEntity>(
-                          name: 'status',
-                          items: [
-                            DropdownMenuItem(
-                              value: null,
-                              child: Text(t.ticket.all),
-                            ),
-                            ...state.lotteryStands.map((e) {
-                              return DropdownMenuItem(
-                                value: e,
-                                child: Text(e.name),
-                              );
-                            })
-                          ],
-                          onChanged: (value) => _controller.fetch(stand: value),
-                          decoration: InputDecoration(
-                            labelText: t.ticket.stands,
-                            prefixIcon: const Icon(Icons.list),
-                            border: const OutlineInputBorder(),
-                          ),
-                        );
-                      }),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            _controller.watch((context, state) {
-              if (state.isLoading) {
-                return const SliverFillRemaining(
-                  child: Center(child: CircularProgressIndicator()),
-                );
-              }
+        if (state.failureMessage != null) {
+          return Center(child: Text(state.failureMessage ?? ""));
+        }
 
-              if (state.failureMessage != null) {
-                return SliverFillRemaining(
-                  child: Center(child: Text(state.failureMessage ?? "")),
-                );
-              }
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.maxWidth <= tabletBreakpoint) {
+              return TicketItems(
+                tickets: state.tickets,
+                selectedTicket: state.selectedTicket,
+                onTicketSelected: (ticket) {
+                  _ticketController.select(ticket);
+                  router.push(TicketDetailRoute(ticket: ticket));
+                },
+              );
+            }
 
-              if (state.tickets.isEmpty) {
-                return SliverFillRemaining(
-                  child: Center(child: Text(t.ticket.empty)),
-                );
-              }
-
-              return SliverPadding(
-                padding: p12,
-                sliver: SliverToBoxAdapter(
-                  child: Wrap(
-                    children: state.tickets.map((ticket) {
-                      return SizedBox(
-                        width: constraints.maxWidth < 700 ? 400 : 500,
-                        child: _TicketCard(ticket: ticket),
-                      );
-                    }).toList(),
+            return Row(
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: TicketItems(
+                    tickets: state.tickets,
+                    selectedTicket: state.selectedTicket,
+                    onTicketSelected: (ticket) {
+                      _ticketController.select(ticket);
+                      _ticketDetailController.fetch(ticket: ticket);
+                    },
                   ),
                 ),
+                const VerticalDivider(width: 0),
+                Flexible(
+                  flex: 3,
+                  child: Builder(
+                    builder: (_) {
+                      if (state.selectedTicket == null) {
+                        return Center(
+                          child: Text(t.ticket.selectATicket),
+                        );
+                      }
+
+                      return TicketDetail(ticket: state.selectedTicket!);
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      }),
+    );
+  }
+}
+
+class TicketItems extends StatelessWidget {
+  TicketItems({
+    super.key,
+    required this.tickets,
+    this.selectedTicket,
+    required this.onTicketSelected,
+  });
+
+  final List<TicketEntity> tickets;
+  final TicketEntity? selectedTicket;
+  final ValueChanged<TicketEntity> onTicketSelected;
+  final _ticketController = getIt.get<TicketController>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverPadding(
+            padding: p12,
+            sliver: SliverList.list(
+              children: [
+                _ticketController.watch(
+                  (context, state) => FormBuilderDateTimePicker(
+                    name: 'date',
+                    decoration: InputDecoration(labelText: t.ticket.date, prefixIcon: const Icon(Icons.date_range)),
+                    firstDate: DateTime(2023),
+                    lastDate: DateTime.now(),
+                    format: DateFormat("dd/MM/yyyy"),
+                    initialValue: state.selectedDate,
+                    inputType: InputType.date,
+                    onChanged: (value) => _ticketController.fetch(atDate: value),
+                  ),
+                ),
+                vgap(10),
+                _ticketController.watch((context, state) {
+                  if (state.isInitializedLoading) {
+                    return const Center(child: LinearProgressIndicator());
+                  }
+
+                  return FormBuilderDropdown<LotteryStandEntity>(
+                    name: 'status',
+                    items: [
+                      DropdownMenuItem(
+                        value: null,
+                        child: Text(t.ticket.all),
+                      ),
+                      ...state.lotteryStands.map((e) {
+                        return DropdownMenuItem(
+                          value: e,
+                          child: Text(e.name),
+                        );
+                      })
+                    ],
+                    onChanged: (value) => _ticketController.fetch(stand: value),
+                    decoration: InputDecoration(
+                      labelText: t.ticket.stands,
+                      prefixIcon: const Icon(Icons.list),
+                      border: const OutlineInputBorder(),
+                    ),
+                  );
+                }),
+              ],
+            ),
+          ),
+          SliverList.separated(
+            itemCount: tickets.length,
+            separatorBuilder: (context, index) => const Divider(height: 0),
+            itemBuilder: (context, index) {
+              final ticket = tickets.elementAt(index);
+              return ListTile(
+                leading: const Icon(Icons.receipt_outlined),
+                title: Text(ticket.sequenceNumber.toString().padLeft(10, '0')),
+                subtitle: Text(ticket.lotteryStand.name),
+                selected: ticket == selectedTicket,
+                onTap: () => onTicketSelected(ticket),
+                trailing: Visibility(
+                  visible: ticket == selectedTicket,
+                  child: const Icon(Icons.arrow_right),
+                ),
               );
-            }),
-          ],
-        ),
+            },
+          ),
+        ],
       ),
     );
   }
 }
 
-class _TicketCard extends StatelessWidget {
-  _TicketCard({required this.ticket});
+@RoutePage(name: "TicketDetailRoute")
+class TicketDetail extends StatefulWidget {
+  const TicketDetail({super.key, required this.ticket});
 
   final TicketEntity ticket;
-  final _ticketDetailController = getIt.get<TicketDetailController>();
+
+  @override
+  State<TicketDetail> createState() => _TicketDetailState();
+}
+
+class _TicketDetailState extends State<TicketDetail> {
   final _ticketController = getIt.get<TicketController>();
+  final _ticketDetailController = getIt.get<TicketDetailController>();
 
-  Future<void> showTicketDetailDialog(BuildContext context) async {
-    _ticketDetailController.fetch(ticket: ticket);
-
-    return showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(ticket.sequenceNumber.toString().padLeft(10, '0')),
-        content: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(DateFormat("dd/MM/yyyy HH:mm a").format(ticket.createdAt)),
-            vgap(5),
-            Text(ticket.lotteryStand.name),
-            vgap(5),
-            Text(ticket.ticketState.name),
-            vgap(10),
-            _ticketDetailController.watch(
-              (context, state) => state.when(
-                initial: () => const SizedBox(),
-                loading: () => const LinearProgressIndicator(),
-                failure: (message) => Text(message),
-                sucess: (plays) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ...plays.map(
-                        (play) {
-                          return ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            title: Text(play.playNumber.toLotteryFormat),
-                            trailing: Text(NumberFormat.currency(symbol: "").format(play.playAmount)),
-                            subtitle: Text(play.lotteryNames.join(', ')),
-                          );
-                        },
-                      ),
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        title: Text(
-                          t.ticket.total,
-                          style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        trailing: Text(
-                          NumberFormat.currency(symbol: "").format(
-                            plays.fold(
-                              0.0,
-                              (previousValue, element) =>
-                                  previousValue + (element.playAmount * element.lotteryIds.length),
-                            ),
-                          ),
-                          style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: FilledButton(
-                    onPressed: () => context.router.pop(),
-                    child: Text(t.common.back),
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
+  @override
+  void initState() {
+    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback(
+      (_) => _ticketDetailController.fetch(ticket: widget.ticket),
     );
   }
 
@@ -238,7 +236,7 @@ class _TicketCard extends StatelessWidget {
                 child: stateWidget,
                 onPressed: () => _ticketController
                     .cancel(
-                      ticket: ticket,
+                      ticket: widget.ticket,
                       onFailure: (message) => context.showSnackBar(
                         SnackBar(content: Text(message), showCloseIcon: true),
                       ),
@@ -257,47 +255,152 @@ class _TicketCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0.3,
-      shape: const OutlineInputBorder(),
-      child: ListTile(
-        isThreeLine: true,
-        title: Text(ticket.sequenceNumber.toString().padLeft(10, '0')),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Divider(),
-            Text(DateFormat("dd/MM/yyyy HH:mm a").format(ticket.createdAt)),
-            vgap(5),
-            Text(ticket.lotteryStand.name),
-            vgap(5),
-            Text(ticket.ticketState.name),
-            vgap(10),
-            ButtonBar(
-              alignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  onPressed: () => onCancel(context),
-                  style: TextButton.styleFrom(
-                    foregroundColor: MaterialStateColor.resolveWith(
-                      (states) => context.colorScheme.error,
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: context.colorScheme.error,
+        onPressed: () => onCancel(context),
+        child: const Icon(Icons.cancel_outlined),
+      ),
+      appBar: AppBar(
+        title: Text(t.ticket.detail),
+        centerTitle: false,
+        actions: [
+          hgap(10),
+        ],
+      ),
+      body: ListView(
+        children: [
+          ListTile(
+            leading: const Icon(Icons.date_range),
+            title: Text(t.ticket.date),
+            subtitle: Text(DateFormat("dd/MM/yyyy HH:mm a").format(widget.ticket.createdAt)),
+          ),
+          const Divider(height: 0),
+          ListTile(
+            leading: const Icon(Icons.store),
+            title: Text(t.ticket.stand),
+            subtitle: Text(widget.ticket.lotteryStand.name),
+          ),
+          const Divider(height: 0),
+          ListTile(
+            leading: const Icon(Icons.power_settings_new),
+            title: Text(t.ticket.status),
+            subtitle: Text(widget.ticket.ticketState.name),
+          ),
+          _ticketDetailController.watch(
+            (context, state) => state.when(
+              initial: () => const SizedBox(),
+              loading: () => const LinearProgressIndicator(),
+              failure: (message) => Text(message),
+              success: (plays) {
+                final totalAmount = plays.fold(
+                  0.0,
+                  (previousValue, element) => (previousValue + element.playAmount) * element.lotteryIds.length,
+                );
+
+                return Table(
+                  border: TableBorder.all(),
+                  columnWidths: const {
+                    0: FlexColumnWidth(1),
+                    1: FlexColumnWidth(2),
+                    2: FlexColumnWidth(1),
+                  },
+                  children: [
+                    TableRow(
+                      decoration: BoxDecoration(
+                        color: context.colorScheme.primaryContainer,
+                      ),
+                      children: [
+                        TableCell(
+                          child: Padding(
+                            padding: p8,
+                            child: Text(
+                              t.ticket.play,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        TableCell(
+                          child: Padding(
+                            padding: p8,
+                            child: Text(
+                              t.ticket.lottery,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        TableCell(
+                          child: Padding(
+                            padding: p8,
+                            child: Text(
+                              t.ticket.amount,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  child: Text(t.ticket.cancelAction),
-                ),
-                TextButton(
-                  onPressed: () => showTicketDetailDialog(context),
-                  style: TextButton.styleFrom(
-                    foregroundColor: MaterialStateColor.resolveWith(
-                      (states) => context.colorScheme.secondary,
+                    for (final play in plays)
+                      TableRow(
+                        children: [
+                          TableCell(
+                            child: Padding(
+                              padding: p4,
+                              child: Text(play.playNumber.toLotteryFormat),
+                            ),
+                          ),
+                          TableCell(
+                            child: Padding(
+                              padding: p4,
+                              child: Text(play.lotteryNames.join(", ")),
+                            ),
+                          ),
+                          TableCell(
+                            child: Padding(
+                              padding: p4,
+                              child: Text(NumberFormat.simpleCurrency().format(play.playAmount)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    TableRow(
+                      children: [
+                        const TableCell(
+                          child: Padding(
+                            padding: p2,
+                            child: Text(""),
+                          ),
+                        ),
+                        TableCell(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: p2.bottom, bottom: p2.top, right: 10),
+                            child: Text(
+                              t.ticket.total,
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
+                        ),
+                        TableCell(
+                          child: Padding(
+                            padding: p2,
+                            child: Text(
+                              NumberFormat.simpleCurrency().format(totalAmount),
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  child: Text(t.ticket.showDetails),
-                ),
-              ],
+                  ],
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

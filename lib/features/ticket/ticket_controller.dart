@@ -20,6 +20,7 @@ sealed class TicketControllerState with _$TicketControllerState {
     @Default([]) List<LotteryStandEntity> lotteryStands,
     @Default(null) String? failureMessage,
     required DateTime selectedDate,
+    @Default(null) TicketEntity? selectedTicket,
   }) = _TicketControllerState;
 }
 
@@ -29,13 +30,18 @@ class TicketController extends ValueNotifier<TicketControllerState> {
 
   final SupabaseClient _client;
 
+  void select(TicketEntity ticket) {
+    value = value.copyWith(selectedTicket: ticket);
+  }
+
   Future<void> initialize() async {
     value = value.copyWith(isInitializedLoading: true);
 
     try {
       final stands = await _client
           .from("lottery_stands")
-          .select<PostgrestList>("*, constraint_levels(*), groups(*)")
+          .select<PostgrestList>("*, constraint_levels(*), groups!inner(*)")
+          .eq("groups.consortium_id", authController.consortium?.id)
           .withConverter<List<LotteryStandEntity>>((data) => data.map((e) => LotteryStandEntity.fromJson(e)).toList());
 
       value = value.copyWith(lotteryStands: stands, failureMessage: null);
@@ -47,16 +53,15 @@ class TicketController extends ValueNotifier<TicketControllerState> {
   }
 
   Future<void> fetch({DateTime? atDate, LotteryStandEntity? stand}) async {
-    value = value.copyWith(isLoading: true);
+    value = value.copyWith(isLoading: true, selectedTicket: null);
 
     if (atDate != null) value = value.copyWith(selectedDate: atDate);
-
-    debugPrint("fetch ${atDate?.toIso8601String()}  ${value.selectedDate.toIso8601String()}");
 
     try {
       final builder = _client
           .from("tickets")
-          .select<PostgrestList>("*, lottery_stands(*, constraint_levels(*), groups(*)), ticket_states(*)");
+          .select<PostgrestList>("*, lottery_stands!inner(*, constraint_levels(*), groups!inner(*)), ticket_states(*)")
+          .eq("lottery_stands.groups.consortium_id", authController.consortium?.id);
 
       if (stand != null) {
         builder.eq("lottery_stand_id", stand.id);
@@ -100,7 +105,7 @@ class TicketController extends ValueNotifier<TicketControllerState> {
         final index = currentTickets.indexWhere((element) => element.id == updatedTicket.id);
         currentTickets.removeAt(index);
         currentTickets.insert(index, updatedTicket);
-        value = value.copyWith(tickets: currentTickets);
+        value = value.copyWith(tickets: currentTickets, selectedTicket: updatedTicket);
       }
 
       onSuccess();

@@ -36,6 +36,10 @@ class _DashboardViewState extends State<DashboardView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: _dashboardController.fetchPlaysByFilters,
+        child: const Icon(Icons.refresh),
+      ),
       body: LayoutBuilder(
         builder: (context, constraints) => CustomScrollView(
           slivers: [

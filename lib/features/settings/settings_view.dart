@@ -13,6 +13,7 @@ class SettingsView extends StatelessWidget {
     return Scaffold(
       body: AutoTabsRouter.tabBar(
         routes: const [
+          TicketRoute(),
           StandRoute(),
           GroupRoute(),
           LotteryRoute(),
@@ -25,6 +26,7 @@ class SettingsView extends StatelessWidget {
               isScrollable: constraints.maxWidth < tabletBreakpoint ? false : true,
               tabAlignment: constraints.maxWidth < tabletBreakpoint ? TabAlignment.fill : TabAlignment.start,
               tabs: const [
+                Tab(text: "Tickets"),
                 Tab(text: "Stands"),
                 Tab(text: "Groups"),
                 Tab(text: "Lotteries"),

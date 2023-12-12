@@ -20,8 +20,8 @@ class AppRouter extends $AppRouter {
           AutoRoute(page: DashboardRoute.page),
           AutoRoute(page: SaleRoute.page),
           AutoRoute(page: ResultRoute.page),
-          AutoRoute(page: TicketRoute.page),
           AutoRoute(page: SettingsRoute.page, children: [
+            AutoRoute(page: TicketRoute.page),
             AutoRoute(page: GroupRoute.page),
             AutoRoute(page: StandRoute.page),
             AutoRoute(page: LotteryRoute.page),
@@ -35,6 +35,7 @@ class AppRouter extends $AppRouter {
       AutoRoute(page: GroupFormRoute.page, fullscreenDialog: true),
       AutoRoute(page: LotteryDetailRoute.page),
       AutoRoute(page: LotteryFormRoute.page, fullscreenDialog: true),
+      AutoRoute(page: TicketDetailRoute.page),
       AutoRoute(page: SplashRoute.page, initial: true, guards: [AuthGuard()]),
       AutoRoute(page: SignInRoute.page),
     ];
