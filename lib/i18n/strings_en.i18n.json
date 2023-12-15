@@ -4,6 +4,7 @@
         "next": "Next",
         "done": "Done",
         "save": "Apply",
+        "remove": "Delete",
         "signOut": "Sign out",
         "edit": "Edit"
     },
@@ -48,10 +49,17 @@
     },
     "lottery": {
         "title": "Lotteries",
-        "detail": "Details",
+        "details": "Details",
+        "schedules": "Schedules",
+        "isClosed": "Closed",
         "name": "Name",
         "success": "Lottery updated",
         "active": "Active",
+        "add": "Add",
+        "scheduleEmpty": "No schedules created",
+        "effectiveDate": "Effective Date",
+        "removeScheduleTitle": "Are you sure you want to delete this schedule?",
+        "removeScheduleContent": "No schedule can be restored",
         "selectALottery": "No lottery selected",
         "quinielaFirstPrize": "Quiniela 1st prize",
         "quinielaSecondPrize": "Quiniela 2nd prize",
@@ -139,6 +147,25 @@
         "firstPrize": "First number",
         "secondPrize": "Second number",
         "thirdPrize": "Third number",
-        "empty": "No results available"
+        "empty": "No results available",
+        "confirmation": {
+            "title": "Are you sure you want to confirm the results?",
+            "yes": "Yes",
+            "no": "No"
+        }
+    },
+    "settings": {
+        "title": "Settings",
+        "theme": "Theme",
+        "dark": "Dark",
+        "light": "Light",
+        "success": "Settings updated",
+        "options": {
+            "tickets": "Tickets",
+            "stand": "Stands",
+            "lottery": "Lotteries",
+            "group": "Groups",
+            "consortium": "Consortium"
+        }
     }
 }

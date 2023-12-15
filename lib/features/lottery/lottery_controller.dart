@@ -59,15 +59,6 @@ class LotteryController extends ValueNotifier<LotteryControllerState> {
           .update({
             "name": lottery.name,
             "status": lottery.status,
-            "quiniela_first_prize": lottery.quinielaFirstPrize,
-            "quiniela_second_prize": lottery.quinielaSecondPrize,
-            "quiniela_third_prize": lottery.quinielaThirdPrize,
-            "pale_first_second_prize": lottery.paleFirstSecondPrize,
-            "pale_first_third_prize": lottery.paleFirstThirdPrize,
-            "pale_second_third_prize": lottery.paleSecondThirdPrize,
-            "tripleta_prize": lottery.tripletaPrice,
-            "time_open": lottery.timeOpen,
-            "time_close": lottery.timeClose
           })
           .eq("id", lottery.id)
           .select<PostgrestMap?>()

@@ -4,6 +4,7 @@
         "next": "Continuar",
         "done": "Completar",
         "save": "Aplicar",
+        "remove": "Eliminar",
         "signOut": "Cerrar sesión",
         "edit": "Editar"
     },
@@ -49,10 +50,17 @@
     "lottery": {
         "title": "Loterías",
         "detail": "Detalles",
+        "schedules": "Horarios",
+        "isClosed": "Cerrada",
         "name": "Nombre",
         "success": "Lotería actualizada",
         "active": "Activo",
         "edit": "Editar",
+        "add": "Añadir",
+        "scheduleEmpty": "No hay horarios creados",
+        "effectiveDate": "Fecha de vigencia",
+        "removeScheduleTitle": "¿Estas seguro de borrar este horario?",
+        "removeScheduleContent": "No podras recuperar este horario",
         "selectALottery": "No hay lotería seleccionada",
         "quinielaFirstPrize": "Quiniela 1er premio",
         "quinielaSecondPrize": "Quiniela 2da premio",
@@ -140,6 +148,25 @@
         "firstPrize": "Primer número",
         "secondPrize": "Segundo número",
         "thirdPrize": "Tercer número",
-        "empty": "No hay resultados disponibles"
+        "empty": "No hay resultados disponibles",
+        "confirmation": {
+            "title": "¿Estás seguro de que deseas confirmar los resultados?",
+            "yes": "Si",
+            "no": "No"
+        }
+    },
+    "settings": {
+        "title": "Configuración",
+        "theme": "Tema",
+        "dark": "Oscuro",
+        "light": "Claro",
+        "success": "Configuración actualizada",
+        "options": {
+            "tickets": "Tickets",
+            "stand": "Bancas",
+            "lottery": "Loterías",
+            "group": "Grupos",
+            "consortium": "Consorcio"
+        }
     }
 }

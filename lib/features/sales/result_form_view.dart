@@ -8,6 +8,7 @@ import '../../core/async_button_builder.dart';
 import '../../core/constants.dart';
 import '../../core/entities/lottery_entity.dart';
 import '../../core/entities/lottery_result_entity.dart';
+import '../../core/extensions/context.dart';
 import '../../core/extensions/value_notifier.dart';
 import '../../core/service_locator/get_it.dart';
 import '../../core/services.dart';
@@ -44,6 +45,36 @@ class _ResultFormViewState extends State<ResultFormView> {
     final resultOne = _formKey.currentState?.value["resultOne"] as String;
     final resultTwo = _formKey.currentState?.value["resultTwo"] as String;
     final resultThree = _formKey.currentState?.value["resultThree"] as String;
+
+    final confirmation = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Center(child: Text(t.result.confirmation.title)),
+        content: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Chip(label: Text(resultOne)),
+            Chip(label: Text(resultTwo)),
+            Chip(label: Text(resultThree)),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => context.router.pop(false),
+            child: Text(t.result.confirmation.no),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(foregroundColor: context.colorScheme.error),
+            onPressed: () => context.router.pop(true),
+            child: Text(t.result.confirmation.yes),
+          ),
+        ],
+      ),
+    );
+
+    if (!(confirmation ?? false)) {
+      return;
+    }
 
     if (result == null) {
       return _resultController.add(
@@ -147,19 +178,34 @@ class _ResultFormViewState extends State<ResultFormView> {
                 FormBuilderTextField(
                   name: 'resultOne',
                   decoration: InputDecoration(label: Text(t.result.firstPrize)),
-                  validator: FormBuilderValidators.required(),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                    FormBuilderValidators.integer(),
+                    FormBuilderValidators.min(1),
+                    FormBuilderValidators.max(100),
+                  ]),
                 ),
                 vgap(10),
                 FormBuilderTextField(
                   name: 'resultTwo',
                   decoration: InputDecoration(label: Text(t.result.secondPrize)),
-                  validator: FormBuilderValidators.required(),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                    FormBuilderValidators.integer(),
+                    FormBuilderValidators.min(1),
+                    FormBuilderValidators.max(100),
+                  ]),
                 ),
                 vgap(10),
                 FormBuilderTextField(
                   name: 'resultThree',
                   decoration: InputDecoration(label: Text(t.result.thirdPrize)),
-                  validator: FormBuilderValidators.required(),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                    FormBuilderValidators.integer(),
+                    FormBuilderValidators.min(1),
+                    FormBuilderValidators.max(100),
+                  ]),
                 ),
               ],
             ),

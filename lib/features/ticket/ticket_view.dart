@@ -4,6 +4,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/async_button_builder.dart';
 import '../../core/constants.dart';
 import '../../core/entities/lottery_stand_entity.dart';
 import '../../core/entities/ticket_entity.dart';
@@ -13,7 +14,6 @@ import '../../core/extensions/value_notifier.dart';
 import '../../core/router/router.gr.dart';
 import '../../core/service_locator/get_it.dart';
 import '../../core/services.dart';
-import '../../core/async_button_builder.dart';
 import '../../i18n/strings.g.dart';
 import 'ticket_controller.dart';
 import 'ticket_detail_controller.dart';
@@ -256,10 +256,13 @@ class _TicketDetailState extends State<TicketDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: context.colorScheme.error,
-        onPressed: () => onCancel(context),
-        child: const Icon(Icons.cancel_outlined),
+      floatingActionButton: Visibility(
+        visible: widget.ticket.canceledByName == null,
+        child: FloatingActionButton(
+          backgroundColor: context.colorScheme.error,
+          onPressed: () => onCancel(context),
+          child: const Icon(Icons.cancel_outlined),
+        ),
       ),
       appBar: AppBar(
         title: Text(t.ticket.detail),
@@ -285,7 +288,18 @@ class _TicketDetailState extends State<TicketDetail> {
           ListTile(
             leading: const Icon(Icons.power_settings_new),
             title: Text(t.ticket.status),
-            subtitle: Text(widget.ticket.ticketState.name),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(widget.ticket.ticketState.name),
+                if (widget.ticket.canceledByName != null)
+                  Text(
+                    widget.ticket.canceledByName ?? "",
+                    style: context.textTheme.labelSmall?.copyWith(color: context.colorScheme.error),
+                  ),
+              ],
+            ),
           ),
           _ticketDetailController.watch(
             (context, state) => state.when(

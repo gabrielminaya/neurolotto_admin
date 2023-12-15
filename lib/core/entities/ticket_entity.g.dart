@@ -16,6 +16,7 @@ _$TicketEntityImpl _$$TicketEntityImplFromJson(Map<String, dynamic> json) =>
           json['lottery_stands'] as Map<String, dynamic>),
       ticketState: TicketStateEntity.fromJson(
           json['ticket_states'] as Map<String, dynamic>),
+      canceledByName: json['canceled_by_name'] as String?,
     );
 
 Map<String, dynamic> _$$TicketEntityImplToJson(_$TicketEntityImpl instance) =>
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$TicketEntityImplToJson(_$TicketEntityImpl instance) =>
       'state_id': instance.stateId,
       'lottery_stands': instance.lotteryStand,
       'ticket_states': instance.ticketState,
+      'canceled_by_name': instance.canceledByName,
     };

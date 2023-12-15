@@ -127,7 +127,7 @@ class GroupController extends ValueNotifier<GroupControllerState> {
     value = value.copyWith(isActionLoading: true);
 
     try {
-      await _client.rpc("handle_group_delete", params: {"in_group_id": group.id});
+      await _client.rpc("handle_delete_group", params: {"in_group_id": group.id});
 
       final currentGroups = [...value.groups];
       currentGroups.remove(group);

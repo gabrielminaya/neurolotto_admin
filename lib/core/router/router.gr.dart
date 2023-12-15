@@ -8,17 +8,19 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i18;
-import 'package:flutter/material.dart' as _i19;
-import 'package:neurolotto_admin/core/entities/group_entity.dart' as _i20;
-import 'package:neurolotto_admin/core/entities/lottery_entity.dart' as _i21;
+import 'package:auto_route/auto_route.dart' as _i20;
+import 'package:flutter/material.dart' as _i21;
+import 'package:neurolotto_admin/core/entities/group_entity.dart' as _i22;
+import 'package:neurolotto_admin/core/entities/lottery_entity.dart' as _i23;
 import 'package:neurolotto_admin/core/entities/lottery_result_entity.dart'
-    as _i22;
+    as _i25;
+import 'package:neurolotto_admin/core/entities/lottery_schedule_entity.dart'
+    as _i24;
 import 'package:neurolotto_admin/core/entities/lottery_stand_entity.dart'
-    as _i23;
-import 'package:neurolotto_admin/core/entities/ticket_entity.dart' as _i24;
+    as _i26;
+import 'package:neurolotto_admin/core/entities/ticket_entity.dart' as _i27;
 import 'package:neurolotto_admin/features/auth/sign_in_view.dart'
-    deferred as _i12;
+    deferred as _i14;
 import 'package:neurolotto_admin/features/consortium/consortium_view.dart'
     deferred as _i1;
 import 'package:neurolotto_admin/features/dashboard/dashboard_view.dart'
@@ -28,47 +30,51 @@ import 'package:neurolotto_admin/features/group/group_form_view.dart'
 import 'package:neurolotto_admin/features/group/group_view.dart'
     deferred as _i3;
 import 'package:neurolotto_admin/features/home/home_view.dart' deferred as _i5;
-import 'package:neurolotto_admin/features/lottery/lottery_form_view.dart'
-    deferred as _i7;
-import 'package:neurolotto_admin/features/lottery/lottery_view.dart'
+import 'package:neurolotto_admin/features/lottery/lottery_schedule_date_form_view.dart'
     deferred as _i6;
-import 'package:neurolotto_admin/features/sales/result_form_view.dart'
+import 'package:neurolotto_admin/features/lottery/lottery_schedule_form_view.dart'
+    deferred as _i7;
+import 'package:neurolotto_admin/features/lottery/lottery_schedule_view.dart'
     deferred as _i8;
-import 'package:neurolotto_admin/features/sales/result_view.dart'
+import 'package:neurolotto_admin/features/lottery/lottery_view.dart'
     deferred as _i9;
-import 'package:neurolotto_admin/features/sales/sale_view.dart'
+import 'package:neurolotto_admin/features/sales/result_form_view.dart'
     deferred as _i10;
-import 'package:neurolotto_admin/features/settings/settings_view.dart'
+import 'package:neurolotto_admin/features/sales/result_view.dart'
     deferred as _i11;
-import 'package:neurolotto_admin/features/splash/splash_view.dart'
+import 'package:neurolotto_admin/features/sales/sale_view.dart'
+    deferred as _i12;
+import 'package:neurolotto_admin/features/settings/settings_view.dart'
     deferred as _i13;
-import 'package:neurolotto_admin/features/stand/stand_form_view.dart'
+import 'package:neurolotto_admin/features/splash/splash_view.dart'
     deferred as _i15;
-import 'package:neurolotto_admin/features/stand/stand_password_view.dart'
-    deferred as _i16;
-import 'package:neurolotto_admin/features/stand/stand_view.dart'
-    deferred as _i14;
-import 'package:neurolotto_admin/features/ticket/ticket_view.dart'
+import 'package:neurolotto_admin/features/stand/stand_form_view.dart'
     deferred as _i17;
+import 'package:neurolotto_admin/features/stand/stand_password_view.dart'
+    deferred as _i18;
+import 'package:neurolotto_admin/features/stand/stand_view.dart'
+    deferred as _i16;
+import 'package:neurolotto_admin/features/ticket/ticket_view.dart'
+    deferred as _i19;
 
-abstract class $AppRouter extends _i18.RootStackRouter {
+abstract class $AppRouter extends _i20.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i18.PageFactory> pagesMap = {
+  final Map<String, _i20.PageFactory> pagesMap = {
     ConsortiumRoute.name: (routeData) {
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
+        child: _i20.DeferredWidget(
           _i1.loadLibrary,
           () => _i1.ConsortiumView(),
         ),
       );
     },
     DashboardRoute.name: (routeData) {
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
+        child: _i20.DeferredWidget(
           _i2.loadLibrary,
           () => _i2.DashboardView(),
         ),
@@ -76,9 +82,9 @@ abstract class $AppRouter extends _i18.RootStackRouter {
     },
     GroupDetailRoute.name: (routeData) {
       final args = routeData.argsAs<GroupDetailRouteArgs>();
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
+        child: _i20.DeferredWidget(
           _i3.loadLibrary,
           () => _i3.GroupDetail(
             key: args.key,
@@ -90,9 +96,9 @@ abstract class $AppRouter extends _i18.RootStackRouter {
     GroupFormRoute.name: (routeData) {
       final args = routeData.argsAs<GroupFormRouteArgs>(
           orElse: () => const GroupFormRouteArgs());
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
+        child: _i20.DeferredWidget(
           _i4.loadLibrary,
           () => _i4.GroupFormView(
             key: args.key,
@@ -102,9 +108,9 @@ abstract class $AppRouter extends _i18.RootStackRouter {
       );
     },
     GroupRoute.name: (routeData) {
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
+        child: _i20.DeferredWidget(
           _i3.loadLibrary,
           () => _i3.GroupView(),
         ),
@@ -113,34 +119,60 @@ abstract class $AppRouter extends _i18.RootStackRouter {
     HomeRoute.name: (routeData) {
       final args =
           routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
+        child: _i20.DeferredWidget(
           _i5.loadLibrary,
           () => _i5.HomeView(key: args.key),
         ),
       );
     },
-    LotteryDetailRoute.name: (routeData) {
-      final args = routeData.argsAs<LotteryDetailRouteArgs>();
-      return _i18.AutoRoutePage<dynamic>(
+    LotteryScheduleDateFormRoute.name: (routeData) {
+      final args = routeData.argsAs<LotteryScheduleDateFormRouteArgs>();
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
+        child: _i20.DeferredWidget(
           _i6.loadLibrary,
-          () => _i6.LotteryDetail(
+          () => _i6.LotteryScheduleDateFormView(
             key: args.key,
             lottery: args.lottery,
           ),
         ),
       );
     },
-    LotteryFormRoute.name: (routeData) {
-      final args = routeData.argsAs<LotteryFormRouteArgs>();
-      return _i18.AutoRoutePage<dynamic>(
+    LotteryScheduleFormRoute.name: (routeData) {
+      final args = routeData.argsAs<LotteryScheduleFormRouteArgs>();
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
+        child: _i20.DeferredWidget(
           _i7.loadLibrary,
-          () => _i7.LotteryFormView(
+          () => _i7.LotteryScheduleFormView(
+            key: args.key,
+            lotterySchedule: args.lotterySchedule,
+          ),
+        ),
+      );
+    },
+    LotteryScheduleRoute.name: (routeData) {
+      final args = routeData.argsAs<LotteryScheduleRouteArgs>();
+      return _i20.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i20.DeferredWidget(
+          _i8.loadLibrary,
+          () => _i8.LotteryScheduleView(
+            key: args.key,
+            lottery: args.lottery,
+          ),
+        ),
+      );
+    },
+    LotteryTabsRoute.name: (routeData) {
+      final args = routeData.argsAs<LotteryTabsRouteArgs>();
+      return _i20.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i20.DeferredWidget(
+          _i9.loadLibrary,
+          () => _i9.LotteryTabsView(
             key: args.key,
             lottery: args.lottery,
           ),
@@ -148,22 +180,22 @@ abstract class $AppRouter extends _i18.RootStackRouter {
       );
     },
     LotteryRoute.name: (routeData) {
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
-          _i6.loadLibrary,
-          () => _i6.LotteryView(),
+        child: _i20.DeferredWidget(
+          _i9.loadLibrary,
+          () => _i9.LotteryView(),
         ),
       );
     },
     ResultFormRoute.name: (routeData) {
       final args = routeData.argsAs<ResultFormRouteArgs>(
           orElse: () => const ResultFormRouteArgs());
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
-          _i8.loadLibrary,
-          () => _i8.ResultFormView(
+        child: _i20.DeferredWidget(
+          _i10.loadLibrary,
+          () => _i10.ResultFormView(
             key: args.key,
             result: args.result,
           ),
@@ -171,59 +203,59 @@ abstract class $AppRouter extends _i18.RootStackRouter {
       );
     },
     ResultRoute.name: (routeData) {
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
-          _i9.loadLibrary,
-          () => _i9.ResultView(),
+        child: _i20.DeferredWidget(
+          _i11.loadLibrary,
+          () => _i11.ResultView(),
         ),
       );
     },
     SaleRoute.name: (routeData) {
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
-          _i10.loadLibrary,
-          () => _i10.SaleView(),
+        child: _i20.DeferredWidget(
+          _i12.loadLibrary,
+          () => _i12.SaleView(),
         ),
       );
     },
     SettingsRoute.name: (routeData) {
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
-          _i11.loadLibrary,
-          () => _i11.SettingsView(),
+        child: _i20.DeferredWidget(
+          _i13.loadLibrary,
+          () => _i13.SettingsView(),
         ),
       );
     },
     SignInRoute.name: (routeData) {
       final args = routeData.argsAs<SignInRouteArgs>(
           orElse: () => const SignInRouteArgs());
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
-          _i12.loadLibrary,
-          () => _i12.SignInView(key: args.key),
+        child: _i20.DeferredWidget(
+          _i14.loadLibrary,
+          () => _i14.SignInView(key: args.key),
         ),
       );
     },
     SplashRoute.name: (routeData) {
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
-          _i13.loadLibrary,
-          () => _i13.SplashView(),
+        child: _i20.DeferredWidget(
+          _i15.loadLibrary,
+          () => _i15.SplashView(),
         ),
       );
     },
     StandDetailRoute.name: (routeData) {
       final args = routeData.argsAs<StandDetailRouteArgs>();
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
-          _i14.loadLibrary,
-          () => _i14.StandDetail(
+        child: _i20.DeferredWidget(
+          _i16.loadLibrary,
+          () => _i16.StandDetail(
             key: args.key,
             stand: args.stand,
           ),
@@ -232,11 +264,11 @@ abstract class $AppRouter extends _i18.RootStackRouter {
     },
     StandFormRoute.name: (routeData) {
       final args = routeData.argsAs<StandFormRouteArgs>();
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
-          _i15.loadLibrary,
-          () => _i15.StandFormView(
+        child: _i20.DeferredWidget(
+          _i17.loadLibrary,
+          () => _i17.StandFormView(
             key: args.key,
             stand: args.stand,
           ),
@@ -245,11 +277,11 @@ abstract class $AppRouter extends _i18.RootStackRouter {
     },
     StandPasswordRoute.name: (routeData) {
       final args = routeData.argsAs<StandPasswordRouteArgs>();
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
-          _i16.loadLibrary,
-          () => _i16.StandPasswordView(
+        child: _i20.DeferredWidget(
+          _i18.loadLibrary,
+          () => _i18.StandPasswordView(
             key: args.key,
             stand: args.stand,
           ),
@@ -257,21 +289,21 @@ abstract class $AppRouter extends _i18.RootStackRouter {
       );
     },
     StandRoute.name: (routeData) {
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
-          _i14.loadLibrary,
-          () => _i14.StandView(),
+        child: _i20.DeferredWidget(
+          _i16.loadLibrary,
+          () => _i16.StandView(),
         ),
       );
     },
     TicketDetailRoute.name: (routeData) {
       final args = routeData.argsAs<TicketDetailRouteArgs>();
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
-          _i17.loadLibrary,
-          () => _i17.TicketDetail(
+        child: _i20.DeferredWidget(
+          _i19.loadLibrary,
+          () => _i19.TicketDetail(
             key: args.key,
             ticket: args.ticket,
           ),
@@ -279,11 +311,11 @@ abstract class $AppRouter extends _i18.RootStackRouter {
       );
     },
     TicketRoute.name: (routeData) {
-      return _i18.AutoRoutePage<dynamic>(
+      return _i20.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.DeferredWidget(
-          _i17.loadLibrary,
-          () => _i17.TicketView(),
+        child: _i20.DeferredWidget(
+          _i19.loadLibrary,
+          () => _i19.TicketView(),
         ),
       );
     },
@@ -292,8 +324,8 @@ abstract class $AppRouter extends _i18.RootStackRouter {
 
 /// generated route for
 /// [_i1.ConsortiumView]
-class ConsortiumRoute extends _i18.PageRouteInfo<void> {
-  const ConsortiumRoute({List<_i18.PageRouteInfo>? children})
+class ConsortiumRoute extends _i20.PageRouteInfo<void> {
+  const ConsortiumRoute({List<_i20.PageRouteInfo>? children})
       : super(
           ConsortiumRoute.name,
           initialChildren: children,
@@ -301,13 +333,13 @@ class ConsortiumRoute extends _i18.PageRouteInfo<void> {
 
   static const String name = 'ConsortiumRoute';
 
-  static const _i18.PageInfo<void> page = _i18.PageInfo<void>(name);
+  static const _i20.PageInfo<void> page = _i20.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.DashboardView]
-class DashboardRoute extends _i18.PageRouteInfo<void> {
-  const DashboardRoute({List<_i18.PageRouteInfo>? children})
+class DashboardRoute extends _i20.PageRouteInfo<void> {
+  const DashboardRoute({List<_i20.PageRouteInfo>? children})
       : super(
           DashboardRoute.name,
           initialChildren: children,
@@ -315,16 +347,16 @@ class DashboardRoute extends _i18.PageRouteInfo<void> {
 
   static const String name = 'DashboardRoute';
 
-  static const _i18.PageInfo<void> page = _i18.PageInfo<void>(name);
+  static const _i20.PageInfo<void> page = _i20.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i3.GroupDetail]
-class GroupDetailRoute extends _i18.PageRouteInfo<GroupDetailRouteArgs> {
+class GroupDetailRoute extends _i20.PageRouteInfo<GroupDetailRouteArgs> {
   GroupDetailRoute({
-    _i19.Key? key,
-    required _i20.GroupEntity group,
-    List<_i18.PageRouteInfo>? children,
+    _i21.Key? key,
+    required _i22.GroupEntity group,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
           GroupDetailRoute.name,
           args: GroupDetailRouteArgs(
@@ -336,8 +368,8 @@ class GroupDetailRoute extends _i18.PageRouteInfo<GroupDetailRouteArgs> {
 
   static const String name = 'GroupDetailRoute';
 
-  static const _i18.PageInfo<GroupDetailRouteArgs> page =
-      _i18.PageInfo<GroupDetailRouteArgs>(name);
+  static const _i20.PageInfo<GroupDetailRouteArgs> page =
+      _i20.PageInfo<GroupDetailRouteArgs>(name);
 }
 
 class GroupDetailRouteArgs {
@@ -346,9 +378,9 @@ class GroupDetailRouteArgs {
     required this.group,
   });
 
-  final _i19.Key? key;
+  final _i21.Key? key;
 
-  final _i20.GroupEntity group;
+  final _i22.GroupEntity group;
 
   @override
   String toString() {
@@ -358,11 +390,11 @@ class GroupDetailRouteArgs {
 
 /// generated route for
 /// [_i4.GroupFormView]
-class GroupFormRoute extends _i18.PageRouteInfo<GroupFormRouteArgs> {
+class GroupFormRoute extends _i20.PageRouteInfo<GroupFormRouteArgs> {
   GroupFormRoute({
-    _i19.Key? key,
-    _i20.GroupEntity? group,
-    List<_i18.PageRouteInfo>? children,
+    _i21.Key? key,
+    _i22.GroupEntity? group,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
           GroupFormRoute.name,
           args: GroupFormRouteArgs(
@@ -374,8 +406,8 @@ class GroupFormRoute extends _i18.PageRouteInfo<GroupFormRouteArgs> {
 
   static const String name = 'GroupFormRoute';
 
-  static const _i18.PageInfo<GroupFormRouteArgs> page =
-      _i18.PageInfo<GroupFormRouteArgs>(name);
+  static const _i20.PageInfo<GroupFormRouteArgs> page =
+      _i20.PageInfo<GroupFormRouteArgs>(name);
 }
 
 class GroupFormRouteArgs {
@@ -384,9 +416,9 @@ class GroupFormRouteArgs {
     this.group,
   });
 
-  final _i19.Key? key;
+  final _i21.Key? key;
 
-  final _i20.GroupEntity? group;
+  final _i22.GroupEntity? group;
 
   @override
   String toString() {
@@ -396,8 +428,8 @@ class GroupFormRouteArgs {
 
 /// generated route for
 /// [_i3.GroupView]
-class GroupRoute extends _i18.PageRouteInfo<void> {
-  const GroupRoute({List<_i18.PageRouteInfo>? children})
+class GroupRoute extends _i20.PageRouteInfo<void> {
+  const GroupRoute({List<_i20.PageRouteInfo>? children})
       : super(
           GroupRoute.name,
           initialChildren: children,
@@ -405,15 +437,15 @@ class GroupRoute extends _i18.PageRouteInfo<void> {
 
   static const String name = 'GroupRoute';
 
-  static const _i18.PageInfo<void> page = _i18.PageInfo<void>(name);
+  static const _i20.PageInfo<void> page = _i20.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i5.HomeView]
-class HomeRoute extends _i18.PageRouteInfo<HomeRouteArgs> {
+class HomeRoute extends _i20.PageRouteInfo<HomeRouteArgs> {
   HomeRoute({
-    _i19.Key? key,
-    List<_i18.PageRouteInfo>? children,
+    _i21.Key? key,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
           HomeRoute.name,
           args: HomeRouteArgs(key: key),
@@ -422,14 +454,14 @@ class HomeRoute extends _i18.PageRouteInfo<HomeRouteArgs> {
 
   static const String name = 'HomeRoute';
 
-  static const _i18.PageInfo<HomeRouteArgs> page =
-      _i18.PageInfo<HomeRouteArgs>(name);
+  static const _i20.PageInfo<HomeRouteArgs> page =
+      _i20.PageInfo<HomeRouteArgs>(name);
 }
 
 class HomeRouteArgs {
   const HomeRouteArgs({this.key});
 
-  final _i19.Key? key;
+  final _i21.Key? key;
 
   @override
   String toString() {
@@ -438,85 +470,164 @@ class HomeRouteArgs {
 }
 
 /// generated route for
-/// [_i6.LotteryDetail]
-class LotteryDetailRoute extends _i18.PageRouteInfo<LotteryDetailRouteArgs> {
-  LotteryDetailRoute({
-    _i19.Key? key,
-    required _i21.LotteryEntity lottery,
-    List<_i18.PageRouteInfo>? children,
+/// [_i6.LotteryScheduleDateFormView]
+class LotteryScheduleDateFormRoute
+    extends _i20.PageRouteInfo<LotteryScheduleDateFormRouteArgs> {
+  LotteryScheduleDateFormRoute({
+    _i21.Key? key,
+    required _i23.LotteryEntity lottery,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
-          LotteryDetailRoute.name,
-          args: LotteryDetailRouteArgs(
+          LotteryScheduleDateFormRoute.name,
+          args: LotteryScheduleDateFormRouteArgs(
             key: key,
             lottery: lottery,
           ),
           initialChildren: children,
         );
 
-  static const String name = 'LotteryDetailRoute';
+  static const String name = 'LotteryScheduleDateFormRoute';
 
-  static const _i18.PageInfo<LotteryDetailRouteArgs> page =
-      _i18.PageInfo<LotteryDetailRouteArgs>(name);
+  static const _i20.PageInfo<LotteryScheduleDateFormRouteArgs> page =
+      _i20.PageInfo<LotteryScheduleDateFormRouteArgs>(name);
 }
 
-class LotteryDetailRouteArgs {
-  const LotteryDetailRouteArgs({
+class LotteryScheduleDateFormRouteArgs {
+  const LotteryScheduleDateFormRouteArgs({
     this.key,
     required this.lottery,
   });
 
-  final _i19.Key? key;
+  final _i21.Key? key;
 
-  final _i21.LotteryEntity lottery;
+  final _i23.LotteryEntity lottery;
 
   @override
   String toString() {
-    return 'LotteryDetailRouteArgs{key: $key, lottery: $lottery}';
+    return 'LotteryScheduleDateFormRouteArgs{key: $key, lottery: $lottery}';
   }
 }
 
 /// generated route for
-/// [_i7.LotteryFormView]
-class LotteryFormRoute extends _i18.PageRouteInfo<LotteryFormRouteArgs> {
-  LotteryFormRoute({
-    _i19.Key? key,
-    required _i21.LotteryEntity lottery,
-    List<_i18.PageRouteInfo>? children,
+/// [_i7.LotteryScheduleFormView]
+class LotteryScheduleFormRoute
+    extends _i20.PageRouteInfo<LotteryScheduleFormRouteArgs> {
+  LotteryScheduleFormRoute({
+    _i21.Key? key,
+    required _i24.LotteryScheduleEntity lotterySchedule,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
-          LotteryFormRoute.name,
-          args: LotteryFormRouteArgs(
+          LotteryScheduleFormRoute.name,
+          args: LotteryScheduleFormRouteArgs(
+            key: key,
+            lotterySchedule: lotterySchedule,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'LotteryScheduleFormRoute';
+
+  static const _i20.PageInfo<LotteryScheduleFormRouteArgs> page =
+      _i20.PageInfo<LotteryScheduleFormRouteArgs>(name);
+}
+
+class LotteryScheduleFormRouteArgs {
+  const LotteryScheduleFormRouteArgs({
+    this.key,
+    required this.lotterySchedule,
+  });
+
+  final _i21.Key? key;
+
+  final _i24.LotteryScheduleEntity lotterySchedule;
+
+  @override
+  String toString() {
+    return 'LotteryScheduleFormRouteArgs{key: $key, lotterySchedule: $lotterySchedule}';
+  }
+}
+
+/// generated route for
+/// [_i8.LotteryScheduleView]
+class LotteryScheduleRoute
+    extends _i20.PageRouteInfo<LotteryScheduleRouteArgs> {
+  LotteryScheduleRoute({
+    _i21.Key? key,
+    required _i23.LotteryEntity lottery,
+    List<_i20.PageRouteInfo>? children,
+  }) : super(
+          LotteryScheduleRoute.name,
+          args: LotteryScheduleRouteArgs(
             key: key,
             lottery: lottery,
           ),
           initialChildren: children,
         );
 
-  static const String name = 'LotteryFormRoute';
+  static const String name = 'LotteryScheduleRoute';
 
-  static const _i18.PageInfo<LotteryFormRouteArgs> page =
-      _i18.PageInfo<LotteryFormRouteArgs>(name);
+  static const _i20.PageInfo<LotteryScheduleRouteArgs> page =
+      _i20.PageInfo<LotteryScheduleRouteArgs>(name);
 }
 
-class LotteryFormRouteArgs {
-  const LotteryFormRouteArgs({
+class LotteryScheduleRouteArgs {
+  const LotteryScheduleRouteArgs({
     this.key,
     required this.lottery,
   });
 
-  final _i19.Key? key;
+  final _i21.Key? key;
 
-  final _i21.LotteryEntity lottery;
+  final _i23.LotteryEntity lottery;
 
   @override
   String toString() {
-    return 'LotteryFormRouteArgs{key: $key, lottery: $lottery}';
+    return 'LotteryScheduleRouteArgs{key: $key, lottery: $lottery}';
   }
 }
 
 /// generated route for
-/// [_i6.LotteryView]
-class LotteryRoute extends _i18.PageRouteInfo<void> {
-  const LotteryRoute({List<_i18.PageRouteInfo>? children})
+/// [_i9.LotteryTabsView]
+class LotteryTabsRoute extends _i20.PageRouteInfo<LotteryTabsRouteArgs> {
+  LotteryTabsRoute({
+    _i21.Key? key,
+    required _i23.LotteryEntity lottery,
+    List<_i20.PageRouteInfo>? children,
+  }) : super(
+          LotteryTabsRoute.name,
+          args: LotteryTabsRouteArgs(
+            key: key,
+            lottery: lottery,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'LotteryTabsRoute';
+
+  static const _i20.PageInfo<LotteryTabsRouteArgs> page =
+      _i20.PageInfo<LotteryTabsRouteArgs>(name);
+}
+
+class LotteryTabsRouteArgs {
+  const LotteryTabsRouteArgs({
+    this.key,
+    required this.lottery,
+  });
+
+  final _i21.Key? key;
+
+  final _i23.LotteryEntity lottery;
+
+  @override
+  String toString() {
+    return 'LotteryTabsRouteArgs{key: $key, lottery: $lottery}';
+  }
+}
+
+/// generated route for
+/// [_i9.LotteryView]
+class LotteryRoute extends _i20.PageRouteInfo<void> {
+  const LotteryRoute({List<_i20.PageRouteInfo>? children})
       : super(
           LotteryRoute.name,
           initialChildren: children,
@@ -524,16 +635,16 @@ class LotteryRoute extends _i18.PageRouteInfo<void> {
 
   static const String name = 'LotteryRoute';
 
-  static const _i18.PageInfo<void> page = _i18.PageInfo<void>(name);
+  static const _i20.PageInfo<void> page = _i20.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i8.ResultFormView]
-class ResultFormRoute extends _i18.PageRouteInfo<ResultFormRouteArgs> {
+/// [_i10.ResultFormView]
+class ResultFormRoute extends _i20.PageRouteInfo<ResultFormRouteArgs> {
   ResultFormRoute({
-    _i19.Key? key,
-    _i22.LotteryResultEntity? result,
-    List<_i18.PageRouteInfo>? children,
+    _i21.Key? key,
+    _i25.LotteryResultEntity? result,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
           ResultFormRoute.name,
           args: ResultFormRouteArgs(
@@ -545,8 +656,8 @@ class ResultFormRoute extends _i18.PageRouteInfo<ResultFormRouteArgs> {
 
   static const String name = 'ResultFormRoute';
 
-  static const _i18.PageInfo<ResultFormRouteArgs> page =
-      _i18.PageInfo<ResultFormRouteArgs>(name);
+  static const _i20.PageInfo<ResultFormRouteArgs> page =
+      _i20.PageInfo<ResultFormRouteArgs>(name);
 }
 
 class ResultFormRouteArgs {
@@ -555,9 +666,9 @@ class ResultFormRouteArgs {
     this.result,
   });
 
-  final _i19.Key? key;
+  final _i21.Key? key;
 
-  final _i22.LotteryResultEntity? result;
+  final _i25.LotteryResultEntity? result;
 
   @override
   String toString() {
@@ -566,9 +677,9 @@ class ResultFormRouteArgs {
 }
 
 /// generated route for
-/// [_i9.ResultView]
-class ResultRoute extends _i18.PageRouteInfo<void> {
-  const ResultRoute({List<_i18.PageRouteInfo>? children})
+/// [_i11.ResultView]
+class ResultRoute extends _i20.PageRouteInfo<void> {
+  const ResultRoute({List<_i20.PageRouteInfo>? children})
       : super(
           ResultRoute.name,
           initialChildren: children,
@@ -576,13 +687,13 @@ class ResultRoute extends _i18.PageRouteInfo<void> {
 
   static const String name = 'ResultRoute';
 
-  static const _i18.PageInfo<void> page = _i18.PageInfo<void>(name);
+  static const _i20.PageInfo<void> page = _i20.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i10.SaleView]
-class SaleRoute extends _i18.PageRouteInfo<void> {
-  const SaleRoute({List<_i18.PageRouteInfo>? children})
+/// [_i12.SaleView]
+class SaleRoute extends _i20.PageRouteInfo<void> {
+  const SaleRoute({List<_i20.PageRouteInfo>? children})
       : super(
           SaleRoute.name,
           initialChildren: children,
@@ -590,13 +701,13 @@ class SaleRoute extends _i18.PageRouteInfo<void> {
 
   static const String name = 'SaleRoute';
 
-  static const _i18.PageInfo<void> page = _i18.PageInfo<void>(name);
+  static const _i20.PageInfo<void> page = _i20.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i11.SettingsView]
-class SettingsRoute extends _i18.PageRouteInfo<void> {
-  const SettingsRoute({List<_i18.PageRouteInfo>? children})
+/// [_i13.SettingsView]
+class SettingsRoute extends _i20.PageRouteInfo<void> {
+  const SettingsRoute({List<_i20.PageRouteInfo>? children})
       : super(
           SettingsRoute.name,
           initialChildren: children,
@@ -604,15 +715,15 @@ class SettingsRoute extends _i18.PageRouteInfo<void> {
 
   static const String name = 'SettingsRoute';
 
-  static const _i18.PageInfo<void> page = _i18.PageInfo<void>(name);
+  static const _i20.PageInfo<void> page = _i20.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i12.SignInView]
-class SignInRoute extends _i18.PageRouteInfo<SignInRouteArgs> {
+/// [_i14.SignInView]
+class SignInRoute extends _i20.PageRouteInfo<SignInRouteArgs> {
   SignInRoute({
-    _i19.Key? key,
-    List<_i18.PageRouteInfo>? children,
+    _i21.Key? key,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
           SignInRoute.name,
           args: SignInRouteArgs(key: key),
@@ -621,14 +732,14 @@ class SignInRoute extends _i18.PageRouteInfo<SignInRouteArgs> {
 
   static const String name = 'SignInRoute';
 
-  static const _i18.PageInfo<SignInRouteArgs> page =
-      _i18.PageInfo<SignInRouteArgs>(name);
+  static const _i20.PageInfo<SignInRouteArgs> page =
+      _i20.PageInfo<SignInRouteArgs>(name);
 }
 
 class SignInRouteArgs {
   const SignInRouteArgs({this.key});
 
-  final _i19.Key? key;
+  final _i21.Key? key;
 
   @override
   String toString() {
@@ -637,9 +748,9 @@ class SignInRouteArgs {
 }
 
 /// generated route for
-/// [_i13.SplashView]
-class SplashRoute extends _i18.PageRouteInfo<void> {
-  const SplashRoute({List<_i18.PageRouteInfo>? children})
+/// [_i15.SplashView]
+class SplashRoute extends _i20.PageRouteInfo<void> {
+  const SplashRoute({List<_i20.PageRouteInfo>? children})
       : super(
           SplashRoute.name,
           initialChildren: children,
@@ -647,16 +758,16 @@ class SplashRoute extends _i18.PageRouteInfo<void> {
 
   static const String name = 'SplashRoute';
 
-  static const _i18.PageInfo<void> page = _i18.PageInfo<void>(name);
+  static const _i20.PageInfo<void> page = _i20.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i14.StandDetail]
-class StandDetailRoute extends _i18.PageRouteInfo<StandDetailRouteArgs> {
+/// [_i16.StandDetail]
+class StandDetailRoute extends _i20.PageRouteInfo<StandDetailRouteArgs> {
   StandDetailRoute({
-    _i19.Key? key,
-    required _i23.LotteryStandEntity stand,
-    List<_i18.PageRouteInfo>? children,
+    _i21.Key? key,
+    required _i26.LotteryStandEntity stand,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
           StandDetailRoute.name,
           args: StandDetailRouteArgs(
@@ -668,8 +779,8 @@ class StandDetailRoute extends _i18.PageRouteInfo<StandDetailRouteArgs> {
 
   static const String name = 'StandDetailRoute';
 
-  static const _i18.PageInfo<StandDetailRouteArgs> page =
-      _i18.PageInfo<StandDetailRouteArgs>(name);
+  static const _i20.PageInfo<StandDetailRouteArgs> page =
+      _i20.PageInfo<StandDetailRouteArgs>(name);
 }
 
 class StandDetailRouteArgs {
@@ -678,9 +789,9 @@ class StandDetailRouteArgs {
     required this.stand,
   });
 
-  final _i19.Key? key;
+  final _i21.Key? key;
 
-  final _i23.LotteryStandEntity stand;
+  final _i26.LotteryStandEntity stand;
 
   @override
   String toString() {
@@ -689,12 +800,12 @@ class StandDetailRouteArgs {
 }
 
 /// generated route for
-/// [_i15.StandFormView]
-class StandFormRoute extends _i18.PageRouteInfo<StandFormRouteArgs> {
+/// [_i17.StandFormView]
+class StandFormRoute extends _i20.PageRouteInfo<StandFormRouteArgs> {
   StandFormRoute({
-    _i19.Key? key,
-    required _i23.LotteryStandEntity stand,
-    List<_i18.PageRouteInfo>? children,
+    _i21.Key? key,
+    required _i26.LotteryStandEntity stand,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
           StandFormRoute.name,
           args: StandFormRouteArgs(
@@ -706,8 +817,8 @@ class StandFormRoute extends _i18.PageRouteInfo<StandFormRouteArgs> {
 
   static const String name = 'StandFormRoute';
 
-  static const _i18.PageInfo<StandFormRouteArgs> page =
-      _i18.PageInfo<StandFormRouteArgs>(name);
+  static const _i20.PageInfo<StandFormRouteArgs> page =
+      _i20.PageInfo<StandFormRouteArgs>(name);
 }
 
 class StandFormRouteArgs {
@@ -716,9 +827,9 @@ class StandFormRouteArgs {
     required this.stand,
   });
 
-  final _i19.Key? key;
+  final _i21.Key? key;
 
-  final _i23.LotteryStandEntity stand;
+  final _i26.LotteryStandEntity stand;
 
   @override
   String toString() {
@@ -727,12 +838,12 @@ class StandFormRouteArgs {
 }
 
 /// generated route for
-/// [_i16.StandPasswordView]
-class StandPasswordRoute extends _i18.PageRouteInfo<StandPasswordRouteArgs> {
+/// [_i18.StandPasswordView]
+class StandPasswordRoute extends _i20.PageRouteInfo<StandPasswordRouteArgs> {
   StandPasswordRoute({
-    _i19.Key? key,
-    required _i23.LotteryStandEntity stand,
-    List<_i18.PageRouteInfo>? children,
+    _i21.Key? key,
+    required _i26.LotteryStandEntity stand,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
           StandPasswordRoute.name,
           args: StandPasswordRouteArgs(
@@ -744,8 +855,8 @@ class StandPasswordRoute extends _i18.PageRouteInfo<StandPasswordRouteArgs> {
 
   static const String name = 'StandPasswordRoute';
 
-  static const _i18.PageInfo<StandPasswordRouteArgs> page =
-      _i18.PageInfo<StandPasswordRouteArgs>(name);
+  static const _i20.PageInfo<StandPasswordRouteArgs> page =
+      _i20.PageInfo<StandPasswordRouteArgs>(name);
 }
 
 class StandPasswordRouteArgs {
@@ -754,9 +865,9 @@ class StandPasswordRouteArgs {
     required this.stand,
   });
 
-  final _i19.Key? key;
+  final _i21.Key? key;
 
-  final _i23.LotteryStandEntity stand;
+  final _i26.LotteryStandEntity stand;
 
   @override
   String toString() {
@@ -765,9 +876,9 @@ class StandPasswordRouteArgs {
 }
 
 /// generated route for
-/// [_i14.StandView]
-class StandRoute extends _i18.PageRouteInfo<void> {
-  const StandRoute({List<_i18.PageRouteInfo>? children})
+/// [_i16.StandView]
+class StandRoute extends _i20.PageRouteInfo<void> {
+  const StandRoute({List<_i20.PageRouteInfo>? children})
       : super(
           StandRoute.name,
           initialChildren: children,
@@ -775,16 +886,16 @@ class StandRoute extends _i18.PageRouteInfo<void> {
 
   static const String name = 'StandRoute';
 
-  static const _i18.PageInfo<void> page = _i18.PageInfo<void>(name);
+  static const _i20.PageInfo<void> page = _i20.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i17.TicketDetail]
-class TicketDetailRoute extends _i18.PageRouteInfo<TicketDetailRouteArgs> {
+/// [_i19.TicketDetail]
+class TicketDetailRoute extends _i20.PageRouteInfo<TicketDetailRouteArgs> {
   TicketDetailRoute({
-    _i19.Key? key,
-    required _i24.TicketEntity ticket,
-    List<_i18.PageRouteInfo>? children,
+    _i21.Key? key,
+    required _i27.TicketEntity ticket,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
           TicketDetailRoute.name,
           args: TicketDetailRouteArgs(
@@ -796,8 +907,8 @@ class TicketDetailRoute extends _i18.PageRouteInfo<TicketDetailRouteArgs> {
 
   static const String name = 'TicketDetailRoute';
 
-  static const _i18.PageInfo<TicketDetailRouteArgs> page =
-      _i18.PageInfo<TicketDetailRouteArgs>(name);
+  static const _i20.PageInfo<TicketDetailRouteArgs> page =
+      _i20.PageInfo<TicketDetailRouteArgs>(name);
 }
 
 class TicketDetailRouteArgs {
@@ -806,9 +917,9 @@ class TicketDetailRouteArgs {
     required this.ticket,
   });
 
-  final _i19.Key? key;
+  final _i21.Key? key;
 
-  final _i24.TicketEntity ticket;
+  final _i27.TicketEntity ticket;
 
   @override
   String toString() {
@@ -817,9 +928,9 @@ class TicketDetailRouteArgs {
 }
 
 /// generated route for
-/// [_i17.TicketView]
-class TicketRoute extends _i18.PageRouteInfo<void> {
-  const TicketRoute({List<_i18.PageRouteInfo>? children})
+/// [_i19.TicketView]
+class TicketRoute extends _i20.PageRouteInfo<void> {
+  const TicketRoute({List<_i20.PageRouteInfo>? children})
       : super(
           TicketRoute.name,
           initialChildren: children,
@@ -827,5 +938,5 @@ class TicketRoute extends _i18.PageRouteInfo<void> {
 
   static const String name = 'TicketRoute';
 
-  static const _i18.PageInfo<void> page = _i18.PageInfo<void>(name);
+  static const _i20.PageInfo<void> page = _i20.PageInfo<void>(name);
 }

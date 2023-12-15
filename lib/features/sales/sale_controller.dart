@@ -65,11 +65,14 @@ class SaleController extends ValueNotifier<SaleControllerState> {
     if (atDate != null) value = value.copyWith(selectedDate: atDate);
 
     try {
-      final sales = await _client.from("winning_number_by_groups").select<PostgrestList>().match({
-        "created_at": atDate?.toIso8601String() ?? value.selectedDate.toIso8601String(),
-        if (group != null) "group_id": group.id,
-        if (lotteryStand != null) "lottery_stand_id": lotteryStand.id,
-      }).withConverter<List<SaleEntity>>(
+      final builder = _client.rpc("fetch_winning_number_by_groups", params: {
+        "in_consortium_id": authController.consortium?.id,
+        "in_effetive_date": atDate?.toIso8601String() ?? value.selectedDate.toIso8601String(),
+        "in_group_id": group?.id,
+        "in_lottery_stand_id": lotteryStand?.id,
+      }).select<PostgrestList>();
+
+      final sales = await builder.withConverter<List<SaleEntity>>(
         (data) => data.map((e) => SaleEntity.fromJson(e)).toList(),
       );
 

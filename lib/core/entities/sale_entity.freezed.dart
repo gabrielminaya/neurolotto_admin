@@ -24,8 +24,8 @@ mixin _$SaleEntity {
   String get lotteryStandName => throw _privateConstructorUsedError;
   @JsonKey(name: "play_amount")
   num get playAmount => throw _privateConstructorUsedError;
-  @JsonKey(name: "amount_won")
-  num get amountWon => throw _privateConstructorUsedError;
+  @JsonKey(name: "winning_amount")
+  num get winningAmount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +42,7 @@ abstract class $SaleEntityCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "lottery_stand_name") String lotteryStandName,
       @JsonKey(name: "play_amount") num playAmount,
-      @JsonKey(name: "amount_won") num amountWon});
+      @JsonKey(name: "winning_amount") num winningAmount});
 }
 
 /// @nodoc
@@ -60,7 +60,7 @@ class _$SaleEntityCopyWithImpl<$Res, $Val extends SaleEntity>
   $Res call({
     Object? lotteryStandName = null,
     Object? playAmount = null,
-    Object? amountWon = null,
+    Object? winningAmount = null,
   }) {
     return _then(_value.copyWith(
       lotteryStandName: null == lotteryStandName
@@ -71,9 +71,9 @@ class _$SaleEntityCopyWithImpl<$Res, $Val extends SaleEntity>
           ? _value.playAmount
           : playAmount // ignore: cast_nullable_to_non_nullable
               as num,
-      amountWon: null == amountWon
-          ? _value.amountWon
-          : amountWon // ignore: cast_nullable_to_non_nullable
+      winningAmount: null == winningAmount
+          ? _value.winningAmount
+          : winningAmount // ignore: cast_nullable_to_non_nullable
               as num,
     ) as $Val);
   }
@@ -90,7 +90,7 @@ abstract class _$$SaleEntityImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "lottery_stand_name") String lotteryStandName,
       @JsonKey(name: "play_amount") num playAmount,
-      @JsonKey(name: "amount_won") num amountWon});
+      @JsonKey(name: "winning_amount") num winningAmount});
 }
 
 /// @nodoc
@@ -106,7 +106,7 @@ class __$$SaleEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? lotteryStandName = null,
     Object? playAmount = null,
-    Object? amountWon = null,
+    Object? winningAmount = null,
   }) {
     return _then(_$SaleEntityImpl(
       lotteryStandName: null == lotteryStandName
@@ -117,9 +117,9 @@ class __$$SaleEntityImplCopyWithImpl<$Res>
           ? _value.playAmount
           : playAmount // ignore: cast_nullable_to_non_nullable
               as num,
-      amountWon: null == amountWon
-          ? _value.amountWon
-          : amountWon // ignore: cast_nullable_to_non_nullable
+      winningAmount: null == winningAmount
+          ? _value.winningAmount
+          : winningAmount // ignore: cast_nullable_to_non_nullable
               as num,
     ));
   }
@@ -131,7 +131,7 @@ class _$SaleEntityImpl implements _SaleEntity {
   const _$SaleEntityImpl(
       {@JsonKey(name: "lottery_stand_name") required this.lotteryStandName,
       @JsonKey(name: "play_amount") required this.playAmount,
-      @JsonKey(name: "amount_won") required this.amountWon});
+      @JsonKey(name: "winning_amount") required this.winningAmount});
 
   factory _$SaleEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$SaleEntityImplFromJson(json);
@@ -143,12 +143,12 @@ class _$SaleEntityImpl implements _SaleEntity {
   @JsonKey(name: "play_amount")
   final num playAmount;
   @override
-  @JsonKey(name: "amount_won")
-  final num amountWon;
+  @JsonKey(name: "winning_amount")
+  final num winningAmount;
 
   @override
   String toString() {
-    return 'SaleEntity(lotteryStandName: $lotteryStandName, playAmount: $playAmount, amountWon: $amountWon)';
+    return 'SaleEntity(lotteryStandName: $lotteryStandName, playAmount: $playAmount, winningAmount: $winningAmount)';
   }
 
   @override
@@ -160,14 +160,14 @@ class _$SaleEntityImpl implements _SaleEntity {
                 other.lotteryStandName == lotteryStandName) &&
             (identical(other.playAmount, playAmount) ||
                 other.playAmount == playAmount) &&
-            (identical(other.amountWon, amountWon) ||
-                other.amountWon == amountWon));
+            (identical(other.winningAmount, winningAmount) ||
+                other.winningAmount == winningAmount));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, lotteryStandName, playAmount, amountWon);
+      Object.hash(runtimeType, lotteryStandName, playAmount, winningAmount);
 
   @JsonKey(ignore: true)
   @override
@@ -188,7 +188,7 @@ abstract class _SaleEntity implements SaleEntity {
           {@JsonKey(name: "lottery_stand_name")
           required final String lotteryStandName,
           @JsonKey(name: "play_amount") required final num playAmount,
-          @JsonKey(name: "amount_won") required final num amountWon}) =
+          @JsonKey(name: "winning_amount") required final num winningAmount}) =
       _$SaleEntityImpl;
 
   factory _SaleEntity.fromJson(Map<String, dynamic> json) =
@@ -201,8 +201,8 @@ abstract class _SaleEntity implements SaleEntity {
   @JsonKey(name: "play_amount")
   num get playAmount;
   @override
-  @JsonKey(name: "amount_won")
-  num get amountWon;
+  @JsonKey(name: "winning_amount")
+  num get winningAmount;
   @override
   @JsonKey(ignore: true)
   _$$SaleEntityImplCopyWith<_$SaleEntityImpl> get copyWith =>

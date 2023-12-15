@@ -40,6 +40,7 @@ class _ResultViewState extends State<ResultView> {
     return Scaffold(
       floatingActionButton: LayoutBuilder(
         builder: (_, constraints) => FloatingActionButton(
+          heroTag: 'result',
           onPressed: () {
             if (constraints.maxWidth <= tabletBreakpoint) {
               router.push(ResultFormRoute(result: null));
@@ -53,7 +54,7 @@ class _ResultViewState extends State<ResultView> {
               ),
             );
           },
-          child: const Icon(Icons.edit),
+          child: const Icon(Icons.add),
         ),
       ),
       body: LayoutBuilder(
@@ -70,6 +71,7 @@ class _ResultViewState extends State<ResultView> {
                   lastDate: DateTime.now(),
                   initialValue: DateTime.now(),
                   inputType: InputType.date,
+                  format: DateFormat("dd/MM/yyyy"),
                   onChanged: (value) => _resultController.fetchResults(date: value),
                 ),
               ),

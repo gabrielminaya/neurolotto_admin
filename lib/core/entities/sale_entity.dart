@@ -8,7 +8,7 @@ sealed class SaleEntity with _$SaleEntity {
   const factory SaleEntity({
     @JsonKey(name: "lottery_stand_name") required String lotteryStandName,
     @JsonKey(name: "play_amount") required num playAmount,
-    @JsonKey(name: "amount_won") required num amountWon,
+    @JsonKey(name: "winning_amount") required num winningAmount,
   }) = _SaleEntity;
 
   factory SaleEntity.fromJson(Map<String, dynamic> json) => _$SaleEntityFromJson(json);

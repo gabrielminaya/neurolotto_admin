@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/constants.dart';
 import '../../core/router/router.gr.dart';
+import '../../i18n/strings.g.dart';
 
 @RoutePage()
 class SettingsView extends StatelessWidget {
@@ -25,12 +26,12 @@ class SettingsView extends StatelessWidget {
               controller: tabController,
               isScrollable: constraints.maxWidth < tabletBreakpoint ? false : true,
               tabAlignment: constraints.maxWidth < tabletBreakpoint ? TabAlignment.fill : TabAlignment.start,
-              tabs: const [
-                Tab(text: "Tickets"),
-                Tab(text: "Stands"),
-                Tab(text: "Groups"),
-                Tab(text: "Lotteries"),
-                Tab(text: "Consortium"),
+              tabs: [
+                Tab(text: t.settings.options.tickets),
+                Tab(text: t.settings.options.stand),
+                Tab(text: t.settings.options.group),
+                Tab(text: t.settings.options.lottery),
+                Tab(text: t.settings.options.consortium),
               ],
             ),
             body: child,

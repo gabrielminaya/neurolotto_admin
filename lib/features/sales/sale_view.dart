@@ -38,6 +38,7 @@ class _SaleViewState extends State<SaleView> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        heroTag: 'sale',
         onPressed: () => _saleController.fetch(),
         child: const Icon(Icons.refresh),
       ),
@@ -57,6 +58,7 @@ class _SaleViewState extends State<SaleView> {
                       lastDate: DateTime.now(),
                       initialValue: DateTime.now(),
                       inputType: InputType.date,
+                      format: DateFormat("dd/MM/yyyy"),
                       onChanged: (value) => _saleController.fetch(atDate: value),
                     ),
                   ),
@@ -66,7 +68,13 @@ class _SaleViewState extends State<SaleView> {
                       (context, initialValue) => FormBuilderDropdown<int>(
                         name: 'options',
                         initialValue: initialValue,
-                        onChanged: (value) => _currentOption.value = value ?? 1,
+                        onChanged: (value) {
+                          _currentOption.value = value ?? 1;
+
+                          if (value == 1) {
+                            _saleController.fetch();
+                          }
+                        },
                         decoration: InputDecoration(labelText: t.sales.options),
                         items: [
                           DropdownMenuItem(value: 1, child: Text(t.sales.all)),
@@ -194,8 +202,8 @@ class _SaleDatasource extends DataGridSource {
       return DataGridRow(cells: [
         DataGridCell(columnName: "stand", value: sale.lotteryStandName),
         DataGridCell(columnName: "sales", value: sale.playAmount),
-        DataGridCell(columnName: "prizes", value: sale.amountWon),
-        DataGridCell(columnName: "balance", value: sale.playAmount - sale.amountWon),
+        DataGridCell(columnName: "prizes", value: sale.winningAmount),
+        DataGridCell(columnName: "balance", value: sale.playAmount - sale.winningAmount),
       ]);
     }).toList();
 
@@ -209,11 +217,14 @@ class _SaleDatasource extends DataGridSource {
         ),
         DataGridCell(
           columnName: "prizes",
-          value: sales.fold(0.0, (previousValue, element) => previousValue + element.amountWon),
+          value: sales.fold(0.0, (previousValue, element) => previousValue + element.winningAmount),
         ),
         DataGridCell(
           columnName: "balance",
-          value: sales.fold(0.0, (previousValue, element) => previousValue + (element.playAmount - element.amountWon)),
+          value: sales.fold(
+            0.0,
+            (previousValue, element) => previousValue + (element.playAmount - element.winningAmount),
+          ),
         ),
       ])
     ];

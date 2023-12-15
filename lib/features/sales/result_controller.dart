@@ -79,18 +79,28 @@ class ResultController extends ValueNotifier<ResultControllerState> {
   }) async {
     value = value.copyWith(isLoading: true);
     try {
-      await _client.from("lottery_results").insert({
-        "consortium_id": authController.consortium?.id,
-        "lottery_id": result.lottery.id,
-        "play_date": result.playDate.toIso8601String(),
-        "first_number": result.firstPrizeNumber,
-        "second_number": result.secondPrizeNumber,
-        "third_number": result.thirdPrizeNumber,
-      });
+      final createdResult = await _client
+          .from("lottery_results")
+          .insert({
+            "consortium_id": authController.consortium?.id,
+            "lottery_id": result.lottery.id,
+            "play_date": result.playDate.toIso8601String(),
+            "first_number": result.firstPrizeNumber,
+            "second_number": result.secondPrizeNumber,
+            "third_number": result.thirdPrizeNumber,
+          })
+          .select<PostgrestMap?>("*, lotteries(*)")
+          .limit(1)
+          .single()
+          .withConverter<LotteryResultEntity?>(
+            (data) => data == null ? null : LotteryResultEntity.fromJson(data),
+          );
 
-      final currentResult = [...value.results];
-      currentResult.add(result);
-      value = value.copyWith(results: currentResult);
+      if (createdResult != null) {
+        final currentResult = [...value.results];
+        currentResult.add(createdResult);
+        value = value.copyWith(results: currentResult);
+      }
 
       onSuccess();
     } on PostgrestException catch (e) {

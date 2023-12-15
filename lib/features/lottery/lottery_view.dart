@@ -1,9 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:intl/intl.dart';
 
-import '../../core/adaptative_dialog.dart';
 import '../../core/constants.dart';
 import '../../core/entities/lottery_entity.dart';
 import '../../core/extensions/value_notifier.dart';
@@ -12,7 +10,9 @@ import '../../core/service_locator/get_it.dart';
 import '../../core/services.dart';
 import '../../i18n/strings.g.dart';
 import 'lottery_controller.dart';
-import 'lottery_form_view.dart';
+import 'lottery_list_view.dart';
+import 'lottery_schedule_date_view.dart';
+import 'lottery_schedule_view.dart';
 
 @RoutePage()
 class LotteryView extends StatefulWidget {
@@ -49,12 +49,12 @@ class _LotteryViewState extends State<LotteryView> {
         return LayoutBuilder(
           builder: (context, constraints) {
             if (constraints.maxWidth <= tabletBreakpoint) {
-              return LotteryItems(
+              return LotteryListView(
                 lotteries: state.lotteries,
                 selectedLottery: state.selectedLottery,
                 onLotterySelected: (lottery) {
                   _lotteryController.select(lottery);
-                  router.push(LotteryDetailRoute(lottery: lottery));
+                  router.push(LotteryTabsRoute(lottery: lottery));
                 },
               );
             }
@@ -63,7 +63,7 @@ class _LotteryViewState extends State<LotteryView> {
               children: [
                 Flexible(
                   flex: 1,
-                  child: LotteryItems(
+                  child: LotteryListView(
                     lotteries: state.lotteries,
                     selectedLottery: state.selectedLottery,
                     onLotterySelected: (lottery) => _lotteryController.select(lottery),
@@ -72,15 +72,15 @@ class _LotteryViewState extends State<LotteryView> {
                 const VerticalDivider(width: 0),
                 Flexible(
                   flex: 3,
-                  child: Builder(
-                    builder: (_) {
+                  child: _lotteryController.watch(
+                    (_, state) {
                       if (state.selectedLottery == null) {
                         return Center(
                           child: Text(t.lottery.selectALottery),
                         );
                       }
 
-                      return LotteryDetail(lottery: state.selectedLottery!);
+                      return LotteryTabsView(lottery: state.selectedLottery!);
                     },
                   ),
                 ),
@@ -93,146 +93,72 @@ class _LotteryViewState extends State<LotteryView> {
   }
 }
 
-class LotteryItems extends StatelessWidget {
-  const LotteryItems({
-    super.key,
-    required this.lotteries,
-    this.selectedLottery,
-    required this.onLotterySelected,
-  });
-
-  final List<LotteryEntity> lotteries;
-  final LotteryEntity? selectedLottery;
-  final ValueChanged<LotteryEntity> onLotterySelected;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(t.lottery.title),
-        centerTitle: false,
-      ),
-      body: ListView.separated(
-        itemCount: lotteries.length,
-        separatorBuilder: (context, index) => const Divider(height: 0),
-        itemBuilder: (context, index) {
-          final lottery = lotteries.elementAt(index);
-
-          return ListTile(
-            leading: const Icon(Icons.group_work_outlined),
-            selected: selectedLottery == lottery,
-            title: Text(lottery.name),
-            onTap: () => onLotterySelected(lottery),
-            trailing: Visibility(
-              visible: selectedLottery == lottery,
-              child: const Icon(Icons.arrow_right),
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-@RoutePage(name: "LotteryDetailRoute")
-class LotteryDetail extends StatelessWidget {
-  const LotteryDetail({super.key, required this.lottery});
+@RoutePage(name: "LotteryTabsRoute")
+class LotteryTabsView extends StatelessWidget {
+  LotteryTabsView({super.key, required this.lottery});
 
   final LotteryEntity lottery;
+  final _lotteryController = getIt.get<LotteryController>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: LayoutBuilder(
-        builder: (_, constraints) => FloatingActionButton(
-          onPressed: () {
-            if (constraints.maxWidth <= tabletBreakpoint) {
-              router.push(LotteryFormRoute(lottery: lottery));
-              return;
-            }
+    return DefaultTabController(
+      length: 2,
+      child: LayoutBuilder(
+        builder: (context, constraints) => Scaffold(
+          body: NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) => [
+              SliverAppBar(
+                title: Text(lottery.name),
+                centerTitle: false,
+                floating: true,
+                pinned: true,
+                bottom: TabBar(
+                  isScrollable: constraints.maxWidth < tabletBreakpoint ? false : true,
+                  tabAlignment: constraints.maxWidth < tabletBreakpoint ? TabAlignment.fill : TabAlignment.start,
+                  tabs: [
+                    Tab(text: t.lottery.schedules),
+                    Tab(text: t.lottery.details),
+                  ],
+                ),
+                actions: [
+                  _lotteryController.watch(
+                    (context, state) {
+                      if (state.isActionLoading) {
+                        return Switch(
+                          value: state.selectedLottery?.status ?? false,
+                          onChanged: (_) {},
+                          thumbIcon: const MaterialStatePropertyAll(
+                            Icon(Icons.change_circle_outlined),
+                          ),
+                        );
+                      }
 
-            showDialog(
-              context: context,
-              builder: (context) => AdaptativeDialog(
-                child: LotteryFormView(lottery: lottery),
+                      return Switch(
+                        value: state.selectedLottery?.status ?? false,
+                        thumbIcon: MaterialStatePropertyAll(
+                          Icon((state.selectedLottery?.status ?? false) ? Icons.check : Icons.close),
+                        ),
+                        onChanged: (value) => _lotteryController.update(
+                          lottery: lottery.copyWith(status: value),
+                          onFailure: (message) => ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(message)),
+                          ),
+                          onSuccess: () {},
+                        ),
+                      );
+                    },
+                  ),
+                  hgap(10),
+                ],
               ),
-            );
-          },
-          child: const Icon(Icons.edit),
+            ],
+            body: TabBarView(children: [
+              LotteryScheduleView(lottery: lottery),
+              LotteryScheduleDateView(lottery: lottery),
+            ]),
+          ),
         ),
-      ),
-      appBar: AppBar(
-        title: Text(t.lottery.detail),
-        centerTitle: false,
-      ),
-      body: ListView(
-        children: [
-          ListTile(
-            leading: const Icon(Icons.group_work_outlined),
-            title: Text(t.lottery.name),
-            subtitle: Text(lottery.name),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.calendar_month),
-            title: Text(t.lottery.timeOpen),
-            subtitle: Text(lottery.timeOpen),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.calendar_month),
-            title: Text(t.lottery.timeClose),
-            subtitle: Text(lottery.timeClose),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.monetization_on_outlined),
-            title: Text(t.lottery.quinielaFirstPrize),
-            subtitle: Text(NumberFormat.simpleCurrency().format(lottery.quinielaFirstPrize)),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.monetization_on_outlined),
-            title: Text(t.lottery.quinielaSecondPrize),
-            subtitle: Text(NumberFormat.simpleCurrency().format(lottery.quinielaSecondPrize)),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.monetization_on_outlined),
-            title: Text(t.lottery.quinielaThirdPrize),
-            subtitle: Text(NumberFormat.simpleCurrency().format(lottery.quinielaThirdPrize)),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.monetization_on_outlined),
-            title: Text(t.lottery.paleFirstSecondPrize),
-            subtitle: Text(NumberFormat.simpleCurrency().format(lottery.paleFirstSecondPrize)),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.monetization_on_outlined),
-            title: Text(t.lottery.paleFirstThirdPrize),
-            subtitle: Text(NumberFormat.simpleCurrency().format(lottery.paleFirstThirdPrize)),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.monetization_on_outlined),
-            title: Text(t.lottery.paleSecondThirdPrize),
-            subtitle: Text(NumberFormat.simpleCurrency().format(lottery.paleSecondThirdPrize)),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.monetization_on_outlined),
-            title: Text(t.lottery.tripletaPrice),
-            subtitle: Text(NumberFormat.simpleCurrency().format(lottery.tripletaPrice)),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.monetization_on_outlined),
-            title: Text(t.lottery.active),
-            subtitle: Text(lottery.status.toString().toUpperCase()),
-          ),
-        ],
       ),
     );
   }

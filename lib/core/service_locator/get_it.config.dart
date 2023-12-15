@@ -11,7 +11,7 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:neurolotto_admin/core/router/router.dart' as _i3;
-import 'package:neurolotto_admin/core/service_locator/get_it.dart' as _i19;
+import 'package:neurolotto_admin/core/service_locator/get_it.dart' as _i21;
 import 'package:neurolotto_admin/features/auth/auth_controller.dart' as _i9;
 import 'package:neurolotto_admin/features/consortium/consortium_controller.dart'
     as _i10;
@@ -20,15 +20,19 @@ import 'package:neurolotto_admin/features/dashboard/dashboard_controller.dart'
 import 'package:neurolotto_admin/features/group/group_controller.dart' as _i12;
 import 'package:neurolotto_admin/features/lottery/lottery_controller.dart'
     as _i13;
-import 'package:neurolotto_admin/features/sales/result_controller.dart' as _i14;
-import 'package:neurolotto_admin/features/sales/sale_controller.dart' as _i15;
+import 'package:neurolotto_admin/features/lottery/lottery_schedule_controller.dart'
+    as _i14;
+import 'package:neurolotto_admin/features/lottery/lottery_schedule_date_controller.dart'
+    as _i15;
+import 'package:neurolotto_admin/features/sales/result_controller.dart' as _i16;
+import 'package:neurolotto_admin/features/sales/sale_controller.dart' as _i17;
 import 'package:neurolotto_admin/features/settings/thememode_controller.dart'
     as _i6;
 import 'package:neurolotto_admin/features/splash/splash_controller.dart'
-    as _i16;
-import 'package:neurolotto_admin/features/stand/stand_controller.dart' as _i17;
-import 'package:neurolotto_admin/features/stand/stand_password_controller.dart'
     as _i18;
+import 'package:neurolotto_admin/features/stand/stand_controller.dart' as _i19;
+import 'package:neurolotto_admin/features/stand/stand_password_controller.dart'
+    as _i20;
 import 'package:neurolotto_admin/features/ticket/ticket_controller.dart' as _i7;
 import 'package:neurolotto_admin/features/ticket/ticket_detail_controller.dart'
     as _i8;
@@ -68,18 +72,22 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i12.GroupController(gh<_i5.SupabaseClient>()));
     gh.lazySingleton<_i13.LotteryController>(
         () => _i13.LotteryController(gh<_i5.SupabaseClient>()));
-    gh.lazySingleton<_i14.ResultController>(
-        () => _i14.ResultController(gh<_i5.SupabaseClient>()));
-    gh.lazySingleton<_i15.SaleController>(
-        () => _i15.SaleController(gh<_i5.SupabaseClient>()));
-    gh.factory<_i16.SplashController>(
-        () => _i16.SplashController(gh<_i5.SupabaseClient>()));
-    gh.lazySingleton<_i17.StandController>(
-        () => _i17.StandController(gh<_i5.SupabaseClient>()));
-    gh.factory<_i18.StandPasswordController>(
-        () => _i18.StandPasswordController(gh<_i5.SupabaseClient>()));
+    gh.lazySingleton<_i14.LotteryScheduleController>(
+        () => _i14.LotteryScheduleController(gh<_i5.SupabaseClient>()));
+    gh.lazySingleton<_i15.LotteryScheduleDateController>(
+        () => _i15.LotteryScheduleDateController(gh<_i5.SupabaseClient>()));
+    gh.lazySingleton<_i16.ResultController>(
+        () => _i16.ResultController(gh<_i5.SupabaseClient>()));
+    gh.lazySingleton<_i17.SaleController>(
+        () => _i17.SaleController(gh<_i5.SupabaseClient>()));
+    gh.factory<_i18.SplashController>(
+        () => _i18.SplashController(gh<_i5.SupabaseClient>()));
+    gh.lazySingleton<_i19.StandController>(
+        () => _i19.StandController(gh<_i5.SupabaseClient>()));
+    gh.factory<_i20.StandPasswordController>(
+        () => _i20.StandPasswordController(gh<_i5.SupabaseClient>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i19.RegisterModule {}
+class _$RegisterModule extends _i21.RegisterModule {}

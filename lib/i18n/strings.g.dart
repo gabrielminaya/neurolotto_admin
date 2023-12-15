@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 120
+/// Strings: 141
 ///
-/// Built on 2023-12-12 at 19:03 UTC
+/// Built on 2023-12-15 at 19:55 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -160,6 +160,7 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsTicketEn ticket = _StringsTicketEn._(_root);
 	late final _StringsSalesEn sales = _StringsSalesEn._(_root);
 	late final _StringsResultEn result = _StringsResultEn._(_root);
+	late final _StringsSettingsEn settings = _StringsSettingsEn._(_root);
 }
 
 // Path: common
@@ -173,6 +174,7 @@ class _StringsCommonEn {
 	String get next => 'Next';
 	String get done => 'Done';
 	String get save => 'Apply';
+	String get remove => 'Delete';
 	String get signOut => 'Sign out';
 	String get edit => 'Edit';
 }
@@ -252,10 +254,17 @@ class _StringsLotteryEn {
 
 	// Translations
 	String get title => 'Lotteries';
-	String get detail => 'Details';
+	String get details => 'Details';
+	String get schedules => 'Schedules';
+	String get isClosed => 'Closed';
 	String get name => 'Name';
 	String get success => 'Lottery updated';
 	String get active => 'Active';
+	String get add => 'Add';
+	String get scheduleEmpty => 'No schedules created';
+	String get effectiveDate => 'Effective Date';
+	String get removeScheduleTitle => 'Are you sure you want to delete this schedule?';
+	String get removeScheduleContent => 'No schedule can be restored';
 	String get selectALottery => 'No lottery selected';
 	String get quinielaFirstPrize => 'Quiniela 1st prize';
 	String get quinielaSecondPrize => 'Quiniela 2nd prize';
@@ -379,6 +388,48 @@ class _StringsResultEn {
 	String get secondPrize => 'Second number';
 	String get thirdPrize => 'Third number';
 	String get empty => 'No results available';
+	late final _StringsResultConfirmationEn confirmation = _StringsResultConfirmationEn._(_root);
+}
+
+// Path: settings
+class _StringsSettingsEn {
+	_StringsSettingsEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Settings';
+	String get theme => 'Theme';
+	String get dark => 'Dark';
+	String get light => 'Light';
+	String get success => 'Settings updated';
+	late final _StringsSettingsOptionsEn options = _StringsSettingsOptionsEn._(_root);
+}
+
+// Path: result.confirmation
+class _StringsResultConfirmationEn {
+	_StringsResultConfirmationEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Are you sure you want to confirm the results?';
+	String get yes => 'Yes';
+	String get no => 'No';
+}
+
+// Path: settings.options
+class _StringsSettingsOptionsEn {
+	_StringsSettingsOptionsEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get tickets => 'Tickets';
+	String get stand => 'Stands';
+	String get lottery => 'Lotteries';
+	String get group => 'Groups';
+	String get consortium => 'Consortium';
 }
 
 /// Flat map(s) containing all translations.
@@ -391,6 +442,7 @@ extension on _StringsEn {
 			case 'common.next': return 'Next';
 			case 'common.done': return 'Done';
 			case 'common.save': return 'Apply';
+			case 'common.remove': return 'Delete';
 			case 'common.signOut': return 'Sign out';
 			case 'common.edit': return 'Edit';
 			case 'signIn.messageTitle': return 'Sign-In';
@@ -425,10 +477,17 @@ extension on _StringsEn {
 			case 'group.deleteTitle': return 'Are you sure you want to delete this group';
 			case 'group.deleteContent': return 'Only groups without associated benches can be deleted';
 			case 'lottery.title': return 'Lotteries';
-			case 'lottery.detail': return 'Details';
+			case 'lottery.details': return 'Details';
+			case 'lottery.schedules': return 'Schedules';
+			case 'lottery.isClosed': return 'Closed';
 			case 'lottery.name': return 'Name';
 			case 'lottery.success': return 'Lottery updated';
 			case 'lottery.active': return 'Active';
+			case 'lottery.add': return 'Add';
+			case 'lottery.scheduleEmpty': return 'No schedules created';
+			case 'lottery.effectiveDate': return 'Effective Date';
+			case 'lottery.removeScheduleTitle': return 'Are you sure you want to delete this schedule?';
+			case 'lottery.removeScheduleContent': return 'No schedule can be restored';
 			case 'lottery.selectALottery': return 'No lottery selected';
 			case 'lottery.quinielaFirstPrize': return 'Quiniela 1st prize';
 			case 'lottery.quinielaSecondPrize': return 'Quiniela 2nd prize';
@@ -507,6 +566,19 @@ extension on _StringsEn {
 			case 'result.secondPrize': return 'Second number';
 			case 'result.thirdPrize': return 'Third number';
 			case 'result.empty': return 'No results available';
+			case 'result.confirmation.title': return 'Are you sure you want to confirm the results?';
+			case 'result.confirmation.yes': return 'Yes';
+			case 'result.confirmation.no': return 'No';
+			case 'settings.title': return 'Settings';
+			case 'settings.theme': return 'Theme';
+			case 'settings.dark': return 'Dark';
+			case 'settings.light': return 'Light';
+			case 'settings.success': return 'Settings updated';
+			case 'settings.options.tickets': return 'Tickets';
+			case 'settings.options.stand': return 'Stands';
+			case 'settings.options.lottery': return 'Lotteries';
+			case 'settings.options.group': return 'Groups';
+			case 'settings.options.consortium': return 'Consortium';
 			default: return null;
 		}
 	}

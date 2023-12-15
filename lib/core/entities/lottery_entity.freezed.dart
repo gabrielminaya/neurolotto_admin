@@ -23,24 +23,6 @@ mixin _$LotteryEntity {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get status => throw _privateConstructorUsedError;
-  @JsonKey(name: "quiniela_first_prize")
-  num get quinielaFirstPrize => throw _privateConstructorUsedError;
-  @JsonKey(name: "quiniela_second_prize")
-  num get quinielaSecondPrize => throw _privateConstructorUsedError;
-  @JsonKey(name: "quiniela_third_prize")
-  num get quinielaThirdPrize => throw _privateConstructorUsedError;
-  @JsonKey(name: "pale_first_second_prize")
-  num get paleFirstSecondPrize => throw _privateConstructorUsedError;
-  @JsonKey(name: "pale_first_third_prize")
-  num get paleFirstThirdPrize => throw _privateConstructorUsedError;
-  @JsonKey(name: "pale_second_third_prize")
-  num get paleSecondThirdPrize => throw _privateConstructorUsedError;
-  @JsonKey(name: "tripleta_prize")
-  num get tripletaPrice => throw _privateConstructorUsedError;
-  @JsonKey(name: "time_open")
-  String get timeOpen => throw _privateConstructorUsedError;
-  @JsonKey(name: "time_close")
-  String get timeClose => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,19 +36,7 @@ abstract class $LotteryEntityCopyWith<$Res> {
           LotteryEntity value, $Res Function(LotteryEntity) then) =
       _$LotteryEntityCopyWithImpl<$Res, LotteryEntity>;
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      bool status,
-      @JsonKey(name: "quiniela_first_prize") num quinielaFirstPrize,
-      @JsonKey(name: "quiniela_second_prize") num quinielaSecondPrize,
-      @JsonKey(name: "quiniela_third_prize") num quinielaThirdPrize,
-      @JsonKey(name: "pale_first_second_prize") num paleFirstSecondPrize,
-      @JsonKey(name: "pale_first_third_prize") num paleFirstThirdPrize,
-      @JsonKey(name: "pale_second_third_prize") num paleSecondThirdPrize,
-      @JsonKey(name: "tripleta_prize") num tripletaPrice,
-      @JsonKey(name: "time_open") String timeOpen,
-      @JsonKey(name: "time_close") String timeClose});
+  $Res call({String id, String name, bool status});
 }
 
 /// @nodoc
@@ -85,15 +55,6 @@ class _$LotteryEntityCopyWithImpl<$Res, $Val extends LotteryEntity>
     Object? id = null,
     Object? name = null,
     Object? status = null,
-    Object? quinielaFirstPrize = null,
-    Object? quinielaSecondPrize = null,
-    Object? quinielaThirdPrize = null,
-    Object? paleFirstSecondPrize = null,
-    Object? paleFirstThirdPrize = null,
-    Object? paleSecondThirdPrize = null,
-    Object? tripletaPrice = null,
-    Object? timeOpen = null,
-    Object? timeClose = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -108,42 +69,6 @@ class _$LotteryEntityCopyWithImpl<$Res, $Val extends LotteryEntity>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as bool,
-      quinielaFirstPrize: null == quinielaFirstPrize
-          ? _value.quinielaFirstPrize
-          : quinielaFirstPrize // ignore: cast_nullable_to_non_nullable
-              as num,
-      quinielaSecondPrize: null == quinielaSecondPrize
-          ? _value.quinielaSecondPrize
-          : quinielaSecondPrize // ignore: cast_nullable_to_non_nullable
-              as num,
-      quinielaThirdPrize: null == quinielaThirdPrize
-          ? _value.quinielaThirdPrize
-          : quinielaThirdPrize // ignore: cast_nullable_to_non_nullable
-              as num,
-      paleFirstSecondPrize: null == paleFirstSecondPrize
-          ? _value.paleFirstSecondPrize
-          : paleFirstSecondPrize // ignore: cast_nullable_to_non_nullable
-              as num,
-      paleFirstThirdPrize: null == paleFirstThirdPrize
-          ? _value.paleFirstThirdPrize
-          : paleFirstThirdPrize // ignore: cast_nullable_to_non_nullable
-              as num,
-      paleSecondThirdPrize: null == paleSecondThirdPrize
-          ? _value.paleSecondThirdPrize
-          : paleSecondThirdPrize // ignore: cast_nullable_to_non_nullable
-              as num,
-      tripletaPrice: null == tripletaPrice
-          ? _value.tripletaPrice
-          : tripletaPrice // ignore: cast_nullable_to_non_nullable
-              as num,
-      timeOpen: null == timeOpen
-          ? _value.timeOpen
-          : timeOpen // ignore: cast_nullable_to_non_nullable
-              as String,
-      timeClose: null == timeClose
-          ? _value.timeClose
-          : timeClose // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -156,19 +81,7 @@ abstract class _$$LotteryEntityImplCopyWith<$Res>
       __$$LotteryEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      bool status,
-      @JsonKey(name: "quiniela_first_prize") num quinielaFirstPrize,
-      @JsonKey(name: "quiniela_second_prize") num quinielaSecondPrize,
-      @JsonKey(name: "quiniela_third_prize") num quinielaThirdPrize,
-      @JsonKey(name: "pale_first_second_prize") num paleFirstSecondPrize,
-      @JsonKey(name: "pale_first_third_prize") num paleFirstThirdPrize,
-      @JsonKey(name: "pale_second_third_prize") num paleSecondThirdPrize,
-      @JsonKey(name: "tripleta_prize") num tripletaPrice,
-      @JsonKey(name: "time_open") String timeOpen,
-      @JsonKey(name: "time_close") String timeClose});
+  $Res call({String id, String name, bool status});
 }
 
 /// @nodoc
@@ -185,15 +98,6 @@ class __$$LotteryEntityImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? status = null,
-    Object? quinielaFirstPrize = null,
-    Object? quinielaSecondPrize = null,
-    Object? quinielaThirdPrize = null,
-    Object? paleFirstSecondPrize = null,
-    Object? paleFirstThirdPrize = null,
-    Object? paleSecondThirdPrize = null,
-    Object? tripletaPrice = null,
-    Object? timeOpen = null,
-    Object? timeClose = null,
   }) {
     return _then(_$LotteryEntityImpl(
       id: null == id
@@ -208,42 +112,6 @@ class __$$LotteryEntityImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as bool,
-      quinielaFirstPrize: null == quinielaFirstPrize
-          ? _value.quinielaFirstPrize
-          : quinielaFirstPrize // ignore: cast_nullable_to_non_nullable
-              as num,
-      quinielaSecondPrize: null == quinielaSecondPrize
-          ? _value.quinielaSecondPrize
-          : quinielaSecondPrize // ignore: cast_nullable_to_non_nullable
-              as num,
-      quinielaThirdPrize: null == quinielaThirdPrize
-          ? _value.quinielaThirdPrize
-          : quinielaThirdPrize // ignore: cast_nullable_to_non_nullable
-              as num,
-      paleFirstSecondPrize: null == paleFirstSecondPrize
-          ? _value.paleFirstSecondPrize
-          : paleFirstSecondPrize // ignore: cast_nullable_to_non_nullable
-              as num,
-      paleFirstThirdPrize: null == paleFirstThirdPrize
-          ? _value.paleFirstThirdPrize
-          : paleFirstThirdPrize // ignore: cast_nullable_to_non_nullable
-              as num,
-      paleSecondThirdPrize: null == paleSecondThirdPrize
-          ? _value.paleSecondThirdPrize
-          : paleSecondThirdPrize // ignore: cast_nullable_to_non_nullable
-              as num,
-      tripletaPrice: null == tripletaPrice
-          ? _value.tripletaPrice
-          : tripletaPrice // ignore: cast_nullable_to_non_nullable
-              as num,
-      timeOpen: null == timeOpen
-          ? _value.timeOpen
-          : timeOpen // ignore: cast_nullable_to_non_nullable
-              as String,
-      timeClose: null == timeClose
-          ? _value.timeClose
-          : timeClose // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -252,21 +120,7 @@ class __$$LotteryEntityImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LotteryEntityImpl implements _LotteryEntity {
   const _$LotteryEntityImpl(
-      {required this.id,
-      required this.name,
-      required this.status,
-      @JsonKey(name: "quiniela_first_prize") required this.quinielaFirstPrize,
-      @JsonKey(name: "quiniela_second_prize") required this.quinielaSecondPrize,
-      @JsonKey(name: "quiniela_third_prize") required this.quinielaThirdPrize,
-      @JsonKey(name: "pale_first_second_prize")
-      required this.paleFirstSecondPrize,
-      @JsonKey(name: "pale_first_third_prize")
-      required this.paleFirstThirdPrize,
-      @JsonKey(name: "pale_second_third_prize")
-      required this.paleSecondThirdPrize,
-      @JsonKey(name: "tripleta_prize") required this.tripletaPrice,
-      @JsonKey(name: "time_open") required this.timeOpen,
-      @JsonKey(name: "time_close") required this.timeClose});
+      {required this.id, required this.name, required this.status});
 
   factory _$LotteryEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$LotteryEntityImplFromJson(json);
@@ -277,37 +131,10 @@ class _$LotteryEntityImpl implements _LotteryEntity {
   final String name;
   @override
   final bool status;
-  @override
-  @JsonKey(name: "quiniela_first_prize")
-  final num quinielaFirstPrize;
-  @override
-  @JsonKey(name: "quiniela_second_prize")
-  final num quinielaSecondPrize;
-  @override
-  @JsonKey(name: "quiniela_third_prize")
-  final num quinielaThirdPrize;
-  @override
-  @JsonKey(name: "pale_first_second_prize")
-  final num paleFirstSecondPrize;
-  @override
-  @JsonKey(name: "pale_first_third_prize")
-  final num paleFirstThirdPrize;
-  @override
-  @JsonKey(name: "pale_second_third_prize")
-  final num paleSecondThirdPrize;
-  @override
-  @JsonKey(name: "tripleta_prize")
-  final num tripletaPrice;
-  @override
-  @JsonKey(name: "time_open")
-  final String timeOpen;
-  @override
-  @JsonKey(name: "time_close")
-  final String timeClose;
 
   @override
   String toString() {
-    return 'LotteryEntity(id: $id, name: $name, status: $status, quinielaFirstPrize: $quinielaFirstPrize, quinielaSecondPrize: $quinielaSecondPrize, quinielaThirdPrize: $quinielaThirdPrize, paleFirstSecondPrize: $paleFirstSecondPrize, paleFirstThirdPrize: $paleFirstThirdPrize, paleSecondThirdPrize: $paleSecondThirdPrize, tripletaPrice: $tripletaPrice, timeOpen: $timeOpen, timeClose: $timeClose)';
+    return 'LotteryEntity(id: $id, name: $name, status: $status)';
   }
 
   @override
@@ -317,43 +144,12 @@ class _$LotteryEntityImpl implements _LotteryEntity {
             other is _$LotteryEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.quinielaFirstPrize, quinielaFirstPrize) ||
-                other.quinielaFirstPrize == quinielaFirstPrize) &&
-            (identical(other.quinielaSecondPrize, quinielaSecondPrize) ||
-                other.quinielaSecondPrize == quinielaSecondPrize) &&
-            (identical(other.quinielaThirdPrize, quinielaThirdPrize) ||
-                other.quinielaThirdPrize == quinielaThirdPrize) &&
-            (identical(other.paleFirstSecondPrize, paleFirstSecondPrize) ||
-                other.paleFirstSecondPrize == paleFirstSecondPrize) &&
-            (identical(other.paleFirstThirdPrize, paleFirstThirdPrize) ||
-                other.paleFirstThirdPrize == paleFirstThirdPrize) &&
-            (identical(other.paleSecondThirdPrize, paleSecondThirdPrize) ||
-                other.paleSecondThirdPrize == paleSecondThirdPrize) &&
-            (identical(other.tripletaPrice, tripletaPrice) ||
-                other.tripletaPrice == tripletaPrice) &&
-            (identical(other.timeOpen, timeOpen) ||
-                other.timeOpen == timeOpen) &&
-            (identical(other.timeClose, timeClose) ||
-                other.timeClose == timeClose));
+            (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      status,
-      quinielaFirstPrize,
-      quinielaSecondPrize,
-      quinielaThirdPrize,
-      paleFirstSecondPrize,
-      paleFirstThirdPrize,
-      paleSecondThirdPrize,
-      tripletaPrice,
-      timeOpen,
-      timeClose);
+  int get hashCode => Object.hash(runtimeType, id, name, status);
 
   @JsonKey(ignore: true)
   @override
@@ -371,25 +167,9 @@ class _$LotteryEntityImpl implements _LotteryEntity {
 
 abstract class _LotteryEntity implements LotteryEntity {
   const factory _LotteryEntity(
-          {required final String id,
-          required final String name,
-          required final bool status,
-          @JsonKey(name: "quiniela_first_prize")
-          required final num quinielaFirstPrize,
-          @JsonKey(name: "quiniela_second_prize")
-          required final num quinielaSecondPrize,
-          @JsonKey(name: "quiniela_third_prize")
-          required final num quinielaThirdPrize,
-          @JsonKey(name: "pale_first_second_prize")
-          required final num paleFirstSecondPrize,
-          @JsonKey(name: "pale_first_third_prize")
-          required final num paleFirstThirdPrize,
-          @JsonKey(name: "pale_second_third_prize")
-          required final num paleSecondThirdPrize,
-          @JsonKey(name: "tripleta_prize") required final num tripletaPrice,
-          @JsonKey(name: "time_open") required final String timeOpen,
-          @JsonKey(name: "time_close") required final String timeClose}) =
-      _$LotteryEntityImpl;
+      {required final String id,
+      required final String name,
+      required final bool status}) = _$LotteryEntityImpl;
 
   factory _LotteryEntity.fromJson(Map<String, dynamic> json) =
       _$LotteryEntityImpl.fromJson;
@@ -400,33 +180,6 @@ abstract class _LotteryEntity implements LotteryEntity {
   String get name;
   @override
   bool get status;
-  @override
-  @JsonKey(name: "quiniela_first_prize")
-  num get quinielaFirstPrize;
-  @override
-  @JsonKey(name: "quiniela_second_prize")
-  num get quinielaSecondPrize;
-  @override
-  @JsonKey(name: "quiniela_third_prize")
-  num get quinielaThirdPrize;
-  @override
-  @JsonKey(name: "pale_first_second_prize")
-  num get paleFirstSecondPrize;
-  @override
-  @JsonKey(name: "pale_first_third_prize")
-  num get paleFirstThirdPrize;
-  @override
-  @JsonKey(name: "pale_second_third_prize")
-  num get paleSecondThirdPrize;
-  @override
-  @JsonKey(name: "tripleta_prize")
-  num get tripletaPrice;
-  @override
-  @JsonKey(name: "time_open")
-  String get timeOpen;
-  @override
-  @JsonKey(name: "time_close")
-  String get timeClose;
   @override
   @JsonKey(ignore: true)
   _$$LotteryEntityImplCopyWith<_$LotteryEntityImpl> get copyWith =>
