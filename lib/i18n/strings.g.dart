@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 142
+/// Strings: 143
 ///
-/// Built on 2024-01-08 at 18:45 UTC
+/// Built on 2024-01-08 at 19:52 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -228,6 +228,7 @@ class _StringsGroupEn {
 	// Translations
 	String get title => 'Groups';
 	String get detail => 'Details';
+	String get prizes => 'Prizes';
 	String get name => 'Name';
 	String get selectAGroup => 'No group selected';
 	String get add => 'Add';
@@ -461,6 +462,7 @@ extension on _StringsEn {
 			case 'consortium.empty': return 'No associated consortium found';
 			case 'group.title': return 'Groups';
 			case 'group.detail': return 'Details';
+			case 'group.prizes': return 'Prizes';
 			case 'group.name': return 'Name';
 			case 'group.selectAGroup': return 'No group selected';
 			case 'group.add': return 'Add';

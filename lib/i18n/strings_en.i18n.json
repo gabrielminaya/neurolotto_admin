@@ -30,6 +30,7 @@
     "group": {
         "title": "Groups",
         "detail": "Details",
+        "prizes": "Prizes",
         "name": "Name",
         "selectAGroup": "No group selected",
         "add": "Add",
