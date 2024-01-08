@@ -1,9 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:intl/intl.dart';
 
-import '../../core/adaptative_dialog.dart';
 import '../../core/constants.dart';
 import '../../core/entities/lottery_stand_entity.dart';
 import '../../core/extensions/value_notifier.dart';
@@ -12,7 +10,9 @@ import '../../core/service_locator/get_it.dart';
 import '../../core/services.dart';
 import '../../i18n/strings.g.dart';
 import 'stand_controller.dart';
-import 'stand_form_view.dart';
+import 'stand_detail_view.dart';
+import 'stand_list_view.dart';
+import 'stand_prizes_view.dart';
 
 @RoutePage()
 class StandView extends StatefulWidget {
@@ -48,12 +48,12 @@ class _StandViewState extends State<StandView> {
         return LayoutBuilder(
           builder: (context, constraints) {
             if (constraints.maxWidth <= tabletBreakpoint) {
-              return StandItems(
+              return StandListView(
                 stands: state.stands,
                 selectedStand: state.currentStand,
                 onStandSelected: (stand) {
                   _standController.setStand(stand);
-                  router.push(StandDetailRoute(stand: stand));
+                  router.push(StandTabsRoute(stand: stand));
                 },
               );
             }
@@ -62,7 +62,7 @@ class _StandViewState extends State<StandView> {
               children: [
                 Flexible(
                   flex: 1,
-                  child: StandItems(
+                  child: StandListView(
                     stands: state.stands,
                     selectedStand: state.currentStand,
                     onStandSelected: (stand) {
@@ -80,7 +80,7 @@ class _StandViewState extends State<StandView> {
                       );
                     }
 
-                    return StandDetail(stand: state.currentStand!);
+                    return StandTabsView(stand: state.currentStand!);
                   }),
                 ),
               ],
@@ -92,144 +92,43 @@ class _StandViewState extends State<StandView> {
   }
 }
 
-class StandItems extends StatelessWidget {
-  const StandItems({
-    super.key,
-    required this.stands,
-    required this.onStandSelected,
-    this.selectedStand,
-  });
-
-  final List<LotteryStandEntity> stands;
-  final LotteryStandEntity? selectedStand;
-  final ValueChanged<LotteryStandEntity> onStandSelected;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text(t.stand.title),
-      ),
-      body: ListView.separated(
-        itemCount: stands.length,
-        separatorBuilder: (context, index) => const Divider(height: 0),
-        itemBuilder: (context, index) {
-          final stand = stands.elementAt(index);
-
-          return ListTile(
-            selected: stand == selectedStand,
-            selectedTileColor: Theme.of(context).colorScheme.primaryContainer,
-            leading: const Icon(Icons.store),
-            title: Text(stand.name),
-            onTap: () => onStandSelected(stand),
-            trailing: Visibility(
-              visible: selectedStand == stand,
-              child: const Icon(Icons.arrow_right),
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-@RoutePage(name: "StandDetailRoute")
-class StandDetail extends StatelessWidget {
-  const StandDetail({super.key, required this.stand});
+@RoutePage(name: "StandTabsRoute")
+class StandTabsView extends StatelessWidget {
+  const StandTabsView({super.key, required this.stand});
 
   final LotteryStandEntity stand;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text(t.stand.detail),
-      ),
-      floatingActionButton: LayoutBuilder(
-        builder: (_, constraints) => FloatingActionButton(
-          onPressed: () {
-            if (constraints.maxWidth <= tabletBreakpoint) {
-              router.push(StandFormRoute(stand: stand));
-              return;
-            }
-
-            showDialog(
-              context: context,
-              builder: (context) => AdaptativeDialog(
-                child: StandFormView(stand: stand),
+    return DefaultTabController(
+      length: 2,
+      child: LayoutBuilder(
+        builder: (context, constraints) => Scaffold(
+          body: NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) => [
+              SliverAppBar(
+                title: Text(stand.name),
+                centerTitle: false,
+                floating: true,
+                pinned: true,
+                bottom: TabBar(
+                  isScrollable: constraints.maxWidth < tabletBreakpoint ? false : true,
+                  tabAlignment: constraints.maxWidth < tabletBreakpoint ? TabAlignment.fill : TabAlignment.start,
+                  tabs: [
+                    Tab(text: t.stand.detail),
+                    Tab(text: t.stand.prizes),
+                  ],
+                ),
               ),
-            );
-          },
-          child: const Icon(Icons.edit),
+            ],
+            body: TabBarView(
+              children: [
+                StandDetailView(stand: stand),
+                StandPrizeView(stand: stand),
+              ],
+            ),
+          ),
         ),
-      ),
-      body: ListView(
-        children: [
-          ListTile(
-            leading: const Icon(Icons.store),
-            title: Text(t.stand.name),
-            subtitle: Text(stand.name),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.group),
-            title: Text(t.stand.group),
-            subtitle: Text(stand.group.name),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.person),
-            title: Text(t.stand.username),
-            subtitle: Text(stand.username),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.contrast),
-            title: Text(t.stand.contraint),
-            subtitle: Text(stand.constraintLevel.name),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.attach_money),
-            title: Text(t.stand.maximumCancellationAmount),
-            subtitle: Text(NumberFormat.simpleCurrency().format(stand.maximumCancellationAmount)),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.attach_money),
-            title: Text(t.stand.maximumSaleAmount),
-            subtitle: Text(NumberFormat.simpleCurrency().format(stand.maximumSaleAmount)),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            enabled: stand.quinielaMaxAmount != null,
-            leading: const Icon(Icons.attach_money),
-            title: Text(t.stand.quinielaMaxAmount),
-            subtitle: Text(NumberFormat.simpleCurrency().format(stand.quinielaMaxAmount ?? 0)),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            enabled: stand.paleMaxAmount != null,
-            leading: const Icon(Icons.attach_money),
-            title: Text(t.stand.paleMaxAmount),
-            subtitle: Text(NumberFormat.simpleCurrency().format(stand.paleMaxAmount ?? 0)),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            enabled: stand.tripletaMaxAmount != null,
-            leading: const Icon(Icons.attach_money),
-            title: Text(t.stand.tripletaMaxAmount),
-            subtitle: Text(NumberFormat.simpleCurrency().format(stand.tripletaMaxAmount ?? 0)),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            leading: const Icon(Icons.verified_user),
-            title: Text(t.stand.active),
-            subtitle: Text(stand.active.toString().toUpperCase()),
-          ),
-        ],
       ),
     );
   }

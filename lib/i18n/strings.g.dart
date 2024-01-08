@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 141
+/// Strings: 142
 ///
-/// Built on 2023-12-15 at 19:55 UTC
+/// Built on 2024-01-08 at 18:45 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -286,6 +286,7 @@ class _StringsStandEn {
 	// Translations
 	String get title => 'Stands';
 	String get detail => 'Details';
+	String get prizes => 'Prizes';
 	String get name => 'Name';
 	String get group => 'Group';
 	String get selectAStand => 'No stand selected';
@@ -500,6 +501,7 @@ extension on _StringsEn {
 			case 'lottery.timeClose': return 'Closing time';
 			case 'stand.title': return 'Stands';
 			case 'stand.detail': return 'Details';
+			case 'stand.prizes': return 'Prizes';
 			case 'stand.name': return 'Name';
 			case 'stand.group': return 'Group';
 			case 'stand.selectAStand': return 'No stand selected';

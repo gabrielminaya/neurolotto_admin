@@ -11,7 +11,7 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:neurolotto_admin/core/router/router.dart' as _i3;
-import 'package:neurolotto_admin/core/service_locator/get_it.dart' as _i21;
+import 'package:neurolotto_admin/core/service_locator/get_it.dart' as _i22;
 import 'package:neurolotto_admin/features/auth/auth_controller.dart' as _i9;
 import 'package:neurolotto_admin/features/consortium/consortium_controller.dart'
     as _i10;
@@ -33,6 +33,8 @@ import 'package:neurolotto_admin/features/splash/splash_controller.dart'
 import 'package:neurolotto_admin/features/stand/stand_controller.dart' as _i19;
 import 'package:neurolotto_admin/features/stand/stand_password_controller.dart'
     as _i20;
+import 'package:neurolotto_admin/features/stand/stand_prize_lottery_controller.dart'
+    as _i21;
 import 'package:neurolotto_admin/features/ticket/ticket_controller.dart' as _i7;
 import 'package:neurolotto_admin/features/ticket/ticket_detail_controller.dart'
     as _i8;
@@ -86,8 +88,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i19.StandController(gh<_i5.SupabaseClient>()));
     gh.factory<_i20.StandPasswordController>(
         () => _i20.StandPasswordController(gh<_i5.SupabaseClient>()));
+    gh.lazySingleton<_i21.StandPrizeLotteryController>(
+        () => _i21.StandPrizeLotteryController(gh<_i5.SupabaseClient>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i21.RegisterModule {}
+class _$RegisterModule extends _i22.RegisterModule {}

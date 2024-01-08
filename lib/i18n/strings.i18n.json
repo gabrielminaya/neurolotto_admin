@@ -75,6 +75,7 @@
     "stand": {
         "title": "Bancas",
         "detail": "Detalles",
+        "prizes": "Premios",
         "name": "Nombre",
         "group": "Grupo",
         "selectAStand": "No hay banca seleccionada",

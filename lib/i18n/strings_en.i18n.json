@@ -74,6 +74,7 @@
     "stand": {
         "title": "Stands",
         "detail": "Details",
+        "prizes": "Prizes",
         "name": "Name",
         "group": "Group",
         "selectAStand": "No stand selected",
