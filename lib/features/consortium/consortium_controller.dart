@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:neurolotto_admin/core/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../core/entities/consortium_entity.dart';
+import '../../core/services.dart';
 
 part 'consortium_controller.freezed.dart';
 

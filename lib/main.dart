@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'core/app.dart';
@@ -13,7 +12,6 @@ Future<void> main() async {
   await Supabase.initialize(url: supabaseEndpoint, anonKey: supabaseKey);
   await configureDependencies();
   await authController.initialize();
-  // setUrlStrategy(PathUrlStrategy());
   LocaleSettings.useDeviceLocale();
 
   runApp(TranslationProvider(child: const MainApp()));

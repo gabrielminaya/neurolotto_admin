@@ -12,6 +12,7 @@ import '../../i18n/strings.g.dart';
 import 'stand_controller.dart';
 import 'stand_detail_view.dart';
 import 'stand_list_view.dart';
+import 'stand_play_constraint_view.dart';
 import 'stand_prizes_view.dart';
 
 @RoutePage()
@@ -101,7 +102,7 @@ class StandTabsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: LayoutBuilder(
         builder: (context, constraints) => Scaffold(
           body: NestedScrollView(
@@ -117,6 +118,7 @@ class StandTabsView extends StatelessWidget {
                   tabs: [
                     Tab(text: t.stand.detail),
                     Tab(text: t.stand.prizes),
+                    Tab(text: t.stand.constraints),
                   ],
                 ),
               ),
@@ -125,6 +127,7 @@ class StandTabsView extends StatelessWidget {
               children: [
                 StandDetailView(stand: stand),
                 StandPrizeView(stand: stand),
+                StandPlayConstraintView(stand: stand),
               ],
             ),
           ),

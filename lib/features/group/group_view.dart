@@ -14,6 +14,7 @@ import '../../i18n/strings.g.dart';
 import 'group_controller.dart';
 import 'group_detail_view.dart';
 import 'group_list_view.dart';
+import 'group_play_constraint_view.dart';
 import 'group_prize_view.dart';
 
 @RoutePage()
@@ -143,7 +144,7 @@ class GroupTabsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: LayoutBuilder(
         builder: (context, constraints) => Scaffold(
           body: NestedScrollView(
@@ -159,6 +160,7 @@ class GroupTabsView extends StatelessWidget {
                   tabs: [
                     Tab(text: t.group.detail),
                     Tab(text: t.group.prizes),
+                    Tab(text: t.group.constraints),
                   ],
                 ),
                 actions: [
@@ -180,6 +182,7 @@ class GroupTabsView extends StatelessWidget {
               children: [
                 GroupDetailView(group: group),
                 GroupPrizeView(group: group),
+                GroupPlayConstraintView(group: group),
               ],
             ),
           ),

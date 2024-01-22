@@ -4,13 +4,13 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
+import '../../core/async_button_builder.dart';
 import '../../core/constants.dart';
 import '../../core/entities/constraint_level_entity.dart';
 import '../../core/entities/group_entity.dart';
 import '../../core/entities/lottery_stand_entity.dart';
 import '../../core/extensions/value_notifier.dart';
 import '../../core/service_locator/get_it.dart';
-import '../../core/async_button_builder.dart';
 import '../../i18n/strings.g.dart';
 import 'stand_controller.dart';
 

@@ -8,80 +8,84 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i22;
-import 'package:flutter/material.dart' as _i23;
-import 'package:neurolotto_admin/core/entities/group_entity.dart' as _i24;
-import 'package:neurolotto_admin/core/entities/group_prize_entity.dart' as _i25;
-import 'package:neurolotto_admin/core/entities/lottery_entity.dart' as _i26;
+import 'package:auto_route/auto_route.dart' as _i24;
+import 'package:flutter/material.dart' as _i25;
+import 'package:neurolotto_admin/core/entities/group_entity.dart' as _i26;
+import 'package:neurolotto_admin/core/entities/group_prize_entity.dart' as _i27;
+import 'package:neurolotto_admin/core/entities/lottery_entity.dart' as _i28;
 import 'package:neurolotto_admin/core/entities/lottery_result_entity.dart'
-    as _i28;
-import 'package:neurolotto_admin/core/entities/lottery_schedule_entity.dart'
-    as _i27;
-import 'package:neurolotto_admin/core/entities/lottery_stand_entity.dart'
-    as _i29;
-import 'package:neurolotto_admin/core/entities/lottery_stand_prize_entity.dart'
     as _i30;
-import 'package:neurolotto_admin/core/entities/ticket_entity.dart' as _i31;
+import 'package:neurolotto_admin/core/entities/lottery_schedule_entity.dart'
+    as _i29;
+import 'package:neurolotto_admin/core/entities/lottery_stand_entity.dart'
+    as _i31;
+import 'package:neurolotto_admin/core/entities/lottery_stand_prize_entity.dart'
+    as _i32;
+import 'package:neurolotto_admin/core/entities/ticket_entity.dart' as _i33;
 import 'package:neurolotto_admin/features/auth/sign_in_view.dart'
-    deferred as _i15;
+    deferred as _i16;
 import 'package:neurolotto_admin/features/consortium/consortium_view.dart'
     deferred as _i1;
 import 'package:neurolotto_admin/features/dashboard/dashboard_view.dart'
     deferred as _i2;
 import 'package:neurolotto_admin/features/group/group_form_view.dart'
     deferred as _i3;
-import 'package:neurolotto_admin/features/group/group_prize_form_view.dart'
+import 'package:neurolotto_admin/features/group/group_play_constraint_form_view.dart'
     deferred as _i4;
-import 'package:neurolotto_admin/features/group/group_view.dart'
+import 'package:neurolotto_admin/features/group/group_prize_form_view.dart'
     deferred as _i5;
-import 'package:neurolotto_admin/features/home/home_view.dart' deferred as _i6;
+import 'package:neurolotto_admin/features/group/group_view.dart'
+    deferred as _i6;
+import 'package:neurolotto_admin/features/home/home_view.dart' deferred as _i7;
 import 'package:neurolotto_admin/features/lottery/lottery_schedule_date_form_view.dart'
-    deferred as _i7;
-import 'package:neurolotto_admin/features/lottery/lottery_schedule_form_view.dart'
     deferred as _i8;
-import 'package:neurolotto_admin/features/lottery/lottery_schedule_view.dart'
+import 'package:neurolotto_admin/features/lottery/lottery_schedule_form_view.dart'
     deferred as _i9;
-import 'package:neurolotto_admin/features/lottery/lottery_view.dart'
+import 'package:neurolotto_admin/features/lottery/lottery_schedule_view.dart'
     deferred as _i10;
-import 'package:neurolotto_admin/features/sales/result_form_view.dart'
+import 'package:neurolotto_admin/features/lottery/lottery_view.dart'
     deferred as _i11;
-import 'package:neurolotto_admin/features/sales/result_view.dart'
+import 'package:neurolotto_admin/features/sales/result_form_view.dart'
     deferred as _i12;
-import 'package:neurolotto_admin/features/sales/sale_view.dart'
+import 'package:neurolotto_admin/features/sales/result_view.dart'
     deferred as _i13;
-import 'package:neurolotto_admin/features/settings/settings_view.dart'
+import 'package:neurolotto_admin/features/sales/sale_view.dart'
     deferred as _i14;
+import 'package:neurolotto_admin/features/settings/settings_view.dart'
+    deferred as _i15;
 import 'package:neurolotto_admin/features/splash/splash_view.dart'
-    deferred as _i16;
-import 'package:neurolotto_admin/features/stand/stand_form_view.dart'
     deferred as _i17;
-import 'package:neurolotto_admin/features/stand/stand_password_view.dart'
+import 'package:neurolotto_admin/features/stand/stand_form_view.dart'
     deferred as _i18;
-import 'package:neurolotto_admin/features/stand/stand_prize_form_view.dart'
+import 'package:neurolotto_admin/features/stand/stand_password_view.dart'
     deferred as _i19;
-import 'package:neurolotto_admin/features/stand/stand_view.dart'
+import 'package:neurolotto_admin/features/stand/stand_play_constraint_form_view.dart'
     deferred as _i20;
-import 'package:neurolotto_admin/features/ticket/ticket_view.dart'
+import 'package:neurolotto_admin/features/stand/stand_prize_form_view.dart'
     deferred as _i21;
+import 'package:neurolotto_admin/features/stand/stand_view.dart'
+    deferred as _i22;
+import 'package:neurolotto_admin/features/ticket/ticket_view.dart'
+    deferred as _i23;
 
-abstract class $AppRouter extends _i22.RootStackRouter {
+abstract class $AppRouter extends _i24.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i22.PageFactory> pagesMap = {
+  final Map<String, _i24.PageFactory> pagesMap = {
     ConsortiumRoute.name: (routeData) {
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
+        child: _i24.DeferredWidget(
           _i1.loadLibrary,
           () => _i1.ConsortiumView(),
         ),
       );
     },
     DashboardRoute.name: (routeData) {
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
+        child: _i24.DeferredWidget(
           _i2.loadLibrary,
           () => _i2.DashboardView(),
         ),
@@ -90,9 +94,9 @@ abstract class $AppRouter extends _i22.RootStackRouter {
     GroupFormRoute.name: (routeData) {
       final args = routeData.argsAs<GroupFormRouteArgs>(
           orElse: () => const GroupFormRouteArgs());
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
+        child: _i24.DeferredWidget(
           _i3.loadLibrary,
           () => _i3.GroupFormView(
             key: args.key,
@@ -101,13 +105,26 @@ abstract class $AppRouter extends _i22.RootStackRouter {
         ),
       );
     },
+    GroupPlayConstraintFormRoute.name: (routeData) {
+      final args = routeData.argsAs<GroupPlayConstraintFormRouteArgs>();
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i24.DeferredWidget(
+          _i4.loadLibrary,
+          () => _i4.GroupPlayConstraintFormView(
+            key: args.key,
+            group: args.group,
+          ),
+        ),
+      );
+    },
     GroupPrizeFormRoute.name: (routeData) {
       final args = routeData.argsAs<GroupPrizeFormRouteArgs>();
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i4.loadLibrary,
-          () => _i4.GroupPrizeFormView(
+        child: _i24.DeferredWidget(
+          _i5.loadLibrary,
+          () => _i5.GroupPrizeFormView(
             key: args.key,
             prize: args.prize,
             group: args.group,
@@ -117,11 +134,11 @@ abstract class $AppRouter extends _i22.RootStackRouter {
     },
     GroupTabsRoute.name: (routeData) {
       final args = routeData.argsAs<GroupTabsRouteArgs>();
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i5.loadLibrary,
-          () => _i5.GroupTabsView(
+        child: _i24.DeferredWidget(
+          _i6.loadLibrary,
+          () => _i6.GroupTabsView(
             key: args.key,
             group: args.group,
           ),
@@ -129,32 +146,32 @@ abstract class $AppRouter extends _i22.RootStackRouter {
       );
     },
     GroupRoute.name: (routeData) {
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i5.loadLibrary,
-          () => _i5.GroupView(),
+        child: _i24.DeferredWidget(
+          _i6.loadLibrary,
+          () => _i6.GroupView(),
         ),
       );
     },
     HomeRoute.name: (routeData) {
       final args =
           routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i6.loadLibrary,
-          () => _i6.HomeView(key: args.key),
+        child: _i24.DeferredWidget(
+          _i7.loadLibrary,
+          () => _i7.HomeView(key: args.key),
         ),
       );
     },
     LotteryScheduleDateFormRoute.name: (routeData) {
       final args = routeData.argsAs<LotteryScheduleDateFormRouteArgs>();
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i7.loadLibrary,
-          () => _i7.LotteryScheduleDateFormView(
+        child: _i24.DeferredWidget(
+          _i8.loadLibrary,
+          () => _i8.LotteryScheduleDateFormView(
             key: args.key,
             lottery: args.lottery,
           ),
@@ -163,11 +180,11 @@ abstract class $AppRouter extends _i22.RootStackRouter {
     },
     LotteryScheduleFormRoute.name: (routeData) {
       final args = routeData.argsAs<LotteryScheduleFormRouteArgs>();
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i8.loadLibrary,
-          () => _i8.LotteryScheduleFormView(
+        child: _i24.DeferredWidget(
+          _i9.loadLibrary,
+          () => _i9.LotteryScheduleFormView(
             key: args.key,
             lotterySchedule: args.lotterySchedule,
           ),
@@ -176,11 +193,11 @@ abstract class $AppRouter extends _i22.RootStackRouter {
     },
     LotteryScheduleRoute.name: (routeData) {
       final args = routeData.argsAs<LotteryScheduleRouteArgs>();
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i9.loadLibrary,
-          () => _i9.LotteryScheduleView(
+        child: _i24.DeferredWidget(
+          _i10.loadLibrary,
+          () => _i10.LotteryScheduleView(
             key: args.key,
             lottery: args.lottery,
           ),
@@ -189,11 +206,11 @@ abstract class $AppRouter extends _i22.RootStackRouter {
     },
     LotteryTabsRoute.name: (routeData) {
       final args = routeData.argsAs<LotteryTabsRouteArgs>();
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i10.loadLibrary,
-          () => _i10.LotteryTabsView(
+        child: _i24.DeferredWidget(
+          _i11.loadLibrary,
+          () => _i11.LotteryTabsView(
             key: args.key,
             lottery: args.lottery,
           ),
@@ -201,22 +218,22 @@ abstract class $AppRouter extends _i22.RootStackRouter {
       );
     },
     LotteryRoute.name: (routeData) {
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i10.loadLibrary,
-          () => _i10.LotteryView(),
+        child: _i24.DeferredWidget(
+          _i11.loadLibrary,
+          () => _i11.LotteryView(),
         ),
       );
     },
     ResultFormRoute.name: (routeData) {
       final args = routeData.argsAs<ResultFormRouteArgs>(
           orElse: () => const ResultFormRouteArgs());
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i11.loadLibrary,
-          () => _i11.ResultFormView(
+        child: _i24.DeferredWidget(
+          _i12.loadLibrary,
+          () => _i12.ResultFormView(
             key: args.key,
             result: args.result,
           ),
@@ -224,59 +241,59 @@ abstract class $AppRouter extends _i22.RootStackRouter {
       );
     },
     ResultRoute.name: (routeData) {
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i12.loadLibrary,
-          () => _i12.ResultView(),
+        child: _i24.DeferredWidget(
+          _i13.loadLibrary,
+          () => _i13.ResultView(),
         ),
       );
     },
     SaleRoute.name: (routeData) {
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i13.loadLibrary,
-          () => _i13.SaleView(),
+        child: _i24.DeferredWidget(
+          _i14.loadLibrary,
+          () => _i14.SaleView(),
         ),
       );
     },
     SettingsRoute.name: (routeData) {
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i14.loadLibrary,
-          () => _i14.SettingsView(),
+        child: _i24.DeferredWidget(
+          _i15.loadLibrary,
+          () => _i15.SettingsView(),
         ),
       );
     },
     SignInRoute.name: (routeData) {
       final args = routeData.argsAs<SignInRouteArgs>(
           orElse: () => const SignInRouteArgs());
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i15.loadLibrary,
-          () => _i15.SignInView(key: args.key),
+        child: _i24.DeferredWidget(
+          _i16.loadLibrary,
+          () => _i16.SignInView(key: args.key),
         ),
       );
     },
     SplashRoute.name: (routeData) {
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i16.loadLibrary,
-          () => _i16.SplashView(),
+        child: _i24.DeferredWidget(
+          _i17.loadLibrary,
+          () => _i17.SplashView(),
         ),
       );
     },
     StandFormRoute.name: (routeData) {
       final args = routeData.argsAs<StandFormRouteArgs>();
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i17.loadLibrary,
-          () => _i17.StandFormView(
+        child: _i24.DeferredWidget(
+          _i18.loadLibrary,
+          () => _i18.StandFormView(
             key: args.key,
             stand: args.stand,
           ),
@@ -285,11 +302,24 @@ abstract class $AppRouter extends _i22.RootStackRouter {
     },
     StandPasswordRoute.name: (routeData) {
       final args = routeData.argsAs<StandPasswordRouteArgs>();
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i18.loadLibrary,
-          () => _i18.StandPasswordView(
+        child: _i24.DeferredWidget(
+          _i19.loadLibrary,
+          () => _i19.StandPasswordView(
+            key: args.key,
+            stand: args.stand,
+          ),
+        ),
+      );
+    },
+    StandPlayConstraintFormRoute.name: (routeData) {
+      final args = routeData.argsAs<StandPlayConstraintFormRouteArgs>();
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i24.DeferredWidget(
+          _i20.loadLibrary,
+          () => _i20.StandPlayConstraintFormView(
             key: args.key,
             stand: args.stand,
           ),
@@ -298,11 +328,11 @@ abstract class $AppRouter extends _i22.RootStackRouter {
     },
     StandPrizeFormRoute.name: (routeData) {
       final args = routeData.argsAs<StandPrizeFormRouteArgs>();
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i19.loadLibrary,
-          () => _i19.StandPrizeFormView(
+        child: _i24.DeferredWidget(
+          _i21.loadLibrary,
+          () => _i21.StandPrizeFormView(
             key: args.key,
             prize: args.prize,
             stand: args.stand,
@@ -312,11 +342,11 @@ abstract class $AppRouter extends _i22.RootStackRouter {
     },
     StandTabsRoute.name: (routeData) {
       final args = routeData.argsAs<StandTabsRouteArgs>();
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i20.loadLibrary,
-          () => _i20.StandTabsView(
+        child: _i24.DeferredWidget(
+          _i22.loadLibrary,
+          () => _i22.StandTabsView(
             key: args.key,
             stand: args.stand,
           ),
@@ -324,21 +354,21 @@ abstract class $AppRouter extends _i22.RootStackRouter {
       );
     },
     StandRoute.name: (routeData) {
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i20.loadLibrary,
-          () => _i20.StandView(),
+        child: _i24.DeferredWidget(
+          _i22.loadLibrary,
+          () => _i22.StandView(),
         ),
       );
     },
     TicketDetailRoute.name: (routeData) {
       final args = routeData.argsAs<TicketDetailRouteArgs>();
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i21.loadLibrary,
-          () => _i21.TicketDetail(
+        child: _i24.DeferredWidget(
+          _i23.loadLibrary,
+          () => _i23.TicketDetail(
             key: args.key,
             ticket: args.ticket,
           ),
@@ -346,11 +376,11 @@ abstract class $AppRouter extends _i22.RootStackRouter {
       );
     },
     TicketRoute.name: (routeData) {
-      return _i22.AutoRoutePage<dynamic>(
+      return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.DeferredWidget(
-          _i21.loadLibrary,
-          () => _i21.TicketView(),
+        child: _i24.DeferredWidget(
+          _i23.loadLibrary,
+          () => _i23.TicketView(),
         ),
       );
     },
@@ -359,8 +389,8 @@ abstract class $AppRouter extends _i22.RootStackRouter {
 
 /// generated route for
 /// [_i1.ConsortiumView]
-class ConsortiumRoute extends _i22.PageRouteInfo<void> {
-  const ConsortiumRoute({List<_i22.PageRouteInfo>? children})
+class ConsortiumRoute extends _i24.PageRouteInfo<void> {
+  const ConsortiumRoute({List<_i24.PageRouteInfo>? children})
       : super(
           ConsortiumRoute.name,
           initialChildren: children,
@@ -368,13 +398,13 @@ class ConsortiumRoute extends _i22.PageRouteInfo<void> {
 
   static const String name = 'ConsortiumRoute';
 
-  static const _i22.PageInfo<void> page = _i22.PageInfo<void>(name);
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.DashboardView]
-class DashboardRoute extends _i22.PageRouteInfo<void> {
-  const DashboardRoute({List<_i22.PageRouteInfo>? children})
+class DashboardRoute extends _i24.PageRouteInfo<void> {
+  const DashboardRoute({List<_i24.PageRouteInfo>? children})
       : super(
           DashboardRoute.name,
           initialChildren: children,
@@ -382,16 +412,16 @@ class DashboardRoute extends _i22.PageRouteInfo<void> {
 
   static const String name = 'DashboardRoute';
 
-  static const _i22.PageInfo<void> page = _i22.PageInfo<void>(name);
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i3.GroupFormView]
-class GroupFormRoute extends _i22.PageRouteInfo<GroupFormRouteArgs> {
+class GroupFormRoute extends _i24.PageRouteInfo<GroupFormRouteArgs> {
   GroupFormRoute({
-    _i23.Key? key,
-    _i24.GroupEntity? group,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    _i26.GroupEntity? group,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           GroupFormRoute.name,
           args: GroupFormRouteArgs(
@@ -403,8 +433,8 @@ class GroupFormRoute extends _i22.PageRouteInfo<GroupFormRouteArgs> {
 
   static const String name = 'GroupFormRoute';
 
-  static const _i22.PageInfo<GroupFormRouteArgs> page =
-      _i22.PageInfo<GroupFormRouteArgs>(name);
+  static const _i24.PageInfo<GroupFormRouteArgs> page =
+      _i24.PageInfo<GroupFormRouteArgs>(name);
 }
 
 class GroupFormRouteArgs {
@@ -413,9 +443,9 @@ class GroupFormRouteArgs {
     this.group,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
-  final _i24.GroupEntity? group;
+  final _i26.GroupEntity? group;
 
   @override
   String toString() {
@@ -424,13 +454,52 @@ class GroupFormRouteArgs {
 }
 
 /// generated route for
-/// [_i4.GroupPrizeFormView]
-class GroupPrizeFormRoute extends _i22.PageRouteInfo<GroupPrizeFormRouteArgs> {
+/// [_i4.GroupPlayConstraintFormView]
+class GroupPlayConstraintFormRoute
+    extends _i24.PageRouteInfo<GroupPlayConstraintFormRouteArgs> {
+  GroupPlayConstraintFormRoute({
+    _i25.Key? key,
+    required _i26.GroupEntity group,
+    List<_i24.PageRouteInfo>? children,
+  }) : super(
+          GroupPlayConstraintFormRoute.name,
+          args: GroupPlayConstraintFormRouteArgs(
+            key: key,
+            group: group,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'GroupPlayConstraintFormRoute';
+
+  static const _i24.PageInfo<GroupPlayConstraintFormRouteArgs> page =
+      _i24.PageInfo<GroupPlayConstraintFormRouteArgs>(name);
+}
+
+class GroupPlayConstraintFormRouteArgs {
+  const GroupPlayConstraintFormRouteArgs({
+    this.key,
+    required this.group,
+  });
+
+  final _i25.Key? key;
+
+  final _i26.GroupEntity group;
+
+  @override
+  String toString() {
+    return 'GroupPlayConstraintFormRouteArgs{key: $key, group: $group}';
+  }
+}
+
+/// generated route for
+/// [_i5.GroupPrizeFormView]
+class GroupPrizeFormRoute extends _i24.PageRouteInfo<GroupPrizeFormRouteArgs> {
   GroupPrizeFormRoute({
-    _i23.Key? key,
-    required _i25.GroupStandPrizeEntity prize,
-    required _i24.GroupEntity group,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    required _i27.GroupStandPrizeEntity prize,
+    required _i26.GroupEntity group,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           GroupPrizeFormRoute.name,
           args: GroupPrizeFormRouteArgs(
@@ -443,8 +512,8 @@ class GroupPrizeFormRoute extends _i22.PageRouteInfo<GroupPrizeFormRouteArgs> {
 
   static const String name = 'GroupPrizeFormRoute';
 
-  static const _i22.PageInfo<GroupPrizeFormRouteArgs> page =
-      _i22.PageInfo<GroupPrizeFormRouteArgs>(name);
+  static const _i24.PageInfo<GroupPrizeFormRouteArgs> page =
+      _i24.PageInfo<GroupPrizeFormRouteArgs>(name);
 }
 
 class GroupPrizeFormRouteArgs {
@@ -454,11 +523,11 @@ class GroupPrizeFormRouteArgs {
     required this.group,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
-  final _i25.GroupStandPrizeEntity prize;
+  final _i27.GroupStandPrizeEntity prize;
 
-  final _i24.GroupEntity group;
+  final _i26.GroupEntity group;
 
   @override
   String toString() {
@@ -467,12 +536,12 @@ class GroupPrizeFormRouteArgs {
 }
 
 /// generated route for
-/// [_i5.GroupTabsView]
-class GroupTabsRoute extends _i22.PageRouteInfo<GroupTabsRouteArgs> {
+/// [_i6.GroupTabsView]
+class GroupTabsRoute extends _i24.PageRouteInfo<GroupTabsRouteArgs> {
   GroupTabsRoute({
-    _i23.Key? key,
-    required _i24.GroupEntity group,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    required _i26.GroupEntity group,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           GroupTabsRoute.name,
           args: GroupTabsRouteArgs(
@@ -484,8 +553,8 @@ class GroupTabsRoute extends _i22.PageRouteInfo<GroupTabsRouteArgs> {
 
   static const String name = 'GroupTabsRoute';
 
-  static const _i22.PageInfo<GroupTabsRouteArgs> page =
-      _i22.PageInfo<GroupTabsRouteArgs>(name);
+  static const _i24.PageInfo<GroupTabsRouteArgs> page =
+      _i24.PageInfo<GroupTabsRouteArgs>(name);
 }
 
 class GroupTabsRouteArgs {
@@ -494,9 +563,9 @@ class GroupTabsRouteArgs {
     required this.group,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
-  final _i24.GroupEntity group;
+  final _i26.GroupEntity group;
 
   @override
   String toString() {
@@ -505,9 +574,9 @@ class GroupTabsRouteArgs {
 }
 
 /// generated route for
-/// [_i5.GroupView]
-class GroupRoute extends _i22.PageRouteInfo<void> {
-  const GroupRoute({List<_i22.PageRouteInfo>? children})
+/// [_i6.GroupView]
+class GroupRoute extends _i24.PageRouteInfo<void> {
+  const GroupRoute({List<_i24.PageRouteInfo>? children})
       : super(
           GroupRoute.name,
           initialChildren: children,
@@ -515,15 +584,15 @@ class GroupRoute extends _i22.PageRouteInfo<void> {
 
   static const String name = 'GroupRoute';
 
-  static const _i22.PageInfo<void> page = _i22.PageInfo<void>(name);
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i6.HomeView]
-class HomeRoute extends _i22.PageRouteInfo<HomeRouteArgs> {
+/// [_i7.HomeView]
+class HomeRoute extends _i24.PageRouteInfo<HomeRouteArgs> {
   HomeRoute({
-    _i23.Key? key,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           HomeRoute.name,
           args: HomeRouteArgs(key: key),
@@ -532,14 +601,14 @@ class HomeRoute extends _i22.PageRouteInfo<HomeRouteArgs> {
 
   static const String name = 'HomeRoute';
 
-  static const _i22.PageInfo<HomeRouteArgs> page =
-      _i22.PageInfo<HomeRouteArgs>(name);
+  static const _i24.PageInfo<HomeRouteArgs> page =
+      _i24.PageInfo<HomeRouteArgs>(name);
 }
 
 class HomeRouteArgs {
   const HomeRouteArgs({this.key});
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
   @override
   String toString() {
@@ -548,13 +617,13 @@ class HomeRouteArgs {
 }
 
 /// generated route for
-/// [_i7.LotteryScheduleDateFormView]
+/// [_i8.LotteryScheduleDateFormView]
 class LotteryScheduleDateFormRoute
-    extends _i22.PageRouteInfo<LotteryScheduleDateFormRouteArgs> {
+    extends _i24.PageRouteInfo<LotteryScheduleDateFormRouteArgs> {
   LotteryScheduleDateFormRoute({
-    _i23.Key? key,
-    required _i26.LotteryEntity lottery,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    required _i28.LotteryEntity lottery,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           LotteryScheduleDateFormRoute.name,
           args: LotteryScheduleDateFormRouteArgs(
@@ -566,8 +635,8 @@ class LotteryScheduleDateFormRoute
 
   static const String name = 'LotteryScheduleDateFormRoute';
 
-  static const _i22.PageInfo<LotteryScheduleDateFormRouteArgs> page =
-      _i22.PageInfo<LotteryScheduleDateFormRouteArgs>(name);
+  static const _i24.PageInfo<LotteryScheduleDateFormRouteArgs> page =
+      _i24.PageInfo<LotteryScheduleDateFormRouteArgs>(name);
 }
 
 class LotteryScheduleDateFormRouteArgs {
@@ -576,9 +645,9 @@ class LotteryScheduleDateFormRouteArgs {
     required this.lottery,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
-  final _i26.LotteryEntity lottery;
+  final _i28.LotteryEntity lottery;
 
   @override
   String toString() {
@@ -587,13 +656,13 @@ class LotteryScheduleDateFormRouteArgs {
 }
 
 /// generated route for
-/// [_i8.LotteryScheduleFormView]
+/// [_i9.LotteryScheduleFormView]
 class LotteryScheduleFormRoute
-    extends _i22.PageRouteInfo<LotteryScheduleFormRouteArgs> {
+    extends _i24.PageRouteInfo<LotteryScheduleFormRouteArgs> {
   LotteryScheduleFormRoute({
-    _i23.Key? key,
-    required _i27.LotteryScheduleEntity lotterySchedule,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    required _i29.LotteryScheduleEntity lotterySchedule,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           LotteryScheduleFormRoute.name,
           args: LotteryScheduleFormRouteArgs(
@@ -605,8 +674,8 @@ class LotteryScheduleFormRoute
 
   static const String name = 'LotteryScheduleFormRoute';
 
-  static const _i22.PageInfo<LotteryScheduleFormRouteArgs> page =
-      _i22.PageInfo<LotteryScheduleFormRouteArgs>(name);
+  static const _i24.PageInfo<LotteryScheduleFormRouteArgs> page =
+      _i24.PageInfo<LotteryScheduleFormRouteArgs>(name);
 }
 
 class LotteryScheduleFormRouteArgs {
@@ -615,9 +684,9 @@ class LotteryScheduleFormRouteArgs {
     required this.lotterySchedule,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
-  final _i27.LotteryScheduleEntity lotterySchedule;
+  final _i29.LotteryScheduleEntity lotterySchedule;
 
   @override
   String toString() {
@@ -626,13 +695,13 @@ class LotteryScheduleFormRouteArgs {
 }
 
 /// generated route for
-/// [_i9.LotteryScheduleView]
+/// [_i10.LotteryScheduleView]
 class LotteryScheduleRoute
-    extends _i22.PageRouteInfo<LotteryScheduleRouteArgs> {
+    extends _i24.PageRouteInfo<LotteryScheduleRouteArgs> {
   LotteryScheduleRoute({
-    _i23.Key? key,
-    required _i26.LotteryEntity lottery,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    required _i28.LotteryEntity lottery,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           LotteryScheduleRoute.name,
           args: LotteryScheduleRouteArgs(
@@ -644,8 +713,8 @@ class LotteryScheduleRoute
 
   static const String name = 'LotteryScheduleRoute';
 
-  static const _i22.PageInfo<LotteryScheduleRouteArgs> page =
-      _i22.PageInfo<LotteryScheduleRouteArgs>(name);
+  static const _i24.PageInfo<LotteryScheduleRouteArgs> page =
+      _i24.PageInfo<LotteryScheduleRouteArgs>(name);
 }
 
 class LotteryScheduleRouteArgs {
@@ -654,9 +723,9 @@ class LotteryScheduleRouteArgs {
     required this.lottery,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
-  final _i26.LotteryEntity lottery;
+  final _i28.LotteryEntity lottery;
 
   @override
   String toString() {
@@ -665,12 +734,12 @@ class LotteryScheduleRouteArgs {
 }
 
 /// generated route for
-/// [_i10.LotteryTabsView]
-class LotteryTabsRoute extends _i22.PageRouteInfo<LotteryTabsRouteArgs> {
+/// [_i11.LotteryTabsView]
+class LotteryTabsRoute extends _i24.PageRouteInfo<LotteryTabsRouteArgs> {
   LotteryTabsRoute({
-    _i23.Key? key,
-    required _i26.LotteryEntity lottery,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    required _i28.LotteryEntity lottery,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           LotteryTabsRoute.name,
           args: LotteryTabsRouteArgs(
@@ -682,8 +751,8 @@ class LotteryTabsRoute extends _i22.PageRouteInfo<LotteryTabsRouteArgs> {
 
   static const String name = 'LotteryTabsRoute';
 
-  static const _i22.PageInfo<LotteryTabsRouteArgs> page =
-      _i22.PageInfo<LotteryTabsRouteArgs>(name);
+  static const _i24.PageInfo<LotteryTabsRouteArgs> page =
+      _i24.PageInfo<LotteryTabsRouteArgs>(name);
 }
 
 class LotteryTabsRouteArgs {
@@ -692,9 +761,9 @@ class LotteryTabsRouteArgs {
     required this.lottery,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
-  final _i26.LotteryEntity lottery;
+  final _i28.LotteryEntity lottery;
 
   @override
   String toString() {
@@ -703,9 +772,9 @@ class LotteryTabsRouteArgs {
 }
 
 /// generated route for
-/// [_i10.LotteryView]
-class LotteryRoute extends _i22.PageRouteInfo<void> {
-  const LotteryRoute({List<_i22.PageRouteInfo>? children})
+/// [_i11.LotteryView]
+class LotteryRoute extends _i24.PageRouteInfo<void> {
+  const LotteryRoute({List<_i24.PageRouteInfo>? children})
       : super(
           LotteryRoute.name,
           initialChildren: children,
@@ -713,16 +782,16 @@ class LotteryRoute extends _i22.PageRouteInfo<void> {
 
   static const String name = 'LotteryRoute';
 
-  static const _i22.PageInfo<void> page = _i22.PageInfo<void>(name);
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i11.ResultFormView]
-class ResultFormRoute extends _i22.PageRouteInfo<ResultFormRouteArgs> {
+/// [_i12.ResultFormView]
+class ResultFormRoute extends _i24.PageRouteInfo<ResultFormRouteArgs> {
   ResultFormRoute({
-    _i23.Key? key,
-    _i28.LotteryResultEntity? result,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    _i30.LotteryResultEntity? result,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           ResultFormRoute.name,
           args: ResultFormRouteArgs(
@@ -734,8 +803,8 @@ class ResultFormRoute extends _i22.PageRouteInfo<ResultFormRouteArgs> {
 
   static const String name = 'ResultFormRoute';
 
-  static const _i22.PageInfo<ResultFormRouteArgs> page =
-      _i22.PageInfo<ResultFormRouteArgs>(name);
+  static const _i24.PageInfo<ResultFormRouteArgs> page =
+      _i24.PageInfo<ResultFormRouteArgs>(name);
 }
 
 class ResultFormRouteArgs {
@@ -744,9 +813,9 @@ class ResultFormRouteArgs {
     this.result,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
-  final _i28.LotteryResultEntity? result;
+  final _i30.LotteryResultEntity? result;
 
   @override
   String toString() {
@@ -755,9 +824,9 @@ class ResultFormRouteArgs {
 }
 
 /// generated route for
-/// [_i12.ResultView]
-class ResultRoute extends _i22.PageRouteInfo<void> {
-  const ResultRoute({List<_i22.PageRouteInfo>? children})
+/// [_i13.ResultView]
+class ResultRoute extends _i24.PageRouteInfo<void> {
+  const ResultRoute({List<_i24.PageRouteInfo>? children})
       : super(
           ResultRoute.name,
           initialChildren: children,
@@ -765,13 +834,13 @@ class ResultRoute extends _i22.PageRouteInfo<void> {
 
   static const String name = 'ResultRoute';
 
-  static const _i22.PageInfo<void> page = _i22.PageInfo<void>(name);
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i13.SaleView]
-class SaleRoute extends _i22.PageRouteInfo<void> {
-  const SaleRoute({List<_i22.PageRouteInfo>? children})
+/// [_i14.SaleView]
+class SaleRoute extends _i24.PageRouteInfo<void> {
+  const SaleRoute({List<_i24.PageRouteInfo>? children})
       : super(
           SaleRoute.name,
           initialChildren: children,
@@ -779,13 +848,13 @@ class SaleRoute extends _i22.PageRouteInfo<void> {
 
   static const String name = 'SaleRoute';
 
-  static const _i22.PageInfo<void> page = _i22.PageInfo<void>(name);
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i14.SettingsView]
-class SettingsRoute extends _i22.PageRouteInfo<void> {
-  const SettingsRoute({List<_i22.PageRouteInfo>? children})
+/// [_i15.SettingsView]
+class SettingsRoute extends _i24.PageRouteInfo<void> {
+  const SettingsRoute({List<_i24.PageRouteInfo>? children})
       : super(
           SettingsRoute.name,
           initialChildren: children,
@@ -793,15 +862,15 @@ class SettingsRoute extends _i22.PageRouteInfo<void> {
 
   static const String name = 'SettingsRoute';
 
-  static const _i22.PageInfo<void> page = _i22.PageInfo<void>(name);
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i15.SignInView]
-class SignInRoute extends _i22.PageRouteInfo<SignInRouteArgs> {
+/// [_i16.SignInView]
+class SignInRoute extends _i24.PageRouteInfo<SignInRouteArgs> {
   SignInRoute({
-    _i23.Key? key,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           SignInRoute.name,
           args: SignInRouteArgs(key: key),
@@ -810,14 +879,14 @@ class SignInRoute extends _i22.PageRouteInfo<SignInRouteArgs> {
 
   static const String name = 'SignInRoute';
 
-  static const _i22.PageInfo<SignInRouteArgs> page =
-      _i22.PageInfo<SignInRouteArgs>(name);
+  static const _i24.PageInfo<SignInRouteArgs> page =
+      _i24.PageInfo<SignInRouteArgs>(name);
 }
 
 class SignInRouteArgs {
   const SignInRouteArgs({this.key});
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
   @override
   String toString() {
@@ -826,9 +895,9 @@ class SignInRouteArgs {
 }
 
 /// generated route for
-/// [_i16.SplashView]
-class SplashRoute extends _i22.PageRouteInfo<void> {
-  const SplashRoute({List<_i22.PageRouteInfo>? children})
+/// [_i17.SplashView]
+class SplashRoute extends _i24.PageRouteInfo<void> {
+  const SplashRoute({List<_i24.PageRouteInfo>? children})
       : super(
           SplashRoute.name,
           initialChildren: children,
@@ -836,16 +905,16 @@ class SplashRoute extends _i22.PageRouteInfo<void> {
 
   static const String name = 'SplashRoute';
 
-  static const _i22.PageInfo<void> page = _i22.PageInfo<void>(name);
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i17.StandFormView]
-class StandFormRoute extends _i22.PageRouteInfo<StandFormRouteArgs> {
+/// [_i18.StandFormView]
+class StandFormRoute extends _i24.PageRouteInfo<StandFormRouteArgs> {
   StandFormRoute({
-    _i23.Key? key,
-    required _i29.LotteryStandEntity stand,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    required _i31.LotteryStandEntity stand,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           StandFormRoute.name,
           args: StandFormRouteArgs(
@@ -857,8 +926,8 @@ class StandFormRoute extends _i22.PageRouteInfo<StandFormRouteArgs> {
 
   static const String name = 'StandFormRoute';
 
-  static const _i22.PageInfo<StandFormRouteArgs> page =
-      _i22.PageInfo<StandFormRouteArgs>(name);
+  static const _i24.PageInfo<StandFormRouteArgs> page =
+      _i24.PageInfo<StandFormRouteArgs>(name);
 }
 
 class StandFormRouteArgs {
@@ -867,9 +936,9 @@ class StandFormRouteArgs {
     required this.stand,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
-  final _i29.LotteryStandEntity stand;
+  final _i31.LotteryStandEntity stand;
 
   @override
   String toString() {
@@ -878,12 +947,12 @@ class StandFormRouteArgs {
 }
 
 /// generated route for
-/// [_i18.StandPasswordView]
-class StandPasswordRoute extends _i22.PageRouteInfo<StandPasswordRouteArgs> {
+/// [_i19.StandPasswordView]
+class StandPasswordRoute extends _i24.PageRouteInfo<StandPasswordRouteArgs> {
   StandPasswordRoute({
-    _i23.Key? key,
-    required _i29.LotteryStandEntity stand,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    required _i31.LotteryStandEntity stand,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           StandPasswordRoute.name,
           args: StandPasswordRouteArgs(
@@ -895,8 +964,8 @@ class StandPasswordRoute extends _i22.PageRouteInfo<StandPasswordRouteArgs> {
 
   static const String name = 'StandPasswordRoute';
 
-  static const _i22.PageInfo<StandPasswordRouteArgs> page =
-      _i22.PageInfo<StandPasswordRouteArgs>(name);
+  static const _i24.PageInfo<StandPasswordRouteArgs> page =
+      _i24.PageInfo<StandPasswordRouteArgs>(name);
 }
 
 class StandPasswordRouteArgs {
@@ -905,9 +974,9 @@ class StandPasswordRouteArgs {
     required this.stand,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
-  final _i29.LotteryStandEntity stand;
+  final _i31.LotteryStandEntity stand;
 
   @override
   String toString() {
@@ -916,13 +985,52 @@ class StandPasswordRouteArgs {
 }
 
 /// generated route for
-/// [_i19.StandPrizeFormView]
-class StandPrizeFormRoute extends _i22.PageRouteInfo<StandPrizeFormRouteArgs> {
+/// [_i20.StandPlayConstraintFormView]
+class StandPlayConstraintFormRoute
+    extends _i24.PageRouteInfo<StandPlayConstraintFormRouteArgs> {
+  StandPlayConstraintFormRoute({
+    _i25.Key? key,
+    required _i31.LotteryStandEntity stand,
+    List<_i24.PageRouteInfo>? children,
+  }) : super(
+          StandPlayConstraintFormRoute.name,
+          args: StandPlayConstraintFormRouteArgs(
+            key: key,
+            stand: stand,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'StandPlayConstraintFormRoute';
+
+  static const _i24.PageInfo<StandPlayConstraintFormRouteArgs> page =
+      _i24.PageInfo<StandPlayConstraintFormRouteArgs>(name);
+}
+
+class StandPlayConstraintFormRouteArgs {
+  const StandPlayConstraintFormRouteArgs({
+    this.key,
+    required this.stand,
+  });
+
+  final _i25.Key? key;
+
+  final _i31.LotteryStandEntity stand;
+
+  @override
+  String toString() {
+    return 'StandPlayConstraintFormRouteArgs{key: $key, stand: $stand}';
+  }
+}
+
+/// generated route for
+/// [_i21.StandPrizeFormView]
+class StandPrizeFormRoute extends _i24.PageRouteInfo<StandPrizeFormRouteArgs> {
   StandPrizeFormRoute({
-    _i23.Key? key,
-    required _i30.LotteryStandPrizeEntity prize,
-    required _i29.LotteryStandEntity stand,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    required _i32.LotteryStandPrizeEntity prize,
+    required _i31.LotteryStandEntity stand,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           StandPrizeFormRoute.name,
           args: StandPrizeFormRouteArgs(
@@ -935,8 +1043,8 @@ class StandPrizeFormRoute extends _i22.PageRouteInfo<StandPrizeFormRouteArgs> {
 
   static const String name = 'StandPrizeFormRoute';
 
-  static const _i22.PageInfo<StandPrizeFormRouteArgs> page =
-      _i22.PageInfo<StandPrizeFormRouteArgs>(name);
+  static const _i24.PageInfo<StandPrizeFormRouteArgs> page =
+      _i24.PageInfo<StandPrizeFormRouteArgs>(name);
 }
 
 class StandPrizeFormRouteArgs {
@@ -946,11 +1054,11 @@ class StandPrizeFormRouteArgs {
     required this.stand,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
-  final _i30.LotteryStandPrizeEntity prize;
+  final _i32.LotteryStandPrizeEntity prize;
 
-  final _i29.LotteryStandEntity stand;
+  final _i31.LotteryStandEntity stand;
 
   @override
   String toString() {
@@ -959,12 +1067,12 @@ class StandPrizeFormRouteArgs {
 }
 
 /// generated route for
-/// [_i20.StandTabsView]
-class StandTabsRoute extends _i22.PageRouteInfo<StandTabsRouteArgs> {
+/// [_i22.StandTabsView]
+class StandTabsRoute extends _i24.PageRouteInfo<StandTabsRouteArgs> {
   StandTabsRoute({
-    _i23.Key? key,
-    required _i29.LotteryStandEntity stand,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    required _i31.LotteryStandEntity stand,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           StandTabsRoute.name,
           args: StandTabsRouteArgs(
@@ -976,8 +1084,8 @@ class StandTabsRoute extends _i22.PageRouteInfo<StandTabsRouteArgs> {
 
   static const String name = 'StandTabsRoute';
 
-  static const _i22.PageInfo<StandTabsRouteArgs> page =
-      _i22.PageInfo<StandTabsRouteArgs>(name);
+  static const _i24.PageInfo<StandTabsRouteArgs> page =
+      _i24.PageInfo<StandTabsRouteArgs>(name);
 }
 
 class StandTabsRouteArgs {
@@ -986,9 +1094,9 @@ class StandTabsRouteArgs {
     required this.stand,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
-  final _i29.LotteryStandEntity stand;
+  final _i31.LotteryStandEntity stand;
 
   @override
   String toString() {
@@ -997,9 +1105,9 @@ class StandTabsRouteArgs {
 }
 
 /// generated route for
-/// [_i20.StandView]
-class StandRoute extends _i22.PageRouteInfo<void> {
-  const StandRoute({List<_i22.PageRouteInfo>? children})
+/// [_i22.StandView]
+class StandRoute extends _i24.PageRouteInfo<void> {
+  const StandRoute({List<_i24.PageRouteInfo>? children})
       : super(
           StandRoute.name,
           initialChildren: children,
@@ -1007,16 +1115,16 @@ class StandRoute extends _i22.PageRouteInfo<void> {
 
   static const String name = 'StandRoute';
 
-  static const _i22.PageInfo<void> page = _i22.PageInfo<void>(name);
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i21.TicketDetail]
-class TicketDetailRoute extends _i22.PageRouteInfo<TicketDetailRouteArgs> {
+/// [_i23.TicketDetail]
+class TicketDetailRoute extends _i24.PageRouteInfo<TicketDetailRouteArgs> {
   TicketDetailRoute({
-    _i23.Key? key,
-    required _i31.TicketEntity ticket,
-    List<_i22.PageRouteInfo>? children,
+    _i25.Key? key,
+    required _i33.TicketEntity ticket,
+    List<_i24.PageRouteInfo>? children,
   }) : super(
           TicketDetailRoute.name,
           args: TicketDetailRouteArgs(
@@ -1028,8 +1136,8 @@ class TicketDetailRoute extends _i22.PageRouteInfo<TicketDetailRouteArgs> {
 
   static const String name = 'TicketDetailRoute';
 
-  static const _i22.PageInfo<TicketDetailRouteArgs> page =
-      _i22.PageInfo<TicketDetailRouteArgs>(name);
+  static const _i24.PageInfo<TicketDetailRouteArgs> page =
+      _i24.PageInfo<TicketDetailRouteArgs>(name);
 }
 
 class TicketDetailRouteArgs {
@@ -1038,9 +1146,9 @@ class TicketDetailRouteArgs {
     required this.ticket,
   });
 
-  final _i23.Key? key;
+  final _i25.Key? key;
 
-  final _i31.TicketEntity ticket;
+  final _i33.TicketEntity ticket;
 
   @override
   String toString() {
@@ -1049,9 +1157,9 @@ class TicketDetailRouteArgs {
 }
 
 /// generated route for
-/// [_i21.TicketView]
-class TicketRoute extends _i22.PageRouteInfo<void> {
-  const TicketRoute({List<_i22.PageRouteInfo>? children})
+/// [_i23.TicketView]
+class TicketRoute extends _i24.PageRouteInfo<void> {
+  const TicketRoute({List<_i24.PageRouteInfo>? children})
       : super(
           TicketRoute.name,
           initialChildren: children,
@@ -1059,5 +1167,5 @@ class TicketRoute extends _i22.PageRouteInfo<void> {
 
   static const String name = 'TicketRoute';
 
-  static const _i22.PageInfo<void> page = _i22.PageInfo<void>(name);
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }

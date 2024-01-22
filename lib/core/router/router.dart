@@ -37,6 +37,7 @@ class AppRouter extends $AppRouter {
       AutoRoute(page: GroupTabsRoute.page),
       AutoRoute(page: GroupFormRoute.page, fullscreenDialog: true),
       AutoRoute(page: GroupPrizeFormRoute.page, fullscreenDialog: true),
+      AutoRoute(page: GroupPlayConstraintFormRoute.page, fullscreenDialog: true),
       AutoRoute(page: TicketDetailRoute.page),
       AutoRoute(page: ResultFormRoute.page, fullscreenDialog: true),
       AutoRoute(page: LotteryScheduleFormRoute.page, fullscreenDialog: true),

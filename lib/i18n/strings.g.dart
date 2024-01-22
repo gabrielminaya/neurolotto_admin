@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 143
+/// Strings: 145
 ///
-/// Built on 2024-01-08 at 19:52 UTC
+/// Built on 2024-01-22 at 14:33 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -229,6 +229,7 @@ class _StringsGroupEn {
 	String get title => 'Groups';
 	String get detail => 'Details';
 	String get prizes => 'Prizes';
+	String get constraints => 'Constraints';
 	String get name => 'Name';
 	String get selectAGroup => 'No group selected';
 	String get add => 'Add';
@@ -288,6 +289,7 @@ class _StringsStandEn {
 	String get title => 'Stands';
 	String get detail => 'Details';
 	String get prizes => 'Prizes';
+	String get constraints => 'Constraints';
 	String get name => 'Name';
 	String get group => 'Group';
 	String get selectAStand => 'No stand selected';
@@ -463,6 +465,7 @@ extension on _StringsEn {
 			case 'group.title': return 'Groups';
 			case 'group.detail': return 'Details';
 			case 'group.prizes': return 'Prizes';
+			case 'group.constraints': return 'Constraints';
 			case 'group.name': return 'Name';
 			case 'group.selectAGroup': return 'No group selected';
 			case 'group.add': return 'Add';
@@ -504,6 +507,7 @@ extension on _StringsEn {
 			case 'stand.title': return 'Stands';
 			case 'stand.detail': return 'Details';
 			case 'stand.prizes': return 'Prizes';
+			case 'stand.constraints': return 'Constraints';
 			case 'stand.name': return 'Name';
 			case 'stand.group': return 'Group';
 			case 'stand.selectAStand': return 'No stand selected';

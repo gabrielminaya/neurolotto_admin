@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:neurolotto_admin/core/extensions/value_notifier.dart';
-import 'package:neurolotto_admin/features/settings/thememode_controller.dart';
 
 import '../../core/constants.dart';
 import '../../core/extensions/context.dart';
+import '../../core/extensions/value_notifier.dart';
 import '../../core/router/router.gr.dart';
 import '../../core/service_locator/get_it.dart';
 import '../../core/services.dart';
+import '../settings/thememode_controller.dart';
 
 @RoutePage()
 class HomeView extends StatelessWidget {

@@ -9,8 +9,8 @@ import '../../../core/extensions/value_notifier.dart';
 import '../../../core/service_locator/get_it.dart';
 import '../../../core/services.dart';
 import '../../../i18n/strings.g.dart';
-import '../../core/router/router.gr.dart';
 import '../../core/async_button_builder.dart';
+import '../../core/router/router.gr.dart';
 import 'auth_controller.dart';
 
 @RoutePage()
@@ -46,10 +46,10 @@ class SignInView extends StatelessWidget {
           SliverAppBar(
             automaticallyImplyLeading: false,
             foregroundColor: MaterialStateColor.resolveWith(
-              (_) => context.colorScheme.onBackground,
+              (_) => context.colorScheme.onSurface,
             ),
             backgroundColor: MaterialStateColor.resolveWith(
-              (_) => context.colorScheme.background,
+              (_) => context.colorScheme.surface,
             ),
           ),
           SliverPadding(
@@ -84,6 +84,7 @@ class SignInView extends StatelessWidget {
                         icon: state ? const Icon(Icons.visibility_off) : const Icon(Icons.visibility),
                       ),
                     ),
+                    onSubmitted: (_) => onSignIn(context),
                     obscureText: state,
                     validator: FormBuilderValidators.required(),
                   ),
