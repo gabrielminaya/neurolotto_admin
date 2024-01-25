@@ -10,7 +10,7 @@ import '../../core/entities/lottery_entity.dart';
 import '../../core/entities/lottery_schedule_date_entity.dart';
 import '../../core/extensions/value_notifier.dart';
 import '../../core/service_locator/get_it.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 import 'lottery_schedule_date_controller.dart';
 
 @RoutePage()

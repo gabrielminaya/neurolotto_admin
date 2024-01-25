@@ -6,7 +6,7 @@ import '../../core/constants.dart';
 import '../../core/entities/lottery_stand_entity.dart';
 import '../../core/router/router.gr.dart';
 import '../../core/services.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 import 'stand_form_view.dart';
 
 class StandDetailView extends StatelessWidget {

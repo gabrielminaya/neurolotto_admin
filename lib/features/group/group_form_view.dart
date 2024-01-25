@@ -8,7 +8,7 @@ import '../../core/constants.dart';
 import '../../core/entities/group_entity.dart';
 import '../../core/extensions/value_notifier.dart';
 import '../../core/service_locator/get_it.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 import 'group_controller.dart';
 
 @RoutePage()

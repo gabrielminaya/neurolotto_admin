@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../core/entities/hot_number_entity.dart';
+import '../../core/entities/lottery_entity.dart';
 import '../../core/services.dart';
 
 part 'dashboard_controller.freezed.dart';
@@ -13,9 +14,12 @@ part 'dashboard_controller.freezed.dart';
 sealed class DashboardControllerState with _$DashboardControllerState {
   factory DashboardControllerState({
     @Default(false) bool isLoading,
+    @Default(false) bool isInitializing,
     @Default(null) String? failureMessage,
     @Default([]) List<HotNumberEntity> hotNumbers,
+    @Default([]) List<LotteryEntity> lotteries,
     required DateTime selectedDate,
+    @Default(null) LotteryEntity? selectedLottery,
     @Default(true) bool orderByQuantity,
   }) = _DashboardControllerState;
 }
@@ -26,17 +30,45 @@ class DashboardController extends ValueNotifier<DashboardControllerState> {
 
   final SupabaseClient _client;
 
-  Future<void> fetchPlaysByFilters({DateTime? atDate, bool? orderByQuantity}) async {
+  Future<void> initialize() async {
+    value = value.copyWith(isInitializing: true);
+
+    try {
+      final builder = _client.rpc("fetch_lottery_with_schedules", params: {
+        "in_consortium_id": authController.consortium?.id,
+        "in_lottery_day_id": value.selectedDate.weekday,
+      }).select<PostgrestList>();
+
+      final lotteries = await builder.withConverter<List<LotteryEntity>>(
+        (data) => data.map((e) => LotteryEntity.fromJson(e)).toList(),
+      );
+
+      lotteries.sort((a, b) => (a.isClosed ?? false) ? 1 : -1);
+
+      value = value.copyWith(
+        selectedLottery: lotteries.isNotEmpty ? lotteries.first : null,
+        lotteries: lotteries,
+      );
+    } on PostgrestException catch (e) {
+      value = value.copyWith(failureMessage: e.message);
+    } finally {
+      value = value.copyWith(isInitializing: false);
+    }
+  }
+
+  Future<void> fetchPlaysByFilters({DateTime? atDate, bool? orderByQuantity, LotteryEntity? lottery}) async {
     value = value.copyWith(isLoading: true);
 
     if (atDate != null) {
       value = value.copyWith(selectedDate: atDate);
+      await initialize();
     }
 
     try {
       final hotNumbers = await _client
           .rpc("get_most_played_numbers", params: {
             "in_consortium_id": authController.consortium?.id,
+            "in_lottery_id": lottery?.id,
             "in_from": DateFormat("yyyy-MM-dd 00:00").format(atDate ?? value.selectedDate),
             "in_to": DateFormat("yyyy-MM-dd 23:59").format(atDate ?? value.selectedDate),
             "order_by_quantity": orderByQuantity ?? value.orderByQuantity,

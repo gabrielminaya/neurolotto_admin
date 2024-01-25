@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/constants.dart';
 import '../../core/router/router.gr.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 
 @RoutePage()
 class SettingsView extends StatelessWidget {

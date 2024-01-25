@@ -14,7 +14,7 @@ import '../../core/extensions/value_notifier.dart';
 import '../../core/router/router.gr.dart';
 import '../../core/service_locator/get_it.dart';
 import '../../core/services.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 import 'ticket_controller.dart';
 import 'ticket_detail_controller.dart';
 
@@ -309,7 +309,7 @@ class _TicketDetailState extends State<TicketDetail> {
               success: (plays) {
                 final totalAmount = plays.fold(
                   0.0,
-                  (previousValue, element) => (previousValue + element.playAmount) * element.lotteryIds.length,
+                  (previousValue, element) => previousValue + (element.playAmount * element.lotteryIds.length),
                 );
 
                 return Table(
@@ -318,6 +318,7 @@ class _TicketDetailState extends State<TicketDetail> {
                     0: FlexColumnWidth(1),
                     1: FlexColumnWidth(2),
                     2: FlexColumnWidth(1),
+                    3: FlexColumnWidth(1),
                   },
                   children: [
                     TableRow(
@@ -349,7 +350,17 @@ class _TicketDetailState extends State<TicketDetail> {
                           child: Padding(
                             padding: p8,
                             child: Text(
-                              t.ticket.amount,
+                              t.ticket.playAmount,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        TableCell(
+                          child: Padding(
+                            padding: p8,
+                            child: Text(
+                              t.ticket.subtotalAmount,
                               textAlign: TextAlign.center,
                               style: const TextStyle(fontWeight: FontWeight.bold),
                             ),
@@ -378,15 +389,22 @@ class _TicketDetailState extends State<TicketDetail> {
                               child: Text(NumberFormat.simpleCurrency().format(play.playAmount)),
                             ),
                           ),
+                          TableCell(
+                            child: Padding(
+                              padding: p4,
+                              child:
+                                  Text(NumberFormat.simpleCurrency().format(play.playAmount * play.lotteryIds.length)),
+                            ),
+                          ),
                         ],
                       ),
                     TableRow(
                       children: [
                         const TableCell(
-                          child: Padding(
-                            padding: p2,
-                            child: Text(""),
-                          ),
+                          child: Padding(padding: p2),
+                        ),
+                        const TableCell(
+                          child: Padding(padding: p2),
                         ),
                         TableCell(
                           child: Padding(

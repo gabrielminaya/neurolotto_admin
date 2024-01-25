@@ -10,7 +10,7 @@ import '../../core/extensions/value_notifier.dart';
 import '../../core/router/router.gr.dart';
 import '../../core/service_locator/get_it.dart';
 import '../../core/services.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 import 'group_controller.dart';
 import 'group_detail_view.dart';
 import 'group_list_view.dart';

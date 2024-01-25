@@ -47,7 +47,14 @@
         "deleteSuccess": "Group deleted",
         "active": "Active",
         "deleteTitle": "Are you sure you want to delete this group",
-        "deleteContent": "Only groups without associated benches can be deleted"
+        "deleteContent": "Only groups without associated benches can be deleted",
+        "constraintForm": {
+            "title": "Add Constraints",
+            "amount": "Amount",
+            "empty": "No constraints created",
+            "from": "From",
+            "to": "To (Optional)"
+        }
     },
     "lottery": {
         "title": "Lotteries",
@@ -88,6 +95,13 @@
         "quinielaMaxAmount": "Maximum quiniela amount",
         "paleMaxAmount": "Maximum pale amount",
         "tripletaMaxAmount": "Maximum triplet amount",
+        "constraintForm": {
+            "title": "Add Constraints",
+            "amount": "Amount",
+            "empty": "No constraints created",
+            "from": "From",
+            "to": "To (Optional)"
+        },
         "active": "Active"
     },
     "monitoring": {
@@ -98,6 +112,7 @@
         "dateMonth": "Month",
         "dateYear": "Year",
         "orderForm": "Order",
+        "lottery": "Lottery",
         "orderQuantity": "Quantity",
         "orderAmount": "Amount",
         "quiniela": "Quiniela",
@@ -113,7 +128,8 @@
         "stand": "Stand",
         "lottery": "Lottery",
         "play": "Play",
-        "amount": "Amount",
+        "playAmount": "Amount",
+        "subtotalAmount": "Subtotal",
         "status": "Status",
         "cancelAction": "Cancel",
         "cancelActionTitle": "Confirm Ticket Cancellation",
@@ -129,14 +145,16 @@
     },
     "sales": {
         "title": "Sales",
+        "saleSummary": "Sale Summary",
+        "saleDetail": "Sale Detailed",
         "stand": "Stands",
         "options": "Options",
         "all": "All",
         "date": "Date",
         "groups": "Groups",
         "lotteries": "Lotteries",
-        "bank": "Banks",
-        "sales": "Profits",
+        "bank": "Bank",
+        "sales": "Sales",
         "prizes": "Prizes",
         "balance": "Balance",
         "total": "Total"

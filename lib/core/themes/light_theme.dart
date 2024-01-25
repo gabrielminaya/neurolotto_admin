@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 extension LightTheme on ThemeData {
   ThemeData get lightTheme {
     final theme = FlexThemeData.light(
-      scheme: FlexScheme.shark,
+      scheme: FlexScheme.brandBlue,
       surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
       blendLevel: 7,
       subThemesData: const FlexSubThemesData(

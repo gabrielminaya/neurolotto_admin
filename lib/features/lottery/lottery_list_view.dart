@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:neurolotto_admin/core/extensions/number.dart';
 
 import '../../core/entities/lottery_entity.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 
 class LotteryListView extends StatelessWidget {
   const LotteryListView({
@@ -29,7 +30,7 @@ class LotteryListView extends StatelessWidget {
           final lottery = lotteries.elementAt(index);
 
           return ListTile(
-            leading: const Icon(Icons.group_work_outlined),
+            leading: Text("${(index + 1).toLotteryFormat}.", style: const TextStyle(fontWeight: FontWeight.bold)),
             selected: selectedLottery == lottery,
             title: Text(lottery.name),
             onTap: () => onLotterySelected(lottery),

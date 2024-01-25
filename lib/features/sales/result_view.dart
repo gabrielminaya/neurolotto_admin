@@ -12,7 +12,7 @@ import '../../core/extensions/value_notifier.dart';
 import '../../core/router/router.gr.dart';
 import '../../core/service_locator/get_it.dart';
 import '../../core/services.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 import 'result_controller.dart';
 import 'result_form_view.dart';
 

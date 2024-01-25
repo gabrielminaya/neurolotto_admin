@@ -9,6 +9,9 @@ sealed class LotteryEntity with _$LotteryEntity {
     required String id,
     required String name,
     required bool status,
+    @JsonKey(name: "is_closed") @Default(null) bool? isClosed,
+    @JsonKey(name: "time_open") @Default(null) String? timeOpen,
+    @JsonKey(name: "time_close") @Default(null) String? timeClose,
   }) = _LotteryEntity;
 
   factory LotteryEntity.fromJson(Map<String, dynamic> json) => _$LotteryEntityFromJson(json);

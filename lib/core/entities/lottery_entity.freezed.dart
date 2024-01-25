@@ -23,6 +23,12 @@ mixin _$LotteryEntity {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get status => throw _privateConstructorUsedError;
+  @JsonKey(name: "is_closed")
+  bool? get isClosed => throw _privateConstructorUsedError;
+  @JsonKey(name: "time_open")
+  String? get timeOpen => throw _privateConstructorUsedError;
+  @JsonKey(name: "time_close")
+  String? get timeClose => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +42,13 @@ abstract class $LotteryEntityCopyWith<$Res> {
           LotteryEntity value, $Res Function(LotteryEntity) then) =
       _$LotteryEntityCopyWithImpl<$Res, LotteryEntity>;
   @useResult
-  $Res call({String id, String name, bool status});
+  $Res call(
+      {String id,
+      String name,
+      bool status,
+      @JsonKey(name: "is_closed") bool? isClosed,
+      @JsonKey(name: "time_open") String? timeOpen,
+      @JsonKey(name: "time_close") String? timeClose});
 }
 
 /// @nodoc
@@ -55,6 +67,9 @@ class _$LotteryEntityCopyWithImpl<$Res, $Val extends LotteryEntity>
     Object? id = null,
     Object? name = null,
     Object? status = null,
+    Object? isClosed = freezed,
+    Object? timeOpen = freezed,
+    Object? timeClose = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -69,6 +84,18 @@ class _$LotteryEntityCopyWithImpl<$Res, $Val extends LotteryEntity>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as bool,
+      isClosed: freezed == isClosed
+          ? _value.isClosed
+          : isClosed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      timeOpen: freezed == timeOpen
+          ? _value.timeOpen
+          : timeOpen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      timeClose: freezed == timeClose
+          ? _value.timeClose
+          : timeClose // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -81,7 +108,13 @@ abstract class _$$LotteryEntityImplCopyWith<$Res>
       __$$LotteryEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, bool status});
+  $Res call(
+      {String id,
+      String name,
+      bool status,
+      @JsonKey(name: "is_closed") bool? isClosed,
+      @JsonKey(name: "time_open") String? timeOpen,
+      @JsonKey(name: "time_close") String? timeClose});
 }
 
 /// @nodoc
@@ -98,6 +131,9 @@ class __$$LotteryEntityImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? status = null,
+    Object? isClosed = freezed,
+    Object? timeOpen = freezed,
+    Object? timeClose = freezed,
   }) {
     return _then(_$LotteryEntityImpl(
       id: null == id
@@ -112,6 +148,18 @@ class __$$LotteryEntityImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as bool,
+      isClosed: freezed == isClosed
+          ? _value.isClosed
+          : isClosed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      timeOpen: freezed == timeOpen
+          ? _value.timeOpen
+          : timeOpen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      timeClose: freezed == timeClose
+          ? _value.timeClose
+          : timeClose // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -120,7 +168,12 @@ class __$$LotteryEntityImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LotteryEntityImpl implements _LotteryEntity {
   const _$LotteryEntityImpl(
-      {required this.id, required this.name, required this.status});
+      {required this.id,
+      required this.name,
+      required this.status,
+      @JsonKey(name: "is_closed") this.isClosed = null,
+      @JsonKey(name: "time_open") this.timeOpen = null,
+      @JsonKey(name: "time_close") this.timeClose = null});
 
   factory _$LotteryEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$LotteryEntityImplFromJson(json);
@@ -131,10 +184,19 @@ class _$LotteryEntityImpl implements _LotteryEntity {
   final String name;
   @override
   final bool status;
+  @override
+  @JsonKey(name: "is_closed")
+  final bool? isClosed;
+  @override
+  @JsonKey(name: "time_open")
+  final String? timeOpen;
+  @override
+  @JsonKey(name: "time_close")
+  final String? timeClose;
 
   @override
   String toString() {
-    return 'LotteryEntity(id: $id, name: $name, status: $status)';
+    return 'LotteryEntity(id: $id, name: $name, status: $status, isClosed: $isClosed, timeOpen: $timeOpen, timeClose: $timeClose)';
   }
 
   @override
@@ -144,12 +206,19 @@ class _$LotteryEntityImpl implements _LotteryEntity {
             other is _$LotteryEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.isClosed, isClosed) ||
+                other.isClosed == isClosed) &&
+            (identical(other.timeOpen, timeOpen) ||
+                other.timeOpen == timeOpen) &&
+            (identical(other.timeClose, timeClose) ||
+                other.timeClose == timeClose));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, status);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, status, isClosed, timeOpen, timeClose);
 
   @JsonKey(ignore: true)
   @override
@@ -167,9 +236,13 @@ class _$LotteryEntityImpl implements _LotteryEntity {
 
 abstract class _LotteryEntity implements LotteryEntity {
   const factory _LotteryEntity(
-      {required final String id,
-      required final String name,
-      required final bool status}) = _$LotteryEntityImpl;
+          {required final String id,
+          required final String name,
+          required final bool status,
+          @JsonKey(name: "is_closed") final bool? isClosed,
+          @JsonKey(name: "time_open") final String? timeOpen,
+          @JsonKey(name: "time_close") final String? timeClose}) =
+      _$LotteryEntityImpl;
 
   factory _LotteryEntity.fromJson(Map<String, dynamic> json) =
       _$LotteryEntityImpl.fromJson;
@@ -180,6 +253,15 @@ abstract class _LotteryEntity implements LotteryEntity {
   String get name;
   @override
   bool get status;
+  @override
+  @JsonKey(name: "is_closed")
+  bool? get isClosed;
+  @override
+  @JsonKey(name: "time_open")
+  String? get timeOpen;
+  @override
+  @JsonKey(name: "time_close")
+  String? get timeClose;
   @override
   @JsonKey(ignore: true)
   _$$LotteryEntityImplCopyWith<_$LotteryEntityImpl> get copyWith =>

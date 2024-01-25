@@ -3,7 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
 
 import '../features/settings/thememode_controller.dart';
-import '../i18n/strings.g.dart';
+import '../i18n/translations.g.dart';
 import 'constants.dart';
 import 'extensions/value_notifier.dart';
 import 'router/router_observers.dart';

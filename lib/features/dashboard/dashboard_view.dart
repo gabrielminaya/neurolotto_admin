@@ -7,11 +7,12 @@ import 'package:intl/intl.dart';
 
 import '../../core/constants.dart';
 import '../../core/entities/hot_number_entity.dart';
+import '../../core/entities/lottery_entity.dart';
 import '../../core/extensions/context.dart';
 import '../../core/extensions/number.dart';
 import '../../core/extensions/value_notifier.dart';
 import '../../core/service_locator/get_it.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 import 'dashboard_controller.dart';
 
 @RoutePage()
@@ -29,7 +30,10 @@ class _DashboardViewState extends State<DashboardView> {
   void initState() {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => _dashboardController.fetchPlaysByFilters(),
+      (_) {
+        _dashboardController.initialize();
+        _dashboardController.fetchPlaysByFilters();
+      },
     );
   }
 
@@ -72,6 +76,49 @@ class _DashboardViewState extends State<DashboardView> {
                         ],
                         onChanged: (orderByQuantity) =>
                             _dashboardController.fetchPlaysByFilters(orderByQuantity: orderByQuantity ?? true),
+                      ),
+                    ),
+                    hgap(10),
+                    Flexible(
+                      child: _dashboardController.watch(
+                        (context, state) {
+                          if (state.isInitializing) {
+                            return FormBuilderTextField(
+                              name: 'from',
+                              readOnly: true,
+                              decoration: const InputDecoration(
+                                label: Center(child: Padding(padding: p12, child: LinearProgressIndicator())),
+                              ),
+                            );
+                          }
+
+                          final items = state.lotteries.map(
+                            (lottery) {
+                              final child = Row(
+                                children: [
+                                  Icon(
+                                    Icons.store,
+                                    color: (lottery.isClosed ?? false) ? Colors.red : Colors.green,
+                                    size: 18,
+                                  ),
+                                  hgap(5),
+                                  Text(lottery.name),
+                                ],
+                              );
+
+                              return DropdownMenuItem(value: lottery, child: child);
+                            },
+                          ).toList();
+
+                          return DropdownButtonFormField<LotteryEntity>(
+                            value: state.selectedLottery,
+                            decoration: InputDecoration(labelText: t.monitoring.lottery),
+                            items: items,
+                            onChanged: (orderByQuantity) => _dashboardController.fetchPlaysByFilters(
+                              lottery: orderByQuantity,
+                            ),
+                          );
+                        },
                       ),
                     )
                   ],

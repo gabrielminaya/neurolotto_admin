@@ -37,6 +37,7 @@ class LotteryController extends ValueNotifier<LotteryControllerState> {
           .from("lotteries")
           .select<PostgrestList>()
           .eq("consortium_id", authController.consortium?.id)
+          .order("name", ascending: true)
           .withConverter<List<LotteryEntity>>((data) => data.map((e) => LotteryEntity.fromJson(e)).toList());
       value = LotteryControllerState(lotteries: lotteries);
     } on PostgrestException catch (e) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/entities/lottery_stand_entity.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 
 class StandListView extends StatelessWidget {
   const StandListView({

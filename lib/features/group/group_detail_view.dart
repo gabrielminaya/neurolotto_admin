@@ -6,7 +6,7 @@ import '../../core/constants.dart';
 import '../../core/entities/group_entity.dart';
 import '../../core/router/router.gr.dart';
 import '../../core/services.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 import 'group_form_view.dart';
 
 class GroupDetailView extends StatelessWidget {

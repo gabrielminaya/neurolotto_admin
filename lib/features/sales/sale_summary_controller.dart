@@ -8,11 +8,11 @@ import '../../core/entities/lottery_stand_entity.dart';
 import '../../core/entities/sale_entity.dart';
 import '../../core/services.dart';
 
-part 'sale_controller.freezed.dart';
+part 'sale_summary_controller.freezed.dart';
 
 @Freezed()
-class SaleControllerState with _$SaleControllerState {
-  const factory SaleControllerState({
+class SaleSummaryControllerState with _$SaleSummaryControllerState {
+  const factory SaleSummaryControllerState({
     @Default(false) bool isLoading,
     @Default(false) bool isActionLoading,
     @Default(null) String? failureMessage,
@@ -20,12 +20,12 @@ class SaleControllerState with _$SaleControllerState {
     @Default([]) List<GroupEntity> groups,
     @Default([]) List<LotteryStandEntity> lotteryStands,
     required DateTime selectedDate,
-  }) = _SaleControllerState;
+  }) = _SaleSummaryControllerState;
 }
 
 @LazySingleton()
-class SaleController extends ValueNotifier<SaleControllerState> {
-  SaleController(this._client) : super(SaleControllerState(selectedDate: DateTime.now()));
+class SaleController extends ValueNotifier<SaleSummaryControllerState> {
+  SaleController(this._client) : super(SaleSummaryControllerState(selectedDate: DateTime.now()));
 
   final SupabaseClient _client;
 

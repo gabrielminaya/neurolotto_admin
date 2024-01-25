@@ -9,7 +9,7 @@ import '../../core/constants.dart';
 import '../../core/entities/lottery_schedule_entity.dart';
 import '../../core/extensions/value_notifier.dart';
 import '../../core/service_locator/get_it.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 import 'lottery_schedule_controller.dart';
 
 @RoutePage()
@@ -81,6 +81,7 @@ class LotteryScheduleFormView extends StatelessWidget {
               name: 'openingTime',
               inputType: InputType.time,
               locale: const Locale('en', 'US'),
+              format: DateFormat('hh:mm a'),
               decoration: InputDecoration(
                 label: Text(t.lottery.timeOpen),
               ),
@@ -92,6 +93,7 @@ class LotteryScheduleFormView extends StatelessWidget {
             FormBuilderDateTimePicker(
               name: 'closingTime',
               inputType: InputType.time,
+              format: DateFormat('hh:mm a'),
               locale: const Locale('en', 'US'),
               decoration: InputDecoration(
                 label: Text(t.lottery.timeClose),

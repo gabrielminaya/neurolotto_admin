@@ -8,9 +8,10 @@ import '../../core/extensions/value_notifier.dart';
 import '../../core/router/router.gr.dart';
 import '../../core/service_locator/get_it.dart';
 import '../../core/services.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 import 'lottery_controller.dart';
 import 'lottery_list_view.dart';
+import 'lottery_schedule_controller.dart';
 import 'lottery_schedule_date_view.dart';
 import 'lottery_schedule_view.dart';
 
@@ -24,6 +25,7 @@ class LotteryView extends StatefulWidget {
 
 class _LotteryViewState extends State<LotteryView> {
   final _lotteryController = getIt.get<LotteryController>();
+  final _lotteryScheduleController = getIt.get<LotteryScheduleController>();
 
   @override
   void initState() {
@@ -66,7 +68,10 @@ class _LotteryViewState extends State<LotteryView> {
                   child: LotteryListView(
                     lotteries: state.lotteries,
                     selectedLottery: state.selectedLottery,
-                    onLotterySelected: (lottery) => _lotteryController.select(lottery),
+                    onLotterySelected: (lottery) {
+                      _lotteryController.select(lottery);
+                      _lotteryScheduleController.fetchSchedule(lottery);
+                    },
                   ),
                 ),
                 const VerticalDivider(width: 0),
@@ -118,7 +123,7 @@ class LotteryTabsView extends StatelessWidget {
                   tabAlignment: constraints.maxWidth < tabletBreakpoint ? TabAlignment.fill : TabAlignment.start,
                   tabs: [
                     Tab(text: t.lottery.schedules),
-                    Tab(text: t.lottery.details),
+                    Tab(text: t.lottery.detail),
                   ],
                 ),
                 actions: [

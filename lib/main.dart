@@ -5,7 +5,7 @@ import 'core/app.dart';
 import 'core/constants.dart';
 import 'core/service_locator/get_it.dart';
 import 'core/services.dart';
-import 'i18n/strings.g.dart';
+import 'i18n/translations.g.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

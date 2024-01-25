@@ -9,7 +9,7 @@ import '../../core/entities/lottery_stand_entity.dart';
 import '../../core/extensions/context.dart';
 import '../../core/extensions/value_notifier.dart';
 import '../../core/service_locator/get_it.dart';
-import '../../i18n/strings.g.dart';
+import '../../i18n/translations.g.dart';
 import 'stand_play_constraint_controller.dart';
 
 @RoutePage()
@@ -44,7 +44,7 @@ class StandPlayConstraintFormView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Play Constraint'),
+        title: Text(t.stand.constraintForm.title),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Row(
@@ -74,7 +74,7 @@ class StandPlayConstraintFormView extends StatelessWidget {
                 Flexible(
                   child: FormBuilderTextField(
                     name: 'fromNumber',
-                    decoration: const InputDecoration(label: Text('From')),
+                    decoration: InputDecoration(label: Text(t.stand.constraintForm.from)),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
                       FormBuilderValidators.integer(),
@@ -86,7 +86,7 @@ class StandPlayConstraintFormView extends StatelessWidget {
                 Flexible(
                   child: FormBuilderTextField(
                     name: 'toNumber',
-                    decoration: const InputDecoration(label: Text('To (Optional)')),
+                    decoration: InputDecoration(label: Text(t.stand.constraintForm.to)),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.integer(),
                     ]),
@@ -97,7 +97,7 @@ class StandPlayConstraintFormView extends StatelessWidget {
             vgap(10),
             FormBuilderTextField(
               name: 'amount',
-              decoration: const InputDecoration(label: Text('Amount')),
+              decoration: InputDecoration(label: Text(t.stand.constraintForm.amount)),
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.required(),
                 FormBuilderValidators.integer(),

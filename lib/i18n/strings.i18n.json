@@ -8,7 +8,7 @@
         "signOut": "Cerrar sesión",
         "edit": "Editar"
     },
-    "singIn": {
+    "signIn": {
         "messageTitle": "Inicio de sesión",
         "messageContent": "Si has olvidado tu contraseña o tienes dificultades para iniciar sesión, no dudes en ponerte en contacto con tu supervisor para recibir asistencia.",
         "signIn": "Iniciar sesión",
@@ -47,7 +47,14 @@
         "deleteSuccess": "Grupo borrado",
         "active": "Activo",
         "deleteTitle": "Estas seguro de borrar este grupo",
-        "deleteContent": "Solo se pueden borrar grupos que no tengan una banca relacionadas"
+        "deleteContent": "Solo se pueden borrar grupos que no tengan una banca relacionadas",
+        "constraintForm": {
+            "title": "Añadir Restricciones",
+            "amount": "Monto",
+            "empty": "No hay restricciones creadas",
+            "from": "Desde",
+            "to": "Hasta (Opcional)"
+        }
     },
     "lottery": {
         "title": "Loterías",
@@ -89,6 +96,13 @@
         "quinielaMaxAmount": "Monto máximo de quiniela",
         "paleMaxAmount": "Monto máximo de pale",
         "tripletaMaxAmount": "Monto máximo de tripleta",
+        "constraintForm": {
+            "title": "Añadir Restricciones",
+            "amount": "Monto",
+            "empty": "No hay restricciones creadas",
+            "from": "Desde",
+            "to": "Hasta (Opcional)"
+        },
         "active": "Activo"
     },
     "monitoring": {
@@ -101,6 +115,7 @@
         "orderForm": "Orden",
         "orderQuantity": "Cantidad",
         "orderAmount": "Monto",
+        "lottery": "Lotería",
         "quiniela": "Quiniela",
         "pale": "Pale",
         "tripleta": "Tripleta",
@@ -114,7 +129,8 @@
         "stand": "Banco",
         "lottery": "Lotería",
         "play": "Jugada",
-        "amount": "Monto",
+        "playAmount": "Monto",
+        "subtotalAmount": "Subtotal",
         "status": "Estado",
         "cancelAction": "Anular",
         "cancelActionTitle": "Confirmar Anulación del Ticket",
@@ -130,6 +146,8 @@
     },
     "sales": {
         "title": "Ventas",
+        "saleSummary": "Ventas Resumida",
+        "saleDetail": "Ventas Detalladas",
         "stand": "Bancas",
         "options": "Opciones",
         "all": "Todas",
@@ -137,7 +155,7 @@
         "groups": "Grupos",
         "lotteries": "Loterías",
         "bank": "Bancas",
-        "sales": "Ganancias",
+        "sales": "Apostado",
         "prizes": "Premios",
         "balance": "Balance",
         "total": "Total"

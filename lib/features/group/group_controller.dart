@@ -56,13 +56,13 @@ class GroupController extends ValueNotifier<GroupControllerState> {
 
     try {
       final createdGroup = await _client
-          .from("groups")
-          .insert({
-            "name": group.name,
-            "consortium_id": authController.consortium?.id,
-            "quiniela_max_amount": group.quinielaMaxAmount,
-            "pale_max_amount": group.paleMaxAmount,
-            "tripleta_max_amount": group.tripletaMaxAmount,
+          .rpc("add_or_update_group", params: {
+            "in_group_id": null,
+            "in_consortium_id": authController.consortium?.id,
+            "in_name": group.name,
+            "in_quiniela_max_amount": group.quinielaMaxAmount,
+            "in_pale_max_amount": group.paleMaxAmount,
+            "in_tripleta_max_amount": group.tripletaMaxAmount,
           })
           .select<PostgrestMap?>()
           .limit(1)
@@ -92,14 +92,14 @@ class GroupController extends ValueNotifier<GroupControllerState> {
 
     try {
       final createdGroup = await _client
-          .from("groups")
-          .update({
-            "name": group.name,
-            "quiniela_max_amount": group.quinielaMaxAmount,
-            "pale_max_amount": group.paleMaxAmount,
-            "tripleta_max_amount": group.tripletaMaxAmount,
+          .rpc("add_or_update_group", params: {
+            "in_group_id": group.id,
+            "in_consortium_id": authController.consortium?.id,
+            "in_name": group.name,
+            "in_quiniela_max_amount": group.quinielaMaxAmount,
+            "in_pale_max_amount": group.paleMaxAmount,
+            "in_tripleta_max_amount": group.tripletaMaxAmount,
           })
-          .eq("id", group.id)
           .select<PostgrestMap?>()
           .single()
           .withConverter<GroupEntity?>((data) => data == null ? null : GroupEntity.fromJson(data));

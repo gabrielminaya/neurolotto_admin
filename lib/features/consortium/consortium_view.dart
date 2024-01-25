@@ -7,9 +7,11 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../core/constants.dart';
 import '../../core/entities/consortium_entity.dart';
 import '../../core/extensions/value_notifier.dart';
+import '../../core/router/router.gr.dart';
 import '../../core/service_locator/get_it.dart';
 import '../../core/async_button_builder.dart';
-import '../../i18n/strings.g.dart';
+import '../../core/services.dart';
+import '../../i18n/translations.g.dart';
 import 'consortium_controller.dart';
 
 @RoutePage()
@@ -152,6 +154,14 @@ class _ConsortiumViewState extends State<ConsortiumView> {
                           child: stateWidget,
                         ),
                       ),
+                      vgap(15),
+                      FilledButton.icon(
+                        onPressed: () => authController.signOut(
+                          onSuccess: () => router.replaceAll([SignInRoute()]),
+                        ),
+                        icon: const Icon(Icons.logout),
+                        label: Text(t.common.signOut),
+                      )
                     ],
                   ),
                 ),

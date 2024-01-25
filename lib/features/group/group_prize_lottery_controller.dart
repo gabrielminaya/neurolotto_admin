@@ -36,6 +36,9 @@ class GroupPrizeLotteryController extends ValueNotifier<GroupPrizeLotteryControl
           .withConverter<List<GroupStandPrizeEntity>>(
             (data) => data.map((e) => GroupStandPrizeEntity.fromJson(e)).toList(),
           );
+
+      prizes.sort((a, b) => a.lottery.name.compareTo(b.lottery.name));
+
       value = value.copyWith(prizes: prizes);
     } on PostgrestException catch (error) {
       value = value.copyWith(failureMessage: error.message);
