@@ -11,7 +11,7 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:neurolotto_admin/core/router/router.dart' as _i3;
-import 'package:neurolotto_admin/core/service_locator/get_it.dart' as _i26;
+import 'package:neurolotto_admin/core/service_locator/get_it.dart' as _i27;
 import 'package:neurolotto_admin/features/auth/auth_controller.dart' as _i9;
 import 'package:neurolotto_admin/features/consortium/consortium_controller.dart'
     as _i10;
@@ -28,22 +28,25 @@ import 'package:neurolotto_admin/features/lottery/lottery_schedule_controller.da
     as _i16;
 import 'package:neurolotto_admin/features/lottery/lottery_schedule_date_controller.dart'
     as _i17;
-import 'package:neurolotto_admin/features/sales/result_controller.dart' as _i18;
-import 'package:neurolotto_admin/features/sales/sale_detail_controller.dart'
-    as _i20;
-import 'package:neurolotto_admin/features/sales/sale_summary_controller.dart'
+import 'package:neurolotto_admin/features/result/result_lotteries_controller.dart'
+    as _i18;
+import 'package:neurolotto_admin/features/result/result_plays_controller.dart'
     as _i19;
+import 'package:neurolotto_admin/features/sales/sale_detail_controller.dart'
+    as _i21;
+import 'package:neurolotto_admin/features/sales/sale_summary_controller.dart'
+    as _i20;
 import 'package:neurolotto_admin/features/settings/thememode_controller.dart'
     as _i6;
 import 'package:neurolotto_admin/features/splash/splash_controller.dart'
-    as _i21;
-import 'package:neurolotto_admin/features/stand/stand_controller.dart' as _i22;
+    as _i22;
+import 'package:neurolotto_admin/features/stand/stand_controller.dart' as _i23;
 import 'package:neurolotto_admin/features/stand/stand_password_controller.dart'
-    as _i23;
-import 'package:neurolotto_admin/features/stand/stand_play_constraint_controller.dart'
     as _i24;
-import 'package:neurolotto_admin/features/stand/stand_prize_lottery_controller.dart'
+import 'package:neurolotto_admin/features/stand/stand_play_constraint_controller.dart'
     as _i25;
+import 'package:neurolotto_admin/features/stand/stand_prize_lottery_controller.dart'
+    as _i26;
 import 'package:neurolotto_admin/features/ticket/ticket_controller.dart' as _i7;
 import 'package:neurolotto_admin/features/ticket/ticket_detail_controller.dart'
     as _i8;
@@ -91,24 +94,26 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i16.LotteryScheduleController(gh<_i5.SupabaseClient>()));
     gh.lazySingleton<_i17.LotteryScheduleDateController>(
         () => _i17.LotteryScheduleDateController(gh<_i5.SupabaseClient>()));
-    gh.lazySingleton<_i18.ResultController>(
-        () => _i18.ResultController(gh<_i5.SupabaseClient>()));
-    gh.lazySingleton<_i19.SaleController>(
-        () => _i19.SaleController(gh<_i5.SupabaseClient>()));
-    gh.lazySingleton<_i20.SaleDetailController>(
-        () => _i20.SaleDetailController(gh<_i5.SupabaseClient>()));
-    gh.factory<_i21.SplashController>(
-        () => _i21.SplashController(gh<_i5.SupabaseClient>()));
-    gh.lazySingleton<_i22.StandController>(
-        () => _i22.StandController(gh<_i5.SupabaseClient>()));
-    gh.factory<_i23.StandPasswordController>(
-        () => _i23.StandPasswordController(gh<_i5.SupabaseClient>()));
-    gh.lazySingleton<_i24.StandPlayConstraintController>(
-        () => _i24.StandPlayConstraintController(gh<_i5.SupabaseClient>()));
-    gh.lazySingleton<_i25.StandPrizeLotteryController>(
-        () => _i25.StandPrizeLotteryController(gh<_i5.SupabaseClient>()));
+    gh.lazySingleton<_i18.ResultLotteriesController>(
+        () => _i18.ResultLotteriesController(gh<_i5.SupabaseClient>()));
+    gh.lazySingleton<_i19.ResultPlaysController>(
+        () => _i19.ResultPlaysController(gh<_i5.SupabaseClient>()));
+    gh.lazySingleton<_i20.SaleController>(
+        () => _i20.SaleController(gh<_i5.SupabaseClient>()));
+    gh.lazySingleton<_i21.SaleDetailController>(
+        () => _i21.SaleDetailController(gh<_i5.SupabaseClient>()));
+    gh.factory<_i22.SplashController>(
+        () => _i22.SplashController(gh<_i5.SupabaseClient>()));
+    gh.lazySingleton<_i23.StandController>(
+        () => _i23.StandController(gh<_i5.SupabaseClient>()));
+    gh.factory<_i24.StandPasswordController>(
+        () => _i24.StandPasswordController(gh<_i5.SupabaseClient>()));
+    gh.lazySingleton<_i25.StandPlayConstraintController>(
+        () => _i25.StandPlayConstraintController(gh<_i5.SupabaseClient>()));
+    gh.lazySingleton<_i26.StandPrizeLotteryController>(
+        () => _i26.StandPrizeLotteryController(gh<_i5.SupabaseClient>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i26.RegisterModule {}
+class _$RegisterModule extends _i27.RegisterModule {}

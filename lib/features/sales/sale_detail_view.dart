@@ -93,11 +93,17 @@ class _SaleDetailViewState extends State<SaleDetailView> {
           ),
           _saleDetailController.watch((context, state) {
             if (state.isLoading) {
-              return const SliverFillRemaining(child: Center(child: CircularProgressIndicator()));
+              return const SliverFillRemaining(
+                hasScrollBody: false,
+                child: Center(child: CircularProgressIndicator()),
+              );
             }
 
             if (state.failureMessage != null) {
-              return SliverFillRemaining(child: Center(child: Text(state.failureMessage ?? "")));
+              return SliverFillRemaining(
+                hasScrollBody: false,
+                child: Center(child: Text(state.failureMessage ?? "")),
+              );
             }
 
             return SliverPadding(

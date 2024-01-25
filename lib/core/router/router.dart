@@ -22,7 +22,10 @@ class AppRouter extends $AppRouter {
             AutoRoute(page: SaleSummaryRoute.page),
             AutoRoute(page: SaleDetailRoute.page),
           ]),
-          AutoRoute(page: ResultRoute.page),
+          AutoRoute(page: ResultRoute.page, children: [
+            AutoRoute(page: ResultLotteriesRoute.page),
+            AutoRoute(page: ResultPlaysRoute.page),
+          ]),
           AutoRoute(page: SettingsRoute.page, children: [
             AutoRoute(page: TicketRoute.page),
             AutoRoute(page: GroupRoute.page),
@@ -42,7 +45,7 @@ class AppRouter extends $AppRouter {
       AutoRoute(page: GroupPrizeFormRoute.page, fullscreenDialog: true, guards: [AuthGuard()]),
       AutoRoute(page: GroupPlayConstraintFormRoute.page, fullscreenDialog: true, guards: [AuthGuard()]),
       AutoRoute(page: TicketDetailRoute.page, guards: [AuthGuard()]),
-      AutoRoute(page: ResultFormRoute.page, fullscreenDialog: true, guards: [AuthGuard()]),
+      AutoRoute(page: ResultLotteriesFormRoute.page, fullscreenDialog: true, guards: [AuthGuard()]),
       AutoRoute(page: LotteryScheduleFormRoute.page, fullscreenDialog: true, guards: [AuthGuard()]),
       AutoRoute(page: LotteryScheduleDateFormRoute.page, fullscreenDialog: true, guards: [AuthGuard()]),
       AutoRoute(page: LotteryTabsRoute.page, maintainState: false, guards: [AuthGuard()]),

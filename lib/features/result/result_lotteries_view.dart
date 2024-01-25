@@ -13,25 +13,25 @@ import '../../core/router/router.gr.dart';
 import '../../core/service_locator/get_it.dart';
 import '../../core/services.dart';
 import '../../i18n/translations.g.dart';
-import 'result_controller.dart';
-import 'result_form_view.dart';
+import 'result_lotteries_controller.dart';
+import 'result_lotteries_form_view.dart';
 
 @RoutePage()
-class ResultView extends StatefulWidget {
-  const ResultView({super.key});
+class ResultLotteriesView extends StatefulWidget {
+  const ResultLotteriesView({super.key});
 
   @override
-  State<ResultView> createState() => _ResultViewState();
+  State<ResultLotteriesView> createState() => _ResultLotteriesViewState();
 }
 
-class _ResultViewState extends State<ResultView> {
-  final _resultController = getIt.get<ResultController>();
+class _ResultLotteriesViewState extends State<ResultLotteriesView> {
+  final _resultLotteriesController = getIt.get<ResultLotteriesController>();
 
   @override
   void initState() {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => _resultController.fetchResults(),
+      (_) => _resultLotteriesController.fetchResults(),
     );
   }
 
@@ -43,14 +43,14 @@ class _ResultViewState extends State<ResultView> {
           heroTag: 'result',
           onPressed: () {
             if (constraints.maxWidth <= tabletBreakpoint) {
-              router.push(ResultFormRoute(result: null));
+              router.push(ResultLotteriesFormRoute(result: null));
               return;
             }
 
             showDialog(
               context: context,
               builder: (context) => const AdaptativeDialog(
-                child: ResultFormView(result: null),
+                child: ResultLotteriesFormView(result: null),
               ),
             );
           },
@@ -72,11 +72,11 @@ class _ResultViewState extends State<ResultView> {
                   initialValue: DateTime.now(),
                   inputType: InputType.date,
                   format: DateFormat("dd/MM/yyyy"),
-                  onChanged: (value) => _resultController.fetchResults(date: value),
+                  onChanged: (value) => _resultLotteriesController.fetchResults(date: value),
                 ),
               ),
             ),
-            _resultController.watch((context, state) {
+            _resultLotteriesController.watch((context, state) {
               if (state.isLoading) {
                 return const SliverFillRemaining(
                   hasScrollBody: false,
@@ -108,14 +108,14 @@ class _ResultViewState extends State<ResultView> {
                           lotteryResult: lotteryResult,
                           onEditResult: () {
                             if (constraints.maxWidth <= tabletBreakpoint) {
-                              router.push(ResultFormRoute(result: lotteryResult));
+                              router.push(ResultLotteriesFormRoute(result: lotteryResult));
                               return;
                             }
 
                             showDialog(
                               context: context,
                               builder: (context) => AdaptativeDialog(
-                                child: ResultFormView(result: lotteryResult),
+                                child: ResultLotteriesFormView(result: lotteryResult),
                               ),
                             );
                           },

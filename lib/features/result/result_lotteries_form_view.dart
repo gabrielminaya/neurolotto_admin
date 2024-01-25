@@ -13,27 +13,27 @@ import '../../core/extensions/value_notifier.dart';
 import '../../core/service_locator/get_it.dart';
 import '../../core/services.dart';
 import '../../i18n/translations.g.dart';
-import 'result_controller.dart';
+import 'result_lotteries_controller.dart';
 
 @RoutePage()
-class ResultFormView extends StatefulWidget {
-  const ResultFormView({super.key, this.result});
+class ResultLotteriesFormView extends StatefulWidget {
+  const ResultLotteriesFormView({super.key, this.result});
 
   final LotteryResultEntity? result;
 
   @override
-  State<ResultFormView> createState() => _ResultFormViewState();
+  State<ResultLotteriesFormView> createState() => _ResultLotteriesFormViewState();
 }
 
-class _ResultFormViewState extends State<ResultFormView> {
-  final _resultController = getIt.get<ResultController>();
+class _ResultLotteriesFormViewState extends State<ResultLotteriesFormView> {
+  final _resultLotteriesController = getIt.get<ResultLotteriesController>();
   final _formKey = GlobalKey<FormBuilderState>();
 
   @override
   void initState() {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => _resultController.initialize(),
+      (_) => _resultLotteriesController.initialize(),
     );
   }
 
@@ -77,7 +77,7 @@ class _ResultFormViewState extends State<ResultFormView> {
     }
 
     if (result == null) {
-      return _resultController.add(
+      return _resultLotteriesController.add(
         result: LotteryResultEntity(
           id: "",
           playDate: date,
@@ -101,7 +101,7 @@ class _ResultFormViewState extends State<ResultFormView> {
       );
     }
 
-    return _resultController.update(
+    return _resultLotteriesController.update(
       result: result.copyWith(
         playDate: date,
         lottery: lottery,
@@ -129,7 +129,7 @@ class _ResultFormViewState extends State<ResultFormView> {
       appBar: AppBar(
         title: Text(widget.result == null ? t.result.add : t.result.edit),
       ),
-      body: _resultController.watch(
+      body: _resultLotteriesController.watch(
         (context, state) {
           if (state.isResultLoading) {
             return const Center(
@@ -216,7 +216,7 @@ class _ResultFormViewState extends State<ResultFormView> {
         child: Row(
           children: [
             Expanded(
-              child: _resultController.watch(
+              child: _resultLotteriesController.watch(
                 (context, state) => AsyncButtonBuilder(
                   idleStateWidget: Text(widget.result == null ? t.result.add : t.result.edit),
                   state: state.isLoading ? AsyncButtonBuilderState.loading : AsyncButtonBuilderState.idle,

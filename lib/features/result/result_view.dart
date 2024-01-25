@@ -6,15 +6,15 @@ import '../../core/router/router.gr.dart';
 import '../../i18n/translations.g.dart';
 
 @RoutePage()
-class SaleView extends StatelessWidget {
-  const SaleView({super.key});
+class ResultView extends StatelessWidget {
+  const ResultView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter.tabBar(
       routes: const [
-        SaleSummaryRoute(),
-        SaleDetailRoute(),
+        ResultLotteriesRoute(),
+        ResultPlaysRoute(),
       ],
       builder: (context, child, tabController) => LayoutBuilder(
         builder: (context, constraints) => Column(
@@ -24,8 +24,8 @@ class SaleView extends StatelessWidget {
               tabAlignment: constraints.maxWidth < tabletBreakpoint ? TabAlignment.fill : TabAlignment.start,
               controller: tabController,
               tabs: [
-                Tab(text: t.sales.saleSummary),
-                Tab(text: t.sales.saleDetail),
+                Tab(text: t.result.lotteryResult),
+                Tab(text: t.result.lotteryWinners),
               ],
             ),
             Expanded(child: child),

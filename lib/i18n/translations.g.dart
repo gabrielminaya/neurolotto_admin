@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 319 (159 per locale)
+/// Strings: 333 (166 per locale)
 ///
-/// Built on 2024-01-25 at 14:39 UTC
+/// Built on 2024-01-25 at 18:32 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -394,8 +394,15 @@ class _TranslationsResultEs {
 	String get edit => 'Editar';
 	String get date => 'Fecha';
 	String get lottery => 'Lotería';
+	String get lotteryResult => 'Resultados';
+	String get lotteryWinners => 'Premios';
+	String get ticket => 'Ticket';
+	String get time => 'Hora';
+	String get play => 'Jugada';
+	String get playAmount => 'Apostado';
+	String get balance => 'Balance';
 	String get group => 'Grupo';
-	String get stand => 'Banco';
+	String get stand => 'Banca';
 	String get firstPrize => 'Primer número';
 	String get secondPrize => 'Segundo número';
 	String get thirdPrize => 'Tercer número';
@@ -742,6 +749,13 @@ class _TranslationsResultEn extends _TranslationsResultEs {
 	@override String get edit => 'Edit';
 	@override String get date => 'Date';
 	@override String get lottery => 'Lottery';
+	@override String get lotteryResult => 'Results';
+	@override String get lotteryWinners => 'Winners';
+	@override String get ticket => 'Ticket';
+	@override String get time => 'Time';
+	@override String get play => 'Play';
+	@override String get playAmount => 'Amount';
+	@override String get balance => 'Balance';
 	@override String get group => 'Group';
 	@override String get stand => 'Stand';
 	@override String get firstPrize => 'First number';
@@ -967,8 +981,15 @@ extension on _TranslationsEs {
 			case 'result.edit': return 'Editar';
 			case 'result.date': return 'Fecha';
 			case 'result.lottery': return 'Lotería';
+			case 'result.lotteryResult': return 'Resultados';
+			case 'result.lotteryWinners': return 'Premios';
+			case 'result.ticket': return 'Ticket';
+			case 'result.time': return 'Hora';
+			case 'result.play': return 'Jugada';
+			case 'result.playAmount': return 'Apostado';
+			case 'result.balance': return 'Balance';
 			case 'result.group': return 'Grupo';
-			case 'result.stand': return 'Banco';
+			case 'result.stand': return 'Banca';
 			case 'result.firstPrize': return 'Primer número';
 			case 'result.secondPrize': return 'Segundo número';
 			case 'result.thirdPrize': return 'Tercer número';
@@ -1134,6 +1155,13 @@ extension on _TranslationsEn {
 			case 'result.edit': return 'Edit';
 			case 'result.date': return 'Date';
 			case 'result.lottery': return 'Lottery';
+			case 'result.lotteryResult': return 'Results';
+			case 'result.lotteryWinners': return 'Winners';
+			case 'result.ticket': return 'Ticket';
+			case 'result.time': return 'Time';
+			case 'result.play': return 'Play';
+			case 'result.playAmount': return 'Amount';
+			case 'result.balance': return 'Balance';
 			case 'result.group': return 'Group';
 			case 'result.stand': return 'Stand';
 			case 'result.firstPrize': return 'First number';

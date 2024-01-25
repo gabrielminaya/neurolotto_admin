@@ -256,18 +256,21 @@ class _TicketDetailState extends State<TicketDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Visibility(
-        visible: widget.ticket.canceledByName == null,
-        child: FloatingActionButton(
-          backgroundColor: context.colorScheme.error,
-          onPressed: () => onCancel(context),
-          child: const Icon(Icons.cancel_outlined),
-        ),
-      ),
       appBar: AppBar(
         title: Text(t.ticket.detail),
         centerTitle: false,
         actions: [
+          Visibility(
+            visible: widget.ticket.canceledByName == null,
+            child: OutlinedButton.icon(
+              style: OutlinedButton.styleFrom(
+                foregroundColor: context.colorScheme.error,
+              ),
+              onPressed: () => onCancel(context),
+              label: Text(t.ticket.cancelAction),
+              icon: const Icon(Icons.close),
+            ),
+          ),
           hgap(10),
         ],
       ),

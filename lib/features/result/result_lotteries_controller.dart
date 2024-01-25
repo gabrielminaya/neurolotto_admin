@@ -8,11 +8,11 @@ import '../../core/entities/lottery_entity.dart';
 import '../../core/entities/lottery_result_entity.dart';
 import '../../core/services.dart';
 
-part 'result_controller.freezed.dart';
+part 'result_lotteries_controller.freezed.dart';
 
 @Freezed()
-sealed class ResultControllerState with _$ResultControllerState {
-  const factory ResultControllerState({
+sealed class ResultLotteriesControllerState with _$ResultLotteriesControllerState {
+  const factory ResultLotteriesControllerState({
     @Default(false) bool isLoading,
     @Default(false) bool isResultLoading,
     @Default(null) String? failureMessage,
@@ -22,8 +22,8 @@ sealed class ResultControllerState with _$ResultControllerState {
 }
 
 @LazySingleton()
-class ResultController extends ValueNotifier<ResultControllerState> {
-  ResultController(this._client) : super(const ResultControllerState());
+class ResultLotteriesController extends ValueNotifier<ResultLotteriesControllerState> {
+  ResultLotteriesController(this._client) : super(const ResultLotteriesControllerState());
 
   final SupabaseClient _client;
 
