@@ -53,8 +53,9 @@ class SaleDetailController extends ValueNotifier<SaleDetailControllerState> {
     value = value.copyWith(isLoading: true);
 
     try {
+      final effetiveDate = atDate ?? value.atDate;
       final builder = _client.rpc("fetch_winning_number_by_lotteries", params: {
-        "in_effetive_date": DateFormat("yyyy-MM-dd").format(atDate ?? DateTime.now().toLocal()),
+        "in_effetive_date": DateFormat("yyyy-MM-dd").format(effetiveDate),
         "in_consortium_id": authController.consortium?.id,
         "in_lottery_stand_id": value.selectedLotteryStand?.id ?? lotteryStand?.id,
         "in_lottery_id": null,
@@ -64,9 +65,14 @@ class SaleDetailController extends ValueNotifier<SaleDetailControllerState> {
         (data) => data.map((e) => SaleDetailEntity.fromJson(e)).toList(),
       );
 
-      value = value.copyWith(saleDetails: sales, atDate: atDate ?? DateTime.now(), isLoading: false);
+      value = value.copyWith(
+        saleDetails: sales,
+        atDate: atDate ?? value.atDate,
+      );
     } on PostgrestException catch (error) {
       value = value.copyWith(failureMessage: error.message);
+    } finally {
+      value = value.copyWith(isLoading: false);
     }
   }
 }

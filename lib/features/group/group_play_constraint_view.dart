@@ -41,6 +41,7 @@ class _GroupPlayConstraintViewState extends State<GroupPlayConstraintView> {
     return LayoutBuilder(
       builder: (context, constraints) => Scaffold(
         floatingActionButton: FloatingActionButton(
+          heroTag: 'group-play-constraint-add',
           onPressed: () {
             if (constraints.maxWidth <= tabletBreakpoint) {
               router.push(GroupPlayConstraintFormRoute(group: widget.group));
@@ -81,6 +82,9 @@ class _GroupPlayConstraintViewState extends State<GroupPlayConstraintView> {
               itemCount: state.constraints.length,
               itemBuilder: (context, index) {
                 final constraint = state.constraints.elementAt(index);
+                final amount = NumberFormat.currency(symbol: "", decimalDigits: 0).format(constraint.constraintAmount);
+                final maxAmount =
+                    NumberFormat.currency(symbol: "", decimalDigits: 0).format(constraint.constraintMaxAmount);
 
                 return Chip(
                   label: SizedBox(
@@ -91,7 +95,7 @@ class _GroupPlayConstraintViewState extends State<GroupPlayConstraintView> {
                       children: [
                         Text(constraint.playNumber.toLotteryFormat),
                         Text(
-                          NumberFormat.currency(symbol: "").format(constraint.constraintAmount),
+                          '$amount - [$maxAmount]',
                           style: context.textTheme.labelSmall?.copyWith(color: context.colorScheme.primary),
                         ),
                       ],

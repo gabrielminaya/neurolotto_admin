@@ -51,6 +51,7 @@
         "constraintForm": {
             "title": "Añadir Restricciones",
             "amount": "Monto",
+            "maxAmount": "Monto maximo",
             "empty": "No hay restricciones creadas",
             "from": "Desde",
             "to": "Hasta (Opcional)"
@@ -99,6 +100,7 @@
         "constraintForm": {
             "title": "Añadir Restricciones",
             "amount": "Monto",
+            "maxAmount": "Monto maximo",
             "empty": "No hay restricciones creadas",
             "from": "Desde",
             "to": "Hasta (Opcional)"

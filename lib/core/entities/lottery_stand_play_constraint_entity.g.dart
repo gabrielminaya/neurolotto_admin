@@ -12,6 +12,7 @@ _$LotteryStandPlayConstraintEntityImpl
         _$LotteryStandPlayConstraintEntityImpl(
           playNumber: json['play_number'] as num,
           constraintAmount: json['constraint_amount'] as num,
+          constraintMaxAmount: json['constraint_max_amount'] as num,
         );
 
 Map<String, dynamic> _$$LotteryStandPlayConstraintEntityImplToJson(
@@ -19,4 +20,5 @@ Map<String, dynamic> _$$LotteryStandPlayConstraintEntityImplToJson(
     <String, dynamic>{
       'play_number': instance.playNumber,
       'constraint_amount': instance.constraintAmount,
+      'constraint_max_amount': instance.constraintMaxAmount,
     };

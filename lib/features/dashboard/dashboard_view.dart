@@ -114,8 +114,8 @@ class _DashboardViewState extends State<DashboardView> {
                             value: state.selectedLottery,
                             decoration: InputDecoration(labelText: t.monitoring.lottery),
                             items: items,
-                            onChanged: (orderByQuantity) => _dashboardController.fetchPlaysByFilters(
-                              lottery: orderByQuantity,
+                            onChanged: (selectedLottery) => _dashboardController.fetchPlaysByFilters(
+                              lottery: selectedLottery,
                             ),
                           );
                         },

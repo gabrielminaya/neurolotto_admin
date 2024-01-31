@@ -49,7 +49,8 @@ class StandPlayConstraintController extends ValueNotifier<StandPlayConstraintCon
     required LotteryStandEntity stand,
     required num fromPlayNumber,
     required num? toPlayNumber,
-    required num constraintamount,
+    required num constraintAmount,
+    required num constraintMaxAmount,
     required VoidCallback onSuccess,
     required ValueChanged<String> onFailure,
   }) async {
@@ -62,7 +63,8 @@ class StandPlayConstraintController extends ValueNotifier<StandPlayConstraintCon
           "in_lottery_stand_id": stand.id,
           "in_from_play_number": fromPlayNumber,
           "in_to_play_number": toPlayNumber,
-          "in_constraint_amount": constraintamount,
+          "in_constraint_amount": constraintAmount,
+          "in_constraint_max_amount": constraintMaxAmount,
         },
       );
 

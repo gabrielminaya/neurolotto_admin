@@ -25,6 +25,8 @@ mixin _$GroupPlayConstraintEntity {
   num get playNumber => throw _privateConstructorUsedError;
   @JsonKey(name: "constraint_amount")
   num get constraintAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: "constraint_max_amount")
+  num get constraintMaxAmount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +42,8 @@ abstract class $GroupPlayConstraintEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "play_number") num playNumber,
-      @JsonKey(name: "constraint_amount") num constraintAmount});
+      @JsonKey(name: "constraint_amount") num constraintAmount,
+      @JsonKey(name: "constraint_max_amount") num constraintMaxAmount});
 }
 
 /// @nodoc
@@ -59,6 +62,7 @@ class _$GroupPlayConstraintEntityCopyWithImpl<$Res,
   $Res call({
     Object? playNumber = null,
     Object? constraintAmount = null,
+    Object? constraintMaxAmount = null,
   }) {
     return _then(_value.copyWith(
       playNumber: null == playNumber
@@ -68,6 +72,10 @@ class _$GroupPlayConstraintEntityCopyWithImpl<$Res,
       constraintAmount: null == constraintAmount
           ? _value.constraintAmount
           : constraintAmount // ignore: cast_nullable_to_non_nullable
+              as num,
+      constraintMaxAmount: null == constraintMaxAmount
+          ? _value.constraintMaxAmount
+          : constraintMaxAmount // ignore: cast_nullable_to_non_nullable
               as num,
     ) as $Val);
   }
@@ -84,7 +92,8 @@ abstract class _$$GroupPlayConstraintEntityImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "play_number") num playNumber,
-      @JsonKey(name: "constraint_amount") num constraintAmount});
+      @JsonKey(name: "constraint_amount") num constraintAmount,
+      @JsonKey(name: "constraint_max_amount") num constraintMaxAmount});
 }
 
 /// @nodoc
@@ -102,6 +111,7 @@ class __$$GroupPlayConstraintEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? playNumber = null,
     Object? constraintAmount = null,
+    Object? constraintMaxAmount = null,
   }) {
     return _then(_$GroupPlayConstraintEntityImpl(
       playNumber: null == playNumber
@@ -112,6 +122,10 @@ class __$$GroupPlayConstraintEntityImplCopyWithImpl<$Res>
           ? _value.constraintAmount
           : constraintAmount // ignore: cast_nullable_to_non_nullable
               as num,
+      constraintMaxAmount: null == constraintMaxAmount
+          ? _value.constraintMaxAmount
+          : constraintMaxAmount // ignore: cast_nullable_to_non_nullable
+              as num,
     ));
   }
 }
@@ -121,7 +135,9 @@ class __$$GroupPlayConstraintEntityImplCopyWithImpl<$Res>
 class _$GroupPlayConstraintEntityImpl implements _GroupPlayConstraintEntity {
   const _$GroupPlayConstraintEntityImpl(
       {@JsonKey(name: "play_number") required this.playNumber,
-      @JsonKey(name: "constraint_amount") required this.constraintAmount});
+      @JsonKey(name: "constraint_amount") required this.constraintAmount,
+      @JsonKey(name: "constraint_max_amount")
+      required this.constraintMaxAmount});
 
   factory _$GroupPlayConstraintEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$GroupPlayConstraintEntityImplFromJson(json);
@@ -132,10 +148,13 @@ class _$GroupPlayConstraintEntityImpl implements _GroupPlayConstraintEntity {
   @override
   @JsonKey(name: "constraint_amount")
   final num constraintAmount;
+  @override
+  @JsonKey(name: "constraint_max_amount")
+  final num constraintMaxAmount;
 
   @override
   String toString() {
-    return 'GroupPlayConstraintEntity(playNumber: $playNumber, constraintAmount: $constraintAmount)';
+    return 'GroupPlayConstraintEntity(playNumber: $playNumber, constraintAmount: $constraintAmount, constraintMaxAmount: $constraintMaxAmount)';
   }
 
   @override
@@ -146,12 +165,15 @@ class _$GroupPlayConstraintEntityImpl implements _GroupPlayConstraintEntity {
             (identical(other.playNumber, playNumber) ||
                 other.playNumber == playNumber) &&
             (identical(other.constraintAmount, constraintAmount) ||
-                other.constraintAmount == constraintAmount));
+                other.constraintAmount == constraintAmount) &&
+            (identical(other.constraintMaxAmount, constraintMaxAmount) ||
+                other.constraintMaxAmount == constraintMaxAmount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, playNumber, constraintAmount);
+  int get hashCode => Object.hash(
+      runtimeType, playNumber, constraintAmount, constraintMaxAmount);
 
   @JsonKey(ignore: true)
   @override
@@ -171,8 +193,10 @@ class _$GroupPlayConstraintEntityImpl implements _GroupPlayConstraintEntity {
 abstract class _GroupPlayConstraintEntity implements GroupPlayConstraintEntity {
   const factory _GroupPlayConstraintEntity(
       {@JsonKey(name: "play_number") required final num playNumber,
-      @JsonKey(name: "constraint_amount")
-      required final num constraintAmount}) = _$GroupPlayConstraintEntityImpl;
+      @JsonKey(name: "constraint_amount") required final num constraintAmount,
+      @JsonKey(name: "constraint_max_amount")
+      required final num
+          constraintMaxAmount}) = _$GroupPlayConstraintEntityImpl;
 
   factory _GroupPlayConstraintEntity.fromJson(Map<String, dynamic> json) =
       _$GroupPlayConstraintEntityImpl.fromJson;
@@ -183,6 +207,9 @@ abstract class _GroupPlayConstraintEntity implements GroupPlayConstraintEntity {
   @override
   @JsonKey(name: "constraint_amount")
   num get constraintAmount;
+  @override
+  @JsonKey(name: "constraint_max_amount")
+  num get constraintMaxAmount;
   @override
   @JsonKey(ignore: true)
   _$$GroupPlayConstraintEntityImplCopyWith<_$GroupPlayConstraintEntityImpl>

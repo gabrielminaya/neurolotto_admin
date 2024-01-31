@@ -51,6 +51,7 @@
         "constraintForm": {
             "title": "Add Constraints",
             "amount": "Amount",
+            "maxAmount": "Maximum amount",
             "empty": "No constraints created",
             "from": "From",
             "to": "To (Optional)"
@@ -98,6 +99,7 @@
         "constraintForm": {
             "title": "Add Constraints",
             "amount": "Amount",
+            "maxAmount": "Maximum amount",
             "empty": "No constraints created",
             "from": "From",
             "to": "To (Optional)"

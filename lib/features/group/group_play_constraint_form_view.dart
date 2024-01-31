@@ -26,12 +26,14 @@ class GroupPlayConstraintFormView extends StatelessWidget {
     final fromNumber = _formKey.currentState?.value["fromNumber"] as String;
     final toNumber = _formKey.currentState?.value["toNumber"] as String?;
     final amount = _formKey.currentState?.value["amount"] as String;
+    final maxAmount = _formKey.currentState?.value["maxAmount"] as String;
 
     return _groupPlayConstraintController.update(
       group: group,
       fromPlayNumber: num.parse(fromNumber),
       toPlayNumber: toNumber == null ? null : num.tryParse(toNumber),
-      constraintamount: num.parse(amount),
+      constraintAmount: num.parse(amount),
+      constraintMaxAmount: num.parse(maxAmount),
       onSuccess: () {
         context.router.pop();
         _groupPlayConstraintController.fetch(group);
@@ -95,13 +97,30 @@ class GroupPlayConstraintFormView extends StatelessWidget {
               ],
             ),
             vgap(10),
-            FormBuilderTextField(
-              name: 'amount',
-              decoration: InputDecoration(label: Text(t.group.constraintForm.amount)),
-              validator: FormBuilderValidators.compose([
-                FormBuilderValidators.required(),
-                FormBuilderValidators.integer(),
-              ]),
+            Row(
+              children: [
+                Flexible(
+                  child: FormBuilderTextField(
+                    name: 'amount',
+                    decoration: InputDecoration(label: Text(t.group.constraintForm.amount)),
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                      FormBuilderValidators.integer(),
+                    ]),
+                  ),
+                ),
+                hgap(10),
+                Flexible(
+                  child: FormBuilderTextField(
+                    name: 'maxAmount',
+                    decoration: InputDecoration(label: Text(t.group.constraintForm.maxAmount)),
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                      FormBuilderValidators.integer(),
+                    ]),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

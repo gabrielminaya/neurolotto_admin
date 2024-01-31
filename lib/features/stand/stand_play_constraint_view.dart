@@ -41,6 +41,7 @@ class _StandPlayConstraintViewState extends State<StandPlayConstraintView> {
     return LayoutBuilder(
       builder: (context, constraints) => Scaffold(
         floatingActionButton: FloatingActionButton(
+          heroTag: "stand-play-constraint",
           onPressed: () {
             if (constraints.maxWidth <= tabletBreakpoint) {
               router.push(StandPlayConstraintFormRoute(stand: widget.stand));
@@ -82,6 +83,20 @@ class _StandPlayConstraintViewState extends State<StandPlayConstraintView> {
               itemBuilder: (context, index) {
                 final constraint = state.constraints.elementAt(index);
 
+                final amount = NumberFormat.currency(
+                  symbol: "",
+                  decimalDigits: 0,
+                ).format(
+                  constraint.constraintAmount,
+                );
+
+                final maxAmount = NumberFormat.currency(
+                  symbol: "",
+                  decimalDigits: 0,
+                ).format(
+                  constraint.constraintMaxAmount,
+                );
+
                 return Chip(
                   label: SizedBox(
                     width: double.infinity,
@@ -91,7 +106,7 @@ class _StandPlayConstraintViewState extends State<StandPlayConstraintView> {
                       children: [
                         Text(constraint.playNumber.toLotteryFormat),
                         Text(
-                          NumberFormat.currency(symbol: "").format(constraint.constraintAmount),
+                          "$amount - $maxAmount",
                           style: context.textTheme.labelSmall?.copyWith(color: context.colorScheme.primary),
                         ),
                       ],

@@ -25,6 +25,8 @@ mixin _$LotteryStandPlayConstraintEntity {
   num get playNumber => throw _privateConstructorUsedError;
   @JsonKey(name: "constraint_amount")
   num get constraintAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: "constraint_max_amount")
+  num get constraintMaxAmount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +44,8 @@ abstract class $LotteryStandPlayConstraintEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "play_number") num playNumber,
-      @JsonKey(name: "constraint_amount") num constraintAmount});
+      @JsonKey(name: "constraint_amount") num constraintAmount,
+      @JsonKey(name: "constraint_max_amount") num constraintMaxAmount});
 }
 
 /// @nodoc
@@ -61,6 +64,7 @@ class _$LotteryStandPlayConstraintEntityCopyWithImpl<$Res,
   $Res call({
     Object? playNumber = null,
     Object? constraintAmount = null,
+    Object? constraintMaxAmount = null,
   }) {
     return _then(_value.copyWith(
       playNumber: null == playNumber
@@ -70,6 +74,10 @@ class _$LotteryStandPlayConstraintEntityCopyWithImpl<$Res,
       constraintAmount: null == constraintAmount
           ? _value.constraintAmount
           : constraintAmount // ignore: cast_nullable_to_non_nullable
+              as num,
+      constraintMaxAmount: null == constraintMaxAmount
+          ? _value.constraintMaxAmount
+          : constraintMaxAmount // ignore: cast_nullable_to_non_nullable
               as num,
     ) as $Val);
   }
@@ -86,7 +94,8 @@ abstract class _$$LotteryStandPlayConstraintEntityImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "play_number") num playNumber,
-      @JsonKey(name: "constraint_amount") num constraintAmount});
+      @JsonKey(name: "constraint_amount") num constraintAmount,
+      @JsonKey(name: "constraint_max_amount") num constraintMaxAmount});
 }
 
 /// @nodoc
@@ -104,6 +113,7 @@ class __$$LotteryStandPlayConstraintEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? playNumber = null,
     Object? constraintAmount = null,
+    Object? constraintMaxAmount = null,
   }) {
     return _then(_$LotteryStandPlayConstraintEntityImpl(
       playNumber: null == playNumber
@@ -113,6 +123,10 @@ class __$$LotteryStandPlayConstraintEntityImplCopyWithImpl<$Res>
       constraintAmount: null == constraintAmount
           ? _value.constraintAmount
           : constraintAmount // ignore: cast_nullable_to_non_nullable
+              as num,
+      constraintMaxAmount: null == constraintMaxAmount
+          ? _value.constraintMaxAmount
+          : constraintMaxAmount // ignore: cast_nullable_to_non_nullable
               as num,
     ));
   }
@@ -124,7 +138,9 @@ class _$LotteryStandPlayConstraintEntityImpl
     implements _LotteryStandPlayConstraintEntity {
   const _$LotteryStandPlayConstraintEntityImpl(
       {@JsonKey(name: "play_number") required this.playNumber,
-      @JsonKey(name: "constraint_amount") required this.constraintAmount});
+      @JsonKey(name: "constraint_amount") required this.constraintAmount,
+      @JsonKey(name: "constraint_max_amount")
+      required this.constraintMaxAmount});
 
   factory _$LotteryStandPlayConstraintEntityImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -136,10 +152,13 @@ class _$LotteryStandPlayConstraintEntityImpl
   @override
   @JsonKey(name: "constraint_amount")
   final num constraintAmount;
+  @override
+  @JsonKey(name: "constraint_max_amount")
+  final num constraintMaxAmount;
 
   @override
   String toString() {
-    return 'LotteryStandPlayConstraintEntity(playNumber: $playNumber, constraintAmount: $constraintAmount)';
+    return 'LotteryStandPlayConstraintEntity(playNumber: $playNumber, constraintAmount: $constraintAmount, constraintMaxAmount: $constraintMaxAmount)';
   }
 
   @override
@@ -150,12 +169,15 @@ class _$LotteryStandPlayConstraintEntityImpl
             (identical(other.playNumber, playNumber) ||
                 other.playNumber == playNumber) &&
             (identical(other.constraintAmount, constraintAmount) ||
-                other.constraintAmount == constraintAmount));
+                other.constraintAmount == constraintAmount) &&
+            (identical(other.constraintMaxAmount, constraintMaxAmount) ||
+                other.constraintMaxAmount == constraintMaxAmount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, playNumber, constraintAmount);
+  int get hashCode => Object.hash(
+      runtimeType, playNumber, constraintAmount, constraintMaxAmount);
 
   @JsonKey(ignore: true)
   @override
@@ -176,10 +198,11 @@ class _$LotteryStandPlayConstraintEntityImpl
 abstract class _LotteryStandPlayConstraintEntity
     implements LotteryStandPlayConstraintEntity {
   const factory _LotteryStandPlayConstraintEntity(
-          {@JsonKey(name: "play_number") required final num playNumber,
-          @JsonKey(name: "constraint_amount")
-          required final num constraintAmount}) =
-      _$LotteryStandPlayConstraintEntityImpl;
+      {@JsonKey(name: "play_number") required final num playNumber,
+      @JsonKey(name: "constraint_amount") required final num constraintAmount,
+      @JsonKey(name: "constraint_max_amount")
+      required final num
+          constraintMaxAmount}) = _$LotteryStandPlayConstraintEntityImpl;
 
   factory _LotteryStandPlayConstraintEntity.fromJson(
           Map<String, dynamic> json) =
@@ -191,6 +214,9 @@ abstract class _LotteryStandPlayConstraintEntity
   @override
   @JsonKey(name: "constraint_amount")
   num get constraintAmount;
+  @override
+  @JsonKey(name: "constraint_max_amount")
+  num get constraintMaxAmount;
   @override
   @JsonKey(ignore: true)
   _$$LotteryStandPlayConstraintEntityImplCopyWith<

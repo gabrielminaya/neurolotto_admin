@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 333 (166 per locale)
+/// Strings: 337 (168 per locale)
 ///
-/// Built on 2024-01-25 at 18:32 UTC
+/// Built on 2024-01-31 at 13:29 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -434,6 +434,7 @@ class _TranslationsGroupConstraintFormEs {
 	// Translations
 	String get title => 'Añadir Restricciones';
 	String get amount => 'Monto';
+	String get maxAmount => 'Monto maximo';
 	String get empty => 'No hay restricciones creadas';
 	String get from => 'Desde';
 	String get to => 'Hasta (Opcional)';
@@ -448,6 +449,7 @@ class _TranslationsStandConstraintFormEs {
 	// Translations
 	String get title => 'Añadir Restricciones';
 	String get amount => 'Monto';
+	String get maxAmount => 'Monto maximo';
 	String get empty => 'No hay restricciones creadas';
 	String get from => 'Desde';
 	String get to => 'Hasta (Opcional)';
@@ -789,6 +791,7 @@ class _TranslationsGroupConstraintFormEn extends _TranslationsGroupConstraintFor
 	// Translations
 	@override String get title => 'Add Constraints';
 	@override String get amount => 'Amount';
+	@override String get maxAmount => 'Maximum amount';
 	@override String get empty => 'No constraints created';
 	@override String get from => 'From';
 	@override String get to => 'To (Optional)';
@@ -803,6 +806,7 @@ class _TranslationsStandConstraintFormEn extends _TranslationsStandConstraintFor
 	// Translations
 	@override String get title => 'Add Constraints';
 	@override String get amount => 'Amount';
+	@override String get maxAmount => 'Maximum amount';
 	@override String get empty => 'No constraints created';
 	@override String get from => 'From';
 	@override String get to => 'To (Optional)';
@@ -882,6 +886,7 @@ extension on _TranslationsEs {
 			case 'group.deleteContent': return 'Solo se pueden borrar grupos que no tengan una banca relacionadas';
 			case 'group.constraintForm.title': return 'Añadir Restricciones';
 			case 'group.constraintForm.amount': return 'Monto';
+			case 'group.constraintForm.maxAmount': return 'Monto maximo';
 			case 'group.constraintForm.empty': return 'No hay restricciones creadas';
 			case 'group.constraintForm.from': return 'Desde';
 			case 'group.constraintForm.to': return 'Hasta (Opcional)';
@@ -924,6 +929,7 @@ extension on _TranslationsEs {
 			case 'stand.tripletaMaxAmount': return 'Monto máximo de tripleta';
 			case 'stand.constraintForm.title': return 'Añadir Restricciones';
 			case 'stand.constraintForm.amount': return 'Monto';
+			case 'stand.constraintForm.maxAmount': return 'Monto maximo';
 			case 'stand.constraintForm.empty': return 'No hay restricciones creadas';
 			case 'stand.constraintForm.from': return 'Desde';
 			case 'stand.constraintForm.to': return 'Hasta (Opcional)';
@@ -1057,6 +1063,7 @@ extension on _TranslationsEn {
 			case 'group.deleteContent': return 'Only groups without associated benches can be deleted';
 			case 'group.constraintForm.title': return 'Add Constraints';
 			case 'group.constraintForm.amount': return 'Amount';
+			case 'group.constraintForm.maxAmount': return 'Maximum amount';
 			case 'group.constraintForm.empty': return 'No constraints created';
 			case 'group.constraintForm.from': return 'From';
 			case 'group.constraintForm.to': return 'To (Optional)';
@@ -1098,6 +1105,7 @@ extension on _TranslationsEn {
 			case 'stand.tripletaMaxAmount': return 'Maximum triplet amount';
 			case 'stand.constraintForm.title': return 'Add Constraints';
 			case 'stand.constraintForm.amount': return 'Amount';
+			case 'stand.constraintForm.maxAmount': return 'Maximum amount';
 			case 'stand.constraintForm.empty': return 'No constraints created';
 			case 'stand.constraintForm.from': return 'From';
 			case 'stand.constraintForm.to': return 'To (Optional)';

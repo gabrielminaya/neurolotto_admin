@@ -46,7 +46,7 @@ class DashboardController extends ValueNotifier<DashboardControllerState> {
       lotteries.sort((a, b) => (a.isClosed ?? false) ? 1 : -1);
 
       value = value.copyWith(
-        selectedLottery: lotteries.isNotEmpty ? lotteries.first : null,
+        selectedLottery: value.selectedLottery ?? lotteries.firstOrNull,
         lotteries: lotteries,
       );
     } on PostgrestException catch (e) {
@@ -68,7 +68,7 @@ class DashboardController extends ValueNotifier<DashboardControllerState> {
       final hotNumbers = await _client
           .rpc("get_most_played_numbers", params: {
             "in_consortium_id": authController.consortium?.id,
-            "in_lottery_id": lottery?.id,
+            "in_lottery_id": lottery?.id ?? value.selectedLottery?.id,
             "in_from": DateFormat("yyyy-MM-dd 00:00").format(atDate ?? value.selectedDate),
             "in_to": DateFormat("yyyy-MM-dd 23:59").format(atDate ?? value.selectedDate),
             "order_by_quantity": orderByQuantity ?? value.orderByQuantity,
