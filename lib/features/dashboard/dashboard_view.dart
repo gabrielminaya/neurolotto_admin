@@ -50,76 +50,68 @@ class _DashboardViewState extends State<DashboardView> {
             SliverPadding(
               padding: p12,
               sliver: SliverToBoxAdapter(
-                child: Row(
+                child: _FlexContainer(
                   children: [
-                    Flexible(
-                      child: FormBuilderDateTimePicker(
-                        name: 'from',
-                        decoration: InputDecoration(labelText: t.monitoring.dateForm),
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(2023),
-                        lastDate: DateTime.now(),
-                        initialValue: DateTime.now(),
-                        inputType: InputType.date,
-                        format: DateFormat("dd/MM/yyyy"),
-                        onChanged: (value) => _dashboardController.fetchPlaysByFilters(atDate: value),
-                      ),
+                    FormBuilderDateTimePicker(
+                      name: 'from',
+                      decoration: InputDecoration(labelText: t.monitoring.dateForm),
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2023),
+                      lastDate: DateTime.now(),
+                      initialValue: DateTime.now(),
+                      inputType: InputType.date,
+                      format: DateFormat("dd/MM/yyyy"),
+                      onChanged: (value) => _dashboardController.fetchPlaysByFilters(atDate: value),
                     ),
-                    hgap(10),
-                    Flexible(
-                      child: DropdownButtonFormField<bool>(
-                        value: true,
-                        decoration: InputDecoration(labelText: t.monitoring.orderForm),
-                        items: [
-                          DropdownMenuItem(value: true, child: Text(t.monitoring.orderQuantity)),
-                          DropdownMenuItem(value: false, child: Text(t.monitoring.orderAmount)),
-                        ],
-                        onChanged: (orderByQuantity) =>
-                            _dashboardController.fetchPlaysByFilters(orderByQuantity: orderByQuantity ?? true),
-                      ),
+                    DropdownButtonFormField<bool>(
+                      value: true,
+                      decoration: InputDecoration(labelText: t.monitoring.orderForm),
+                      items: [
+                        DropdownMenuItem(value: true, child: Text(t.monitoring.orderQuantity)),
+                        DropdownMenuItem(value: false, child: Text(t.monitoring.orderAmount)),
+                      ],
+                      onChanged: (orderByQuantity) =>
+                          _dashboardController.fetchPlaysByFilters(orderByQuantity: orderByQuantity ?? true),
                     ),
-                    hgap(10),
-                    Flexible(
-                      child: _dashboardController.watch(
-                        (context, state) {
-                          if (state.isInitializing) {
-                            return FormBuilderTextField(
-                              name: 'from',
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                label: Center(child: Padding(padding: p12, child: LinearProgressIndicator())),
-                              ),
-                            );
-                          }
-
-                          final items = state.lotteries.map(
-                            (lottery) {
-                              final child = Row(
-                                children: [
-                                  Icon(
-                                    Icons.store,
-                                    color: (lottery.isClosed ?? false) ? Colors.red : Colors.green,
-                                    size: 18,
-                                  ),
-                                  hgap(5),
-                                  Text(lottery.name),
-                                ],
-                              );
-
-                              return DropdownMenuItem(value: lottery, child: child);
-                            },
-                          ).toList();
-
-                          return DropdownButtonFormField<LotteryEntity>(
-                            value: state.selectedLottery,
-                            decoration: InputDecoration(labelText: t.monitoring.lottery),
-                            items: items,
-                            onChanged: (selectedLottery) => _dashboardController.fetchPlaysByFilters(
-                              lottery: selectedLottery,
+                    _dashboardController.watch(
+                      (context, state) {
+                        if (state.isInitializing) {
+                          return FormBuilderTextField(
+                            name: 'from',
+                            readOnly: true,
+                            decoration: const InputDecoration(
+                              label: Center(child: Padding(padding: p12, child: LinearProgressIndicator())),
                             ),
                           );
-                        },
-                      ),
+                        }
+
+                        final items = state.lotteries.map(
+                          (lottery) {
+                            final child = Row(
+                              children: [
+                                Icon(
+                                  Icons.store,
+                                  color: (lottery.isClosed ?? false) ? Colors.red : Colors.green,
+                                  size: 18,
+                                ),
+                                hgap(5),
+                                Text(lottery.name),
+                              ],
+                            );
+
+                            return DropdownMenuItem(value: lottery, child: child);
+                          },
+                        ).toList();
+
+                        return DropdownButtonFormField<LotteryEntity>(
+                          value: state.selectedLottery,
+                          decoration: InputDecoration(labelText: t.monitoring.lottery),
+                          items: items,
+                          onChanged: (selectedLottery) => _dashboardController.fetchPlaysByFilters(
+                            lottery: selectedLottery,
+                          ),
+                        );
+                      },
                     )
                   ],
                 ),
@@ -237,5 +229,26 @@ class _HotPlayContainer extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class _FlexContainer extends StatelessWidget {
+  const _FlexContainer({required this.children});
+
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxWidth < 800) {
+        return Column(
+          children: children.map((e) => Padding(padding: py4, child: e)).toList(),
+        );
+      }
+
+      return Row(
+        children: children.map((e) => Expanded(child: Padding(padding: px2, child: e))).toList(),
+      );
+    });
   }
 }

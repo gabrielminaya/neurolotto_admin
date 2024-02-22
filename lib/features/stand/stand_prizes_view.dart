@@ -28,7 +28,7 @@ class _StandPrizeViewState extends State<StandPrizeView> {
     super.initState();
 
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => _standPrizeController.fetchLotteries(),
+      (_) => _standPrizeController.fetchLotteries(stand: widget.stand),
     );
   }
 

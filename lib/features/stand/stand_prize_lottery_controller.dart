@@ -25,14 +25,14 @@ class StandPrizeLotteryController extends ValueNotifier<StandPrizeLotteryControl
 
   final SupabaseClient _client;
 
-  Future<void> fetchLotteries() async {
+  Future<void> fetchLotteries({required LotteryStandEntity stand}) async {
     try {
       value = value.copyWith(isLoading: true, failureMessage: null);
-
       final prizes = await _client
           .from("lottery_stand_prizes")
           .select<PostgrestList>("*, lotteries!inner(*)")
           .eq("lotteries.consortium_id", authController.consortium?.id)
+          .eq("lottery_stand_id", stand.id)
           .withConverter<List<LotteryStandPrizeEntity>>(
             (data) => data.map((e) => LotteryStandPrizeEntity.fromJson(e)).toList(),
           );

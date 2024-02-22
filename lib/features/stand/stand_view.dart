@@ -126,8 +126,8 @@ class StandTabsView extends StatelessWidget {
             body: TabBarView(
               children: [
                 StandDetailView(stand: stand),
-                StandPrizeView(stand: stand),
-                StandPlayConstraintView(stand: stand),
+                StandPrizeView(stand: stand, key: Key("Prize-${stand.id}")),
+                StandPlayConstraintView(stand: stand, key: Key("Constraint-${stand.id}")),
               ],
             ),
           ),

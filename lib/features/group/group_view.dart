@@ -181,8 +181,8 @@ class GroupTabsView extends StatelessWidget {
             body: TabBarView(
               children: [
                 GroupDetailView(group: group),
-                GroupPrizeView(group: group),
-                GroupPlayConstraintView(group: group),
+                GroupPrizeView(group: group, key: Key("GroupPrizeView-${group.id}")),
+                GroupPlayConstraintView(group: group, key: Key("GroupPlayConstraintView-${group.id}")),
               ],
             ),
           ),

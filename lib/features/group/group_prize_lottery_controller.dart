@@ -25,7 +25,7 @@ class GroupPrizeLotteryController extends ValueNotifier<GroupPrizeLotteryControl
 
   final SupabaseClient _client;
 
-  Future<void> fetchLotteries() async {
+  Future<void> fetchLotteries({required GroupEntity group}) async {
     try {
       value = value.copyWith(isLoading: true, failureMessage: null);
 
@@ -33,6 +33,7 @@ class GroupPrizeLotteryController extends ValueNotifier<GroupPrizeLotteryControl
           .from("group_prizes")
           .select<PostgrestList>("*, lotteries!inner(*)")
           .eq("lotteries.consortium_id", authController.consortium?.id)
+          .eq("group_id", group.id)
           .withConverter<List<GroupStandPrizeEntity>>(
             (data) => data.map((e) => GroupStandPrizeEntity.fromJson(e)).toList(),
           );

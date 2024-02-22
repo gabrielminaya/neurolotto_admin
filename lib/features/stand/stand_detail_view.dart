@@ -19,6 +19,7 @@ class StandDetailView extends StatelessWidget {
     return Scaffold(
       floatingActionButton: LayoutBuilder(
         builder: (_, constraints) => FloatingActionButton(
+          heroTag: "stand-detail",
           onPressed: () {
             if (constraints.maxWidth <= tabletBreakpoint) {
               router.push(StandFormRoute(stand: stand));

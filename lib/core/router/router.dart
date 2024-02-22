@@ -37,7 +37,7 @@ class AppRouter extends $AppRouter {
           ]),
         ],
       ),
-      AutoRoute(page: StandTabsRoute.page, guards: [AuthGuard()]),
+      AutoRoute(page: StandTabsRoute.page, guards: [AuthGuard()], maintainState: false),
       AutoRoute(page: StandFormRoute.page, fullscreenDialog: true, guards: [AuthGuard()]),
       AutoRoute(page: StandPrizeFormRoute.page, fullscreenDialog: true, guards: [AuthGuard()]),
       AutoRoute(page: StandPlayConstraintFormRoute.page, fullscreenDialog: true, guards: [AuthGuard()]),

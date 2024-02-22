@@ -28,7 +28,7 @@ class _GroupPrizeViewState extends State<GroupPrizeView> {
     super.initState();
 
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => _groupPrizeController.fetchLotteries(),
+      (_) => _groupPrizeController.fetchLotteries(group: widget.group),
     );
   }
 
