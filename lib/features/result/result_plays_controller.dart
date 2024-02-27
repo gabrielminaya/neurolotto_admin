@@ -29,7 +29,7 @@ class ResultPlaysController extends ValueNotifier<ResultPlayControllerState> {
     value = value.copyWith(isLoading: true);
 
     try {
-      final effetiveDate = value.selectedDate ?? atDate ?? DateTime.now();
+      final effetiveDate = atDate ?? value.selectedDate ?? DateTime.now();
       final resultPlays = await _client
           .rpc("fetch_winning_numbers", params: {
             "in_effetive_date": DateFormat("yyyy-MM-dd").format(effetiveDate),

@@ -28,7 +28,7 @@ class _ResultPlaysViewState extends State<ResultPlaysView> {
   void initState() {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => _resultPlaysController.fetch(),
+      (_) => _resultPlaysController.fetch(atDate: DateTime.now()),
     );
   }
 

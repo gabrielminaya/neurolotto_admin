@@ -123,7 +123,7 @@ class _SaleSummaryViewState extends State<SaleSummaryView> {
           ),
           SliverPadding(
             padding: p12,
-            sliver: SliverToBoxAdapter(
+            sliver: SliverFillRemaining(
               child: _saleController.watch((context, state) {
                 if (state.isLoading) {
                   return const Center(child: CircularProgressIndicator());

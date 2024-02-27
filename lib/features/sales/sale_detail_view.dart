@@ -108,7 +108,7 @@ class _SaleDetailViewState extends State<SaleDetailView> {
 
             return SliverPadding(
               padding: p12,
-              sliver: SliverToBoxAdapter(
+              sliver: SliverFillRemaining(
                 child: SfDataGrid(
                   columnWidthMode: ColumnWidthMode.fill,
                   headerGridLinesVisibility: GridLinesVisibility.both,
