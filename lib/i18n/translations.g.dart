@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 337 (168 per locale)
+/// Strings: 343 (171 per locale)
 ///
-/// Built on 2024-02-17 at 14:07 UTC
+/// Built on 2024-04-17 at 19:57 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -24,8 +24,8 @@ const AppLocale _baseLocale = AppLocale.es;
 /// - LocaleSettings.setLocale(AppLocale.es) // set locale
 /// - Locale locale = AppLocale.es.flutterLocale // get flutter locale from enum
 /// - if (LocaleSettings.currentLocale == AppLocale.es) // locale check
-enum AppLocale with BaseAppLocale<AppLocale, _TranslationsEs> {
-	es(languageCode: 'es', build: _TranslationsEs.build),
+enum AppLocale with BaseAppLocale<AppLocale, Translations> {
+	es(languageCode: 'es', build: Translations.build),
 	en(languageCode: 'en', build: _TranslationsEn.build);
 
 	const AppLocale({required this.languageCode, this.scriptCode, this.countryCode, required this.build}); // ignore: unused_element
@@ -33,10 +33,10 @@ enum AppLocale with BaseAppLocale<AppLocale, _TranslationsEs> {
 	@override final String languageCode;
 	@override final String? scriptCode;
 	@override final String? countryCode;
-	@override final TranslationBuilder<AppLocale, _TranslationsEs> build;
+	@override final TranslationBuilder<AppLocale, Translations> build;
 
 	/// Gets current instance managed by [LocaleSettings].
-	_TranslationsEs get translations => LocaleSettings.instance.translationMap[this]!;
+	Translations get translations => LocaleSettings.instance.translationMap[this]!;
 }
 
 /// Method A: Simple
@@ -48,7 +48,7 @@ enum AppLocale with BaseAppLocale<AppLocale, _TranslationsEs> {
 /// Usage:
 /// String a = t.someKey.anotherKey;
 /// String b = t['someKey.anotherKey']; // Only for edge cases!
-_TranslationsEs get t => LocaleSettings.instance.currentTranslations;
+Translations get t => LocaleSettings.instance.currentTranslations;
 
 /// Method B: Advanced
 ///
@@ -65,17 +65,10 @@ _TranslationsEs get t => LocaleSettings.instance.currentTranslations;
 /// final t = Translations.of(context); // Get t variable.
 /// String a = t.someKey.anotherKey; // Use t variable.
 /// String b = t['someKey.anotherKey']; // Only for edge cases!
-class Translations {
-	Translations._(); // no constructor
-
-	static _TranslationsEs of(BuildContext context) => InheritedLocaleData.of<AppLocale, _TranslationsEs>(context).translations;
-}
-
-/// The provider for method B
-class TranslationProvider extends BaseTranslationProvider<AppLocale, _TranslationsEs> {
+class TranslationProvider extends BaseTranslationProvider<AppLocale, Translations> {
 	TranslationProvider({required super.child}) : super(settings: LocaleSettings.instance);
 
-	static InheritedLocaleData<AppLocale, _TranslationsEs> of(BuildContext context) => InheritedLocaleData.of<AppLocale, _TranslationsEs>(context);
+	static InheritedLocaleData<AppLocale, Translations> of(BuildContext context) => InheritedLocaleData.of<AppLocale, Translations>(context);
 }
 
 /// Method B shorthand via [BuildContext] extension method.
@@ -84,11 +77,11 @@ class TranslationProvider extends BaseTranslationProvider<AppLocale, _Translatio
 /// Usage (e.g. in a widget's build method):
 /// context.t.someKey.anotherKey
 extension BuildContextTranslationsExtension on BuildContext {
-	_TranslationsEs get t => TranslationProvider.of(this).translations;
+	Translations get t => TranslationProvider.of(this).translations;
 }
 
 /// Manages all translation instances and the current locale
-class LocaleSettings extends BaseFlutterLocaleSettings<AppLocale, _TranslationsEs> {
+class LocaleSettings extends BaseFlutterLocaleSettings<AppLocale, Translations> {
 	LocaleSettings._() : super(utils: AppLocaleUtils.instance);
 
 	static final instance = LocaleSettings._();
@@ -110,7 +103,7 @@ class LocaleSettings extends BaseFlutterLocaleSettings<AppLocale, _TranslationsE
 }
 
 /// Provides utility functions without any side effects.
-class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, _TranslationsEs> {
+class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, Translations> {
 	AppLocaleUtils._() : super(baseLocale: _baseLocale, locales: AppLocale.values);
 
 	static final instance = AppLocaleUtils._();
@@ -126,11 +119,16 @@ class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, _TranslationsEs> {
 // translations
 
 // Path: <root>
-class _TranslationsEs implements BaseTranslations<AppLocale, _TranslationsEs> {
+class Translations implements BaseTranslations<AppLocale, Translations> {
+	/// Returns the current translations of the given [context].
+	///
+	/// Usage:
+	/// final t = Translations.of(context);
+	static Translations of(BuildContext context) => InheritedLocaleData.of<AppLocale, Translations>(context).translations;
 
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_TranslationsEs.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	Translations.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.es,
@@ -142,12 +140,12 @@ class _TranslationsEs implements BaseTranslations<AppLocale, _TranslationsEs> {
 	}
 
 	/// Metadata for the translations of <es>.
-	@override final TranslationMetadata<AppLocale, _TranslationsEs> $meta;
+	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
 	dynamic operator[](String key) => $meta.getTranslation(key);
 
-	late final _TranslationsEs _root = this; // ignore: unused_field
+	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
 	late final _TranslationsCommonEs common = _TranslationsCommonEs._(_root);
@@ -168,7 +166,7 @@ class _TranslationsEs implements BaseTranslations<AppLocale, _TranslationsEs> {
 class _TranslationsCommonEs {
 	_TranslationsCommonEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get back => 'Atrás';
@@ -184,7 +182,7 @@ class _TranslationsCommonEs {
 class _TranslationsSignInEs {
 	_TranslationsSignInEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get messageTitle => 'Inicio de sesión';
@@ -198,7 +196,7 @@ class _TranslationsSignInEs {
 class _TranslationsSplashEs {
 	_TranslationsSplashEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get notConsortiumErrorMessage => 'Este usuario actualmente no está asociado a ningún consorcio.';
@@ -208,7 +206,7 @@ class _TranslationsSplashEs {
 class _TranslationsConsortiumEs {
 	_TranslationsConsortiumEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get name => 'Nombre del consorcio';
@@ -224,7 +222,7 @@ class _TranslationsConsortiumEs {
 class _TranslationsGroupEs {
 	_TranslationsGroupEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Grupos';
@@ -254,7 +252,7 @@ class _TranslationsGroupEs {
 class _TranslationsLotteryEs {
 	_TranslationsLotteryEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Loterías';
@@ -286,7 +284,7 @@ class _TranslationsLotteryEs {
 class _TranslationsStandEs {
 	_TranslationsStandEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Bancas';
@@ -303,6 +301,7 @@ class _TranslationsStandEs {
 	String get quinielaMaxAmount => 'Monto máximo de quiniela';
 	String get paleMaxAmount => 'Monto máximo de pale';
 	String get tripletaMaxAmount => 'Monto máximo de tripleta';
+	String get commissionRate => '% de Comision';
 	late final _TranslationsStandConstraintFormEs constraintForm = _TranslationsStandConstraintFormEs._(_root);
 	String get active => 'Activo';
 }
@@ -311,7 +310,7 @@ class _TranslationsStandEs {
 class _TranslationsMonitoringEs {
 	_TranslationsMonitoringEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get dateForm => 'Fecha';
@@ -334,7 +333,7 @@ class _TranslationsMonitoringEs {
 class _TranslationsTicketEs {
 	_TranslationsTicketEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Tickets';
@@ -346,6 +345,7 @@ class _TranslationsTicketEs {
 	String get play => 'Jugada';
 	String get playAmount => 'Monto';
 	String get subtotalAmount => 'Subtotal';
+	String get commissionRate => '% de Comision';
 	String get status => 'Estado';
 	String get cancelAction => 'Anular';
 	String get cancelActionTitle => 'Confirmar Anulación del Ticket';
@@ -364,7 +364,7 @@ class _TranslationsTicketEs {
 class _TranslationsSalesEs {
 	_TranslationsSalesEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Ventas';
@@ -381,13 +381,14 @@ class _TranslationsSalesEs {
 	String get prizes => 'Premios';
 	String get balance => 'Balance';
 	String get total => 'Total';
+	String get commissionSale => 'Comision de venta';
 }
 
 // Path: result
 class _TranslationsResultEs {
 	_TranslationsResultEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get add => 'Añadir';
@@ -414,7 +415,7 @@ class _TranslationsResultEs {
 class _TranslationsSettingsEs {
 	_TranslationsSettingsEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Configuración';
@@ -429,7 +430,7 @@ class _TranslationsSettingsEs {
 class _TranslationsGroupConstraintFormEs {
 	_TranslationsGroupConstraintFormEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Añadir Restricciones';
@@ -444,7 +445,7 @@ class _TranslationsGroupConstraintFormEs {
 class _TranslationsStandConstraintFormEs {
 	_TranslationsStandConstraintFormEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Añadir Restricciones';
@@ -459,7 +460,7 @@ class _TranslationsStandConstraintFormEs {
 class _TranslationsResultConfirmationEs {
 	_TranslationsResultConfirmationEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => '¿Estás seguro de que deseas confirmar los resultados?';
@@ -471,7 +472,7 @@ class _TranslationsResultConfirmationEs {
 class _TranslationsSettingsOptionsEs {
 	_TranslationsSettingsOptionsEs._(this._root);
 
-	final _TranslationsEs _root; // ignore: unused_field
+	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get tickets => 'Tickets';
@@ -482,8 +483,7 @@ class _TranslationsSettingsOptionsEs {
 }
 
 // Path: <root>
-class _TranslationsEn extends _TranslationsEs {
-
+class _TranslationsEn extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	_TranslationsEn.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
@@ -500,7 +500,7 @@ class _TranslationsEn extends _TranslationsEs {
 	}
 
 	/// Metadata for the translations of <en>.
-	@override final TranslationMetadata<AppLocale, _TranslationsEs> $meta;
+	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
 	@override dynamic operator[](String key) => $meta.getTranslation(key) ?? super.$meta.getTranslation(key);
@@ -660,6 +660,7 @@ class _TranslationsStandEn extends _TranslationsStandEs {
 	@override String get quinielaMaxAmount => 'Maximum quiniela amount';
 	@override String get paleMaxAmount => 'Maximum pale amount';
 	@override String get tripletaMaxAmount => 'Maximum triplet amount';
+	@override String get commissionRate => '% of commission';
 	@override late final _TranslationsStandConstraintFormEn constraintForm = _TranslationsStandConstraintFormEn._(_root);
 	@override String get active => 'Active';
 }
@@ -703,6 +704,7 @@ class _TranslationsTicketEn extends _TranslationsTicketEs {
 	@override String get play => 'Play';
 	@override String get playAmount => 'Amount';
 	@override String get subtotalAmount => 'Subtotal';
+	@override String get commissionRate => '% of commission';
 	@override String get status => 'Status';
 	@override String get cancelAction => 'Cancel';
 	@override String get cancelActionTitle => 'Confirm Ticket Cancellation';
@@ -738,6 +740,7 @@ class _TranslationsSalesEn extends _TranslationsSalesEs {
 	@override String get prizes => 'Prizes';
 	@override String get balance => 'Balance';
 	@override String get total => 'Total';
+	@override String get commissionSale => 'Commission Sale';
 }
 
 // Path: result
@@ -841,7 +844,7 @@ class _TranslationsSettingsOptionsEn extends _TranslationsSettingsOptionsEs {
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
-extension on _TranslationsEs {
+extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'common.back': return 'Atrás';
@@ -927,6 +930,7 @@ extension on _TranslationsEs {
 			case 'stand.quinielaMaxAmount': return 'Monto máximo de quiniela';
 			case 'stand.paleMaxAmount': return 'Monto máximo de pale';
 			case 'stand.tripletaMaxAmount': return 'Monto máximo de tripleta';
+			case 'stand.commissionRate': return '% de Comision';
 			case 'stand.constraintForm.title': return 'Añadir Restricciones';
 			case 'stand.constraintForm.amount': return 'Monto';
 			case 'stand.constraintForm.maxAmount': return 'Monto maximo';
@@ -957,6 +961,7 @@ extension on _TranslationsEs {
 			case 'ticket.play': return 'Jugada';
 			case 'ticket.playAmount': return 'Monto';
 			case 'ticket.subtotalAmount': return 'Subtotal';
+			case 'ticket.commissionRate': return '% de Comision';
 			case 'ticket.status': return 'Estado';
 			case 'ticket.cancelAction': return 'Anular';
 			case 'ticket.cancelActionTitle': return 'Confirmar Anulación del Ticket';
@@ -983,6 +988,7 @@ extension on _TranslationsEs {
 			case 'sales.prizes': return 'Premios';
 			case 'sales.balance': return 'Balance';
 			case 'sales.total': return 'Total';
+			case 'sales.commissionSale': return 'Comision de venta';
 			case 'result.add': return 'Añadir';
 			case 'result.edit': return 'Editar';
 			case 'result.date': return 'Fecha';
@@ -1103,6 +1109,7 @@ extension on _TranslationsEn {
 			case 'stand.quinielaMaxAmount': return 'Maximum quiniela amount';
 			case 'stand.paleMaxAmount': return 'Maximum pale amount';
 			case 'stand.tripletaMaxAmount': return 'Maximum triplet amount';
+			case 'stand.commissionRate': return '% of commission';
 			case 'stand.constraintForm.title': return 'Add Constraints';
 			case 'stand.constraintForm.amount': return 'Amount';
 			case 'stand.constraintForm.maxAmount': return 'Maximum amount';
@@ -1133,6 +1140,7 @@ extension on _TranslationsEn {
 			case 'ticket.play': return 'Play';
 			case 'ticket.playAmount': return 'Amount';
 			case 'ticket.subtotalAmount': return 'Subtotal';
+			case 'ticket.commissionRate': return '% of commission';
 			case 'ticket.status': return 'Status';
 			case 'ticket.cancelAction': return 'Cancel';
 			case 'ticket.cancelActionTitle': return 'Confirm Ticket Cancellation';
@@ -1159,6 +1167,7 @@ extension on _TranslationsEn {
 			case 'sales.prizes': return 'Prizes';
 			case 'sales.balance': return 'Balance';
 			case 'sales.total': return 'Total';
+			case 'sales.commissionSale': return 'Commission Sale';
 			case 'result.add': return 'Add';
 			case 'result.edit': return 'Edit';
 			case 'result.date': return 'Date';

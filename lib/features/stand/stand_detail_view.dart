@@ -96,6 +96,20 @@ class StandDetailView extends StatelessWidget {
           ),
           const Divider(height: 0),
           ListTile(
+            enabled: stand.tripletaMaxAmount != null,
+            leading: const Icon(Icons.attach_money),
+            title: Text(t.stand.tripletaMaxAmount),
+            subtitle: Text(NumberFormat.simpleCurrency().format(stand.tripletaMaxAmount ?? 0)),
+          ),
+          const Divider(height: 0),
+          ListTile(
+            enabled: stand.commissionRate != null,
+            leading: const Icon(Icons.attach_money),
+            title: Text(t.stand.commissionRate),
+            subtitle: Text(NumberFormat.compact().format(stand.commissionRate ?? 0)),
+          ),
+          const Divider(height: 0),
+          ListTile(
             leading: const Icon(Icons.verified_user),
             title: Text(t.stand.active),
             subtitle: Text(stand.active.toString().toUpperCase()),

@@ -96,6 +96,7 @@
         "quinielaMaxAmount": "Maximum quiniela amount",
         "paleMaxAmount": "Maximum pale amount",
         "tripletaMaxAmount": "Maximum triplet amount",
+        "commissionRate": "% of commission",
         "constraintForm": {
             "title": "Add Constraints",
             "amount": "Amount",
@@ -132,6 +133,7 @@
         "play": "Play",
         "playAmount": "Amount",
         "subtotalAmount": "Subtotal",
+        "commissionRate": "% of commission",
         "status": "Status",
         "cancelAction": "Cancel",
         "cancelActionTitle": "Confirm Ticket Cancellation",
@@ -159,7 +161,8 @@
         "sales": "Sales",
         "prizes": "Prizes",
         "balance": "Balance",
-        "total": "Total"
+        "total": "Total",
+        "commissionSale": "Commission Sale"
     },
     "result": {
         "add": "Add",

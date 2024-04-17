@@ -12,7 +12,7 @@ part of 'ticket_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 TicketEntity _$TicketEntityFromJson(Map<String, dynamic> json) {
   return _TicketEntity.fromJson(json);
@@ -33,6 +33,8 @@ mixin _$TicketEntity {
   TicketStateEntity get ticketState => throw _privateConstructorUsedError;
   @JsonKey(name: "canceled_by_name")
   String? get canceledByName => throw _privateConstructorUsedError;
+  @JsonKey(name: "commission_rate")
+  num? get commissionRate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +55,8 @@ abstract class $TicketEntityCopyWith<$Res> {
       @JsonKey(name: "state_id") String stateId,
       @JsonKey(name: "lottery_stands") LotteryStandEntity lotteryStand,
       @JsonKey(name: "ticket_states") TicketStateEntity ticketState,
-      @JsonKey(name: "canceled_by_name") String? canceledByName});
+      @JsonKey(name: "canceled_by_name") String? canceledByName,
+      @JsonKey(name: "commission_rate") num? commissionRate});
 
   $LotteryStandEntityCopyWith<$Res> get lotteryStand;
   $TicketStateEntityCopyWith<$Res> get ticketState;
@@ -79,6 +82,7 @@ class _$TicketEntityCopyWithImpl<$Res, $Val extends TicketEntity>
     Object? lotteryStand = null,
     Object? ticketState = null,
     Object? canceledByName = freezed,
+    Object? commissionRate = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -109,6 +113,10 @@ class _$TicketEntityCopyWithImpl<$Res, $Val extends TicketEntity>
           ? _value.canceledByName
           : canceledByName // ignore: cast_nullable_to_non_nullable
               as String?,
+      commissionRate: freezed == commissionRate
+          ? _value.commissionRate
+          : commissionRate // ignore: cast_nullable_to_non_nullable
+              as num?,
     ) as $Val);
   }
 
@@ -144,7 +152,8 @@ abstract class _$$TicketEntityImplCopyWith<$Res>
       @JsonKey(name: "state_id") String stateId,
       @JsonKey(name: "lottery_stands") LotteryStandEntity lotteryStand,
       @JsonKey(name: "ticket_states") TicketStateEntity ticketState,
-      @JsonKey(name: "canceled_by_name") String? canceledByName});
+      @JsonKey(name: "canceled_by_name") String? canceledByName,
+      @JsonKey(name: "commission_rate") num? commissionRate});
 
   @override
   $LotteryStandEntityCopyWith<$Res> get lotteryStand;
@@ -170,6 +179,7 @@ class __$$TicketEntityImplCopyWithImpl<$Res>
     Object? lotteryStand = null,
     Object? ticketState = null,
     Object? canceledByName = freezed,
+    Object? commissionRate = freezed,
   }) {
     return _then(_$TicketEntityImpl(
       id: null == id
@@ -200,6 +210,10 @@ class __$$TicketEntityImplCopyWithImpl<$Res>
           ? _value.canceledByName
           : canceledByName // ignore: cast_nullable_to_non_nullable
               as String?,
+      commissionRate: freezed == commissionRate
+          ? _value.commissionRate
+          : commissionRate // ignore: cast_nullable_to_non_nullable
+              as num?,
     ));
   }
 }
@@ -214,7 +228,8 @@ class _$TicketEntityImpl implements _TicketEntity {
       @JsonKey(name: "state_id") required this.stateId,
       @JsonKey(name: "lottery_stands") required this.lotteryStand,
       @JsonKey(name: "ticket_states") required this.ticketState,
-      @JsonKey(name: "canceled_by_name") required this.canceledByName});
+      @JsonKey(name: "canceled_by_name") required this.canceledByName,
+      @JsonKey(name: "commission_rate") this.commissionRate = 0});
 
   factory _$TicketEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$TicketEntityImplFromJson(json);
@@ -239,14 +254,17 @@ class _$TicketEntityImpl implements _TicketEntity {
   @override
   @JsonKey(name: "canceled_by_name")
   final String? canceledByName;
+  @override
+  @JsonKey(name: "commission_rate")
+  final num? commissionRate;
 
   @override
   String toString() {
-    return 'TicketEntity(id: $id, sequenceNumber: $sequenceNumber, createdAt: $createdAt, stateId: $stateId, lotteryStand: $lotteryStand, ticketState: $ticketState, canceledByName: $canceledByName)';
+    return 'TicketEntity(id: $id, sequenceNumber: $sequenceNumber, createdAt: $createdAt, stateId: $stateId, lotteryStand: $lotteryStand, ticketState: $ticketState, canceledByName: $canceledByName, commissionRate: $commissionRate)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TicketEntityImpl &&
@@ -261,13 +279,15 @@ class _$TicketEntityImpl implements _TicketEntity {
             (identical(other.ticketState, ticketState) ||
                 other.ticketState == ticketState) &&
             (identical(other.canceledByName, canceledByName) ||
-                other.canceledByName == canceledByName));
+                other.canceledByName == canceledByName) &&
+            (identical(other.commissionRate, commissionRate) ||
+                other.commissionRate == commissionRate));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, sequenceNumber, createdAt,
-      stateId, lotteryStand, ticketState, canceledByName);
+      stateId, lotteryStand, ticketState, canceledByName, commissionRate);
 
   @JsonKey(ignore: true)
   @override
@@ -293,8 +313,9 @@ abstract class _TicketEntity implements TicketEntity {
       required final LotteryStandEntity lotteryStand,
       @JsonKey(name: "ticket_states")
       required final TicketStateEntity ticketState,
-      @JsonKey(name: "canceled_by_name")
-      required final String? canceledByName}) = _$TicketEntityImpl;
+      @JsonKey(name: "canceled_by_name") required final String? canceledByName,
+      @JsonKey(name: "commission_rate")
+      final num? commissionRate}) = _$TicketEntityImpl;
 
   factory _TicketEntity.fromJson(Map<String, dynamic> json) =
       _$TicketEntityImpl.fromJson;
@@ -319,6 +340,9 @@ abstract class _TicketEntity implements TicketEntity {
   @override
   @JsonKey(name: "canceled_by_name")
   String? get canceledByName;
+  @override
+  @JsonKey(name: "commission_rate")
+  num? get commissionRate;
   @override
   @JsonKey(ignore: true)
   _$$TicketEntityImplCopyWith<_$TicketEntityImpl> get copyWith =>

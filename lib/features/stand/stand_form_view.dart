@@ -51,6 +51,7 @@ class _StandFormViewState extends State<StandFormView> {
     final quinielaMaxAmount = _formKey.currentState?.value["quinielaMaxAmount"] as String?;
     final paleMaxAmount = _formKey.currentState?.value["paleMaxAmount"] as String?;
     final tripletaMaxAmount = _formKey.currentState?.value["tripletaMaxAmount"] as String?;
+    final commissionRate = _formKey.currentState?.value["commissionRate"] as String?;
 
     final editedStand = widget.stand.copyWith(
       name: name,
@@ -62,6 +63,7 @@ class _StandFormViewState extends State<StandFormView> {
       quinielaMaxAmount: quinielaMaxAmount != null ? num.parse(quinielaMaxAmount) : null,
       paleMaxAmount: paleMaxAmount != null ? num.parse(paleMaxAmount) : null,
       tripletaMaxAmount: tripletaMaxAmount != null ? num.parse(tripletaMaxAmount) : null,
+      commissionRate: commissionRate != null ? num.parse(commissionRate) : null,
     );
 
     return _standController.update(
@@ -98,6 +100,7 @@ class _StandFormViewState extends State<StandFormView> {
           "quinielaMaxAmount": widget.stand.quinielaMaxAmount?.toStringAsFixed(0),
           "paleMaxAmount": widget.stand.paleMaxAmount?.toStringAsFixed(0),
           "tripletaMaxAmount": widget.stand.tripletaMaxAmount?.toStringAsFixed(0),
+          "commissionRate": widget.stand.commissionRate?.toStringAsFixed(0),
         },
         child: _standController.watch(
           (context, state) {
@@ -145,6 +148,15 @@ class _StandFormViewState extends State<StandFormView> {
                 FormBuilderTextField(
                   name: 'maximumSaleAmount',
                   decoration: InputDecoration(label: Text(t.stand.maximumSaleAmount)),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                    FormBuilderValidators.integer(),
+                  ]),
+                ),
+                vgap(10),
+                FormBuilderTextField(
+                  name: 'commissionRate',
+                  decoration: InputDecoration(label: Text(t.stand.commissionRate), suffixText: "%"),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
                     FormBuilderValidators.integer(),

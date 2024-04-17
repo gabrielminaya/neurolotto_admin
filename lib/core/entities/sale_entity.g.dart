@@ -11,6 +11,7 @@ _$SaleEntityImpl _$$SaleEntityImplFromJson(Map<String, dynamic> json) =>
       lotteryStandName: json['lottery_stand_name'] as String,
       playAmount: json['play_amount'] as num,
       winningAmount: json['winning_amount'] as num,
+      commissionAmount: json['lottery_stand_commission_amount'] as num,
     );
 
 Map<String, dynamic> _$$SaleEntityImplToJson(_$SaleEntityImpl instance) =>
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$SaleEntityImplToJson(_$SaleEntityImpl instance) =>
       'lottery_stand_name': instance.lotteryStandName,
       'play_amount': instance.playAmount,
       'winning_amount': instance.winningAmount,
+      'lottery_stand_commission_amount': instance.commissionAmount,
     };

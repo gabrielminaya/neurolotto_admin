@@ -21,6 +21,7 @@ sealed class LotteryStandEntity with _$LotteryStandEntity {
     @JsonKey(name: "quiniela_max_amount") @Default(null) num? quinielaMaxAmount,
     @JsonKey(name: "pale_max_amount") @Default(null) num? paleMaxAmount,
     @JsonKey(name: "tripleta_max_amount") @Default(null) num? tripletaMaxAmount,
+    @JsonKey(name: "commission_rate") @Default(0) num? commissionRate,
   }) = _LotteryStandEntity;
 
   factory LotteryStandEntity.fromJson(Map<String, dynamic> json) => _$LotteryStandEntityFromJson(json);

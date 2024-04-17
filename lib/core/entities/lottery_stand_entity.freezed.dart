@@ -12,7 +12,7 @@ part of 'lottery_stand_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 LotteryStandEntity _$LotteryStandEntityFromJson(Map<String, dynamic> json) {
   return _LotteryStandEntity.fromJson(json);
@@ -40,6 +40,8 @@ mixin _$LotteryStandEntity {
   num? get paleMaxAmount => throw _privateConstructorUsedError;
   @JsonKey(name: "tripleta_max_amount")
   num? get tripletaMaxAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: "commission_rate")
+  num? get commissionRate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -66,7 +68,8 @@ abstract class $LotteryStandEntityCopyWith<$Res> {
       num maximumCancellationAmount,
       @JsonKey(name: "quiniela_max_amount") num? quinielaMaxAmount,
       @JsonKey(name: "pale_max_amount") num? paleMaxAmount,
-      @JsonKey(name: "tripleta_max_amount") num? tripletaMaxAmount});
+      @JsonKey(name: "tripleta_max_amount") num? tripletaMaxAmount,
+      @JsonKey(name: "commission_rate") num? commissionRate});
 
   $GroupEntityCopyWith<$Res> get group;
   $ConstraintLevelEntityCopyWith<$Res> get constraintLevel;
@@ -97,6 +100,7 @@ class _$LotteryStandEntityCopyWithImpl<$Res, $Val extends LotteryStandEntity>
     Object? quinielaMaxAmount = freezed,
     Object? paleMaxAmount = freezed,
     Object? tripletaMaxAmount = freezed,
+    Object? commissionRate = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -147,6 +151,10 @@ class _$LotteryStandEntityCopyWithImpl<$Res, $Val extends LotteryStandEntity>
           ? _value.tripletaMaxAmount
           : tripletaMaxAmount // ignore: cast_nullable_to_non_nullable
               as num?,
+      commissionRate: freezed == commissionRate
+          ? _value.commissionRate
+          : commissionRate // ignore: cast_nullable_to_non_nullable
+              as num?,
     ) as $Val);
   }
 
@@ -189,7 +197,8 @@ abstract class _$$LotteryStandEntityImplCopyWith<$Res>
       num maximumCancellationAmount,
       @JsonKey(name: "quiniela_max_amount") num? quinielaMaxAmount,
       @JsonKey(name: "pale_max_amount") num? paleMaxAmount,
-      @JsonKey(name: "tripleta_max_amount") num? tripletaMaxAmount});
+      @JsonKey(name: "tripleta_max_amount") num? tripletaMaxAmount,
+      @JsonKey(name: "commission_rate") num? commissionRate});
 
   @override
   $GroupEntityCopyWith<$Res> get group;
@@ -220,6 +229,7 @@ class __$$LotteryStandEntityImplCopyWithImpl<$Res>
     Object? quinielaMaxAmount = freezed,
     Object? paleMaxAmount = freezed,
     Object? tripletaMaxAmount = freezed,
+    Object? commissionRate = freezed,
   }) {
     return _then(_$LotteryStandEntityImpl(
       id: null == id
@@ -270,6 +280,10 @@ class __$$LotteryStandEntityImplCopyWithImpl<$Res>
           ? _value.tripletaMaxAmount
           : tripletaMaxAmount // ignore: cast_nullable_to_non_nullable
               as num?,
+      commissionRate: freezed == commissionRate
+          ? _value.commissionRate
+          : commissionRate // ignore: cast_nullable_to_non_nullable
+              as num?,
     ));
   }
 }
@@ -290,7 +304,8 @@ class _$LotteryStandEntityImpl implements _LotteryStandEntity {
       required this.maximumCancellationAmount,
       @JsonKey(name: "quiniela_max_amount") this.quinielaMaxAmount = null,
       @JsonKey(name: "pale_max_amount") this.paleMaxAmount = null,
-      @JsonKey(name: "tripleta_max_amount") this.tripletaMaxAmount = null});
+      @JsonKey(name: "tripleta_max_amount") this.tripletaMaxAmount = null,
+      @JsonKey(name: "commission_rate") this.commissionRate = 0});
 
   factory _$LotteryStandEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$LotteryStandEntityImplFromJson(json);
@@ -327,14 +342,17 @@ class _$LotteryStandEntityImpl implements _LotteryStandEntity {
   @override
   @JsonKey(name: "tripleta_max_amount")
   final num? tripletaMaxAmount;
+  @override
+  @JsonKey(name: "commission_rate")
+  final num? commissionRate;
 
   @override
   String toString() {
-    return 'LotteryStandEntity(id: $id, group: $group, name: $name, username: $username, imei: $imei, constraintLevel: $constraintLevel, active: $active, maximumSaleAmount: $maximumSaleAmount, maximumCancellationAmount: $maximumCancellationAmount, quinielaMaxAmount: $quinielaMaxAmount, paleMaxAmount: $paleMaxAmount, tripletaMaxAmount: $tripletaMaxAmount)';
+    return 'LotteryStandEntity(id: $id, group: $group, name: $name, username: $username, imei: $imei, constraintLevel: $constraintLevel, active: $active, maximumSaleAmount: $maximumSaleAmount, maximumCancellationAmount: $maximumCancellationAmount, quinielaMaxAmount: $quinielaMaxAmount, paleMaxAmount: $paleMaxAmount, tripletaMaxAmount: $tripletaMaxAmount, commissionRate: $commissionRate)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LotteryStandEntityImpl &&
@@ -357,7 +375,9 @@ class _$LotteryStandEntityImpl implements _LotteryStandEntity {
             (identical(other.paleMaxAmount, paleMaxAmount) ||
                 other.paleMaxAmount == paleMaxAmount) &&
             (identical(other.tripletaMaxAmount, tripletaMaxAmount) ||
-                other.tripletaMaxAmount == tripletaMaxAmount));
+                other.tripletaMaxAmount == tripletaMaxAmount) &&
+            (identical(other.commissionRate, commissionRate) ||
+                other.commissionRate == commissionRate));
   }
 
   @JsonKey(ignore: true)
@@ -375,7 +395,8 @@ class _$LotteryStandEntityImpl implements _LotteryStandEntity {
       maximumCancellationAmount,
       quinielaMaxAmount,
       paleMaxAmount,
-      tripletaMaxAmount);
+      tripletaMaxAmount,
+      commissionRate);
 
   @JsonKey(ignore: true)
   @override
@@ -408,7 +429,8 @@ abstract class _LotteryStandEntity implements LotteryStandEntity {
           required final num maximumCancellationAmount,
           @JsonKey(name: "quiniela_max_amount") final num? quinielaMaxAmount,
           @JsonKey(name: "pale_max_amount") final num? paleMaxAmount,
-          @JsonKey(name: "tripleta_max_amount") final num? tripletaMaxAmount}) =
+          @JsonKey(name: "tripleta_max_amount") final num? tripletaMaxAmount,
+          @JsonKey(name: "commission_rate") final num? commissionRate}) =
       _$LotteryStandEntityImpl;
 
   factory _LotteryStandEntity.fromJson(Map<String, dynamic> json) =
@@ -445,6 +467,9 @@ abstract class _LotteryStandEntity implements LotteryStandEntity {
   @override
   @JsonKey(name: "tripleta_max_amount")
   num? get tripletaMaxAmount;
+  @override
+  @JsonKey(name: "commission_rate")
+  num? get commissionRate;
   @override
   @JsonKey(ignore: true)
   _$$LotteryStandEntityImplCopyWith<_$LotteryStandEntityImpl> get copyWith =>

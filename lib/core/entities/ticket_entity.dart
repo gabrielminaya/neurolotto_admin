@@ -16,6 +16,7 @@ class TicketEntity with _$TicketEntity {
     @JsonKey(name: "lottery_stands") required LotteryStandEntity lotteryStand,
     @JsonKey(name: "ticket_states") required TicketStateEntity ticketState,
     @JsonKey(name: "canceled_by_name") required String? canceledByName,
+    @JsonKey(name: "commission_rate") @Default(0) num? commissionRate,
   }) = _TicketEntity;
 
   factory TicketEntity.fromJson(Map<String, dynamic> json) => _$TicketEntityFromJson(json);

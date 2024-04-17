@@ -97,6 +97,7 @@ class StandController extends ValueNotifier<StandControllerState> {
         "quiniela_max_amount": stand.quinielaMaxAmount,
         "pale_max_amount": stand.paleMaxAmount,
         "tripleta_max_amount": stand.tripletaMaxAmount,
+        "commission_rate": stand.commissionRate,
       }).eq("id", stand.id);
 
       final currentStands = [...value.stands];

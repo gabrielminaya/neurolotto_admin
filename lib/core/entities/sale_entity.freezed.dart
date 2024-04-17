@@ -12,7 +12,7 @@ part of 'sale_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SaleEntity _$SaleEntityFromJson(Map<String, dynamic> json) {
   return _SaleEntity.fromJson(json);
@@ -26,6 +26,8 @@ mixin _$SaleEntity {
   num get playAmount => throw _privateConstructorUsedError;
   @JsonKey(name: "winning_amount")
   num get winningAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: "lottery_stand_commission_amount")
+  num get commissionAmount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +44,8 @@ abstract class $SaleEntityCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "lottery_stand_name") String lotteryStandName,
       @JsonKey(name: "play_amount") num playAmount,
-      @JsonKey(name: "winning_amount") num winningAmount});
+      @JsonKey(name: "winning_amount") num winningAmount,
+      @JsonKey(name: "lottery_stand_commission_amount") num commissionAmount});
 }
 
 /// @nodoc
@@ -61,6 +64,7 @@ class _$SaleEntityCopyWithImpl<$Res, $Val extends SaleEntity>
     Object? lotteryStandName = null,
     Object? playAmount = null,
     Object? winningAmount = null,
+    Object? commissionAmount = null,
   }) {
     return _then(_value.copyWith(
       lotteryStandName: null == lotteryStandName
@@ -74,6 +78,10 @@ class _$SaleEntityCopyWithImpl<$Res, $Val extends SaleEntity>
       winningAmount: null == winningAmount
           ? _value.winningAmount
           : winningAmount // ignore: cast_nullable_to_non_nullable
+              as num,
+      commissionAmount: null == commissionAmount
+          ? _value.commissionAmount
+          : commissionAmount // ignore: cast_nullable_to_non_nullable
               as num,
     ) as $Val);
   }
@@ -90,7 +98,8 @@ abstract class _$$SaleEntityImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "lottery_stand_name") String lotteryStandName,
       @JsonKey(name: "play_amount") num playAmount,
-      @JsonKey(name: "winning_amount") num winningAmount});
+      @JsonKey(name: "winning_amount") num winningAmount,
+      @JsonKey(name: "lottery_stand_commission_amount") num commissionAmount});
 }
 
 /// @nodoc
@@ -107,6 +116,7 @@ class __$$SaleEntityImplCopyWithImpl<$Res>
     Object? lotteryStandName = null,
     Object? playAmount = null,
     Object? winningAmount = null,
+    Object? commissionAmount = null,
   }) {
     return _then(_$SaleEntityImpl(
       lotteryStandName: null == lotteryStandName
@@ -121,6 +131,10 @@ class __$$SaleEntityImplCopyWithImpl<$Res>
           ? _value.winningAmount
           : winningAmount // ignore: cast_nullable_to_non_nullable
               as num,
+      commissionAmount: null == commissionAmount
+          ? _value.commissionAmount
+          : commissionAmount // ignore: cast_nullable_to_non_nullable
+              as num,
     ));
   }
 }
@@ -131,7 +145,9 @@ class _$SaleEntityImpl implements _SaleEntity {
   const _$SaleEntityImpl(
       {@JsonKey(name: "lottery_stand_name") required this.lotteryStandName,
       @JsonKey(name: "play_amount") required this.playAmount,
-      @JsonKey(name: "winning_amount") required this.winningAmount});
+      @JsonKey(name: "winning_amount") required this.winningAmount,
+      @JsonKey(name: "lottery_stand_commission_amount")
+      required this.commissionAmount});
 
   factory _$SaleEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$SaleEntityImplFromJson(json);
@@ -145,14 +161,17 @@ class _$SaleEntityImpl implements _SaleEntity {
   @override
   @JsonKey(name: "winning_amount")
   final num winningAmount;
+  @override
+  @JsonKey(name: "lottery_stand_commission_amount")
+  final num commissionAmount;
 
   @override
   String toString() {
-    return 'SaleEntity(lotteryStandName: $lotteryStandName, playAmount: $playAmount, winningAmount: $winningAmount)';
+    return 'SaleEntity(lotteryStandName: $lotteryStandName, playAmount: $playAmount, winningAmount: $winningAmount, commissionAmount: $commissionAmount)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SaleEntityImpl &&
@@ -161,13 +180,15 @@ class _$SaleEntityImpl implements _SaleEntity {
             (identical(other.playAmount, playAmount) ||
                 other.playAmount == playAmount) &&
             (identical(other.winningAmount, winningAmount) ||
-                other.winningAmount == winningAmount));
+                other.winningAmount == winningAmount) &&
+            (identical(other.commissionAmount, commissionAmount) ||
+                other.commissionAmount == commissionAmount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, lotteryStandName, playAmount, winningAmount);
+  int get hashCode => Object.hash(runtimeType, lotteryStandName, playAmount,
+      winningAmount, commissionAmount);
 
   @JsonKey(ignore: true)
   @override
@@ -185,11 +206,12 @@ class _$SaleEntityImpl implements _SaleEntity {
 
 abstract class _SaleEntity implements SaleEntity {
   const factory _SaleEntity(
-          {@JsonKey(name: "lottery_stand_name")
-          required final String lotteryStandName,
-          @JsonKey(name: "play_amount") required final num playAmount,
-          @JsonKey(name: "winning_amount") required final num winningAmount}) =
-      _$SaleEntityImpl;
+      {@JsonKey(name: "lottery_stand_name")
+      required final String lotteryStandName,
+      @JsonKey(name: "play_amount") required final num playAmount,
+      @JsonKey(name: "winning_amount") required final num winningAmount,
+      @JsonKey(name: "lottery_stand_commission_amount")
+      required final num commissionAmount}) = _$SaleEntityImpl;
 
   factory _SaleEntity.fromJson(Map<String, dynamic> json) =
       _$SaleEntityImpl.fromJson;
@@ -203,6 +225,9 @@ abstract class _SaleEntity implements SaleEntity {
   @override
   @JsonKey(name: "winning_amount")
   num get winningAmount;
+  @override
+  @JsonKey(name: "lottery_stand_commission_amount")
+  num get commissionAmount;
   @override
   @JsonKey(ignore: true)
   _$$SaleEntityImplCopyWith<_$SaleEntityImpl> get copyWith =>

@@ -97,6 +97,7 @@
         "quinielaMaxAmount": "Monto máximo de quiniela",
         "paleMaxAmount": "Monto máximo de pale",
         "tripletaMaxAmount": "Monto máximo de tripleta",
+        "commissionRate": "% de Comision",
         "constraintForm": {
             "title": "Añadir Restricciones",
             "amount": "Monto",
@@ -133,6 +134,7 @@
         "play": "Jugada",
         "playAmount": "Monto",
         "subtotalAmount": "Subtotal",
+        "commissionRate": "% de Comision",
         "status": "Estado",
         "cancelAction": "Anular",
         "cancelActionTitle": "Confirmar Anulación del Ticket",
@@ -160,7 +162,8 @@
         "sales": "Apostado",
         "prizes": "Premios",
         "balance": "Balance",
-        "total": "Total"
+        "total": "Total",
+        "commissionSale": "Comision de venta"
     },
     "result": {
         "add": "Añadir",

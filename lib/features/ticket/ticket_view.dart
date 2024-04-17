@@ -310,10 +310,13 @@ class _TicketDetailState extends State<TicketDetail> {
               loading: () => const LinearProgressIndicator(),
               failure: (message) => Text(message),
               success: (plays) {
-                final totalAmount = plays.fold(
+                final subtotalAmount = plays.fold(
                   0.0,
                   (previousValue, element) => previousValue + (element.playAmount * element.lotteryIds.length),
                 );
+
+                final commissionRate = subtotalAmount * (widget.ticket.commissionRate ?? 0 / 100);
+                final totalAmount = subtotalAmount - commissionRate;
 
                 return Table(
                   border: TableBorder.all(),
@@ -389,18 +392,99 @@ class _TicketDetailState extends State<TicketDetail> {
                           TableCell(
                             child: Padding(
                               padding: p4,
-                              child: Text(NumberFormat.simpleCurrency().format(play.playAmount)),
+                              child: Text(
+                                NumberFormat.simpleCurrency().format(play.playAmount),
+                                textAlign: TextAlign.right,
+                              ),
                             ),
                           ),
                           TableCell(
                             child: Padding(
                               padding: p4,
-                              child:
-                                  Text(NumberFormat.simpleCurrency().format(play.playAmount * play.lotteryIds.length)),
+                              child: Text(
+                                NumberFormat.simpleCurrency().format(play.playAmount * play.lotteryIds.length),
+                                textAlign: TextAlign.right,
+                              ),
                             ),
                           ),
                         ],
                       ),
+                    const TableRow(
+                      children: [
+                        TableCell(
+                          child: Padding(padding: p2),
+                        ),
+                        TableCell(
+                          child: Padding(padding: p2),
+                        ),
+                        TableCell(
+                          child: Padding(padding: p2),
+                        ),
+                        TableCell(
+                          child: Text(""),
+                        ),
+                      ],
+                    ),
+                    TableRow(
+                      children: [
+                        const TableCell(
+                          child: Padding(padding: p2),
+                        ),
+                        const TableCell(
+                          child: Padding(padding: p2),
+                        ),
+                        TableCell(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: p2.bottom, bottom: p2.top, right: 10),
+                            child: Text(
+                              t.ticket.subtotalAmount,
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
+                        ),
+                        TableCell(
+                          child: Padding(
+                            padding: p2,
+                            child: Text(
+                              NumberFormat.simpleCurrency().format(subtotalAmount),
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    TableRow(
+                      children: [
+                        const TableCell(
+                          child: Padding(padding: p2),
+                        ),
+                        const TableCell(
+                          child: Padding(padding: p2),
+                        ),
+                        TableCell(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: p2.bottom, bottom: p2.top, right: 10),
+                            child: Text(
+                              t.ticket.commissionRate,
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
+                        ),
+                        TableCell(
+                          child: Padding(
+                            padding: p2,
+                            child: Text(
+                              NumberFormat.simpleCurrency().format(commissionRate),
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                     TableRow(
                       children: [
                         const TableCell(
@@ -423,6 +507,7 @@ class _TicketDetailState extends State<TicketDetail> {
                           child: Padding(
                             padding: p2,
                             child: Text(
+                              textAlign: TextAlign.right,
                               NumberFormat.simpleCurrency().format(totalAmount),
                               style: const TextStyle(fontWeight: FontWeight.bold),
                             ),

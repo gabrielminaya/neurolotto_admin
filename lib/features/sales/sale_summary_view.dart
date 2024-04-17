@@ -169,6 +169,16 @@ class _SaleSummaryViewState extends State<SaleSummaryView> {
                       ),
                     ),
                     GridColumn(
+                      columnName: 'commissionSale',
+                      label: Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          t.sales.commissionSale,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                    GridColumn(
                       columnName: 'balance',
                       label: Container(
                         alignment: Alignment.center,
@@ -203,7 +213,8 @@ class _SaleDatasource extends DataGridSource {
         DataGridCell(columnName: "stand", value: sale.lotteryStandName),
         DataGridCell(columnName: "sales", value: sale.playAmount),
         DataGridCell(columnName: "prizes", value: sale.winningAmount),
-        DataGridCell(columnName: "balance", value: sale.playAmount - sale.winningAmount),
+        DataGridCell(columnName: "commissionSale", value: sale.commissionAmount),
+        DataGridCell(columnName: "balance", value: sale.playAmount - (sale.winningAmount + sale.commissionAmount)),
       ]);
     }).toList();
 
@@ -220,10 +231,15 @@ class _SaleDatasource extends DataGridSource {
           value: sales.fold(0.0, (previousValue, element) => previousValue + element.winningAmount),
         ),
         DataGridCell(
+          columnName: "commissionSale",
+          value: sales.fold(0.0, (previousValue, element) => previousValue + element.commissionAmount),
+        ),
+        DataGridCell(
           columnName: "balance",
           value: sales.fold(
             0.0,
-            (previousValue, element) => previousValue + (element.playAmount - element.winningAmount),
+            (previousValue, element) =>
+                previousValue + (element.playAmount - (element.winningAmount + element.commissionAmount)),
           ),
         ),
       ])
