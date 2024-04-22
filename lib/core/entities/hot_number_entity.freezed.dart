@@ -23,7 +23,7 @@ mixin _$HotNumberEntity {
   @JsonKey(name: "play_type_name")
   String get lotteryName => throw _privateConstructorUsedError;
   @JsonKey(name: "play_number")
-  num get playNumber => throw _privateConstructorUsedError;
+  String get playNumber => throw _privateConstructorUsedError;
   @JsonKey(name: "total_plays")
   num get playQuantity => throw _privateConstructorUsedError;
   @JsonKey(name: "total_amount")
@@ -43,7 +43,7 @@ abstract class $HotNumberEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "play_type_name") String lotteryName,
-      @JsonKey(name: "play_number") num playNumber,
+      @JsonKey(name: "play_number") String playNumber,
       @JsonKey(name: "total_plays") num playQuantity,
       @JsonKey(name: "total_amount") num totalAmount});
 }
@@ -74,7 +74,7 @@ class _$HotNumberEntityCopyWithImpl<$Res, $Val extends HotNumberEntity>
       playNumber: null == playNumber
           ? _value.playNumber
           : playNumber // ignore: cast_nullable_to_non_nullable
-              as num,
+              as String,
       playQuantity: null == playQuantity
           ? _value.playQuantity
           : playQuantity // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ abstract class _$$HotNumberEntityImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "play_type_name") String lotteryName,
-      @JsonKey(name: "play_number") num playNumber,
+      @JsonKey(name: "play_number") String playNumber,
       @JsonKey(name: "total_plays") num playQuantity,
       @JsonKey(name: "total_amount") num totalAmount});
 }
@@ -126,7 +126,7 @@ class __$$HotNumberEntityImplCopyWithImpl<$Res>
       playNumber: null == playNumber
           ? _value.playNumber
           : playNumber // ignore: cast_nullable_to_non_nullable
-              as num,
+              as String,
       playQuantity: null == playQuantity
           ? _value.playQuantity
           : playQuantity // ignore: cast_nullable_to_non_nullable
@@ -156,7 +156,7 @@ class _$HotNumberEntityImpl implements _HotNumberEntity {
   final String lotteryName;
   @override
   @JsonKey(name: "play_number")
-  final num playNumber;
+  final String playNumber;
   @override
   @JsonKey(name: "total_plays")
   final num playQuantity;
@@ -207,7 +207,7 @@ class _$HotNumberEntityImpl implements _HotNumberEntity {
 abstract class _HotNumberEntity implements HotNumberEntity {
   const factory _HotNumberEntity(
           {@JsonKey(name: "play_type_name") required final String lotteryName,
-          @JsonKey(name: "play_number") required final num playNumber,
+          @JsonKey(name: "play_number") required final String playNumber,
           @JsonKey(name: "total_plays") required final num playQuantity,
           @JsonKey(name: "total_amount") required final num totalAmount}) =
       _$HotNumberEntityImpl;
@@ -220,7 +220,7 @@ abstract class _HotNumberEntity implements HotNumberEntity {
   String get lotteryName;
   @override
   @JsonKey(name: "play_number")
-  num get playNumber;
+  String get playNumber;
   @override
   @JsonKey(name: "total_plays")
   num get playQuantity;

@@ -26,11 +26,11 @@ mixin _$LotteryResultEntity {
   @JsonKey(name: "play_date")
   DateTime get playDate => throw _privateConstructorUsedError;
   @JsonKey(name: "first_number")
-  num get firstPrizeNumber => throw _privateConstructorUsedError;
+  String get firstPrizeNumber => throw _privateConstructorUsedError;
   @JsonKey(name: "second_number")
-  num get secondPrizeNumber => throw _privateConstructorUsedError;
+  String get secondPrizeNumber => throw _privateConstructorUsedError;
   @JsonKey(name: "third_number")
-  num get thirdPrizeNumber => throw _privateConstructorUsedError;
+  String get thirdPrizeNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,9 +48,9 @@ abstract class $LotteryResultEntityCopyWith<$Res> {
       {String id,
       @JsonKey(name: "lotteries") LotteryEntity lottery,
       @JsonKey(name: "play_date") DateTime playDate,
-      @JsonKey(name: "first_number") num firstPrizeNumber,
-      @JsonKey(name: "second_number") num secondPrizeNumber,
-      @JsonKey(name: "third_number") num thirdPrizeNumber});
+      @JsonKey(name: "first_number") String firstPrizeNumber,
+      @JsonKey(name: "second_number") String secondPrizeNumber,
+      @JsonKey(name: "third_number") String thirdPrizeNumber});
 
   $LotteryEntityCopyWith<$Res> get lottery;
 }
@@ -91,15 +91,15 @@ class _$LotteryResultEntityCopyWithImpl<$Res, $Val extends LotteryResultEntity>
       firstPrizeNumber: null == firstPrizeNumber
           ? _value.firstPrizeNumber
           : firstPrizeNumber // ignore: cast_nullable_to_non_nullable
-              as num,
+              as String,
       secondPrizeNumber: null == secondPrizeNumber
           ? _value.secondPrizeNumber
           : secondPrizeNumber // ignore: cast_nullable_to_non_nullable
-              as num,
+              as String,
       thirdPrizeNumber: null == thirdPrizeNumber
           ? _value.thirdPrizeNumber
           : thirdPrizeNumber // ignore: cast_nullable_to_non_nullable
-              as num,
+              as String,
     ) as $Val);
   }
 
@@ -124,9 +124,9 @@ abstract class _$$LotteryResultEntityImplCopyWith<$Res>
       {String id,
       @JsonKey(name: "lotteries") LotteryEntity lottery,
       @JsonKey(name: "play_date") DateTime playDate,
-      @JsonKey(name: "first_number") num firstPrizeNumber,
-      @JsonKey(name: "second_number") num secondPrizeNumber,
-      @JsonKey(name: "third_number") num thirdPrizeNumber});
+      @JsonKey(name: "first_number") String firstPrizeNumber,
+      @JsonKey(name: "second_number") String secondPrizeNumber,
+      @JsonKey(name: "third_number") String thirdPrizeNumber});
 
   @override
   $LotteryEntityCopyWith<$Res> get lottery;
@@ -166,15 +166,15 @@ class __$$LotteryResultEntityImplCopyWithImpl<$Res>
       firstPrizeNumber: null == firstPrizeNumber
           ? _value.firstPrizeNumber
           : firstPrizeNumber // ignore: cast_nullable_to_non_nullable
-              as num,
+              as String,
       secondPrizeNumber: null == secondPrizeNumber
           ? _value.secondPrizeNumber
           : secondPrizeNumber // ignore: cast_nullable_to_non_nullable
-              as num,
+              as String,
       thirdPrizeNumber: null == thirdPrizeNumber
           ? _value.thirdPrizeNumber
           : thirdPrizeNumber // ignore: cast_nullable_to_non_nullable
-              as num,
+              as String,
     ));
   }
 }
@@ -203,13 +203,13 @@ class _$LotteryResultEntityImpl implements _LotteryResultEntity {
   final DateTime playDate;
   @override
   @JsonKey(name: "first_number")
-  final num firstPrizeNumber;
+  final String firstPrizeNumber;
   @override
   @JsonKey(name: "second_number")
-  final num secondPrizeNumber;
+  final String secondPrizeNumber;
   @override
   @JsonKey(name: "third_number")
-  final num thirdPrizeNumber;
+  final String thirdPrizeNumber;
 
   @override
   String toString() {
@@ -255,13 +255,13 @@ class _$LotteryResultEntityImpl implements _LotteryResultEntity {
 
 abstract class _LotteryResultEntity implements LotteryResultEntity {
   const factory _LotteryResultEntity(
-          {required final String id,
-          @JsonKey(name: "lotteries") required final LotteryEntity lottery,
-          @JsonKey(name: "play_date") required final DateTime playDate,
-          @JsonKey(name: "first_number") required final num firstPrizeNumber,
-          @JsonKey(name: "second_number") required final num secondPrizeNumber,
-          @JsonKey(name: "third_number") required final num thirdPrizeNumber}) =
-      _$LotteryResultEntityImpl;
+      {required final String id,
+      @JsonKey(name: "lotteries") required final LotteryEntity lottery,
+      @JsonKey(name: "play_date") required final DateTime playDate,
+      @JsonKey(name: "first_number") required final String firstPrizeNumber,
+      @JsonKey(name: "second_number") required final String secondPrizeNumber,
+      @JsonKey(name: "third_number")
+      required final String thirdPrizeNumber}) = _$LotteryResultEntityImpl;
 
   factory _LotteryResultEntity.fromJson(Map<String, dynamic> json) =
       _$LotteryResultEntityImpl.fromJson;
@@ -276,13 +276,13 @@ abstract class _LotteryResultEntity implements LotteryResultEntity {
   DateTime get playDate;
   @override
   @JsonKey(name: "first_number")
-  num get firstPrizeNumber;
+  String get firstPrizeNumber;
   @override
   @JsonKey(name: "second_number")
-  num get secondPrizeNumber;
+  String get secondPrizeNumber;
   @override
   @JsonKey(name: "third_number")
-  num get thirdPrizeNumber;
+  String get thirdPrizeNumber;
   @override
   @JsonKey(ignore: true)
   _$$LotteryResultEntityImplCopyWith<_$LotteryResultEntityImpl> get copyWith =>

@@ -78,6 +78,7 @@ class ResultLotteriesController extends ValueNotifier<ResultLotteriesControllerS
     required VoidCallback onSuccess,
   }) async {
     value = value.copyWith(isLoading: true);
+
     try {
       final createdResult = await _client
           .from("lottery_results")
@@ -120,6 +121,9 @@ class ResultLotteriesController extends ValueNotifier<ResultLotteriesControllerS
     required VoidCallback onSuccess,
   }) async {
     value = value.copyWith(isLoading: true);
+
+    debugPrint(result.thirdPrizeNumber);
+
     try {
       await _client.from("lottery_results").update({
         "first_number": result.firstPrizeNumber,

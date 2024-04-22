@@ -9,7 +9,6 @@ import '../../core/constants.dart';
 import '../../core/entities/lottery_stand_entity.dart';
 import '../../core/entities/ticket_entity.dart';
 import '../../core/extensions/context.dart';
-import '../../core/extensions/number.dart';
 import '../../core/extensions/value_notifier.dart';
 import '../../core/router/router.gr.dart';
 import '../../core/service_locator/get_it.dart';
@@ -315,7 +314,7 @@ class _TicketDetailState extends State<TicketDetail> {
                   (previousValue, element) => previousValue + (element.playAmount * element.lotteryIds.length),
                 );
 
-                final commissionRate = subtotalAmount * (widget.ticket.commissionRate ?? 0 / 100);
+                final commissionRate = subtotalAmount * ((widget.ticket.commissionRate ?? 0) / 100);
                 final totalAmount = subtotalAmount - commissionRate;
 
                 return Table(
@@ -380,7 +379,7 @@ class _TicketDetailState extends State<TicketDetail> {
                           TableCell(
                             child: Padding(
                               padding: p4,
-                              child: Text(play.playNumber.toLotteryFormat),
+                              child: Text(play.playNumber),
                             ),
                           ),
                           TableCell(

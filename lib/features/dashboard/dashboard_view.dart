@@ -9,7 +9,6 @@ import '../../core/constants.dart';
 import '../../core/entities/hot_number_entity.dart';
 import '../../core/entities/lottery_entity.dart';
 import '../../core/extensions/context.dart';
-import '../../core/extensions/number.dart';
 import '../../core/extensions/value_notifier.dart';
 import '../../core/service_locator/get_it.dart';
 import '../../i18n/translations.g.dart';
@@ -219,7 +218,7 @@ class _HotPlayContainer extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "${hotNumber.playNumber.toLotteryFormat} (${hotNumber.playQuantity})",
+              "${hotNumber.playNumber} (${hotNumber.playQuantity})",
             ),
             Text(
               NumberFormat.currency(symbol: "").format(hotNumber.totalAmount),

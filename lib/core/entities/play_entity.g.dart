@@ -8,7 +8,7 @@ part of 'play_entity.dart';
 
 _$PlayEntityImpl _$$PlayEntityImplFromJson(Map<String, dynamic> json) =>
     _$PlayEntityImpl(
-      playNumber: json['play_number'] as int,
+      playNumber: json['play_number'] as String,
       playAmount: json['play_amount'] as num,
       lotteryNames: (json['lottery_names'] as List<dynamic>)
           .map((e) => e as String)

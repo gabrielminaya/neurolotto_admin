@@ -21,7 +21,7 @@ PlayEntity _$PlayEntityFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PlayEntity {
   @JsonKey(name: "play_number")
-  int get playNumber => throw _privateConstructorUsedError;
+  String get playNumber => throw _privateConstructorUsedError;
   @JsonKey(name: "play_amount")
   num get playAmount => throw _privateConstructorUsedError;
   @JsonKey(name: "lottery_names")
@@ -42,7 +42,7 @@ abstract class $PlayEntityCopyWith<$Res> {
       _$PlayEntityCopyWithImpl<$Res, PlayEntity>;
   @useResult
   $Res call(
-      {@JsonKey(name: "play_number") int playNumber,
+      {@JsonKey(name: "play_number") String playNumber,
       @JsonKey(name: "play_amount") num playAmount,
       @JsonKey(name: "lottery_names") List<String> lotteryNames,
       @JsonKey(name: "lottery_ids") List<String> lotteryIds});
@@ -70,7 +70,7 @@ class _$PlayEntityCopyWithImpl<$Res, $Val extends PlayEntity>
       playNumber: null == playNumber
           ? _value.playNumber
           : playNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       playAmount: null == playAmount
           ? _value.playAmount
           : playAmount // ignore: cast_nullable_to_non_nullable
@@ -96,7 +96,7 @@ abstract class _$$PlayEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "play_number") int playNumber,
+      {@JsonKey(name: "play_number") String playNumber,
       @JsonKey(name: "play_amount") num playAmount,
       @JsonKey(name: "lottery_names") List<String> lotteryNames,
       @JsonKey(name: "lottery_ids") List<String> lotteryIds});
@@ -122,7 +122,7 @@ class __$$PlayEntityImplCopyWithImpl<$Res>
       playNumber: null == playNumber
           ? _value.playNumber
           : playNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       playAmount: null == playAmount
           ? _value.playAmount
           : playAmount // ignore: cast_nullable_to_non_nullable
@@ -155,7 +155,7 @@ class _$PlayEntityImpl implements _PlayEntity {
 
   @override
   @JsonKey(name: "play_number")
-  final int playNumber;
+  final String playNumber;
   @override
   @JsonKey(name: "play_amount")
   final num playAmount;
@@ -222,7 +222,7 @@ class _$PlayEntityImpl implements _PlayEntity {
 
 abstract class _PlayEntity implements PlayEntity {
   const factory _PlayEntity(
-      {@JsonKey(name: "play_number") required final int playNumber,
+      {@JsonKey(name: "play_number") required final String playNumber,
       @JsonKey(name: "play_amount") required final num playAmount,
       @JsonKey(name: "lottery_names") required final List<String> lotteryNames,
       @JsonKey(name: "lottery_ids")
@@ -233,7 +233,7 @@ abstract class _PlayEntity implements PlayEntity {
 
   @override
   @JsonKey(name: "play_number")
-  int get playNumber;
+  String get playNumber;
   @override
   @JsonKey(name: "play_amount")
   num get playAmount;

@@ -6,7 +6,7 @@ part 'play_entity.g.dart';
 @Freezed()
 sealed class PlayEntity with _$PlayEntity {
   const factory PlayEntity({
-    @JsonKey(name: "play_number") required int playNumber,
+    @JsonKey(name: "play_number") required String playNumber,
     @JsonKey(name: "play_amount") required num playAmount,
     @JsonKey(name: "lottery_names") required List<String> lotteryNames,
     @JsonKey(name: "lottery_ids") required List<String> lotteryIds,

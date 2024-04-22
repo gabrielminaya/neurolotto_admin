@@ -7,7 +7,7 @@ part 'hot_number_entity.g.dart';
 sealed class HotNumberEntity with _$HotNumberEntity {
   const factory HotNumberEntity({
     @JsonKey(name: "play_type_name") required String lotteryName,
-    @JsonKey(name: "play_number") required num playNumber,
+    @JsonKey(name: "play_number") required String playNumber,
     @JsonKey(name: "total_plays") required num playQuantity,
     @JsonKey(name: "total_amount") required num totalAmount,
   }) = _HotNumberEntity;

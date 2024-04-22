@@ -11,9 +11,9 @@ sealed class LotteryResultEntity with _$LotteryResultEntity {
     required String id,
     @JsonKey(name: "lotteries") required LotteryEntity lottery,
     @JsonKey(name: "play_date") required DateTime playDate,
-    @JsonKey(name: "first_number") required num firstPrizeNumber,
-    @JsonKey(name: "second_number") required num secondPrizeNumber,
-    @JsonKey(name: "third_number") required num thirdPrizeNumber,
+    @JsonKey(name: "first_number") required String firstPrizeNumber,
+    @JsonKey(name: "second_number") required String secondPrizeNumber,
+    @JsonKey(name: "third_number") required String thirdPrizeNumber,
   }) = _LotteryResultEntity;
 
   factory LotteryResultEntity.fromJson(Map<String, dynamic> json) => _$LotteryResultEntityFromJson(json);

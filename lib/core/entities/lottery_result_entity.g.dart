@@ -13,9 +13,9 @@ _$LotteryResultEntityImpl _$$LotteryResultEntityImplFromJson(
       lottery:
           LotteryEntity.fromJson(json['lotteries'] as Map<String, dynamic>),
       playDate: DateTime.parse(json['play_date'] as String),
-      firstPrizeNumber: json['first_number'] as num,
-      secondPrizeNumber: json['second_number'] as num,
-      thirdPrizeNumber: json['third_number'] as num,
+      firstPrizeNumber: json['first_number'] as String,
+      secondPrizeNumber: json['second_number'] as String,
+      thirdPrizeNumber: json['third_number'] as String,
     );
 
 Map<String, dynamic> _$$LotteryResultEntityImplToJson(

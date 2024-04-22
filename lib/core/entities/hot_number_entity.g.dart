@@ -10,7 +10,7 @@ _$HotNumberEntityImpl _$$HotNumberEntityImplFromJson(
         Map<String, dynamic> json) =>
     _$HotNumberEntityImpl(
       lotteryName: json['play_type_name'] as String,
-      playNumber: json['play_number'] as num,
+      playNumber: json['play_number'] as String,
       playQuantity: json['total_plays'] as num,
       totalAmount: json['total_amount'] as num,
     );

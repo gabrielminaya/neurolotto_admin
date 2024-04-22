@@ -82,9 +82,9 @@ class _ResultLotteriesFormViewState extends State<ResultLotteriesFormView> {
           id: "",
           playDate: date,
           lottery: lottery,
-          firstPrizeNumber: num.parse(resultOne),
-          secondPrizeNumber: num.parse(resultTwo),
-          thirdPrizeNumber: num.parse(resultThree),
+          firstPrizeNumber: resultOne,
+          secondPrizeNumber: resultTwo,
+          thirdPrizeNumber: resultThree,
         ),
         onFailure: (message) {
           router.pop();
@@ -105,9 +105,9 @@ class _ResultLotteriesFormViewState extends State<ResultLotteriesFormView> {
       result: result.copyWith(
         playDate: date,
         lottery: lottery,
-        firstPrizeNumber: num.parse(resultOne),
-        secondPrizeNumber: num.parse(resultTwo),
-        thirdPrizeNumber: num.parse(resultThree),
+        firstPrizeNumber: resultOne,
+        secondPrizeNumber: resultTwo,
+        thirdPrizeNumber: resultThree,
       ),
       onFailure: (message) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -146,9 +146,9 @@ class _ResultLotteriesFormViewState extends State<ResultLotteriesFormView> {
             initialValue: {
               "date": widget.result?.playDate,
               "lottery": widget.result?.lottery,
-              "resultOne": widget.result?.firstPrizeNumber.toStringAsFixed(0),
-              "resultTwo": widget.result?.secondPrizeNumber.toStringAsFixed(0),
-              "resultThree": widget.result?.thirdPrizeNumber.toStringAsFixed(0),
+              "resultOne": widget.result?.firstPrizeNumber,
+              "resultTwo": widget.result?.secondPrizeNumber,
+              "resultThree": widget.result?.thirdPrizeNumber,
             },
             child: ListView(
               padding: p12,
@@ -181,8 +181,9 @@ class _ResultLotteriesFormViewState extends State<ResultLotteriesFormView> {
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
                     FormBuilderValidators.integer(),
-                    FormBuilderValidators.min(1),
-                    FormBuilderValidators.max(100),
+                    FormBuilderValidators.equalLength(2),
+                    FormBuilderValidators.max(99),
+                    FormBuilderValidators.min(0),
                   ]),
                 ),
                 vgap(10),
@@ -192,8 +193,9 @@ class _ResultLotteriesFormViewState extends State<ResultLotteriesFormView> {
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
                     FormBuilderValidators.integer(),
-                    FormBuilderValidators.min(1),
-                    FormBuilderValidators.max(100),
+                    FormBuilderValidators.equalLength(2),
+                    FormBuilderValidators.max(99),
+                    FormBuilderValidators.min(0),
                   ]),
                 ),
                 vgap(10),
@@ -203,8 +205,9 @@ class _ResultLotteriesFormViewState extends State<ResultLotteriesFormView> {
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
                     FormBuilderValidators.integer(),
-                    FormBuilderValidators.min(1),
-                    FormBuilderValidators.max(100),
+                    FormBuilderValidators.equalLength(2),
+                    FormBuilderValidators.max(99),
+                    FormBuilderValidators.min(0),
                   ]),
                 ),
               ],
