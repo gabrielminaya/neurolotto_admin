@@ -52,6 +52,7 @@ class _StandFormViewState extends State<StandFormView> {
     final paleMaxAmount = _formKey.currentState?.value["paleMaxAmount"] as String?;
     final tripletaMaxAmount = _formKey.currentState?.value["tripletaMaxAmount"] as String?;
     final commissionRate = _formKey.currentState?.value["commissionRate"] as String?;
+    final shareOnly = _formKey.currentState?.value["shareOnly"] as bool?;
 
     final editedStand = widget.stand.copyWith(
       name: name,
@@ -64,6 +65,7 @@ class _StandFormViewState extends State<StandFormView> {
       paleMaxAmount: paleMaxAmount != null ? num.parse(paleMaxAmount) : null,
       tripletaMaxAmount: tripletaMaxAmount != null ? num.parse(tripletaMaxAmount) : null,
       commissionRate: commissionRate != null ? num.parse(commissionRate) : null,
+      shareOnly: shareOnly ?? false,
     );
 
     return _standController.update(
@@ -101,6 +103,7 @@ class _StandFormViewState extends State<StandFormView> {
           "paleMaxAmount": widget.stand.paleMaxAmount?.toStringAsFixed(0),
           "tripletaMaxAmount": widget.stand.tripletaMaxAmount?.toStringAsFixed(0),
           "commissionRate": widget.stand.commissionRate?.toStringAsFixed(0),
+          "shareOnly": widget.stand.shareOnly,
         },
         child: _standController.watch(
           (context, state) {
@@ -160,6 +163,14 @@ class _StandFormViewState extends State<StandFormView> {
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
                     FormBuilderValidators.integer(),
+                  ]),
+                ),
+                vgap(10),
+                FormBuilderSwitch(
+                  name: 'shareOnly',
+                  title: Text(t.stand.shareOnly),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
                   ]),
                 ),
                 _showPlayAmounts.watch(

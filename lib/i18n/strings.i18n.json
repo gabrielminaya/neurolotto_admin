@@ -106,7 +106,8 @@
             "from": "Desde",
             "to": "Hasta (Opcional)"
         },
-        "active": "Activo"
+        "active": "Activo",
+        "shareOnly": "Impresion digital"
     },
     "monitoring": {
         "dateForm": "Fecha",

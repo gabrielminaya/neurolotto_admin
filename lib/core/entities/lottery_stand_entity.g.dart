@@ -23,6 +23,7 @@ _$LotteryStandEntityImpl _$$LotteryStandEntityImplFromJson(
       paleMaxAmount: json['pale_max_amount'] as num? ?? null,
       tripletaMaxAmount: json['tripleta_max_amount'] as num? ?? null,
       commissionRate: json['commission_rate'] as num? ?? 0,
+      shareOnly: json['share_only'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$LotteryStandEntityImplToJson(
@@ -41,4 +42,5 @@ Map<String, dynamic> _$$LotteryStandEntityImplToJson(
       'pale_max_amount': instance.paleMaxAmount,
       'tripleta_max_amount': instance.tripletaMaxAmount,
       'commission_rate': instance.commissionRate,
+      'share_only': instance.shareOnly,
     };

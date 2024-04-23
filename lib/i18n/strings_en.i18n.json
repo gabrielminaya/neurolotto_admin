@@ -105,7 +105,8 @@
             "from": "From",
             "to": "To (Optional)"
         },
-        "active": "Active"
+        "active": "Active",
+        "shareOnly": "Digital print"
     },
     "monitoring": {
         "dateForm": "Date",

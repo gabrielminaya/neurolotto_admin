@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 343 (171 per locale)
+/// Strings: 345 (172 per locale)
 ///
-/// Built on 2024-04-17 at 19:57 UTC
+/// Built on 2024-04-23 at 19:46 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -304,6 +304,7 @@ class _TranslationsStandEs {
 	String get commissionRate => '% de Comision';
 	late final _TranslationsStandConstraintFormEs constraintForm = _TranslationsStandConstraintFormEs._(_root);
 	String get active => 'Activo';
+	String get shareOnly => 'Impresion digital';
 }
 
 // Path: monitoring
@@ -663,6 +664,7 @@ class _TranslationsStandEn extends _TranslationsStandEs {
 	@override String get commissionRate => '% of commission';
 	@override late final _TranslationsStandConstraintFormEn constraintForm = _TranslationsStandConstraintFormEn._(_root);
 	@override String get active => 'Active';
+	@override String get shareOnly => 'Digital print';
 }
 
 // Path: monitoring
@@ -938,6 +940,7 @@ extension on Translations {
 			case 'stand.constraintForm.from': return 'Desde';
 			case 'stand.constraintForm.to': return 'Hasta (Opcional)';
 			case 'stand.active': return 'Activo';
+			case 'stand.shareOnly': return 'Impresion digital';
 			case 'monitoring.dateForm': return 'Fecha';
 			case 'monitoring.dateToday': return 'Hoy';
 			case 'monitoring.dateYesterday': return 'Ayer';
@@ -1117,6 +1120,7 @@ extension on _TranslationsEn {
 			case 'stand.constraintForm.from': return 'From';
 			case 'stand.constraintForm.to': return 'To (Optional)';
 			case 'stand.active': return 'Active';
+			case 'stand.shareOnly': return 'Digital print';
 			case 'monitoring.dateForm': return 'Date';
 			case 'monitoring.dateToday': return 'Today';
 			case 'monitoring.dateYesterday': return 'Yesterday';

@@ -110,6 +110,12 @@ class StandDetailView extends StatelessWidget {
           ),
           const Divider(height: 0),
           ListTile(
+            leading: const Icon(Icons.attach_money),
+            title: Text(t.stand.shareOnly),
+            subtitle: Text(stand.active.toString().toUpperCase()),
+          ),
+          const Divider(height: 0),
+          ListTile(
             leading: const Icon(Icons.verified_user),
             title: Text(t.stand.active),
             subtitle: Text(stand.active.toString().toUpperCase()),

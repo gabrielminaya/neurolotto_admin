@@ -42,6 +42,8 @@ mixin _$LotteryStandEntity {
   num? get tripletaMaxAmount => throw _privateConstructorUsedError;
   @JsonKey(name: "commission_rate")
   num? get commissionRate => throw _privateConstructorUsedError;
+  @JsonKey(name: "share_only")
+  bool get shareOnly => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -69,7 +71,8 @@ abstract class $LotteryStandEntityCopyWith<$Res> {
       @JsonKey(name: "quiniela_max_amount") num? quinielaMaxAmount,
       @JsonKey(name: "pale_max_amount") num? paleMaxAmount,
       @JsonKey(name: "tripleta_max_amount") num? tripletaMaxAmount,
-      @JsonKey(name: "commission_rate") num? commissionRate});
+      @JsonKey(name: "commission_rate") num? commissionRate,
+      @JsonKey(name: "share_only") bool shareOnly});
 
   $GroupEntityCopyWith<$Res> get group;
   $ConstraintLevelEntityCopyWith<$Res> get constraintLevel;
@@ -101,6 +104,7 @@ class _$LotteryStandEntityCopyWithImpl<$Res, $Val extends LotteryStandEntity>
     Object? paleMaxAmount = freezed,
     Object? tripletaMaxAmount = freezed,
     Object? commissionRate = freezed,
+    Object? shareOnly = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -155,6 +159,10 @@ class _$LotteryStandEntityCopyWithImpl<$Res, $Val extends LotteryStandEntity>
           ? _value.commissionRate
           : commissionRate // ignore: cast_nullable_to_non_nullable
               as num?,
+      shareOnly: null == shareOnly
+          ? _value.shareOnly
+          : shareOnly // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -198,7 +206,8 @@ abstract class _$$LotteryStandEntityImplCopyWith<$Res>
       @JsonKey(name: "quiniela_max_amount") num? quinielaMaxAmount,
       @JsonKey(name: "pale_max_amount") num? paleMaxAmount,
       @JsonKey(name: "tripleta_max_amount") num? tripletaMaxAmount,
-      @JsonKey(name: "commission_rate") num? commissionRate});
+      @JsonKey(name: "commission_rate") num? commissionRate,
+      @JsonKey(name: "share_only") bool shareOnly});
 
   @override
   $GroupEntityCopyWith<$Res> get group;
@@ -230,6 +239,7 @@ class __$$LotteryStandEntityImplCopyWithImpl<$Res>
     Object? paleMaxAmount = freezed,
     Object? tripletaMaxAmount = freezed,
     Object? commissionRate = freezed,
+    Object? shareOnly = null,
   }) {
     return _then(_$LotteryStandEntityImpl(
       id: null == id
@@ -284,6 +294,10 @@ class __$$LotteryStandEntityImplCopyWithImpl<$Res>
           ? _value.commissionRate
           : commissionRate // ignore: cast_nullable_to_non_nullable
               as num?,
+      shareOnly: null == shareOnly
+          ? _value.shareOnly
+          : shareOnly // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -305,7 +319,8 @@ class _$LotteryStandEntityImpl implements _LotteryStandEntity {
       @JsonKey(name: "quiniela_max_amount") this.quinielaMaxAmount = null,
       @JsonKey(name: "pale_max_amount") this.paleMaxAmount = null,
       @JsonKey(name: "tripleta_max_amount") this.tripletaMaxAmount = null,
-      @JsonKey(name: "commission_rate") this.commissionRate = 0});
+      @JsonKey(name: "commission_rate") this.commissionRate = 0,
+      @JsonKey(name: "share_only") this.shareOnly = false});
 
   factory _$LotteryStandEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$LotteryStandEntityImplFromJson(json);
@@ -345,10 +360,13 @@ class _$LotteryStandEntityImpl implements _LotteryStandEntity {
   @override
   @JsonKey(name: "commission_rate")
   final num? commissionRate;
+  @override
+  @JsonKey(name: "share_only")
+  final bool shareOnly;
 
   @override
   String toString() {
-    return 'LotteryStandEntity(id: $id, group: $group, name: $name, username: $username, imei: $imei, constraintLevel: $constraintLevel, active: $active, maximumSaleAmount: $maximumSaleAmount, maximumCancellationAmount: $maximumCancellationAmount, quinielaMaxAmount: $quinielaMaxAmount, paleMaxAmount: $paleMaxAmount, tripletaMaxAmount: $tripletaMaxAmount, commissionRate: $commissionRate)';
+    return 'LotteryStandEntity(id: $id, group: $group, name: $name, username: $username, imei: $imei, constraintLevel: $constraintLevel, active: $active, maximumSaleAmount: $maximumSaleAmount, maximumCancellationAmount: $maximumCancellationAmount, quinielaMaxAmount: $quinielaMaxAmount, paleMaxAmount: $paleMaxAmount, tripletaMaxAmount: $tripletaMaxAmount, commissionRate: $commissionRate, shareOnly: $shareOnly)';
   }
 
   @override
@@ -377,7 +395,9 @@ class _$LotteryStandEntityImpl implements _LotteryStandEntity {
             (identical(other.tripletaMaxAmount, tripletaMaxAmount) ||
                 other.tripletaMaxAmount == tripletaMaxAmount) &&
             (identical(other.commissionRate, commissionRate) ||
-                other.commissionRate == commissionRate));
+                other.commissionRate == commissionRate) &&
+            (identical(other.shareOnly, shareOnly) ||
+                other.shareOnly == shareOnly));
   }
 
   @JsonKey(ignore: true)
@@ -396,7 +416,8 @@ class _$LotteryStandEntityImpl implements _LotteryStandEntity {
       quinielaMaxAmount,
       paleMaxAmount,
       tripletaMaxAmount,
-      commissionRate);
+      commissionRate,
+      shareOnly);
 
   @JsonKey(ignore: true)
   @override
@@ -430,7 +451,8 @@ abstract class _LotteryStandEntity implements LotteryStandEntity {
           @JsonKey(name: "quiniela_max_amount") final num? quinielaMaxAmount,
           @JsonKey(name: "pale_max_amount") final num? paleMaxAmount,
           @JsonKey(name: "tripleta_max_amount") final num? tripletaMaxAmount,
-          @JsonKey(name: "commission_rate") final num? commissionRate}) =
+          @JsonKey(name: "commission_rate") final num? commissionRate,
+          @JsonKey(name: "share_only") final bool shareOnly}) =
       _$LotteryStandEntityImpl;
 
   factory _LotteryStandEntity.fromJson(Map<String, dynamic> json) =
@@ -470,6 +492,9 @@ abstract class _LotteryStandEntity implements LotteryStandEntity {
   @override
   @JsonKey(name: "commission_rate")
   num? get commissionRate;
+  @override
+  @JsonKey(name: "share_only")
+  bool get shareOnly;
   @override
   @JsonKey(ignore: true)
   _$$LotteryStandEntityImplCopyWith<_$LotteryStandEntityImpl> get copyWith =>
