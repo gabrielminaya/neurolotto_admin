@@ -59,6 +59,14 @@ class DashboardController extends ValueNotifier<DashboardControllerState> {
   Future<void> fetchPlaysByFilters({DateTime? atDate, bool? orderByQuantity, LotteryEntity? lottery}) async {
     value = value.copyWith(isLoading: true);
 
+    if (lottery != null) {
+      value = value.copyWith(selectedLottery: lottery);
+    }
+
+    if (orderByQuantity != null) {
+      value = value.copyWith(orderByQuantity: orderByQuantity);
+    }
+
     if (atDate != null) {
       value = value.copyWith(selectedDate: atDate);
       await initialize();
@@ -68,10 +76,10 @@ class DashboardController extends ValueNotifier<DashboardControllerState> {
       final hotNumbers = await _client
           .rpc("get_most_played_numbers", params: {
             "in_consortium_id": authController.consortium?.id,
-            "in_lottery_id": lottery?.id ?? value.selectedLottery?.id,
+            "in_lottery_id": value.selectedLottery?.id,
             "in_from": DateFormat("yyyy-MM-dd 00:00").format(atDate ?? value.selectedDate),
             "in_to": DateFormat("yyyy-MM-dd 23:59").format(atDate ?? value.selectedDate),
-            "order_by_quantity": orderByQuantity ?? value.orderByQuantity,
+            "order_by_quantity": value.orderByQuantity,
           })
           .select<PostgrestList>()
           .withConverter<List<HotNumberEntity>>(

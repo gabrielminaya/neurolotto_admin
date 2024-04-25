@@ -40,7 +40,7 @@ class _DashboardViewState extends State<DashboardView> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: _dashboardController.fetchPlaysByFilters,
+        onPressed: () => _dashboardController.fetchPlaysByFilters(),
         child: const Icon(Icons.refresh),
       ),
       body: LayoutBuilder(
