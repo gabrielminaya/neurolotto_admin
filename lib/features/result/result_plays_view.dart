@@ -7,7 +7,6 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 import '../../core/constants.dart';
 import '../../core/entities/result_play_entity.dart';
-import '../../core/extensions/number.dart';
 import '../../core/extensions/value_notifier.dart';
 import '../../core/service_locator/get_it.dart';
 import '../../i18n/translations.g.dart';
@@ -161,7 +160,7 @@ class ResultPlayDataSource extends DataGridSource {
           DataGridCell<String>(columnName: 'date', value: DateFormat("hh:mm a").format(result.createdAt)),
           DataGridCell<String>(columnName: 'lottery', value: result.lotteryName),
           DataGridCell<String>(columnName: 'stand', value: result.lotteryStandName),
-          DataGridCell<String>(columnName: 'playNumber', value: result.playNumber.toLotteryFormat),
+          DataGridCell<String>(columnName: 'playNumber', value: result.playNumber),
           DataGridCell<num>(
             columnName: 'playAmount',
             value: result.playAmount,

@@ -29,7 +29,7 @@ mixin _$ResultPlayEntity {
   @JsonKey(name: "play_type_name")
   String get playTypeName => throw _privateConstructorUsedError;
   @JsonKey(name: "play_number")
-  num get playNumber => throw _privateConstructorUsedError;
+  String get playNumber => throw _privateConstructorUsedError;
   @JsonKey(name: "play_amount")
   num get playAmount => throw _privateConstructorUsedError;
   @JsonKey(name: "lottery_name")
@@ -54,7 +54,7 @@ abstract class $ResultPlayEntityCopyWith<$Res> {
       @JsonKey(name: "created_at") DateTime createdAt,
       @JsonKey(name: "lottery_stand_name") String lotteryStandName,
       @JsonKey(name: "play_type_name") String playTypeName,
-      @JsonKey(name: "play_number") num playNumber,
+      @JsonKey(name: "play_number") String playNumber,
       @JsonKey(name: "play_amount") num playAmount,
       @JsonKey(name: "lottery_name") String lotteryName,
       @JsonKey(name: "winning_amount") num winningAmount});
@@ -102,7 +102,7 @@ class _$ResultPlayEntityCopyWithImpl<$Res, $Val extends ResultPlayEntity>
       playNumber: null == playNumber
           ? _value.playNumber
           : playNumber // ignore: cast_nullable_to_non_nullable
-              as num,
+              as String,
       playAmount: null == playAmount
           ? _value.playAmount
           : playAmount // ignore: cast_nullable_to_non_nullable
@@ -132,7 +132,7 @@ abstract class _$$ResultPlayEntityImplCopyWith<$Res>
       @JsonKey(name: "created_at") DateTime createdAt,
       @JsonKey(name: "lottery_stand_name") String lotteryStandName,
       @JsonKey(name: "play_type_name") String playTypeName,
-      @JsonKey(name: "play_number") num playNumber,
+      @JsonKey(name: "play_number") String playNumber,
       @JsonKey(name: "play_amount") num playAmount,
       @JsonKey(name: "lottery_name") String lotteryName,
       @JsonKey(name: "winning_amount") num winningAmount});
@@ -178,7 +178,7 @@ class __$$ResultPlayEntityImplCopyWithImpl<$Res>
       playNumber: null == playNumber
           ? _value.playNumber
           : playNumber // ignore: cast_nullable_to_non_nullable
-              as num,
+              as String,
       playAmount: null == playAmount
           ? _value.playAmount
           : playAmount // ignore: cast_nullable_to_non_nullable
@@ -225,7 +225,7 @@ class _$ResultPlayEntityImpl implements _ResultPlayEntity {
   final String playTypeName;
   @override
   @JsonKey(name: "play_number")
-  final num playNumber;
+  final String playNumber;
   @override
   @JsonKey(name: "play_amount")
   final num playAmount;
@@ -299,7 +299,7 @@ abstract class _ResultPlayEntity implements ResultPlayEntity {
           @JsonKey(name: "lottery_stand_name")
           required final String lotteryStandName,
           @JsonKey(name: "play_type_name") required final String playTypeName,
-          @JsonKey(name: "play_number") required final num playNumber,
+          @JsonKey(name: "play_number") required final String playNumber,
           @JsonKey(name: "play_amount") required final num playAmount,
           @JsonKey(name: "lottery_name") required final String lotteryName,
           @JsonKey(name: "winning_amount") required final num winningAmount}) =
@@ -322,7 +322,7 @@ abstract class _ResultPlayEntity implements ResultPlayEntity {
   String get playTypeName;
   @override
   @JsonKey(name: "play_number")
-  num get playNumber;
+  String get playNumber;
   @override
   @JsonKey(name: "play_amount")
   num get playAmount;

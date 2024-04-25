@@ -10,7 +10,7 @@ sealed class ResultPlayEntity with _$ResultPlayEntity {
     @JsonKey(name: "created_at") required DateTime createdAt,
     @JsonKey(name: "lottery_stand_name") required String lotteryStandName,
     @JsonKey(name: "play_type_name") required String playTypeName,
-    @JsonKey(name: "play_number") required num playNumber,
+    @JsonKey(name: "play_number") required String playNumber,
     @JsonKey(name: "play_amount") required num playAmount,
     @JsonKey(name: "lottery_name") required String lotteryName,
     @JsonKey(name: "winning_amount") required num winningAmount,

@@ -13,7 +13,7 @@ _$ResultPlayEntityImpl _$$ResultPlayEntityImplFromJson(
       createdAt: DateTime.parse(json['created_at'] as String),
       lotteryStandName: json['lottery_stand_name'] as String,
       playTypeName: json['play_type_name'] as String,
-      playNumber: json['play_number'] as num,
+      playNumber: json['play_number'] as String,
       playAmount: json['play_amount'] as num,
       lotteryName: json['lottery_name'] as String,
       winningAmount: json['winning_amount'] as num,
